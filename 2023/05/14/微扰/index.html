@@ -249,18 +249,18 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-16 00:01:23</time>
+          <time>2023-05-16 14:29:54</time>
           <span class="text-gray-400">·</span>
-          <span>2 min</span>
+          <span>3 min</span>
           <span class="text-gray-400">·</span>
-          <span>448 words</span>
+          <span>843 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="非简并微扰"><a href="#非简并微扰" class="headerlink" title="非简并微扰"></a>非简并微扰</h2><p>原解$H^0\psi_n^0&#x3D;E_n^0\psi_n^0$，非简并条件下不同波函数对应的能量本征值不同，加入微扰$\lambda H’$，（$\lambda$为小量，之后将令其为$1$），总哈密顿量变为$H+\lambda H’$</p>
+    <h2 id="非简并微扰"><a href="#非简并微扰" class="headerlink" title="非简并微扰"></a>非简并微扰</h2><p>原解$H^0\psi_n^0&#x3D;E_n^0\psi_n^0$，$\psi_n^0$为归一化的相互正交的波函数，非简并条件下不同波函数对应的能量本征值不同，加入微扰$\lambda H’$，（$\lambda$为小量，之后将令其为$1$），总哈密顿量变为$H+\lambda H’$</p>
 <p>将$\psi$和$E$用$\lambda$展开至二阶小量，代入薛定谔方程</p>
 <p>$(H^0+\lambda H’)(\psi_n^0+\lambda\psi_n^1+\lambda^2\psi_n^2+o(\lambda^2))&#x3D;(E_n^0+\lambda E_n^1+\lambda^2 E_n^2+o(\lambda^2))(\psi_n^0+\lambda\psi_n^1+\lambda^2\psi_n^2+o(\lambda^2))$</p>
 <p>比较同阶$\lambda$系数得</p>
@@ -272,9 +272,17 @@
 <p>故能量的一阶修正为$E_n^1&#x3D;\bra{\psi_n^0}H’\ket{\psi_n^0}$</p>
 <p>为求得波函数一阶修正，将第一个关系式重写为$(H^0-E_n^0)\psi_n^1&#x3D;(E_n^1-H’)\psi_n^0$ </p>
 <p>将$\psi_n^1$用非微扰波函数展开$\psi_n^1&#x3D;\displaystyle\sum_{m}c_m^n\psi_m^0$，取$c_n^n&#x3D;0$ 以保证$\psi$的归一性($\lambda$一阶项系数为$0$)，代入上式得$\displaystyle\sum_{m\neq n}(E_m^0-E_n^0)c_m^n\psi_m^0&#x3D;(E_n^1-H’)\psi_n^0$</p>
-<p>与$\psi_m^0$内积求得$c_m^n&#x3D;\displaystyle\frac{\bra{\psi_n^0}H’\ket{\psi_m^0}}{E_n^0-E_m^0}$</p>
-<p>故波函数一阶修正为$\psi_n^1&#x3D;\displaystyle\sum_{m\neq n}\frac{\bra{\psi_n^0}H’\ket{\psi_m^0}}{E_n^0-E_m^0}\psi_m^0$</p>
-<h3 id="能量二阶修正"><a href="#能量二阶修正" class="headerlink" title="能量二阶修正"></a>能量二阶修正</h3>
+<p>与$\psi_m^0$内积求得$c_m^n&#x3D;\displaystyle\frac{\bra{\psi_n^0}H’\ket{\psi_m^0}^*}{E_n^0-E_m^0}$</p>
+<p>故波函数一阶修正为$\psi_n^1&#x3D;\displaystyle\sum_{m\neq n}\frac{\bra{\psi_n^0}H’\ket{\psi_m^0}^*}{E_n^0-E_m^0}\psi_m^0$</p>
+<h3 id="能量二阶修正"><a href="#能量二阶修正" class="headerlink" title="能量二阶修正"></a>能量二阶修正</h3><p>与一阶修正相仿，将第二个关系式与$\psi_n^0$内积，$H^0\psi_n^2$与$E_n^0\psi_n^2$抵消，利用$\psi_n^1$表达式，得到能量二阶修正</p>
+<p>$E_n^2&#x3D;\displaystyle\sum_{m\neq n}\frac{\left|\bra{\psi_n^0}H’\ket{\psi_m^0}\right|^2}{E_n^0-E_m^0}$</p>
+<h2 id="简并微扰"><a href="#简并微扰" class="headerlink" title="简并微扰"></a>简并微扰</h2><p>若不同本征态$\psi_n^0$能级$E_n^0$简并，则非简并微扰给出的公式将出现分母为零的项，说明其不适用于简并情况，即使是能量的一阶修正公式也是不可靠的</p>
+<p>原因在于若求出厄米矩阵$H^0$数个本征态的本征值相同，则在这些本征态张成的子空间中有无数组归一正交基，需将其进行线性变换得到唯一的<strong>真正</strong>本征态族</p>
+<p>假设所求的简并本征态族$\psi_l^0$与真正的本征态族$\tilde{\psi}_l^0$ 本征值均为$E^0$，其之间存在关系$\tilde{\psi}_l^0&#x3D;\displaystyle\sum_m A_{lm}\psi_m^0$，不妨令$\boldsymbol{A}$为实矩阵</p>
+<p>将关系式${H^0\tilde{\psi}_l^1}+H’\tilde{\psi}_l^0&#x3D;{E^0\tilde{\psi}_l^1}+\tilde{E}_l^1\tilde{\psi}_l^0$与$\psi_n^0$ 作内积</p>
+<p>$\displaystyle\sum_m A_{lm}\bra{\psi_n^0}H’\ket{\psi_m^0}&#x3D;A_{ln}\tilde{E}_l^1\Rightarrow \boldsymbol{W}\vec{A_l}&#x3D;\tilde{E}_l^1 \vec{A_l}$</p>
+<p>说明能量的一阶修正$\tilde{E}_l^1$为矩阵$W_{nm}&#x3D;\bra{\psi_n^0}H’\ket{\psi_m^0}$的$l$个本征值，真正的本征态的线性组合系数为$\boldsymbol{W}$的本征向量</p>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
