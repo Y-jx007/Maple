@@ -45,17 +45,17 @@
 
 
 
-<link rel="stylesheet" href="../../../../css/main.css">
+<link rel="stylesheet" href="../css/main.css">
 
 
-<link rel="stylesheet" href="../../../../lib/nprogress/nprogress.css">
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
 
 
 
-<script src="../../../../lib/jquery.min.js"></script>
+<script src="../lib/jquery.min.js"></script>
 
 
-<script src="../../../../lib/iconify-icon.min.js"></script>
+<script src="../lib/iconify-icon.min.js"></script>
 
 
 <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
@@ -66,7 +66,7 @@
 </script>
 
 
-<script src="../../../../lib/nprogress/nprogress.js"></script>
+<script src="../lib/nprogress/nprogress.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -249,7 +249,7 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-15 19:14:53</time>
+          <time>2023-05-15 22:13:31</time>
           <span class="text-gray-400">·</span>
           <span>6 min</span>
           <span class="text-gray-400">·</span>
@@ -284,7 +284,7 @@
 <p>令$b$为碰撞参数，则$\displaystyle A&#x3D;\frac{R}{b}，$光偏折角$\Delta&#x3D;\displaystyle\frac{4\varepsilon A}{3}&#x3D;\frac{2r_S}{b}&#x3D;\frac{4G_NM}{c^2b}$</p>
 <p>对于太阳表面掠射的光线$b\approx 7\times 10^5\text{km}$，$\Delta\approx 1.75\times 10^{-18}\text{s}&#x3D;1.75\;\text{as}$</p>
 <p>此现象在1919年被Arthur Stanley Eddington小组观测到，<a target="_blank" rel="noopener" href="https://articles-kluwmzyiwemkcbhrrcaiodx3.thanks.sbs/book/25801253/afd491">链接</a></p>
-<h2 id="夏皮罗效应"><a href="#夏皮罗效应" class="headerlink" title="夏皮罗效应"></a>夏皮罗效应</h2><p>电磁信号穿过引力场而产生延迟的现象称为夏皮罗效应</p>
+<h2 id="Shapiro效应"><a href="#Shapiro效应" class="headerlink" title="Shapiro效应"></a>Shapiro效应</h2><p>电磁信号穿过引力场而产生延迟的现象称为夏皮罗效应</p>
 <p>考虑球对称引力场中两点$\displaystyle A:(r_A,\frac{\pi}{2},\phi_A)$，$\displaystyle B:(r_B,\frac{\pi}{2},\phi_B)$，$C$为质量中心$O$对$AB$的垂足</p>
 <p>$\dd s^2&#x3D;-f(r)c^2\dd t^2+g(r)\dd r^2+r^2(\dd \theta^2+\sin^2\theta\dd \phi^2)&#x3D;-c^2\dd \tau^2$</p>
 <p>施瓦西度规中对无质量粒子有，$\displaystyle g\left(\frac{\dd r}{\dd \tau}\right)^2+\frac{L_z^2}{r^2}-\frac{E^2}{c^2f}&#x3D;0$</p>
@@ -328,11 +328,16 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
+        <a href="../%E9%BB%91%E6%B4%9E/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          黑洞
+        </a>
+      
     </div>
     <div>
       
         <a href="../../14/%E5%BE%AE%E6%89%B0/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          微扰
+          不含时微扰
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
@@ -384,6 +389,7 @@
 <script>
   window.MathJax = {
     tex: {
+      tags: 'ams',
       inlineMath: [['$','$'], ['\\(','\\)']],
       autoload: {
         color: [],
@@ -495,7 +501,7 @@
 
   <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
   
-<script src="../../../../js/main.js"></script>
+<script src="../js/main.js"></script>
 
 <script>
   // load ./logo.svg to canvas
@@ -503,7 +509,7 @@
   $(document).ready(function () {
     const img = $("#logo")[0];
     // 定义树叶数量
-    const mapleCount = "10";
+    const mapleCount = "0";
     // 定义树叶飘落的速度
     const speed = "1";
     // client width

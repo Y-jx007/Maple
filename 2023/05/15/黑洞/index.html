@@ -37,11 +37,11 @@
 
 
 
-<title>categories | 枫</title>
+<title>黑洞 | 枫</title>
 
 
 
-<link rel="icon" href="../icon.ico">
+<link rel="icon" href="../../../../icon.ico">
 
 
 
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        categories
+        黑洞
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="../archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="../categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -224,25 +224,199 @@
 </div>
 
   <main class="p-12">
-    
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
 
 
-<div class="px-6 max-w-prose mx-auto md:px-0 mt-6">
-  <h2 class="font-bold text-2xl">Categories</h2>
-  <ul class="mt-2">
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        黑洞
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-05-15 22:12:33</time>
+          <span class="text-gray-400">·</span>
+          <span>2 min</span>
+          <span class="text-gray-400">·</span>
+          <span>449 words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="黑洞的定义"><a href="#黑洞的定义" class="headerlink" title="黑洞的定义"></a>黑洞的定义</h2><p><strong>黑洞</strong> 渐近平直时空$\mathscr{M}$中的黑洞是不属于零未来无限因果过去事件$J^-(\mathscr{T}^+)$的集合</p>
+<p>$$\mathscr{B}&#x3D;\mathscr{M}-J^-(\mathscr{T}^+)$$</p>
+<p><strong>视界</strong>是区域$\mathscr{B}$的边界</p>
+<h2 id="Reissner-Nordstrom黑洞"><a href="#Reissner-Nordstrom黑洞" class="headerlink" title="Reissner-Nordström黑洞"></a>Reissner-Nordström黑洞</h2><p>赖斯纳-努德斯特伦黑洞是质量为$M$，带电量为$Q$，无旋的黑洞，采用几何单位制，对施瓦西线元进行替换$\displaystyle M\to M-\frac{Q^2}{2r}$可得到其线元</p>
+<p>$$\dd s^2&#x3D;-(1-\frac{2M}{r}+\frac{Q^2}{r^2})\dd t^2+(1-\frac{2M}{r}+\frac{Q^2}{r^2})^{-1}\dd r^2+r^2(\dd \theta^2+\sin^2\theta\dd \phi^2)$$</p>
+<p>令$g^{rr}&#x3D;0$，得到黑洞视界$r_\pm&#x3D;M\pm\sqrt{M^2-Q^2}$</p>
+<p>当$\abs{Q}&gt;\abs{M}$时，视界不存在，$r&#x3D;0$ 处为裸奇点</p>
+<h2 id="Kerr黑洞"><a href="#Kerr黑洞" class="headerlink" title="Kerr黑洞"></a>Kerr黑洞</h2><p>克尔黑洞是质量为$M$，不带电，自旋角动量为$J$的黑洞</p>
+<p>引入比自旋$\displaystyle a&#x3D;\frac{J}{M}$，$\varSigma&#x3D;r^2+a^2\cos^2\theta$，$\varDelta&#x3D;r^2-2Mr+a^2$，克尔线元为</p>
+<p>$$\dd s^2&#x3D;-\left(1-\frac{2Mr}{\varSigma}\right)\dd t^2-\frac{4aMr\sin^2\theta}{\varSigma}\dd t\dd \phi+\frac{\varSigma}{\varDelta}\dd r^2+\varSigma\dd\theta^2+\left(r^2+a^2+\frac{2a^2Mr\sin^2\theta}{\varSigma}\right)\sin^2\theta\dd\phi^2$$</p>
+<p>令$g^{rr}&#x3D;0$，得到黑洞视界$r_\pm&#x3D;M\pm\sqrt{M^2-a^2}$</p>
+<p>当$\abs{M}&gt;\abs{a}$时，视界不存在，$r&#x3D;0$ 处为裸奇点</p>
+<p>此时空奇点与无旋黑洞奇点拓扑性质不同，其仅在$\theta&#x3D;\displaystyle\frac{\pi}{2}$时，即赤道平面具有奇性，</p>
+<p>沿赤道面之外的测地线能够到达奇点并延伸至另一个$r&lt;0$ 的宇宙，此区域含有闭合的类时曲线，有质量的粒子可以逆时运动</p>
+<h3 id="赤道平面的圆轨道"><a href="#赤道平面的圆轨道" class="headerlink" title="赤道平面的圆轨道"></a>赤道平面的圆轨道</h3>
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
     
-      <li class="mt-2">
-        <a href="%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/"> 量子力学</a>
-        <span>(1)</span>
-      </li>
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+    </div>
+    <div>
+      
+        <a href="../%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          广义相对论实验验证
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
     
-      <li class="mt-2">
-        <a href="%E7%9B%B8%E5%AF%B9%E8%AE%BA/"> 相对论</a>
-        <span>(2)</span>
-      </li>
-    
-  </ul>
-</div>
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  })
+</script>
+<!-- tocbot end -->
 
 
   </main>

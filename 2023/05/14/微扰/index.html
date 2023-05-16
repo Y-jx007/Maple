@@ -37,7 +37,7 @@
 
 
 
-<title>微扰 | 枫</title>
+<title>不含时微扰 | 枫</title>
 
 
 
@@ -45,17 +45,17 @@
 
 
 
-<link rel="stylesheet" href="../../../../css/main.css">
+<link rel="stylesheet" href="../css/main.css">
 
 
-<link rel="stylesheet" href="../../../../lib/nprogress/nprogress.css">
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
 
 
 
-<script src="../../../../lib/jquery.min.js"></script>
+<script src="../lib/jquery.min.js"></script>
 
 
-<script src="../../../../lib/iconify-icon.min.js"></script>
+<script src="../lib/iconify-icon.min.js"></script>
 
 
 <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
@@ -66,7 +66,7 @@
 </script>
 
 
-<script src="../../../../lib/nprogress/nprogress.js"></script>
+<script src="../lib/nprogress/nprogress.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -175,7 +175,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        微扰
+        不含时微扰
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -233,30 +233,48 @@
 
 <!-- toc -->
 
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        微扰
+        不含时微扰
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-14 22:42:57</time>
+          <time>2023-05-16 00:01:23</time>
           <span class="text-gray-400">·</span>
-          <span>1 min</span>
+          <span>2 min</span>
           <span class="text-gray-400">·</span>
-          <span>0 words</span>
+          <span>448 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    
+    <h2 id="非简并微扰"><a href="#非简并微扰" class="headerlink" title="非简并微扰"></a>非简并微扰</h2><p>原解$H^0\psi_n^0&#x3D;E_n^0\psi_n^0$，非简并条件下不同波函数对应的能量本征值不同，加入微扰$\lambda H’$，（$\lambda$为小量，之后将令其为$1$），总哈密顿量变为$H+\lambda H’$</p>
+<p>将$\psi$和$E$用$\lambda$展开至二阶小量，代入薛定谔方程</p>
+<p>$(H^0+\lambda H’)(\psi_n^0+\lambda\psi_n^1+\lambda^2\psi_n^2+o(\lambda^2))&#x3D;(E_n^0+\lambda E_n^1+\lambda^2 E_n^2+o(\lambda^2))(\psi_n^0+\lambda\psi_n^1+\lambda^2\psi_n^2+o(\lambda^2))$</p>
+<p>比较同阶$\lambda$系数得</p>
+<p>${H^0\psi_n^1}+H’\psi_n^0&#x3D;{E_n^0\psi_n^1}+E_n^1\psi_n^0$ </p>
+<p>${H^0\psi_n^2}+H’\psi_n^1&#x3D;{E_n^0\psi_n^2}+E_n^1\psi_n^1+E_n^2\psi_n^0$</p>
+<p>由这两个关系可以解得能量与波函数的一、二阶修正项，此时可令$\lambda&#x3D;1$，用真实微扰哈密顿量$H’$进行计算</p>
+<h3 id="能量和波函数一阶修正"><a href="#能量和波函数一阶修正" class="headerlink" title="能量和波函数一阶修正"></a>能量和波函数一阶修正</h3><p>将第一个关系式与$\psi_n^0$作内积，由于$H^0$为厄米算符，</p>
+<p>$\bra{\psi_n^0}\ket{H^0\psi_n^1}&#x3D;\bra{H^0\psi_n^0}\ket{\psi_n^1}&#x3D;E_n^0\braket{\psi_n^0}{\psi_n^1}$，</p>
+<p>故能量的一阶修正为$E_n^1&#x3D;\bra{\psi_n^0}H’\ket{\psi_n^0}$</p>
+<p>为求得波函数一阶修正，将第一个关系式重写为$(H^0-E_n^0)\psi_n^1&#x3D;(E_n^1-H’)\psi_n^0$ </p>
+<p>将$\psi_n^1$用非微扰波函数展开$\psi_n^1&#x3D;\displaystyle\sum_{m}c_m^n\psi_m^0$，取$c_n^n&#x3D;0$ 以保证$\psi$的归一性($\lambda$一阶项系数为$0$)，代入上式得$\displaystyle\sum_{m\neq n}(E_m^0-E_n^0)c_m^n\psi_m^0&#x3D;(E_n^1-H’)\psi_n^0$</p>
+<p>与$\psi_m^0$内积求得$c_m^n&#x3D;\displaystyle\frac{\bra{\psi_n^0}H’\ket{\psi_m^0}}{E_n^0-E_m^0}$</p>
+<p>故波函数一阶修正为$\psi_n^1&#x3D;\displaystyle\sum_{m\neq n}\frac{\bra{\psi_n^0}H’\ket{\psi_m^0}}{E_n^0-E_m^0}\psi_m^0$</p>
+<h3 id="能量二阶修正"><a href="#能量二阶修正" class="headerlink" title="能量二阶修正"></a>能量二阶修正</h3>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
@@ -322,6 +340,7 @@
 <script>
   window.MathJax = {
     tex: {
+      tags: 'ams',
       inlineMath: [['$','$'], ['\\(','\\)']],
       autoload: {
         color: [],
@@ -433,7 +452,7 @@
 
   <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
   
-<script src="../../../../js/main.js"></script>
+<script src="../js/main.js"></script>
 
 <script>
   // load ./logo.svg to canvas
@@ -441,7 +460,7 @@
   $(document).ready(function () {
     const img = $("#logo")[0];
     // 定义树叶数量
-    const mapleCount = "10";
+    const mapleCount = "0";
     // 定义树叶飘落的速度
     const speed = "1";
     // client width
