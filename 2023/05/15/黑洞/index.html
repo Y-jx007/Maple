@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-18 16:44:18</time>
+          <time>2023-05-19 00:52:42</time>
           <span class="text-gray-400">·</span>
-          <span>16 min</span>
+          <span>18 min</span>
           <span class="text-gray-400">·</span>
-          <span>3.4k words</span>
+          <span>3.9k words</span>
         </section>
       </div>
     </div>
@@ -377,9 +377,22 @@
 <p>$$\dd s^2&#x3D;-\dd t^2+\displaystyle\frac{R’^2}{1+f}\dd r^2+ R^2(\dd \theta^2+\sin\theta^2\dd \phi^2)$$</p>
 <p>克莱舒曼标量$\mathscr{H}&#x3D;12\displaystyle\frac{F’^2}{R^4R’^2}-32\frac{FF’}{R^5R’}+48\frac{F^2}{R^6}$</p>
 <p>当$R&#x3D;0$时$\mathscr{H}$发散，尘埃坍缩成奇点，</p>
-<p>系统拥有一个可通过设定某一特定时间的标度来固定的规范自由度，故设$R(t,r)&#x3D;ra(t,r)$，$a$为标度因子，$a(0,r)&#x3D;1$，奇点时刻$a&#x3D;0$</p>
-<p>由初始时刻能量密度的规则性可令$F(r)&#x3D;r^3m(r)$，$m(r)&#x3D;\displaystyle\sum_{k&#x3D;0}^\infty m_k r^k$，能量密度在$r&#x3D;0$处平缓变化要求$m_1&#x3D;0$</p>
+<p>系统拥有一个可通过设定某一特定时间的标度来固定的规范自由度，故设$R(t,r)&#x3D;ra(t,r)$，$a$为标度因子，$a(0,r)&#x3D;1$，坍缩条件要求$\dot{a}&lt;0$，奇点时刻$a&#x3D;0$</p>
+<p>由初始时刻能量密度的规则性可令$F(r)&#x3D;r^3m(r)$，$m(r)$为$[0,r_b]$上的规则函数，$m(r)&#x3D;\displaystyle\sum_{k&#x3D;0}^\infty m_k r^k$，能量密度在$r&#x3D;0$处平缓变化要求$m_1&#x3D;0$</p>
 <p>$\eqref{eq2}$成为$\rho&#x3D;\displaystyle\frac{3m+rm’}{a^2(a+ra’)}$</p>
+<p>若$m’\neq 0,R’&#x3D;0$，克莱舒曼标量仍然发散，但其对应的奇点于$R&#x3D;0$的奇点本质上是不同的，这些奇点产生于径向壳层重叠，称为<strong>壳层交叉奇点</strong>，在重叠壳层处径向测地距离为零，但通过定义合适的坐标，时空可以延拓到这些奇点处，因此不妨要求$R’\neq 0$或$m’&#x2F;R’$不发散</p>
+<p>$\dot{R}^2&#x3D;\displaystyle\frac{F}{R}+f$ 成为 $\dot{a}(0,r)&#x3D;-\displaystyle\sqrt{m+\frac{f}{r^2}}$，可见$f$决定坍缩尘埃的初速度分布，为使坍缩速度有限，需对$f$施加限制，普遍写作$f(r)&#x3D;r^2b(r)$，$b(r)&#x3D;\displaystyle\sum_k^\infty b_k r^k$</p>
+<h3 id="均匀尘埃坍缩"><a href="#均匀尘埃坍缩" class="headerlink" title="均匀尘埃坍缩"></a>均匀尘埃坍缩</h3><p><strong>Oppenheimer-Snyder模型</strong>描述均匀球对称尘埃云坍缩，尘埃密度$\rho&#x3D;\rho(t)$独立于$r$，坍缩速度$r\dot{a}$正比于$r$，故$m&#x3D;m_0,b&#x3D;b_0$，$\displaystyle\dot{a}(t)&#x3D;\sqrt{\frac{m_0}{a}+b_0}$，线元成为</p>
+<p>$$\dd s^2&#x3D;-\dd t^2+a^2\left(\frac{\dd r^2}{1+b_0r^2}+r^2\dd\theta^2+r^2\sin^2\theta^2\dd \phi^2\right)$$</p>
+<p>令$b_0&#x3D;0$，对应边缘束缚坍缩，即无穷远处粒子坍缩速度为零，</p>
+<p>可解得$a(t)&#x3D;\displaystyle\left(1-\frac{3\sqrt{m_0}}{2}t\right)^{2&#x2F;3}$，奇点形成时刻$t_s&#x3D;\displaystyle\frac{2}{3\sqrt{m_0}}$</p>
+<p><strong>表观视界</strong>可以理解为向外指向的光线逃脱引力向外运动和被引力俘获而向内运动的分界面，令表观视界与壳层$r$重合的时刻为$t_\text{ah}(r)$，此时坍缩速度等于光速，$r\dot{a}&#x3D;1$，令$b_0&#x3D;0$，可解得$t_\text{ah}&#x3D;\displaystyle\frac{2}{3\sqrt{m_0}}-\frac{2}{3}r^3m_0$</p>
+<p>以下<strong>Finkelstein</strong>图描述了球对称尘埃云的引力坍缩过程，在$t&#x3D;t_0$时刻尘埃云表面穿入施瓦西半径，同时外部区域的视界和位于边界$r_b$处的表观视界形成，即$t_0&#x3D;t_\text{ah}(r_b)$，此后外部区域为静态施瓦西时空，表观视界的半径逐渐缩小，并在$t_s$时刻到达奇点$r&#x3D;0$ 处</p>
+<center><img src=/images/dust.png  width=80% /></center>
+
+
+
+
 
   </article>
   <!-- tag -->
