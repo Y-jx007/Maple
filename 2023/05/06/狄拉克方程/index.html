@@ -37,11 +37,11 @@
 
 
 
-<title>归档: 2023 | 枫</title>
+<title>狄拉克方程 | 枫</title>
 
 
 
-<link rel="icon" href="../../images/favicon.png">
+<link rel="icon" href="../../../../images/favicon.png">
 
 
 
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        
+        狄拉克方程
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="../../archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="../../categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -224,142 +224,221 @@
 </div>
 
   <main class="p-12">
-    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
-  <div class="flex flex-col h-48 items-center justify-center">
-    <h1 class="site-title text-4xl leading-relaxed">
-      枫
-    </h1>
-    <p class="text-gray-500 mt-2">
-      
-    </p>
-  </div>
-  
-  
-    
-    
-      <div class="relative pointer-events-none">
-        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        狄拉克方程
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-05-19 12:35:55</time>
+          <span class="text-gray-400">·</span>
+          <span>3 min</span>
+          <span class="text-gray-400">·</span>
+          <span>660 words</span>
+        </section>
       </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="克莱因-高登方程"><a href="#克莱因-高登方程" class="headerlink" title="克莱因-高登方程"></a>克莱因-高登方程</h2><p>薛定谔方程</p>
+<p>$$i\hbar\partial_t\psi&#x3D;[\frac{1}{2m}(-i\hbar\nabla-q\boldsymbol{A})^2+qV]\psi$$</p>
+<p>动能与机械动量关系</p>
+<p>$$E-qV&#x3D;\frac{1}{2m}(\boldsymbol{p}-q\boldsymbol{A})^2$$</p>
+<p>相对论关系</p>
+<p>$$(E-qV)^2&#x3D;p^2c^2+m^2c^4$$</p>
+<p>将薛定谔方程移项平方得克莱因-高等方程</p>
+<p>$$(i\hbar\partial_t-qV)^2\psi&#x3D;(-\hbar^2c^2\nabla^2+m^2c^4)\psi$$</p>
+<p>此方程存在以下缺陷</p>
+<p>$1$.$\psi^*\psi$非正定，无法解释为概率密度</p>
+<p>$2$.总能量本征值无下限</p>
+<p>$3$.为对时间的二阶微分方程，除初始波函数$\psi$外还需$\partial_t\psi$才能确定系统如何演化</p>
+<p>$4$.计算氢原子能级与实验偏差较大</p>
+<p>$5$.除$V&#x3D;0$的情况外无法写为$i\hbar\partial_t\psi&#x3D;H\psi$的形式</p>
+<p>虽然克莱因-高等方程具有以上缺陷，但也不能简单否定</p>
+<p>$1$.非相对论极限为薛定谔方程</p>
+<p>$2$.能导出连续性方程$\partial_t\rho+\nabla\cdot \boldsymbol{j}&#x3D;0$，其中$\rho&#x3D;\displaystyle\frac{1}{2m}(\psi^*\partial_t\psi-\partial_t\psi^*\psi)$，<br>$\boldsymbol{j}&#x3D;-\displaystyle\frac{1}{2m}(\psi^*\nabla\psi-\nabla\psi^*\psi)$，与经典方程相似</p>
+<p>由于克莱因-高等方程符合相对论要求，故猜测错误的并不是方程本身，而是态函数$\psi$，其应该满足更严格的要求</p>
+<h2 id="狄拉克方程"><a href="#狄拉克方程" class="headerlink" title="狄拉克方程"></a>狄拉克方程</h2><p>相对论要求时空的对等性，由于对时间应为一阶方程，故对空间也应为一阶方程，先考虑$\boldsymbol{A}&#x3D;0,V&#x3D;0$的情况，对克莱因-高登方程<the>开方</the>得狄拉克方程</p>
+<p>$$[i\hbar\partial_t-c\boldsymbol{\alpha}\cdot(-i\hbar\nabla)-\beta mc^2]\psi&#x3D;0$$</p>
+<p>与克莱因-高登方程比较，可知</p>
+<p>$(\alpha^i)^2&#x3D;\beta^2&#x3D;1\qquad i&#x3D;1,2,3$</p>
+<p>$\alpha^i\alpha^j+\alpha^j\alpha^i&#x3D;0\qquad i\neq j$</p>
+<p>$\alpha^i\beta+\beta\alpha^i&#x3D;0$</p>
+<p>$\boldsymbol{\alpha}$与$\beta$显然不是普通的向量和数，将$\boldsymbol{A},V$纳入得</p>
+<p>$$[i\hbar\partial_t-qV-c\boldsymbol{\alpha}\cdot(\hat{\boldsymbol{P}}-q\boldsymbol{A})-\beta mc^2]\psi&#x3D;0$$</p>
+<p>按相对论，取四维矢量$x^\mu&#x3D;(ct,\boldsymbol{x})$，$p^\mu&#x3D;(E&#x2F;c,\boldsymbol{p})$，$A_\mu&#x3D;(-V&#x2F;c,\boldsymbol{A})$</p>
+<p>定义算符$D_\mu&#x3D;\displaystyle\partial_\mu-\frac{iq}{\hbar}A_\mu$，$\gamma^0&#x3D;\beta$，$\gamma^i&#x3D;\beta\alpha^i\quad i&#x3D;1,2,3$，</p>
+<p>$\gamma^4&#x3D;\gamma^0\gamma^1\gamma^2\gamma^3&#x3D;-\alpha^1\alpha^2\alpha^3$</p>
+<p>$\gamma$算符满足关系</p>
+<p>$(\gamma^0)^2&#x3D;1\qquad(\gamma^i)^2&#x3D;-1\qquad i&#x3D;1,2,3$</p>
+<p>$\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu&#x3D;0\qquad \mu\neq \nu$</p>
+<p>$\gamma^\mu\gamma^4+\gamma^4\gamma^\mu&#x3D;0$</p>
+<p>可得狄拉克方程协变形式</p>
+<p>$$(i\hbar\gamma^\mu D_\mu-mc)\psi&#x3D;0$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
     
-    <a href="../../2023/05/19/%E5%90%91%E9%87%8F%E4%B8%9B%E4%B8%8E%E4%B8%BB%E8%A6%81G%E4%B8%9B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          向量丛与G-主丛
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 19
-          ·
-          7 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/18/%E5%90%AB%E6%97%B6%E5%BE%AE%E6%89%B0/">
-      <header>
-        <h2 class="font-bold text-xl">
-          含时微扰
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 18
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/15/%E9%BB%91%E6%B4%9E/">
-      <header>
-        <h2 class="font-bold text-xl">
-          黑洞
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 15
-          ·
-          18 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/15/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81/">
-      <header>
-        <h2 class="font-bold text-xl">
-          广义相对论实验验证
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 15
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/14/%E4%B8%8D%E5%90%AB%E6%97%B6%E5%BE%AE%E6%89%B0/">
-      <header>
-        <h2 class="font-bold text-xl">
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../14/%E4%B8%8D%E5%90%AB%E6%97%B6%E5%BE%AE%E6%89%B0/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
           不含时微扰
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 14
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
+        </a>
+      
+    </div>
+    <div>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
     
-    
-    <a href="../../2023/05/06/%E7%8B%84%E6%8B%89%E5%85%8B%E6%96%B9%E7%A8%8B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          狄拉克方程
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 06
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
 </section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
 
   </main>
   <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
