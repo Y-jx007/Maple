@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-19 23:48:28</time>
+          <time>2023-05-20 11:22:27</time>
           <span class="text-gray-400">·</span>
-          <span>7 min</span>
+          <span>10 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.5k words</span>
+          <span>2k words</span>
         </section>
       </div>
     </div>
@@ -342,10 +342,37 @@
 <p>联络形式与曲率形式有关系</p>
 <p>$$F&#x3D;\dd A+A\wedge A$$</p>
 <p>曲率形式满足<strong>Bianchi恒等式</strong> $\dd F- F\wedge A+ A\wedge F&#x3D;0$</p>
-<p>将截面$s$用基展开，$s&#x3D;\displaystyle\sum_{j&#x3D;1}^r v^j(x)s_j$，曲率分量在局部坐标系下可表示为</p>
+<p>将截面$s$用基展开，$s&#x3D;\displaystyle\sum_{j&#x3D;1}^r v^j(x)s_j$，联络和曲率分量在局部坐标系下可表示为</p>
+<p>$$\nabla_{\frac{\partial}{\partial x^\mu}}s&#x3D;\displaystyle\sum_{i&#x3D;1}^rs_i\left[\frac{\partial v^i(x)}{\partial x^\mu}+(A_\mu)_{\;j}^i v^j(x)\right]$$</p>
 <p>$$F(\frac{\partial}{\partial x^\mu},\frac{\partial}{\partial x^\nu})&#x3D;F_{\mu\nu}&#x3D;\frac{\partial A_\nu}{\partial x^\mu}-\frac{\partial A_\mu}{\partial x^\nu}+[A_\mu,A_\nu]$$</p>
 <p>在<strong>Maxwell</strong> $\text{U(1)}$ <strong>理论</strong>中，$[A_\mu,A_\nu]&#x3D;0$</p>
-
+<hr>
+<p>给定转移函数$g_{\alpha\beta}:U_\alpha\bigcup U_\beta\to GL(r,\mathbb{R})$，则$U_\alpha$和$U_\beta$上有关系</p>
+<p>$$A_\beta&#x3D;g_{\alpha\beta}^{-1}A_\alpha g_{\alpha\beta}+g_{\alpha\beta}^{-1}\dd(g_{\alpha\beta})$$</p>
+<p>$$F_\beta&#x3D;g_{\alpha\beta}^{-1}F_\alpha g_{\alpha\beta}$$</p>
+<p>对于$G$丛，将$g_{\alpha\beta}$用群表示代替，$\dd(g_{\alpha\beta})$用Maurer-Cartan形式代替</p>
+<p>在麦克斯韦理论中，规范变化为$g_{\alpha\beta}&#x3D;e^{i\lambda_{\alpha\beta}}$，对应$A_\beta&#x3D;A_\alpha+i\dd \lambda_{\alpha\beta}$</p>
+<h3 id="平移与和乐群"><a href="#平移与和乐群" class="headerlink" title="平移与和乐群"></a>平移与和乐群</h3><hr>
+<p>给定截面$s\in \Gamma(E)$与道路$\gamma:I\to M$，若$s$满足如下条件则称其在$\gamma$上<strong>平行</strong></p>
+<p>$$\nabla_{\dot{\gamma}(t)}s&#x3D;0\qquad \forall\;t\in I$$</p>
+<p>在局部坐标系下可写作</p>
+<p>$$\frac{\dd s_i}{\dd t}+\sum_{i&#x3D;1}^rs_j(A_\mu)_{\; i}^j\frac{\dd x^\mu}{\dd t}&#x3D;0$$</p>
+<p>由平移可定义映射$\tau_\gamma:E_{\gamma(0)} \ni s(t&#x3D;0) \to s(t&#x3D;1)\in E_{\gamma(1)}$</p>
+<p>若考虑闭合曲线$\gamma(0)&#x3D;\gamma(1)&#x3D;p$，则得到映射$\tau_\gamma:E_p\to E_p$</p>
+<p>定义积和逆为$\tau_{\gamma_1}\circ\tau_{\gamma_2}&#x3D;\tau_{\gamma_1\circ \gamma_2},\;\tau_\gamma^{-1}&#x3D;\tau_{\gamma^{-1}}$，</p>
+<p>如此定义的映射构成<strong>Holonomy Group</strong></p>
+<p>在$U(1)$丛中，这是<strong>Aharonov-Bohm</strong>效应的起源，考虑如下形式的波函数</p>
+<p>$$s(t):&#x3D;s(0)\exp(-\int_{\gamma(t)}A)&#x3D;s(0)\exp(-\int A_\mu\frac{\dd x^\mu}{\dd t}\dd t)$$</p>
+<p>$A_\mu\neq 0$的时候对$s$的相位有影响</p>
+<h3 id="Levi-Civita联络"><a href="#Levi-Civita联络" class="headerlink" title="Levi-Civita联络"></a>Levi-Civita联络</h3><hr>
+<p>考虑配备黎曼度规$g$的切丛$TM$，则可自然诱导出$TM$上唯一与$g$适配的联络，称为列维-奇维塔联络</p>
+<p>对于列维-奇维塔联络可以写出</p>
+<p>$$\nabla_{X_j}X_i&#x3D;\sum_{k}\Gamma_{ij}^kX_k\qquad R(X_i,X_j)X_k&#x3D;\sum_{l}R_{\;kij}^lX_l$$</p>
+<p>联络与曲率形式</p>
+<p>$$\omega_{\;j}^k&#x3D;\sum_{i}\Gamma_{ij}^ke^i\qquad\Omega_{\;k}^l&#x3D;\sum_{i,j}R_{\;kij}^le^i\wedge e^j$$</p>
+<p>满足条件</p>
+<p>$$\dd e^i&#x3D;-\sum_{j}\omega_{\;j}^i\wedge e^j\qquad\Omega_{\;j}^i&#x3D;\dd\omega_{\;j}^i+\omega_{\;k}^i\wedge\omega_{\;j}^k$$</p>
+<h3 id="Ehresmann联络"><a href="#Ehresmann联络" class="headerlink" title="Ehresmann联络"></a>Ehresmann联络</h3>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
