@@ -37,11 +37,11 @@
 
 
 
-<title>枫</title>
+<title>弯曲时空的狄拉克方程 | 枫</title>
 
 
 
-<link rel="icon" href="/images/favicon.png">
+<link rel="icon" href="../../../../images/favicon.png">
 
 
 
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        
+        弯曲时空的狄拉克方程
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="/archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="/categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -224,206 +224,212 @@
 </div>
 
   <main class="p-12">
-    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
-  <div class="flex flex-col h-48 items-center justify-center">
-    <h1 class="site-title text-4xl leading-relaxed">
-      枫
-    </h1>
-    <p class="text-gray-500 mt-2">
-      
-    </p>
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        弯曲时空的狄拉克方程
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-05-22 18:58:19</time>
+          <span class="text-gray-400">·</span>
+          <span>3 min</span>
+          <span class="text-gray-400">·</span>
+          <span>634 words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="Lorentz联络"><a href="#Lorentz联络" class="headerlink" title="Lorentz联络"></a>Lorentz联络</h2><p>采用几何单位制，令$\hbar,c,G&#x3D;1$，</p>
+<p>设基$h_\mu$下度规$g_{\mu\nu}$在基$e_\mu&#x3D;\Lambda_{\mu}^{\;\nu} h_\nu$下化为$\eta_{\mu\nu}&#x3D;\text{diag}(+,-,-,-)$，$\Lambda_{\mu}^{\;\nu}$为洛伦兹变换矩阵，$\eta_{\mu\nu}&#x3D;\Lambda_{\mu}^{\;\rho}\Lambda_{\nu}^{\;\sigma}g_{\rho\sigma}$，两组基下狄拉克矩阵</p>
+<p>$$\lbrace \gamma^\mu,\gamma^\nu\rbrace&#x3D;2\eta^{\mu\nu}\qquad \lbrace \overline{\gamma}^\mu,\overline{\gamma}^\nu\rbrace&#x3D;2g^{\mu\nu}$$</p>
+<p>旋量变换$\tilde{\psi}_e&#x3D;L\psi_h$，协变导数$D_\mu \psi&#x3D;\partial_\mu\psi+\Gamma_\mu \psi$，要求$\tilde{D}_\mu\tilde{\psi}&#x3D;L D_\mu \psi$，可得</p>
+<p>$$\tilde{\Gamma}_\mu&#x3D;L\Gamma_\mu L^{-1}-\partial_\mu L^{-1}$$</p>
+<p>对矩阵$M$有</p>
+<p>$$D_\mu M&#x3D;\nabla_\mu M+[\Gamma_\mu,M]$$</p>
+<p>再要求$D_\mu$与度规适配，$D_\mu g^{\nu\rho}&#x3D;0$，由于$\lbrace \overline{\gamma}^\mu,\overline{\gamma}^\nu\rbrace&#x3D;2g^{\mu\nu}$，选择充分条件$D_\mu \overline{\gamma}^\nu&#x3D;0$</p>
+<p>$$\partial_\mu \overline{\gamma}^\nu+\Gamma_{\mu\rho}^\nu\overline{\gamma}^\rho+\Gamma_\mu\overline{\gamma}^\nu-\overline{\gamma}^\nu\Gamma_\mu&#x3D;0$$</p>
+<h2 id="纯空间转动"><a href="#纯空间转动" class="headerlink" title="纯空间转动"></a>纯空间转动</h2><hr>
+<p>狄拉克方程一般形式$i\hbar\gamma^\mu D_\mu\psi&#x3D;i\hbar\gamma^\mu(e_\mu+\Gamma_\mu)\psi&#x3D;mc\psi$</p>
+<p>转动柱坐标系下线元</p>
+<p>$$\begin{aligned}<br>    \dd s^2&amp;&#x3D;c^2\dd  t^2-\dd  r^2-r^2(\dd  \phi+\omega\dd  t)^2-\dd z^2\\<br>    \qquad\\<br>    &amp;&#x3D;\left(1-\frac{\omega^2r^2}{c^2}\right)\left(c\dd t-\frac{1}{c}\frac{\omega r^2}{\displaystyle\left(1-\frac{\omega^2r^2}{c^2}\right)}\dd\phi\right)^2-\dd r^2-\frac{ r^2}{\displaystyle\left(1-\frac{\omega^2r^2}{c^2}\right)}\dd \phi^2-\dd z^2\\<br>    \qquad\\<br>    &amp;\overset{\omega  r&#x2F;c\ll  1}{\approx} \left(c\dd t-\frac{\omega r^2}{c}\dd \phi\right)^2-\dd  r^2-(r\dd\phi)^2-\dd z^2\\<br>    \qquad\\<br>    &amp;:&#x3D;(\theta^0)^2-(\theta^1)^2-(\theta^2)^2-(\theta^3)^2<br>\end{aligned}$$</p>
+<p>由 $e_\mu \theta^\nu&#x3D;\delta_\mu^\nu$ 可得基矢量</p>
+<p>$$e_0&#x3D;\frac{1}{c}\partial_t\qquad e_1&#x3D;\partial_r\qquad e_2&#x3D;\frac{1}{r}\partial_\phi+\frac{\omega r}{c^2}\partial_t\qquad e_4&#x3D;\partial_z$$</p>
+<p>对易子$[e_\mu,e_\nu]&#x3D;c_{\mu\nu}^\lambda e_\lambda$，非零系数只有</p>
+<p>$$\displaystyle c_{21}^2&#x3D;-c_{12}^2&#x3D;\frac{1}{r}\qquad c_{12}^0&#x3D;-c_{21}^0&#x3D;\frac{2\omega}{c}$$</p>
+<p>在洛伦兹度规下基$\lbrace{ e_\mu \rbrace}$的克氏符 $\Gamma_{\mu\nu}^\lambda&#x3D;\displaystyle\frac{1}{2}(c_{\mu\nu}^\lambda+c_{\mu\lambda}^\nu-c_{\nu\lambda}^\mu)$，非零成分只有</p>
+<p>$$\displaystyle \Gamma_{21}^2&#x3D;-\Gamma_{12}^2&#x3D;-\Gamma_{22}^1&#x3D;\frac{1}{r}\qquad $$</p>
+<p>$$\Gamma_{12}^0&#x3D;-\Gamma_{21}^0&#x3D;\Gamma_{02}^1&#x3D;-\Gamma_{20}^1&#x3D;\Gamma_{10}^2&#x3D;-\Gamma_{01}^2&#x3D;\frac{\omega}{c}$$</p>
+<p>计算$\Gamma_{\mu}&#x3D;\displaystyle\frac{1}{8}\Gamma_{\nu\lambda;\mu}[\gamma^\nu,\gamma^\lambda]$，非零成分为</p>
+<p>$$\Gamma_0&#x3D;\frac{\omega}{4c}[\gamma^1,\gamma^2]\qquad \Gamma_1&#x3D;\frac{\omega}{4c}[\gamma^0,\gamma^2]\qquad\Gamma_2&#x3D;$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
   </div>
-  
-  
-    
-    
-      <div class="relative pointer-events-none">
-        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
-      </div>
-    
-    <a href="2023/05/22/Lorentz%E8%81%94%E7%BB%9C/">
-      <header>
-        <h2 class="font-bold text-xl">
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../Lorentz%E8%81%94%E7%BB%9C/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
           自旋联络
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 22
-          ·
-          10 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/05/22/%E5%BC%AF%E6%9B%B2%E6%97%B6%E7%A9%BA%E7%9A%84%E7%8B%84%E6%8B%89%E5%85%8B%E6%96%B9%E7%A8%8B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          弯曲时空的狄拉克方程
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 22
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/05/20/%E5%AE%87%E5%AE%99%E5%AD%A6%E6%A8%A1%E5%9E%8B/">
-      <header>
-        <h2 class="font-bold text-xl">
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../20/%E5%AE%87%E5%AE%99%E5%AD%A6%E6%A8%A1%E5%9E%8B/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           宇宙学模型
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 20
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
     
-    
-    <a href="2023/05/19/%E5%90%91%E9%87%8F%E4%B8%9B%E4%B8%8EG-%E4%B8%BB%E4%B8%9B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          向量丛与G-主丛
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 19
-          ·
-          14 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/05/15/%E9%BB%91%E6%B4%9E/">
-      <header>
-        <h2 class="font-bold text-xl">
-          黑洞
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 15
-          ·
-          18 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/05/15/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81/">
-      <header>
-        <h2 class="font-bold text-xl">
-          广义相对论实验验证
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 15
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/05/14/%E4%B8%8D%E5%90%AB%E6%97%B6%E5%BE%AE%E6%89%B0/">
-      <header>
-        <h2 class="font-bold text-xl">
-          不含时微扰
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 14
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/05/06/%E7%8B%84%E6%8B%89%E5%85%8B%E6%96%B9%E7%A8%8B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          狄拉克方程
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 06
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-      <div class="relative pointer-events-none">
-        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2022</span>
-      </div>
-    
-    <a href="2022/03/21/Levi-Civita%E8%81%94%E7%BB%9C/">
-      <header>
-        <h2 class="font-bold text-xl">
-          Levi-Civita联络
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          3月 21
-          ·
-          7 min
-        </p>
-      </section>
-    </a>
-  
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
 </section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
 
 
   </main>

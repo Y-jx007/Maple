@@ -37,7 +37,7 @@
 
 
 
-<title>狄拉克方程 | 枫</title>
+<title>自旋联络 | 枫</title>
 
 
 
@@ -175,7 +175,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        狄拉克方程
+        自旋联络
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -233,68 +233,97 @@
 
 <!-- toc -->
 
-  <!-- tocbot -->
-<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
-
-
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        狄拉克方程
+        自旋联络
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-19 12:35:55</time>
+          <time>2023-05-25 16:05:52</time>
           <span class="text-gray-400">·</span>
-          <span>3 min</span>
+          <span>10 min</span>
           <span class="text-gray-400">·</span>
-          <span>660 words</span>
+          <span>1.9k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="克莱因-高登方程"><a href="#克莱因-高登方程" class="headerlink" title="克莱因-高登方程"></a>克莱因-高登方程</h2><p>薛定谔方程</p>
-<p>$$i\hbar\partial_t\psi&#x3D;[\frac{1}{2m}(-i\hbar\nabla-q\boldsymbol{A})^2+qV]\psi$$</p>
-<p>动能与机械动量关系</p>
-<p>$$E-qV&#x3D;\frac{1}{2m}(\boldsymbol{p}-q\boldsymbol{A})^2$$</p>
-<p>相对论关系</p>
-<p>$$(E-qV)^2&#x3D;p^2c^2+m^2c^4$$</p>
-<p>将薛定谔方程移项平方得克莱因-高等方程</p>
-<p>$$(i\hbar\partial_t-qV)^2\psi&#x3D;(-\hbar^2c^2\nabla^2+m^2c^4)\psi$$</p>
-<p>此方程存在以下缺陷</p>
-<p>$1$.$\psi^*\psi$非正定，无法解释为概率密度</p>
-<p>$2$.总能量本征值无下限</p>
-<p>$3$.为对时间的二阶微分方程，除初始波函数$\psi$外还需$\partial_t\psi$才能确定系统如何演化</p>
-<p>$4$.计算氢原子能级与实验偏差较大</p>
-<p>$5$.除$V&#x3D;0$的情况外无法写为$i\hbar\partial_t\psi&#x3D;H\psi$的形式</p>
-<p>虽然克莱因-高等方程具有以上缺陷，但也不能简单否定</p>
-<p>$1$.非相对论极限为薛定谔方程</p>
-<p>$2$.能导出连续性方程$\partial_t\rho+\nabla\cdot \boldsymbol{j}&#x3D;0$，其中$\rho&#x3D;\displaystyle\frac{1}{2m}(\psi^*\partial_t\psi-\partial_t\psi^*\psi)$，<br>$\boldsymbol{j}&#x3D;-\displaystyle\frac{1}{2m}(\psi^*\nabla\psi-\nabla\psi^*\psi)$，与经典方程相似</p>
-<p>由于克莱因-高等方程符合相对论要求，故猜测错误的并不是方程本身，而是态函数$\psi$，其应该满足更严格的要求</p>
-<h2 id="狄拉克方程"><a href="#狄拉克方程" class="headerlink" title="狄拉克方程"></a>狄拉克方程</h2><p>相对论要求时空的对等性，由于对时间应为一阶方程，故对空间也应为一阶方程，先考虑$\boldsymbol{A}&#x3D;0,V&#x3D;0$的情况，对克莱因-高登方程<the>开方</the>得狄拉克方程</p>
-<p>$$[i\hbar\partial_t-c\boldsymbol{\alpha}\cdot(-i\hbar\nabla)-\beta mc^2]\psi&#x3D;0$$</p>
-<p>与克莱因-高登方程比较，可知</p>
-<p>$(\alpha^i)^2&#x3D;\beta^2&#x3D;1\qquad i&#x3D;1,2,3$</p>
-<p>$\alpha^i\alpha^j+\alpha^j\alpha^i&#x3D;0\qquad i\neq j$</p>
-<p>$\alpha^i\beta+\beta\alpha^i&#x3D;0$</p>
-<p>$\boldsymbol{\alpha}$与$\beta$显然不是普通的向量和数，将$\boldsymbol{A},V$纳入得</p>
-<p>$$[i\hbar\partial_t-qV-c\boldsymbol{\alpha}\cdot(\hat{\boldsymbol{P}}-q\boldsymbol{A})-\beta mc^2]\psi&#x3D;0$$</p>
-<p>按相对论，取四维矢量$x^\mu&#x3D;(ct,\boldsymbol{x})$，$p^\mu&#x3D;(E&#x2F;c,\boldsymbol{p})$，$A_\mu&#x3D;(-V&#x2F;c,\boldsymbol{A})$</p>
-<p>定义算符$D_\mu&#x3D;\displaystyle\partial_\mu-\frac{iq}{\hbar}A_\mu$，$\gamma^0&#x3D;\beta$，$\gamma^i&#x3D;\beta\alpha^i\quad i&#x3D;1,2,3$，</p>
-<p>$\gamma^4&#x3D;\gamma^0\gamma^1\gamma^2\gamma^3&#x3D;-\alpha^1\alpha^2\alpha^3$</p>
-<p>$\gamma$算符满足关系</p>
-<p>$(\gamma^0)^2&#x3D;1\qquad(\gamma^i)^2&#x3D;-1\qquad i&#x3D;1,2,3$</p>
-<p>$\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu&#x3D;0\qquad \mu\neq \nu$</p>
-<p>$\gamma^\mu\gamma^4+\gamma^4\gamma^\mu&#x3D;0$</p>
-<p>可得狄拉克方程协变形式</p>
-<p>$$(i\hbar\gamma^\mu D_\mu-mc)\psi&#x3D;0$$</p>
+    <p>时空线元$\dd s^2&#x3D;g_{\mu\nu}\dd x^\mu\dd x^\nu$，进行对偶基变换$\omega^a&#x3D;e^a_{\; \mu}\dd x^\mu$，使得新基下度规为洛伦兹度规$\dd s^2&#x3D;\eta_{ab}\omega^a\omega^b$，</p>
+<p>度规变换$g_{\mu\nu}&#x3D;e^a_{\; \mu} e^b_{\; \mu}\eta_{ab}$，对偶变换$\lbrace e_{a}^{\;\mu}\rbrace$满足$e_{a}^{\;\mu}e_{\;\nu}^a&#x3D;\delta_\nu^\mu$，$e_{a}^{\;\mu}e_{\;\mu}^b&#x3D;\delta_a^b$，基$v_a&#x3D;e_a^{\;\mu}\partial_\mu$满足$v_a\omega^b&#x3D;\delta_a^b$</p>
+<p>现在得到了分别由希腊字母$\mu,\nu,\lambda,\cdots$ 和阿拉伯字母$a,b,c,\cdots$ 表示的两组基，将前者称为<strong>时空基</strong>，后者称为<strong>自旋基</strong>，时空基到自旋基的变换$e^a_{\; \mu}$的选取并不唯一，可以差一个自旋基中的变换，即洛伦兹矩阵$e’^{a}_{\; \mu}&#x3D;L^a_{\; b}e^b_{\; \mu}$，变换后仍可得到洛伦兹度规，$L^a_{\; c}L^b_{\; d}\eta_{ab}&#x3D;\eta_{cd}$，</p>
+<p>在坐标$x$变化时，除了时空基$\partial_\mu$会产生改变外，也会使得自旋基$v_a$产生变化，对于基空间为时空基与自旋基直积空间的<strong>旋量</strong>而言，时空的切丛联络不能描述自旋基的变化，因此需引入能够描述<strong>混合基</strong> $e^a_{\; \mu}$ 变化的联络</p>
+<p>考虑自旋矢量场$A^a&#x3D;e^a_{\; \mu} A^\mu$，引入<strong>自旋联络</strong>，其描述当时空坐标变化时自旋基的变化情况</p>
+<p>$$\nabla_\mu A^a&#x3D;\partial_\mu A^a+\Gamma_\mu A^a&#x3D;\partial_\mu A^a+\omega_{\mu\; b}^{\;a} A^b \tag{1} \label{eq1}$$</p>
+<p>注意现在将变换$e^a_{\; \mu}$视为基，</p>
+<p>$$\nabla_\mu A^a&#x3D;\nabla_\mu(e^a_{\; \nu} A^\nu)&#x3D;(\nabla_\mu e^a_{\; \nu})A^\nu+e^a_{\; \nu}(\nabla_\mu A^\nu) \tag{2} \label{eq2}$$</p>
+<p>$A^\nu$为时空矢量，因此其协变导数由奇维塔联络$\nabla^L_\mu$决定，</p>
+<p>$$e^a_{\; \nu}(\nabla_\mu A^\nu)&#x3D;e^a_{\; \nu}(\partial_\mu A^\nu+\Gamma_{\mu\lambda}^\nu A^\lambda)$$</p>
+<p>代入$\eqref{eq2}$与$\eqref{eq1}$比较即可得到协变导数对基的作用，其应为零</p>
+<p>$$\nabla_\mu e^a_{\; \nu}&#x3D;\partial_\mu e^a_{\; \nu}-\Gamma_{\mu\nu}^\lambda e^a_{\; \lambda}+\omega_{\mu \; b}^{\; a} e^b_{\; \nu} \tag{3} \label{eq3}$$</p>
+<p>对于混合基矩阵 $M^{\;\mu}_{b} &#x3D;e_a^{\; \mu}A^aB_b $，</p>
+<p>$$\nabla_\mu M&#x3D;\nabla^L_\mu M+[\Gamma_\mu,M] \tag{4} \label{eq4}$$</p>
+<p>要求联络<strong>与度规适配</strong> $\nabla_\mu \eta_{ab}&#x3D;0$</p>
+<p>$$\nabla_\mu \eta_{ab}&#x3D;\partial_\mu \eta_{ab}-\omega_{\mu \; a}^{\;c}\eta_{cb}-\omega_{\mu \; b}^{\;c} \eta_{ca}$$</p>
+<p>可知$\omega$关于后两个指标 <strong>反对称</strong>，$\omega_{\mu ab}&#x3D;-\omega_{\mu ba}$，</p>
+<p><strong>联络形式</strong> $\omega^a_{\;b}&#x3D;\omega_{\mu \; b}^{\; a}\dd x^\mu$，</p>
+<p><strong>对易系数</strong> $[v_a,v_b]&#x3D;f_{\;ab}^c v_c$，<strong>反对易系数</strong> $\lbrace v_a,v_b\rbrace&#x3D;h_{\;ab}^c v_c$</p>
+<p>对$\omega^a$外微分，$\dd \omega^a&#x3D;\nabla_\mu^\text{L} e^a_{\; \nu} \dd x^\mu\wedge\dd x^\nu&#x3D;e^a_{\; [\nu,\mu]}\dd x^\mu\wedge\dd x^\nu$，</p>
+<p>由于用$\dd x^\mu$表示，故$\nabla_\mu^\text{L}$为奇维塔联络，$\nabla_\mu^\text{L} e^a_{\; \nu}&#x3D;\partial_\mu e^a_{\; \nu}-\Gamma_{\mu\nu}^\lambda e^a_{\; \lambda}$，</p>
+<p>由$\Gamma_{\mu\nu}^\lambda$对称性可进行反称化将其消去，$e^a_{\; [\nu,\mu]}&#x3D;\displaystyle\frac{1}{2}(\partial_\mu e^a_{\; \nu}-\partial_\nu e^a_{\; \mu})&#x3D;-\displaystyle\frac{1}{2}f_{\;\mu\nu}^a$</p>
+<p><strong>曲率形式</strong> $R^a_{\; b}&#x3D;\dd \omega^a_{\;b}+\omega^a_{\;c} \wedge \omega^c_{\;b}&#x3D;(\partial\sideset{_{[\mu}}{_{\nu]\; b} ^{\;\;a}}{\omega}+\omega_{[\mu \; c}^{\;\;a}\omega_{\nu] \; b}^{\;\;c})\dd x^\mu\wedge\dd x^\nu$</p>
+<p><strong>挠率形式</strong> $T^a&#x3D;\dd \omega^a+\omega^a_{\;b}\wedge \omega^b&#x3D;(e^a_{\; [\nu,\mu]}+\omega_{[\mu \;\nu]}^{\;\;a})\dd x^\mu\wedge\dd x^\nu$</p>
+<p>施加<strong>无挠条件</strong> $T^a&#x3D;0$，可解出<strong>自旋联络系数</strong></p>
+<p>$$\omega_{\mu \;b}^{\;a}&#x3D;-e_b^{\; \nu}(\partial_\mu e^a_{\; \nu}-\Gamma_{\mu\nu}^\lambda e^a_{\; \lambda}) \tag{5} \label{eq5}$$</p>
+<p>代入$\eqref{eq3}$可发现无挠条件实际上等价于</p>
+<p>$$\nabla_\mu e^a_{\; \nu}&#x3D;0$$ </p>
+<p>联络系数可用对易系数表示为</p>
+<p>$$\omega_{a\mu\nu}&#x3D;\frac{1}{2}(f_{a\mu\nu}+f_{\mu\nu a}-f_{\nu\mu a})$$</p>
+<p>$$\Gamma_{\mu\nu}^a&#x3D;-\displaystyle\frac{1}{2}h_{\;\mu\nu}^a$$</p>
+<p>旋量$\psi$在自旋基$v_a,\tilde{v}_a$下的转移函数为洛伦兹矩阵，$\tilde{\psi}&#x3D;L\psi$，其应满足</p>
+<p>$$\tilde{\Gamma}_\mu&#x3D;L \Gamma_\mu L^{-1}- (\partial_\mu L) L^{-1} \tag{6}\label{eq6}$$</p>
+<p>考虑无穷小洛伦兹变换$L^a_{\;b}&#x3D;\delta^a_{\;b}+\delta\epsilon^a_{\;b}$，由$L^a_{\;b}L^c_{\;d}\eta_{ac}&#x3D;\eta_{bd}$，可得$\delta\epsilon_{ab}$ 反称，$\delta\epsilon_{ab}&#x3D;\eta_{ac}\delta\epsilon^c_{\; b}&#x3D;-\delta\epsilon_{ba}$，</p>
+<p>而洛伦兹群李代数由反称阵张成，因此$L^a_{\;b}$的群表示也可写为 $S(L)&#x3D;I+i \delta\epsilon^{ab} S_{ab}$，$S_{ab}&#x3D;-S_{ba} \in \mathfrak{so}(1,n-1)$ ，注意$a,b$固定时$\delta\epsilon^{ab}$为数，而$S_{ab}$为矩阵</p>
+<p>两种表示之间关系 $\delta\epsilon^a_{\;b}&#x3D;i \delta\epsilon^{cd} (S_{cd})^a_{\; b}$，可知$(S_{cd})^a_{\; b}&#x3D;\displaystyle\frac{1}{2}(\delta_c^a\eta_{bd}-\delta_d^a\eta_{bc})$，将$S(L)&#x3D;I+i \delta\epsilon^{ab} S_{ab}$代入$\eqref{eq6}$中</p>
+<p>$$\tilde{\Gamma}_\mu&#x3D;\Gamma_\mu+i\delta\epsilon^{ab}[S_{ab},\Gamma_\mu]-i\partial_\mu(\delta\epsilon^{ab})S_{ab}\tag{7}\label{eq7}$$</p>
+<p>而联络$\Gamma_\mu$也应在李代数中取值，令其为$\Gamma_\mu&#x3D;\Gamma_\mu^{\; ab} S_{ab} $，由$S_{ab}$反称性，$\Gamma_\mu^{\; ab}$关于$a,b$反称，现在考虑$S_{ab}$的对易关系</p>
+<p>对于有限洛伦兹变换$S(L)&#x3D;\exp(i \epsilon^{ab} S_{ab})$，$S(L)S(L’)S(L^{-1})&#x3D;S(LL’L^{-1})$</p>
+<p>先将$L’$取为无穷小变换，对右边进行反称化，</p>
+<p>$$S(L)S_{ab}S(L^{-1})&#x3D;\displaystyle\frac{1}{2}[L^c_{\; a}(L^{-1})^d_{\; b}-L^c_{\; b}(L^{-1})^d_{\; a}]S_{cd}$$</p>
+<p>再将$L$取为无穷小变换可得对易关系</p>
+<p>$$[S_{ab},S_{cd}]&#x3D;\displaystyle\frac{i}{2}(\eta_{ac}S_{bd}+\eta_{bd}S_{ac}-\eta_{ad}S_{bc}-\eta_{bc}S_{ad}) \tag{8}\label{eq8}$$</p>
+<p>代入$\eqref{eq7}$中得</p>
+<p>$$\tilde{\Gamma}_\mu^{\; ab}&#x3D;\Gamma_\mu^{\; ab}+\Gamma_{\mu\; c}^{\; b}\delta\epsilon^{ca}-\Gamma_{\mu\; c}^{\; a}\delta\epsilon^{cb}-i\partial_\mu(\delta\epsilon^{ab})$$</p>
+<p>对$\omega_{\mu\; b}^{\;a}$作相似操作，$\tilde{\nabla}_\mu \tilde{\psi}&#x3D;L \nabla_\mu \psi$，可得</p>
+<p>$$\tilde{\omega}_\mu^{\; ab}&#x3D;\omega_\mu^{\; ab}+\omega_{\mu\; c}^{\; b}\delta\epsilon^{ca}-\omega_{\mu\; c}^{\; a}\delta\epsilon^{cb}-\partial_\mu(\delta\epsilon^{ab})$$</p>
+<p>比较即得$\Gamma_{\mu}^{\; ab}&#x3D;i\omega_{\mu}^{\; ab}$，旋量的协变导数和其对易现在可写为</p>
+<p>$$\nabla_\mu\psi&#x3D;\partial_\mu\psi+i\omega_{\mu}^{\; ab}S_{ab}\psi$$</p>
+<p>$$[\nabla_\mu,\nabla_\nu]\psi&#x3D;-iR_{\mu\nu}^{\;\;\;ab}S_{ab}\psi$$</p>
+<p>协变导数写成分量形式</p>
+<p>$$\nabla_\mu\psi^a&#x3D;\partial_\mu\psi^a+i\omega_{\mu}^{\; cd}(S_{cd})^a_{\; b}\psi^b$$</p>
+<p>现在考虑平直时空狄拉克方程 $(i\gamma^a \partial_a-m)\psi&#x3D;0$，$\lbrace \gamma^a,\gamma^b\rbrace&#x3D;2\eta^{ab}I$ 在弯曲时空的推广，将普通导数换为协变导数 $\partial_a \to e_a^{\;\mu} \nabla_\mu$</p>
+<p>$$(i\gamma^a e_a^{\;\mu} \nabla_\mu-m)\psi&#x3D;(i\underline{\gamma}^\mu \nabla_\mu-m)\psi&#x3D;0 $$</p>
+<p>$\underline{\gamma}^\mu&#x3D;\gamma^a e_a^{\;\mu}$ 为与时空有关的狄拉克矩阵，满足$\lbrace{\underline{\gamma}^\mu,\underline{\gamma}^\mu\rbrace}&#x3D;2g^{\mu\nu}I$</p>
+<p>现在考虑混合基变化$\psi’&#x3D;S(L)\psi$，$e^{\prime \;\nu}_b&#x3D;\displaystyle\frac{\partial x’^\nu}{\partial x^\mu}(L^{-1})^a_{\; b}e^{\;\mu}_{a}$，代入狄拉克方程</p>
+<p>$$(iS(L)\gamma^a S^{-1}(L)L^b_{\;a} e^{\prime \;\nu}_b \nabla’_\nu -m)\psi’&#x3D;0$$</p>
+<p>可知 $S(L)\gamma^a S^{-1}(L)L^b_{\;a}&#x3D;\gamma^b$，考虑无穷小变换$L^b_{\;a}&#x3D;\delta^b_{\;a}+\delta\epsilon^b_{\;a}$</p>
+<p>$$i\delta\epsilon_{cd}[S^{cd},\gamma^a]+\delta\epsilon^a_{\;b}\gamma^b&#x3D;0$$</p>
+<p>取$S^{cd}&#x3D;\displaystyle-\frac{i}{8}[\gamma^c,\gamma^d]$ 可同时满足该式和对易关系$\eqref{eq8}$，协变导数和其对易成为</p>
+<p>$$\nabla_\mu\psi&#x3D;\partial_\mu\psi +\frac{1}{8}\omega_{\mu ab}[\gamma^a,\gamma^b]\psi \tag{9}\label{eq9}$$</p>
+<p>$$[\nabla_\mu,\nabla_\nu]\psi&#x3D;-\frac{1}{8}R_{\mu\nu ab}[\gamma^a,\gamma^b]\psi \tag{10}\label{eq10}$$</p>
+<p>利用$\eqref{eq4}$和$\eqref{eq5}$ 可得 </p>
+<p>$$\nabla_\mu\underline{\gamma}^\nu&#x3D;0$$</p>
+<p>结合$\eqref{eq10}$和比安基恒等式 $R_{\mu\nu\lambda\rho}+R_{\mu\lambda\rho\nu}+R_{\mu\rho\nu\lambda}&#x3D;0$ 可得</p>
+<p>$$(\underline{\gamma}^\mu\nabla_\mu)^2&#x3D;\square +\displaystyle\frac{R}{4}$$</p>
+<hr>
+<p>From Quantum Field Theory In Curved Spacetime by Leonard Parker and David Toms</p>
 
   </article>
   <!-- tag -->
@@ -305,16 +334,11 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="../../14/%E4%B8%8D%E5%90%AB%E6%97%B6%E5%BE%AE%E6%89%B0/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          不含时微扰
-        </a>
-      
     </div>
     <div>
       
-        <a href="../../../../2022/03/21/Levi-Civita%E8%81%94%E7%BB%9C/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          Levi-Civita联络
+        <a href="../%E5%BC%AF%E6%9B%B2%E6%97%B6%E7%A9%BA%E7%9A%84%E7%8B%84%E6%8B%89%E5%85%8B%E6%96%B9%E7%A8%8B/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          弯曲时空的狄拉克方程
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
