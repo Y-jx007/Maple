@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-19 12:35:55</time>
+          <time>2023-05-25 17:27:42</time>
           <span class="text-gray-400">·</span>
-          <span>3 min</span>
+          <span>5 min</span>
           <span class="text-gray-400">·</span>
-          <span>660 words</span>
+          <span>1.1k words</span>
         </section>
       </div>
     </div>
@@ -295,7 +295,23 @@
 <p>$\gamma^\mu\gamma^4+\gamma^4\gamma^\mu&#x3D;0$</p>
 <p>可得狄拉克方程协变形式</p>
 <p>$$(i\hbar\gamma^\mu D_\mu-mc)\psi&#x3D;0$$</p>
-
+<h2 id="旋转坐标系"><a href="#旋转坐标系" class="headerlink" title="旋转坐标系"></a>旋转坐标系</h2><h3 id="纯空间转动"><a href="#纯空间转动" class="headerlink" title="纯空间转动"></a>纯空间转动</h3><hr>
+<p>设时空度规在基$e_\mu$下化为洛伦兹度规$\eta_{\mu\nu}&#x3D;\text{diag}(+,-,-,-)$，可得弯曲时空狄拉克方程</p>
+<p>$$i\hbar\gamma^\mu D_\mu\psi&#x3D;i\hbar\gamma^\mu(e_\mu+\Gamma_\mu)\psi&#x3D;mc\psi$$</p>
+<p>转动柱坐标系下线元</p>
+<p>$$\begin{aligned}<br>    \dd s^2&amp;&#x3D;c^2\dd  t^2-\dd  r^2-r^2(\dd  \phi+\omega\dd  t)^2-\dd z^2\\<br>    \qquad\\<br>    &amp;&#x3D;\left(1-\frac{\omega^2r^2}{c^2}\right)\left(c\dd t-\frac{1}{c}\frac{\omega r^2}{\displaystyle\left(1-\frac{\omega^2r^2}{c^2}\right)}\dd\phi\right)^2-\dd r^2-\frac{ r^2}{\displaystyle\left(1-\frac{\omega^2r^2}{c^2}\right)}\dd \phi^2-\dd z^2\\<br>    \qquad\\<br>    &amp;\overset{\omega  r&#x2F;c\ll  1}{\approx} \left(c\dd t-\frac{\omega r^2}{c}\dd \phi\right)^2-\dd  r^2-(r\dd\phi)^2-\dd z^2\\<br>    \qquad\\<br>    &amp;:&#x3D;(\theta^0)^2-(\theta^1)^2-(\theta^2)^2-(\theta^3)^2<br>\end{aligned}$$</p>
+<p>由 $e_\mu \theta^\nu&#x3D;\delta_\mu^\nu$ 可得基矢量</p>
+<p>$$e_0&#x3D;\frac{1}{c}\partial_t\qquad e_1&#x3D;\partial_r\qquad e_2&#x3D;\frac{1}{r}\partial_\phi+\frac{\omega r}{c^2}\partial_t\qquad e_4&#x3D;\partial_z$$</p>
+<p>对易子$[e_\mu,e_\nu]&#x3D;c_{\;\mu\nu}^\lambda e_\lambda$，非零系数只有</p>
+<p>$$\displaystyle c_{\;21}^2&#x3D;-c_{\;12}^2&#x3D;\frac{1}{r}\qquad c_{\;12}^0&#x3D;-c_{\;21}^0&#x3D;\frac{2\omega}{c}$$</p>
+<p>自旋联络系数 $\omega_{\mu\nu\lambda}&#x3D;\displaystyle\frac{1}{2}(c_{\mu\nu\lambda}+c_{\lambda\nu\mu}-c_{\nu\lambda\mu})$，非零成分为</p>
+<p>$$\omega_{212}&#x3D;\frac{1}{r}$$</p>
+<p>$$\omega_{012}&#x3D;\omega_{102}&#x3D;\omega_{210}&#x3D;\frac{\omega}{c}$$</p>
+<p>计算$\Gamma_{\mu}&#x3D;\displaystyle\frac{1}{8}\omega_{\mu\nu\lambda}[\gamma^\nu,\gamma^\lambda]$，非零成分为</p>
+<p>$$\Gamma_0&#x3D;\frac{\omega}{4c}[\gamma^1,\gamma^2]\qquad \Gamma_1&#x3D;\frac{\omega}{4c}[\gamma^0,\gamma^2]\qquad\Gamma_2&#x3D;-\frac{\omega}{4c}[\gamma^0,\gamma^1]+\frac{1}{4r}[\gamma^1,\gamma^2]$$</p>
+<p>狄拉克方程成为</p>
+<p>$$i\hbar\left\lbrace\left(\gamma^0+\frac{\omega r}{c}\gamma^2\right)\frac{1}{c}\partial_t+\gamma^1\partial_r+\gamma^2\frac{1}{r}\partial_\phi+\gamma^3\partial_z+\left(\frac{1}{4r}\gamma^2-\frac{\omega }{4c}\gamma^0\right) [\gamma^1,\gamma^2]\right\rbrace \psi&#x3D;mc\psi$$</p>
+<h3 id="时空转动"><a href="#时空转动" class="headerlink" title="时空转动"></a>时空转动</h3>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
