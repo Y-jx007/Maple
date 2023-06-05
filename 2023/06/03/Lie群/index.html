@@ -37,11 +37,11 @@
 
 
 
-<title>归档: 2023 | 枫</title>
+<title>Lie群 | 枫</title>
 
 
 
-<link rel="icon" href="../../images/favicon.png">
+<link rel="icon" href="../../../../images/favicon.png">
 
 
 
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        
+        Lie群
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="../../archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="../../categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -224,222 +224,216 @@
 </div>
 
   <main class="p-12">
-    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
-  <div class="flex flex-col h-48 items-center justify-center">
-    <h1 class="site-title text-4xl leading-relaxed">
-      枫
-    </h1>
-    <p class="text-gray-500 mt-2">
-      
-    </p>
-  </div>
-  
-  
-    
-    
-      <div class="relative pointer-events-none">
-        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        Lie群
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-06-03 21:45:21</time>
+          <span class="text-gray-400">·</span>
+          <span>2 min</span>
+          <span class="text-gray-400">·</span>
+          <span>534 words</span>
+        </section>
       </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="无穷小生成元"><a href="#无穷小生成元" class="headerlink" title="无穷小生成元"></a>无穷小生成元</h2><p>具有群结构的光滑流形$G$称为<strong>李群</strong>，其群元可由参数连续变化的解析函数表示</p>
+<p>选取参数令$g(0)&#x3D;I$，将群元$g(\alpha)$在原点附近对其参数$\alpha_i$泰勒展开</p>
+<p>$$g(\alpha)&#x3D;I+\alpha_i X_i+\displaystyle\frac{1}{2}\alpha_i\alpha_j X_{ij}+\cdots$$</p>
+<p>$X_i&#x3D;\displaystyle\left.\frac{\partial g(\alpha)}{\partial \alpha_i}\right|_{\alpha&#x3D;0}$ 称为<strong>无穷小生成元</strong>，其对应的算符$\hat{X}_i$ 称为<strong>无穷小算符</strong></p>
+<p>逆元展开</p>
+<p>$$g^{-1}(\alpha)&#x3D;I-\alpha_i X_i-\displaystyle\frac{1}{2}\alpha_i\alpha_j (X_{ij}-2X_iX_j)+\cdots$$</p>
+<p>考虑 $g(\alpha)&#x3D;g^{-1}(\beta)g^{-1}(\gamma)g(\beta)g(\gamma)&#x3D;I+\beta_i\gamma_j[X_i,X_j]+\cdots$</p>
+<p>可知$[X_i,X_j]&#x3D;c_{ij}^k X_k$，$c_{ij}$ 称为<strong>结构常数</strong></p>
+<p>记 $X_i$生成的流为 $\varphi_i(t)$，由流的性质可定义<strong>指数映射</strong></p>
+<p>$$\exp(\alpha_i X_i)&#x3D;\prod _{i}\varphi_i(\alpha_i)$$</p>
+<p>可调整群元参数令 $g(\alpha)&#x3D;\exp(\alpha_i X_i)$</p>
+<h2 id="不变积分"><a href="#不变积分" class="headerlink" title="不变积分"></a>不变积分</h2><p>对无限群$G$上函数$f(g)$积分，$\rho(\alpha)$ 为权函数</p>
+<p>$$\int_G f(g)\dd \tau_g&#x3D;\int f(g(\alpha))\rho(\alpha)\dd \alpha$$</p>
+<p>若积分满足有限群重排定理类似条件 </p>
+<p>$$\displaystyle\int_G f(g)\text{d}_L \tau_g&#x3D;\displaystyle\int_G f(g’g)\text{d}_L \tau_g\quad \forall g’\in G$$</p>
+<p>$$\displaystyle\int_G f(g)\text{d}_R \tau_g&#x3D;\displaystyle\int_G f(gg’)\text{d}_R \tau_g\quad \forall g’\in G$$</p>
+<p>则称其为左&#x2F;右<strong>不变积分</strong>，权函数为左&#x2F;右<strong>不变权函数</strong></p>
+<p>对于紧致李群，左&#x2F;右不变权函数相等且积分有限；而非紧致李群只能定义左不变或右不变积分，且积分可能发散</p>
+<p>若积分同时满足左右不变性，可写成 $\rho_L(\alpha),\rho_R(\alpha)&#x3D;\rho(\alpha)$</p>
+<p>由积分不变性可知在不同参数下测度不变，即$\rho(\alpha)&#x3D;\displaystyle\left|\frac{\partial \beta}{\partial \alpha}\right|_{\beta&#x3D;0}\rho(0)$</p>
+<p>要求归一性 $\displaystyle\int_G \dd \tau_g&#x3D;1$，可取$\rho(0)$为群体积倒数</p>
+<p>现在可将正交归一关系推广到李群</p>
+<p>$$\int_G D^{(l)*}(g)_{mn}D^{(l’)}(g)_{m’n’}\dd \tau_g&#x3D;\frac{1}{d_l}\delta_{ll’}\delta_{mm’}\delta_{nn’}$$</p>
+<p>取迹得到特征标正交归一关系</p>
+<p>$$\int_G \chi^{(l)*}(g)\chi^{(l’)}\dd \tau_g&#x3D;\delta_{ll’}$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
     
-    <a href="../../2023/06/05/%E7%BD%AE%E6%8D%A2%E7%BE%A4/">
-      <header>
-        <h2 class="font-bold text-xl">
-          置换群
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          5 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/05/%E7%89%B9%E5%BE%81%E6%A0%87%E8%A1%A8%E8%A1%A8/">
-      <header>
-        <h2 class="font-bold text-xl">
-          特征标表表
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/05/%E7%BE%A4%E8%A1%A8%E7%A4%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
-          群表示
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/04/%E9%BB%8E%E6%9B%BC-zeta/">
-      <header>
-        <h2 class="font-bold text-xl">
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../04/%E9%BB%8E%E6%9B%BC-zeta/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
           黎曼$\zeta$函数
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 04
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/03/Lie%E7%BE%A4/">
-      <header>
-        <h2 class="font-bold text-xl">
-          Lie群
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 03
-          ·
-          2 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/02/%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/">
-      <header>
-        <h2 class="font-bold text-xl">
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../02/%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           路径积分
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 02
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
     
-    
-    <a href="../../2023/05/27/%E5%8F%B2%E7%93%A6%E8%A5%BF%E6%97%B6%E7%A9%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
-          史瓦西时空
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 27
-          ·
-          7 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/22/Lorentz%E8%81%94%E7%BB%9C/">
-      <header>
-        <h2 class="font-bold text-xl">
-          自旋联络
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 22
-          ·
-          10 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/20/%E5%AE%87%E5%AE%99%E5%AD%A6%E6%A8%A1%E5%9E%8B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          宇宙学模型
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 20
-          ·
-          7 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/19/%E5%90%91%E9%87%8F%E4%B8%9B%E4%B8%8EG-%E4%B8%BB%E4%B8%9B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          向量丛与G-主丛
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 19
-          ·
-          14 min
-        </p>
-      </section>
-    </a>
-  
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
 </section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
 
   </main>
   <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">

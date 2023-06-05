@@ -37,11 +37,11 @@
 
 
 
-<title>归档: 2023 | 枫</title>
+<title>点群和空间群 | 枫</title>
 
 
 
-<link rel="icon" href="../../images/favicon.png">
+<link rel="icon" href="../../../../images/favicon.png">
 
 
 
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        
+        点群和空间群
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="../../archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="../../categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -224,222 +224,286 @@
 </div>
 
   <main class="p-12">
-    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
-  <div class="flex flex-col h-48 items-center justify-center">
-    <h1 class="site-title text-4xl leading-relaxed">
-      枫
-    </h1>
-    <p class="text-gray-500 mt-2">
-      
-    </p>
-  </div>
-  
-  
-    
-    
-      <div class="relative pointer-events-none">
-        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        点群和空间群
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-04-23 17:52:43</time>
+          <span class="text-gray-400">·</span>
+          <span>2 min</span>
+          <span class="text-gray-400">·</span>
+          <span>697 words</span>
+        </section>
       </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <p><qg>三维Eulid群$E_3$</qg></p>
+<p>旋转反演$\boldsymbol{R}$与平移$T(\boldsymbol{a})$复合操作$\{\boldsymbol{R}|\boldsymbol{a}\}\boldsymbol{r}&#x3D;\boldsymbol{Rr}+\boldsymbol{a}$构成群$E_3$</p>
+<p>平移群$\{\boldsymbol{I}|\boldsymbol{a}\}$为不变子群，旋转群$\{\boldsymbol{R}|\boldsymbol{0}\}$不是</p>
+<p>平移旋转一般不对易，$E_3&#x3D;T\rtimes R$</p>
+<p>研究$E_3$分立子群，取定三维晶格，保持晶格不变的操作$\{\boldsymbol{R}|\boldsymbol{a}\}$称为对称操作，满足<br>$|\boldsymbol{a}|\ge a_0$的对称操作构成的群称为晶格空间群</p>
+<p>空间群三类基本操作为平移操作$T&#x3D;\{\boldsymbol{I}|\boldsymbol{r_n}\}$、点操作$P&#x3D;\{\boldsymbol{\alpha_s}|\boldsymbol{0}\}$、复合操作<br>$\{\boldsymbol{\alpha_P}|\boldsymbol{\tau}\}$为旋转反演后进行一个非整数平移</p>
+<p><qg>点群中的对称元素和对称算符</qg></p>
+<p>$n$度轴$C_n$，其对称元素为$c_n^k$；反射面$\sigma$，与轴垂直为$\sigma_h$，包含轴为$\sigma_v$，平分两轴为<br>$\sigma_d$；中心反演$i$；$n$度像转轴$S_n&#x3D;C_n\sigma_h$</p>
+<p>夹角为$\varphi$的两个$2$度轴复合，得到与其均垂直的旋转$c_{2A}c_{2B}&#x3D;c(-2\varphi)$，注意此处定义操作先后顺序为从左到右</p>
+<p>夹角为$\varphi$的两个含轴反射面复合，得到沿轴的旋转$\sigma_v\sigma_{v’}&#x3D;c(-2\varphi)$</p>
+<p><qg>第一类点群</qg></p>
+<p>第一类点群仅包含纯旋转，以下讨论仅包含晶格点群</p>
+<p>单轴点群：$C_1,C_2,C_3,C_4,C_6$</p>
+<p>多边形点群：$D_2,D_3,D_4,D_6$</p>
+<p>多面体点群：$T,O$</p>
+<p>共$11$种</p>
+<p><qg>第二类点群</qg></p>
+<p>第二类点群包括反演</p>
+<p>中心反演：$C_i$</p>
+<p>平面反射：$C_s$</p>
+<p>旋转与垂直轴反射面复合：$C_{2h},C_{3h},C_{4h},C_{6h}\cong C_n\otimes C_s,C_{2h}\cong C_2\otimes C_i$</p>
+<p>旋转与包含轴反射面复合：$C_{2v},C_{3v},C_{4v},C_{6v}\cong D_n$</p>
+<p>包含像转轴：$S_4,S_6$</p>
+<p>多边形与垂直轴反射面复合：$D_{2h},D_{4h},D_{6h}\cong D_n\otimes C_i,D_{3h}\cong D_n \otimes C_s$</p>
+<p>多边形与平分轴反射面复合：$D_{2d},D_{3d}\cong D_3\otimes C_i$</p>
+<p>多面体与垂直轴反射面复合：$T_h\cong T\otimes C_i,O_h\cong O\otimes C_i$</p>
+<p>多边形与平分轴反射面复合：$T_d\cong O$</p>
+<p>共$21$种</p>
+<p>第一类晶格点群与第二类晶格点群共$32$种</p>
+<p><qg>Bravais格子和空间群</qg></p>
+<p>平移群的对称点群$P&#x3D;\{\alpha:\alpha\boldsymbol{r_n}&#x3D;\boldsymbol{r_n}’\in T\}$</p>
+<p>$P$点群包含反演，且有$C_{nv}$为其子群，一共七种晶系满足此条件</p>
+<p>三斜$C_i$，单斜$C_{2h}$，正交$D_{2h}$，四方$D_{4h}$，三角$D_{3d}$，六角$D_{6h}$，立方$O_h$</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">晶系</td>
+<td align="center">点群个数</td>
+<td align="center">Bravais格子数</td>
+<td align="center">空间群个数</td>
+</tr>
+<tr>
+<td align="center">三斜</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">单斜</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">13</td>
+</tr>
+<tr>
+<td align="center">正交</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">59</td>
+</tr>
+<tr>
+<td align="center">四方</td>
+<td align="center">7</td>
+<td align="center">2</td>
+<td align="center">68</td>
+</tr>
+<tr>
+<td align="center">三角</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">25</td>
+</tr>
+<tr>
+<td align="center">六角</td>
+<td align="center">7</td>
+<td align="center">1</td>
+<td align="center">27</td>
+</tr>
+<tr>
+<td align="center">立方</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">36</td>
+</tr>
+<tr>
+<td align="center">总计</td>
+<td align="center">32</td>
+<td align="center">14</td>
+<td align="center">230</td>
+</tr>
+</tbody></table>
+<p>$\qquad\\$</p>
+<p><qg>平移群的不可约表示</qg></p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
     
-    <a href="../../2023/06/05/%E7%BD%AE%E6%8D%A2%E7%BE%A4/">
-      <header>
-        <h2 class="font-bold text-xl">
-          置换群
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          5 min
-        </p>
-      </section>
-    </a>
-  
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../05/06/%E7%8B%84%E6%8B%89%E5%85%8B%E6%96%B9%E7%A8%8B/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          狄拉克方程
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../../2022/03/21/Levi-Civita%E8%81%94%E7%BB%9C/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          Levi-Civita联络
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
     
-    
-    <a href="../../2023/06/05/%E7%89%B9%E5%BE%81%E6%A0%87%E8%A1%A8%E8%A1%A8/">
-      <header>
-        <h2 class="font-bold text-xl">
-          特征标表表
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/05/%E7%BE%A4%E8%A1%A8%E7%A4%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
-          群表示
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/04/%E9%BB%8E%E6%9B%BC-zeta/">
-      <header>
-        <h2 class="font-bold text-xl">
-          黎曼$\zeta$函数
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 04
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/03/Lie%E7%BE%A4/">
-      <header>
-        <h2 class="font-bold text-xl">
-          Lie群
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 03
-          ·
-          2 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/02/%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/">
-      <header>
-        <h2 class="font-bold text-xl">
-          路径积分
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 02
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/27/%E5%8F%B2%E7%93%A6%E8%A5%BF%E6%97%B6%E7%A9%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
-          史瓦西时空
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 27
-          ·
-          7 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/22/Lorentz%E8%81%94%E7%BB%9C/">
-      <header>
-        <h2 class="font-bold text-xl">
-          自旋联络
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 22
-          ·
-          10 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/20/%E5%AE%87%E5%AE%99%E5%AD%A6%E6%A8%A1%E5%9E%8B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          宇宙学模型
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 20
-          ·
-          7 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/19/%E5%90%91%E9%87%8F%E4%B8%9B%E4%B8%8EG-%E4%B8%BB%E4%B8%9B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          向量丛与G-主丛
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 19
-          ·
-          14 min
-        </p>
-      </section>
-    </a>
-  
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
 </section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
 
   </main>
   <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">

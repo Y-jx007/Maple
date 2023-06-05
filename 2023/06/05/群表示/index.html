@@ -37,7 +37,7 @@
 
 
 
-<title>自旋联络 | 枫</title>
+<title>群表示 | 枫</title>
 
 
 
@@ -175,7 +175,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        自旋联络
+        群表示
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -233,99 +233,91 @@
 
 <!-- toc -->
 
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        自旋联络
+        群表示
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-25 17:05:04</time>
+          <time>2023-06-05 15:23:12</time>
           <span class="text-gray-400">·</span>
-          <span>10 min</span>
+          <span>6 min</span>
           <span class="text-gray-400">·</span>
-          <span>2k words</span>
+          <span>1.5k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <p>时空线元$\dd s^2&#x3D;g_{\mu\nu}\dd x^\mu\dd x^\nu$，进行对偶基变换$\omega^a&#x3D;e^a_{\; \mu}\dd x^\mu$，使得新基下度规为洛伦兹度规$\dd s^2&#x3D;\eta_{ab}\omega^a\omega^b$，</p>
-<p>度规变换$g_{\mu\nu}&#x3D;e^a_{\; \mu} e^b_{\; \mu}\eta_{ab}$，对偶变换$\lbrace e_{a}^{\;\mu}\rbrace$满足$e_{a}^{\;\mu}e_{\;\nu}^a&#x3D;\delta_\nu^\mu$，$e_{a}^{\;\mu}e_{\;\mu}^b&#x3D;\delta_a^b$，基$v_a&#x3D;e_a^{\;\mu}\partial_\mu$满足$v_a\omega^b&#x3D;\delta_a^b$</p>
-<p>现在得到了分别由希腊字母$\mu,\nu,\lambda,\cdots$ 和阿拉伯字母$a,b,c,\cdots$ 表示的两组基，将前者称为<strong>时空基</strong>，后者称为<strong>自旋基</strong>，时空基到自旋基的变换$e^a_{\; \mu}$的选取并不唯一，可以差一个自旋基中的变换，即洛伦兹矩阵$e’^{a}_{\; \mu}&#x3D;L^a_{\; b}e^b_{\; \mu}$，变换后仍可得到洛伦兹度规，$L^a_{\; c}L^b_{\; d}\eta_{ab}&#x3D;\eta_{cd}$，</p>
-<p>在坐标$x$变化时，除了时空基$\partial_\mu$会产生改变外，也会使得自旋基$v_a$产生变化，对于基空间为时空基与自旋基直积空间的<strong>旋量</strong>而言，时空的切丛联络不能描述自旋基的变化，因此需引入能够描述<strong>混合基</strong> $e^a_{\; \mu}$ 变化的联络</p>
-<p>考虑自旋矢量场$A^a&#x3D;e^a_{\; \mu} A^\mu$，引入<strong>自旋联络</strong>，其描述当时空坐标变化时自旋基的变化情况</p>
-<p>$$\nabla_\mu A^a&#x3D;\partial_\mu A^a+\Gamma_\mu A^a&#x3D;\partial_\mu A^a+\omega_{\mu\; b}^{\;a} A^b \tag{1} \label{eq1}$$</p>
-<p>注意现在将变换$e^a_{\; \mu}$视为基，</p>
-<p>$$\nabla_\mu A^a&#x3D;\nabla_\mu(e^a_{\; \nu} A^\nu)&#x3D;(\nabla_\mu e^a_{\; \nu})A^\nu+e^a_{\; \nu}(\nabla_\mu A^\nu) \tag{2} \label{eq2}$$</p>
-<p>$A^\nu$为时空矢量，因此其协变导数由奇维塔联络$\nabla^L_\mu$决定，</p>
-<p>$$e^a_{\; \nu}(\nabla_\mu A^\nu)&#x3D;e^a_{\; \nu}(\partial_\mu A^\nu+\Gamma_{\mu\lambda}^\nu A^\lambda)$$</p>
-<p>代入$\eqref{eq2}$与$\eqref{eq1}$比较即可得到协变导数对基的作用，其应为零</p>
-<p>$$\nabla_\mu e^a_{\; \nu}&#x3D;\partial_\mu e^a_{\; \nu}-\Gamma_{\mu\nu}^\lambda e^a_{\; \lambda}+\omega_{\mu \; b}^{\; a} e^b_{\; \nu} \tag{3} \label{eq3}$$</p>
-<p>对于混合基矩阵 $M^{\;\mu}_{b} &#x3D;e_a^{\; \mu}A^aB_b $，</p>
-<p>$$\nabla_\mu M&#x3D;\nabla^L_\mu M+[\Gamma_\mu,M] \tag{4} \label{eq4}$$</p>
-<p>要求联络<strong>与度规适配</strong> $\nabla_\mu \eta_{ab}&#x3D;0$</p>
-<p>$$\nabla_\mu \eta_{ab}&#x3D;\partial_\mu \eta_{ab}-\omega_{\mu \; a}^{\;c}\eta_{cb}-\omega_{\mu \; b}^{\;c} \eta_{ca}$$</p>
-<p>可知$\omega$关于后两个指标 <strong>反对称</strong>，$\omega_{\mu ab}&#x3D;-\omega_{\mu ba}$，</p>
-<p><strong>联络形式</strong> $\omega^a_{\;b}&#x3D;\omega_{\mu \; b}^{\; a}\dd x^\mu$，</p>
-<p><strong>对易系数</strong> $[v_a,v_b]&#x3D;f_{\;ab}^c v_c$，<strong>反对易系数</strong> $\lbrace v_a,v_b\rbrace&#x3D;h_{\;ab}^c v_c$</p>
-<p>对$\omega^a$外微分，$\dd \omega^a&#x3D;\nabla_\mu^\text{L} e^a_{\; \nu} \dd x^\mu\wedge\dd x^\nu&#x3D;e^a_{\; [\nu,\mu]}\dd x^\mu\wedge\dd x^\nu$，</p>
-<p>由于用$\dd x^\mu$表示，故$\nabla_\mu^\text{L}$为奇维塔联络，$\nabla_\mu^\text{L} e^a_{\; \nu}&#x3D;\partial_\mu e^a_{\; \nu}-\Gamma_{\mu\nu}^\lambda e^a_{\; \lambda}$，</p>
-<p>由$\Gamma_{\mu\nu}^\lambda$对称性可进行反称化将其消去，$e^a_{\; [\nu,\mu]}&#x3D;\displaystyle\frac{1}{2}(\partial_\mu e^a_{\; \nu}-\partial_\nu e^a_{\; \mu})&#x3D;-\displaystyle\frac{1}{2}f_{\;\mu\nu}^a$</p>
-<p><strong>曲率形式</strong> $R^a_{\; b}&#x3D;\dd \omega^a_{\;b}+\omega^a_{\;c} \wedge \omega^c_{\;b}&#x3D;(\partial\sideset{_{[\mu}}{_{\nu]\; b} ^{\;\;a}}{\omega}+\omega_{[\mu \; c}^{\;\;a}\omega_{\nu] \; b}^{\;\;c})\dd x^\mu\wedge\dd x^\nu$</p>
-<p><strong>挠率形式</strong> $T^a&#x3D;\dd \omega^a+\omega^a_{\;b}\wedge \omega^b&#x3D;(e^a_{\; [\nu,\mu]}+\omega_{[\mu \;\nu]}^{\;\;a})\dd x^\mu\wedge\dd x^\nu$</p>
-<p>施加<strong>无挠条件</strong> $T^a&#x3D;0$，可解出<strong>自旋联络系数</strong></p>
-<p>$$\omega_{\mu \;b}^{\;a}&#x3D;-e_b^{\; \nu}(\partial_\mu e^a_{\; \nu}-\Gamma_{\mu\nu}^\lambda e^a_{\; \lambda}) \tag{5} \label{eq5}$$</p>
-<p>代入$\eqref{eq3}$可发现无挠条件实际上等价于</p>
-<p>$$\nabla_\mu e^a_{\; \nu}&#x3D;0$$ </p>
-<p>联络系数可用对易系数表示为</p>
-<p>$$\omega_{a\mu\nu}&#x3D;\frac{1}{2}(f_{a\mu\nu}+f_{\nu\mu a}-f_{\mu\nu a})$$</p>
-<p>$$\Gamma_{\mu\nu}^a&#x3D;-\displaystyle\frac{1}{2}h_{\;\mu\nu}^a$$</p>
-<p>旋量$\psi$在自旋基$v_a,\tilde{v}_a$下的转移函数为洛伦兹矩阵，$\tilde{\psi}&#x3D;L\psi$，其应满足</p>
-<p>$$\tilde{\Gamma}_\mu&#x3D;L \Gamma_\mu L^{-1}- (\partial_\mu L) L^{-1} \tag{6}\label{eq6}$$</p>
-<p>考虑无穷小洛伦兹变换$L^a_{\;b}&#x3D;\delta^a_{\;b}+\delta\epsilon^a_{\;b}$，由$L^a_{\;b}L^c_{\;d}\eta_{ac}&#x3D;\eta_{bd}$，可得$\delta\epsilon_{ab}$ 反称，$\delta\epsilon_{ab}&#x3D;\eta_{ac}\delta\epsilon^c_{\; b}&#x3D;-\delta\epsilon_{ba}$，</p>
-<p>而洛伦兹群李代数由反称阵张成，因此$L^a_{\;b}$的群表示也可写为 $S(L)&#x3D;I+i \delta\epsilon^{ab} S_{ab}$，$S_{ab}&#x3D;-S_{ba} \in \mathfrak{so}(1,n-1)$ ，注意$a,b$固定时$\delta\epsilon^{ab}$为数，而$S_{ab}$为矩阵</p>
-<p>两种表示之间关系 $\delta\epsilon^a_{\;b}&#x3D;i \delta\epsilon^{cd} (S_{cd})^a_{\; b}$，可知$(S_{cd})^a_{\; b}&#x3D;\displaystyle\frac{1}{2}(\delta_c^a\eta_{bd}-\delta_d^a\eta_{bc})$，将$S(L)&#x3D;I+i \delta\epsilon^{ab} S_{ab}$代入$\eqref{eq6}$中</p>
-<p>$$\tilde{\Gamma}_\mu&#x3D;\Gamma_\mu+i\delta\epsilon^{ab}[S_{ab},\Gamma_\mu]-i\partial_\mu(\delta\epsilon^{ab})S_{ab}\tag{7}\label{eq7}$$</p>
-<p>而联络$\Gamma_\mu$也应在李代数中取值，令其为$\Gamma_\mu&#x3D;\Gamma_\mu^{\; ab} S_{ab} $，由$S_{ab}$反称性，$\Gamma_\mu^{\; ab}$关于$a,b$反称，现在考虑$S_{ab}$的对易关系</p>
-<p>对于有限洛伦兹变换$S(L)&#x3D;\exp(i \epsilon^{ab} S_{ab})$，$S(L)S(L’)S(L^{-1})&#x3D;S(LL’L^{-1})$</p>
-<p>先将$L’$取为无穷小变换，对右边进行反称化，</p>
-<p>$$S(L)S_{ab}S(L^{-1})&#x3D;\displaystyle\frac{1}{2}[L^c_{\; a}(L^{-1})^d_{\; b}-L^c_{\; b}(L^{-1})^d_{\; a}]S_{cd}$$</p>
-<p>再将$L$取为无穷小变换可得对易关系</p>
-<p>$$[S_{ab},S_{cd}]&#x3D;\displaystyle\frac{i}{2}(\eta_{ac}S_{bd}+\eta_{bd}S_{ac}-\eta_{ad}S_{bc}-\eta_{bc}S_{ad}) \tag{8}\label{eq8}$$</p>
-<p>代入$\eqref{eq7}$中得</p>
-<p>$$\tilde{\Gamma}_\mu^{\; ab}&#x3D;\Gamma_\mu^{\; ab}+\Gamma_{\mu\; c}^{\; b}\delta\epsilon^{ca}-\Gamma_{\mu\; c}^{\; a}\delta\epsilon^{cb}-i\partial_\mu(\delta\epsilon^{ab})$$</p>
-<p>对$\omega_{\mu\; b}^{\;a}$作相似操作，$\tilde{\nabla}_\mu \tilde{\psi}&#x3D;L \nabla_\mu \psi$，可得</p>
-<p>$$\tilde{\omega}_\mu^{\; ab}&#x3D;\omega_\mu^{\; ab}+\omega_{\mu\; c}^{\; b}\delta\epsilon^{ca}-\omega_{\mu\; c}^{\; a}\delta\epsilon^{cb}-\partial_\mu(\delta\epsilon^{ab})$$</p>
-<p>比较即得$\Gamma_{\mu}^{\; ab}&#x3D;i\omega_{\mu}^{\; ab}$，旋量的协变导数和其对易现在可写为</p>
-<p>$$\nabla_\mu\psi&#x3D;\partial_\mu\psi+i\omega_{\mu}^{\; ab}S_{ab}\psi$$</p>
-<p>$$[\nabla_\mu,\nabla_\nu]\psi&#x3D;-iR_{\mu\nu}^{\;\;\;ab}S_{ab}\psi$$</p>
-<p>协变导数写成分量形式</p>
-<p>$$\nabla_\mu\psi^a&#x3D;\partial_\mu\psi^a+i\omega_{\mu}^{\; cd}(S_{cd})^a_{\; b}\psi^b$$</p>
-<p>现在考虑平直时空狄拉克方程 $(i\gamma^a \partial_a-m)\psi&#x3D;0$，$\lbrace \gamma^a,\gamma^b\rbrace&#x3D;2\eta^{ab}I$ 在弯曲时空的推广，将普通导数换为协变导数 $\partial_a \to e_a^{\;\mu} \nabla_\mu$</p>
-<p>$$(i\gamma^a e_a^{\;\mu} \nabla_\mu-m)\psi&#x3D;(i\underline{\gamma}^\mu \nabla_\mu-m)\psi&#x3D;0 $$</p>
-<p>$\underline{\gamma}^\mu&#x3D;\gamma^a e_a^{\;\mu}$ 为与时空有关的狄拉克矩阵，满足$\lbrace{\underline{\gamma}^\mu,\underline{\gamma}^\mu\rbrace}&#x3D;2g^{\mu\nu}I$</p>
-<p>现在考虑混合基变化$\psi’&#x3D;S(L)\psi$，$e^{\prime \;\nu}_b&#x3D;\displaystyle\frac{\partial x’^\nu}{\partial x^\mu}(L^{-1})^a_{\; b}e^{\;\mu}_{a}$，代入狄拉克方程</p>
-<p>$$(iS(L)\gamma^a S^{-1}(L)L^b_{\;a} e^{\prime \;\nu}_b \nabla’_\nu -m)\psi’&#x3D;0$$</p>
-<p>可知 $S(L)\gamma^a S^{-1}(L)L^b_{\;a}&#x3D;\gamma^b$，考虑无穷小变换$L^b_{\;a}&#x3D;\delta^b_{\;a}+\delta\epsilon^b_{\;a}$</p>
-<p>$$i\delta\epsilon_{cd}[S^{cd},\gamma^a]+\delta\epsilon^a_{\;b}\gamma^b&#x3D;0$$</p>
-<p>取$S^{cd}&#x3D;\displaystyle-\frac{i}{8}[\gamma^c,\gamma^d]$ 可同时满足该式和对易关系$\eqref{eq8}$，协变导数和其对易成为</p>
-<p>$$\nabla_\mu\psi&#x3D;\partial_\mu\psi +\frac{1}{8}\omega_{\mu ab}[\gamma^a,\gamma^b]\psi \tag{9}\label{eq9}$$</p>
-<p>$$[\nabla_\mu,\nabla_\nu]\psi&#x3D;-\frac{1}{8}R_{\mu\nu ab}[\gamma^a,\gamma^b]\psi \tag{10}\label{eq10}$$</p>
-<p>还原单位，狄拉克方程现在可写为</p>
-<p>$$ i\hbar\gamma^a(v_a+\frac{1}{8}\omega_{abc}[\gamma^b,\gamma^c])\psi&#x3D;mc \psi \tag{11}\label{eq11}$$</p>
-<p>利用$\eqref{eq4}$和$\eqref{eq5}$ 可得 </p>
-<p>$$\nabla_\mu\underline{\gamma}^\nu&#x3D;0$$</p>
-<p>结合$\eqref{eq10}$和比安基恒等式 $R_{\mu\nu\lambda\rho}+R_{\mu\lambda\rho\nu}+R_{\mu\rho\nu\lambda}&#x3D;0$ 可得</p>
-<p>$$(\underline{\gamma}^\mu\nabla_\mu)^2&#x3D;\square +\displaystyle\frac{R}{4} \tag{12}\label{eq12}$$</p>
-<hr>
-<p>From Quantum Field Theory In Curved Spacetime by Leonard Parker and David Toms</p>
+    <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>建立群元$g\in G$与线性空间算符之间的同态，算符对应的方阵$D(g)$称维群$G$的一个<strong>表示</strong>，表示的维数为矩阵维数，相似矩阵为<strong>等价表示</strong></p>
+<p>$$D(g_1)D(g_2)&#x3D;D(g_1g_2)$$</p>
+<p>若表示矩阵可通过相似变换化为如下形式，则称其为<strong>可约表示</strong>；若可以通过相似变换化为方块对角阵，则称<strong>完全可约表示</strong>，进而分解成不可约表示的<strong>直和</strong></p>
+<p>$$D(g)&#x3D;\begin{pmatrix}<br>    D_1(g)&amp;R(g)\\<br>    O&amp;D_2(g)<br>\end{pmatrix}$$</p>
+<p>群元的表示矩阵的迹称为其<strong>特征标</strong>，同一共轭类的元素特征标相同，</p>
+<p>$$\chi(g)&#x3D;\Tr{D(g)}$$</p>
+<p>表示矩阵全为酉阵的表示称为<strong>幺正表示</strong></p>
+<h2 id="基本定理"><a href="#基本定理" class="headerlink" title="基本定理"></a>基本定理</h2><p><strong>定理1</strong> 若群$G$含有正规子群$H$，则商群$G&#x2F;H$的表示也为$G$的非忠实表示；若$D(g)$为$G$的非忠实表示，则$G$存在正规子群$G$使得$D(g)$为$G&#x2F;H$的忠实表示</p>
+<p><strong>定理2</strong> 有限群可约表示一定完全可约</p>
+<p><strong>定理3</strong> 有限群的每个表示均有等价幺正表示</p>
+<p><strong>舒尔引理</strong> 设$D(g)$为群$G$的$d$维不可约表示，若$M$与所有表示矩阵对易，则$M&#x3D;\lambda I$</p>
+<p><strong>定理5</strong> 设$D^{(p)}(g)$与$D^{(q)}(g)$为群$G$的两个不等价不可约幺正表示，维数分别为$d_p,d_q$，若有$d_p\times d_q$矩阵$M$满足$MD^{(p)}(g)&#x3D;D^{(q)}(g)M$，则有</p>
+<ol>
+<li>若$d_p\neq d_q$，则$M&#x3D;0$</li>
+<li>若$d_p&#x3D; d_q$，则$M&#x3D;0$或$\det{M}\neq 0$</li>
+</ol>
+<p><strong>广义正交定理</strong> 设$D^{(p)}(g)$与$D^{(q)}(g)$为$n$阶群$G$的两个不可约表示，维数分别为$d_p,d_q$</p>
+<p>$$\sum_{g\in G}D^{(p)*}_{\mu\nu}D^{(q)}_{\mu’\nu’}&#x3D;\frac{n}{d_p}\delta_{pq}\delta_{\mu\mu’}\delta_{\nu\nu’}$$</p>
+<p><strong>Burnside定理</strong> 群$G$的所有不等价不可约表示维数的平方和等于$G$的维数</p>
+<p>$$d_1^2+d_2^2+\cdots d_r^2&#x3D;n$$</p>
+<p><strong>特征标正交定理</strong> 设$D^{(p)}(g)$与$D^{(q)}(g)$为$n$阶群$G$的两个不等价不可约表示</p>
+<p>$$\sum_{g\in G}\chi^{(p)*}\chi^{(q)}&#x3D;n\delta_{pq}$$</p>
+<p><strong>定理9</strong> 群$G$不等价不可约表示的个数等于$G$共轭类的个数</p>
+<p><strong>定理10</strong> 两个表示等价的充要条件为群元特征标相同</p>
+<h2 id="正则表示"><a href="#正则表示" class="headerlink" title="正则表示"></a>正则表示</h2><p>用群元作为负载表示的基，可得到正则表示矩阵</p>
+<p>$$gg_i&#x3D;\displaystyle\sum_k g_k D^{(c)}(g)_{ki}$$</p>
+<p>$$D^{(c)}(g)_{ki}&#x3D;\left\lbrace\begin{aligned}<br>    &amp;1\qquad g_k&#x3D;gg_i\\<br>    &amp;0\qquad \text{other}<br>\end{aligned}\right.$$</p>
+<p>$$\chi^{(c)}(g)\qquad \left\lbrace\begin{array}<br>    &amp;n\qquad g&#x3D;e\\<br>    0\qquad g\neq e<br>\end{array}\right.$$</p>
+<p>可以构造$g_i\sim g_j^{-1}$的乘法表写出正则表示矩阵</p>
+<p>由于$\displaystyle\sum_{g\in G}\chi^{(c)*}\chi^{(c)}&#x3D;n^2&gt;n$，故正则表示一定为可约表示，可以约化为$G$所有不可约表示的直和，每个不可约表示的重数与其维数相同</p>
+<p>$$D^{(c)}(g)&#x3D;\sum_{p}d_p D^{(p)}(g)$$</p>
+<p>$$\chi^{(c)}(g)&#x3D;\sum_{p}d_p \chi^{(p)}(g)$$</p>
+<h2 id="基础表示"><a href="#基础表示" class="headerlink" title="基础表示"></a>基础表示</h2><p>用子群$H$的陪集作为负载表示的基，可得到基础表示矩阵</p>
+<p>$$g(g_iH)&#x3D;\displaystyle\sum_k (g_kH) D^{(d)}(g)_{ki}$$</p>
+<p>$$D^{(d)}(g)_{ki}&#x3D;\left\lbrace\begin{aligned}<br>    &amp;1\qquad g_kH&#x3D;gg_iH\\<br>    &amp;0\qquad \text{other}<br>\end{aligned}\right.$$</p>
+<p>可以构造$g_iH\sim Hg_j^{-1}$的乘法表写出基础表示矩阵</p>
+<h2 id="诱导表示"><a href="#诱导表示" class="headerlink" title="诱导表示"></a>诱导表示</h2><p>群$G$的表示一定是其子群$H$的表示，反之从$H$的不可约表示可以诱导出$G$中的不可约表示</p>
+<p>先用$H$的陪集构造$G$的基础表示$D^{(d)}(g)$，再将其与$H$的不可约表示$D^{(H)}(h)$直积，即可得到$D^{(H)}(g)$在$G$中的诱导表示$D^{(I)}(g)$</p>
+<p>$$D^{(I)}(g)&#x3D;D^{(d)}(g) \otimes D^{(H)}(h)$$</p>
+<p>诱导表示一般为$G$的可约表示，$G$的不可约表示一般为$H$的可约表示</p>
+<p><strong>Frobenuis倒易定理</strong> $D^{(I)}(g)&#x3D;D^{(d)}(g) \otimes D^{(H)}(h)$中包含$G$不可约表示$D^{G}(g)$的重数等于$D^{G}(h)$中包含$H$的不可约表示$D^{(H)}(h)$的重数</p>
+<h2 id="特征标表"><a href="#特征标表" class="headerlink" title="特征标表"></a>特征标表</h2><p>找出群$G$的所有不等价不可约表示$\Gamma^{(i)}$和所有共轭类$g_{(i)}$，可以由特征标正交关系求出$g_{(i)}$在$\Gamma^{(i)}$下的特征标，从而构造$G$的特征标表$\Gamma^{(i)}\sim g_{(i)}$</p>
+<h2 id="直积与Clebsch-Gordan系数"><a href="#直积与Clebsch-Gordan系数" class="headerlink" title="直积与Clebsch-Gordan系数"></a>直积与Clebsch-Gordan系数</h2><p>不同群的不可约表示的直积为群直积的不可约表示</p>
+<p><strong>定理11</strong> 同一个群的不可约幺正表示的直积仍为该群的幺正表示，一般为可约表示</p>
+<p>$$D^{(p,g)}(g)&#x3D;D^{(p)}(g)\otimes D^{(q)}(g)$$</p>
+<p>$$\chi^{(p,g)}(g)&#x3D;\chi^{(p)}(g)\chi^{(q)}(g)$$</p>
+<p>由群$G$的特征标表可将其不可约表示的直积约化为不可约表示的直和</p>
+<p>$$D^{(p,q)}(g)&#x3D;\sum_\lambda a_\lambda D^{(\lambda)}(g)$$</p>
+<p>$$\chi^{(p,q)}(g)&#x3D;\sum_\lambda a_\lambda \chi^{(\lambda)}(g)$$</p>
+<p>表示的约化相当于负载基的重新线性组合，组合系数称为<strong>Clebsch-Gordan系数</strong></p>
+<p>$$w_l^{(\lambda)\alpha}&#x3D;\sum_{i,j}\braket{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}w_{i,j}$$</p>
+<p>$$w_{i,j}&#x3D;\sum_{\alpha,\lambda,l}\braket{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}w_l^{(\lambda)\alpha}$$</p>
+<p>由于为幺正变换</p>
+<p>$$\braket{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}&#x3D;\braket{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}^*$$</p>
+<p>有正交关系</p>
+<p>$$\sum_{\alpha,\lambda,l}\braket{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}\braket{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}{\begin{matrix}p&amp;q\\i’&amp;j’\end{matrix}}&#x3D;\delta_{ii’}\delta_{jj’}$$</p>
+<p>$\alpha&gt;1$时C-G系数不能唯一确定，$\alpha&#x3D;1$时可以确定到差一个相因子</p>
+<p>$$\left|\braket{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}{\begin{matrix}\lambda \\k\end{matrix}}\right|^2&#x3D;\frac{d_\lambda}{n}\sum_{g\in G}D^{(p)}_{ii}D^{(q)}_{jj}D^{(\lambda)}_{kk}$$</p>
 
   </article>
   <!-- tag -->
@@ -336,16 +328,16 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="../../27/%E5%8F%B2%E7%93%A6%E8%A5%BF%E6%97%B6%E7%A9%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="../%E7%89%B9%E5%BE%81%E6%A0%87%E8%A1%A8%E8%A1%A8/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          史瓦西时空
+          特征标表表
         </a>
       
     </div>
     <div>
       
-        <a href="../../20/%E5%AE%87%E5%AE%99%E5%AD%A6%E6%A8%A1%E5%9E%8B/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          宇宙学模型
+        <a href="../../04/%E9%BB%8E%E6%9B%BC-zeta/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          黎曼$\zeta$函数
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       

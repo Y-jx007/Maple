@@ -37,11 +37,11 @@
 
 
 
-<title>归档: 2023 | 枫</title>
+<title>路径积分 | 枫</title>
 
 
 
-<link rel="icon" href="../../images/favicon.png">
+<link rel="icon" href="../../../../images/favicon.png">
 
 
 
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        
+        路径积分
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="../../archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="../../categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -224,222 +224,203 @@
 </div>
 
   <main class="p-12">
-    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
-  <div class="flex flex-col h-48 items-center justify-center">
-    <h1 class="site-title text-4xl leading-relaxed">
-      枫
-    </h1>
-    <p class="text-gray-500 mt-2">
-      
-    </p>
-  </div>
-  
-  
-    
-    
-      <div class="relative pointer-events-none">
-        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        路径积分
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-06-02 21:56:03</time>
+          <span class="text-gray-400">·</span>
+          <span>3 min</span>
+          <span class="text-gray-400">·</span>
+          <span>611 words</span>
+        </section>
       </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="传播子"><a href="#传播子" class="headerlink" title="传播子"></a>传播子</h2><p>演化算符 $\ket{\psi(t)}&#x3D;\hat{U}(t,t_0)\ket{\psi(t_0)}$ ，薛定谔方程 $i\hbar \partial_t \ket{\psi(t)}&#x3D;\hat{H}\ket{\psi(t)}$</p>
+<p>$\hat{H}\hat{U}&#x3D;i\hbar\partial_t\hat{U}$，若哈密顿量不显含时间，得$\hat{U}(t,t_0)&#x3D;\displaystyle \theta(t-t_0)e^{-i\hat{H}(t-t_0)&#x2F;\hbar}$</p>
+<p>$\psi(x,t)&#x3D;\braket{x}{\psi(t)}&#x3D;\bra{x}\hat{U}(t,t_0)\ket{\psi(t_0)}&#x3D;\displaystyle\int_{x_0}\bra{x}\hat{U}(t,t_0)\ket{x_0}\bra{x_0}\ket{\psi(t_0)}\dd x_0$</p>
+<p>传播子 $\psi(x,t)&#x3D;\displaystyle\int_{x_0}U(x,t;x_0,t_0)\psi(x_0,t_0)\dd x_0$</p>
+<p>$U(x,t;x_0,t_0)&#x3D;\bra{x}\hat{U}(t,t_0)\ket{x_0}&#x3D;\displaystyle\sum_n \bra{x}\hat{U}(t,t_0)\ket{n}\bra{n}\ket{x_0}&#x3D;\sum_n \bra{x}e^{-i\hat{H}(t-t_0)&#x2F;\hbar}\ket{n}\bra{n}\ket{x_0}$</p>
+<p>$U(x,t;x_0,t_0)&#x3D;\displaystyle\sum_n e^{-iE_n(t-t_0)&#x2F;\hbar}\psi_n(x)\psi_n^*(x_0)$</p>
+<h2 id="路径积分"><a href="#路径积分" class="headerlink" title="路径积分"></a>路径积分</h2><p>$\hat{U}(t,t_0)&#x3D;\hat{U}(t,t_{n-1})\hat{U}(t_{n-1},t_{n-2})\cdots \hat{U}(t_{1},t_{0})$</p>
+<p>$$\begin{aligned}<br>    U(x_{i+1},t_{i+1};x_i,t_i)&amp;&#x3D;\bra{x_{i+1}}e^{-i\hat{H}{\Delta t}&#x2F;\hbar}\ket{x_i}\\<br>\qquad\\<br>&amp;&#x3D;\int \dd p_i \bra{x_{i+1}}\ket{p_i}\bra{p_i}e^{-i\hat{H}{\Delta t}&#x2F;\hbar}\ket{x_i}\\<br>\qquad\\<br>&amp;&#x3D;\int \frac{\dd p_i}{2\pi \hbar}e^{ip_i\Delta x&#x2F;\hbar}e^{-iH(x_i,p_i){\Delta t}&#x2F;\hbar}\\<br>\qquad\\<br>&amp;\approx\int \frac{\dd p_i}{2\pi \hbar}e^{iL(x_i,p_i)\Delta t&#x2F;\hbar}<br>\end{aligned}$$</p>
+<p>$$\begin{aligned}U(x,t;x_0,t_0)&amp;\approx \int \prod _{i&#x3D;0}^{n-1}\frac{\dd p_i}{2\pi \hbar}\prod _{i&#x3D;0}^{n-1} \dd x_i\exp\left[\sum_{\Delta t}\frac{iL(x_i,p_i)\Delta t}{\hbar}\right]\\<br>\qquad\\<br>&amp;\approx \int \prod _{i&#x3D;0}^{n-1}\frac{\dd p_i}{2\pi \hbar}\prod _{i&#x3D;0}^{n-1} \dd x_i\exp\left[\frac{i}{\hbar}\sum_{\Delta t} \left(p_i\dot{x}_i-\frac{p_i^2}{2m}-V(x_i)\right)\Delta t\right]\\<br>\qquad\\<br>&amp; &#x3D; \left(\frac{m}{2\pi\hbar i\Delta t}\right)^{n&#x2F;2}\int \prod _{i&#x3D;0}^{n-1} \dd x_i\exp\left[\frac{i}{\hbar}\int_{t_0}^t L(x(t’),p(t’))\dd t’\right]\\<br>\qquad\\<br>&amp;&#x3D; \int \mathcal{D}x(t’)\exp\left[\frac{i}{\hbar}S(x,t;x_0,t_0)\right]<br>\end{aligned}<br>$$</p>
+<h2 id="含时哈密顿量"><a href="#含时哈密顿量" class="headerlink" title="含时哈密顿量"></a>含时哈密顿量</h2><p>哈密顿量显含时间时，对 $\hat{H}\hat{U}&#x3D;i\hbar\partial_t\hat{U}$ 积分得</p>
+<p> $U(t,t_0)&#x3D;1-\displaystyle\frac{i}{\hbar}\int_{t_0}^t H(t’)U(t’,t_0)\dd t’$，迭代逐段积分</p>
+<p> $$\begin{aligned}<br>    U(t,t_0)&amp;&#x3D;1-\displaystyle\frac{i}{\hbar}\int_{t_0}^t H(t_1)\left[1-\displaystyle\frac{i}{\hbar}\int_{t_0}^{t_1} H(t_2)U(t_2,t_0)\dd t_2\right]\dd t_1&#x3D;\cdots\\<br>    \qquad\\<br>    &amp;&#x3D;1+\sum_{n&#x3D;1}^\infty\left(-\frac{i}{\hbar}\right)^n\int_{t_0}^{t}\dd t_1\int_{t_0}^{t_1}\dd t_2\cdots\int_{t_0}^{t_{n-1}}\dd t_n H(t_1)H(t_2)\cdots H(t_n)<br> \end{aligned}$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
     
-    <a href="../../2023/06/05/%E7%BD%AE%E6%8D%A2%E7%BE%A4/">
-      <header>
-        <h2 class="font-bold text-xl">
-          置换群
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          5 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/05/%E7%89%B9%E5%BE%81%E6%A0%87%E8%A1%A8%E8%A1%A8/">
-      <header>
-        <h2 class="font-bold text-xl">
-          特征标表表
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/05/%E7%BE%A4%E8%A1%A8%E7%A4%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
-          群表示
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/04/%E9%BB%8E%E6%9B%BC-zeta/">
-      <header>
-        <h2 class="font-bold text-xl">
-          黎曼$\zeta$函数
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 04
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/03/Lie%E7%BE%A4/">
-      <header>
-        <h2 class="font-bold text-xl">
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../03/Lie%E7%BE%A4/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
           Lie群
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 03
-          ·
-          2 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/02/%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/">
-      <header>
-        <h2 class="font-bold text-xl">
-          路径积分
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 02
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/27/%E5%8F%B2%E7%93%A6%E8%A5%BF%E6%97%B6%E7%A9%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../05/27/%E5%8F%B2%E7%93%A6%E8%A5%BF%E6%97%B6%E7%A9%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           史瓦西时空
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 27
-          ·
-          7 min
-        </p>
-      </section>
-    </a>
-  
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
     
-    
-    <a href="../../2023/05/22/Lorentz%E8%81%94%E7%BB%9C/">
-      <header>
-        <h2 class="font-bold text-xl">
-          自旋联络
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 22
-          ·
-          10 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/20/%E5%AE%87%E5%AE%99%E5%AD%A6%E6%A8%A1%E5%9E%8B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          宇宙学模型
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 20
-          ·
-          7 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/19/%E5%90%91%E9%87%8F%E4%B8%9B%E4%B8%8EG-%E4%B8%BB%E4%B8%9B/">
-      <header>
-        <h2 class="font-bold text-xl">
-          向量丛与G-主丛
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 19
-          ·
-          14 min
-        </p>
-      </section>
-    </a>
-  
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
 </section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
 
   </main>
   <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
