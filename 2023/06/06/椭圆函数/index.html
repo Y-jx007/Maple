@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>椭圆函数 | 枫</title>
+
+
+
+<link rel="icon" href="../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      isDark = !isDark;
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="枫" />
+          枫
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        椭圆函数
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        椭圆函数
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-06-07 00:12:01</time>
+          <span class="text-gray-400">·</span>
+          <span>12 min</span>
+          <span class="text-gray-400">·</span>
+          <span>2.5k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="椭圆函数的概念"><a href="#椭圆函数的概念" class="headerlink" title="椭圆函数的概念"></a>椭圆函数的概念</h2><p>$\mathbb{C}$上具有线性无关的双<strong>基本周期</strong>$\omega_1,\omega_2$的亚纯函数$f(z)$称为<strong>椭圆函数</strong></p>
+<p>$f(z)$所有周期的集合$M&#x3D;\{n_1\omega_1+n_2\omega_2|n_1,n_2\in\mathbb{Z}\}$称为$f(z)$的<strong>周期模</strong></p>
+<p>$\forall\; a\in\mathbb{C}$，$P&#x3D;\{a+t_1\omega_1+t_2\omega_2|t_1,t_2\in [0,1)\}$称为$f(z)$的一个<strong>基本平行四边形</strong></p>
+<p>周期模中所有点形成<strong>网格</strong>$L$，给定基点$\alpha$，商集$\mathbb{C}&#x2F;L\cong T^2$对应唯一基本平行四边形</p>
+<p>若$f(z)$无极点，由周期性可知其在$\mathbb{C}$上有界，根据刘维尔定理</p>
+<p><strong>定理1</strong>$\quad$无极点椭圆函数必为常数</p>
+<p>取任一基本平行四边形$P$，亚纯函数$f(z)$极点孤立，因此$f(z)$在$\overline{P}$上极点个数有限；<br>而$1&#x2F;f(z)$也为亚纯函数，因此$f(z)$在$\overline{P}$上零点个数有限</p>
+<p><strong>定理2</strong>$\quad$椭圆函数在$\mathbb{C}&#x2F;L$上只有有限个极点和零点</p>
+<p>由于极点非稠密，故可选取基本平行四边形$P$使得$f(z)$在$\partial P$上无极点，由周期性，$f(z)$在$\partial P$上环路积分为零，可知$f(z)$在$\partial P$内留数之和为零</p>
+<p><strong>定理3</strong>$\quad$椭圆函数在$\mathbb{C}&#x2F;L$上的留数之和为零</p>
+<p>考虑$g(z)&#x3D;f’(z)&#x2F;f(z)$，可知$g(z)$也为椭圆函数，且仅含有单极点，$f(z)$零点阶数为$g(z)$在该点留数，$f(z)$极点的阶数为$g(z)$在该点留数相反数，由定理3</p>
+<p><strong>定理4</strong>$\quad$椭圆函数在$\mathbb{C}&#x2F;L$上的零点阶数和与极点阶数和相等</p>
+<p>考虑$g(z)&#x3D;f(z)-C$，$g(z)$极点与$f(z)$相同，零点为$f(z)&#x3D;C$，由定理4</p>
+<p><strong>定理5</strong>$\quad$椭圆函数在$\mathbb{C}&#x2F;L$上取到$\overline{\mathbb{C}}$所有值的阶数和相等，称为椭圆函数的<strong>阶数</strong></p>
+<p>由定理3，可知椭圆函数<strong>阶数大于等于2</strong></p>
+<p>选取基本平行四边形$P$使得$f(z)$在$\partial P$上无极点，考虑$f(z)$重数加权的零点坐标$\alpha_ja_j$与极点坐标$\beta_{k}b_{k}$，在$\overline{P}$上加和作差</p>
+<p>$$\begin{aligned}<br>&amp;\sum_{j&#x3D;1}^m\alpha_ja_j-\displaystyle\sum_{k&#x3D;1}^n\beta_{k}b_{k}&#x3D;\displaystyle \frac{1}{2\pi i}\int_{\partial P}\frac{zf’(z)}{f(z)}\dd z\\<br>\qquad\\<br>&amp;&#x3D; \frac{1}{2\pi i}\left[\left(\int_{a}^{a+\omega_1}-\int_{a+\omega_2}^{a+\omega_1+\omega_2}\right)+\left(\int_{a+\omega_1}^{a+\omega_1+\omega_2}-\int_{a}^{a+\omega_2}\right)\right]\frac{zf’(z)}{f(z)}\dd z\\<br>\qquad\\<br>&amp;&#x3D;\frac{1}{2\pi i}\left[-\omega_2\int_{a}^{a+\omega_1}\frac{f’(z)}{f(z)}\dd z+\omega_1\int_{a}^{a+\omega_2}\frac{f’(z)}{f(z)}\dd z\right]\\<br>\qquad\\<br>&amp;&#x3D;-n_2\omega_2+n_1\omega_1<br>\end{aligned}$$</p>
+<p><strong>定理6</strong> $\quad$椭圆函数在$\mathbb{C}&#x2F;L$上的加权零点坐标之和与极点坐标之和的差属于其周期模</p>
+<h2 id="Weierstrass椭圆函数"><a href="#Weierstrass椭圆函数" class="headerlink" title="Weierstrass椭圆函数"></a>Weierstrass椭圆函数</h2><p>由上可知，最简单的椭圆函数阶数为2，其在$\mathbb{C}&#x2F;L$上有一个二阶极点或两个单极点，</p>
+<p>维尔斯特拉斯通过构造二阶极点的函数发展理论，雅可比则研究两个单极点的情况，</p>
+<p>前者适合理论发展，后者适合解决实际问题</p>
+<p>取周期模$M&#x3D;\{n_1\omega_1+n_2\omega_2|n_1,n_2\in\mathbb{Z}\}$，$\omega\in M$，</p>
+<p>$P_n$为以$\pm n(\omega_1+\omega_2),\pm n(\omega_1-\omega_2)$为顶点的平行四边形，</p>
+<p>可知$P_n$上含有$8n$个$M$中的周期，令原点到$\partial P_1$的距离为$d$，考虑如下级数</p>
+<p>$$\begin{aligned}\sum_{\omega \neq 0}\frac{1}{|\omega|^{2+\epsilon}}&amp;&#x3D;\sum_{n&#x3D;1}^\infty\sum_{\omega \in P_n}\frac{1}{|\omega|^{2+\epsilon}}\\<br>\qquad\\<br>&amp;\le \frac{1}{d^2}\sum_{n&#x3D;1}^\infty\frac{1}{n^{1+\epsilon}}<br>\end{aligned}$$</p>
+<p><strong>引理1</strong>$\quad$ $\displaystyle\sum_{\omega \neq 0}\frac{1}{|\omega|^{\alpha}}$在$\alpha&gt;2$时收敛</p>
+<h3 id="wp-函数"><a href="#wp-函数" class="headerlink" title="$\wp$函数"></a>$\wp$函数</h3><p>$$\wp(z)&#x3D;\frac{1}{z^2}+\sum_{\omega\neq 0}\left[\frac{1}{(z-\omega)^{2}}-\frac{1}{\omega^{2}}\right]$$</p>
+<p>$$\wp’(z)&#x3D;-2\sum_{\omega}\frac{1}{(z-\omega)^{3}}$$</p>
+<p>由引理1可知$\wp(z)$与$\wp’(z)$均为$\mathbb{C}$上亚纯偶函数，又$\wp’(z)&#x3D;\wp’(z+\omega)$，积分有$\wp(z)&#x3D;\wp(z+\omega)+C$，取$z&#x3D;-\omega&#x2F;2$，因为$\wp(z)$为<strong>偶函数</strong>，可得$C&#x3D;0$</p>
+<p>故$\wp(z)$为基本周期为$\omega_1,\omega_2$的二阶椭圆函数，$\omega\in M$为其二阶极点</p>
+<p>将$\wp(z)$在$z&#x3D;0$附近洛朗展开</p>
+<p>$$\begin{aligned}\wp(z)&amp;&#x3D;\frac{1}{z^2}+\sum_{\omega\neq 0}\left[\frac{1}{\omega^2}\left(1+\frac{z}{\omega}+\left(\frac{z}{\omega}\right)^2+\cdots\right)^2-\frac{1}{\omega^{2}}\right]\\<br>\quad\\<br>&amp;&#x3D;\frac{1}{z^2}+\sum_{\omega\neq 0}\left[\frac{1}{\omega^2}\left(1+2\frac{z}{\omega}+3\left(\frac{z}{\omega}\right)^2+\cdots\right)-\frac{1}{\omega^{2}}\right]\\<br>\quad\\<br>&amp;&#x3D;\frac{1}{z^2}+\sum_{k&#x3D;1}^{\infty}c_kz^k\qquad c_k&#x3D;(k+1)\sum_{\omega\neq 0}\frac{1}{\omega^{k+2}}\end{aligned}$$</p>
+<p>由$\omega$对称性知，当$k$为奇数时，$c_k&#x3D;0$，$\wp(z)$的洛朗展式简化为</p>
+<p>$$\wp(z)&#x3D;\frac{1}{z^2}+\sum_{m&#x3D;1}^{\infty}c_mz^{2m}\qquad c_m&#x3D;(2m+1)\sum_{\omega\neq 0}\frac{1}{\omega^{2m+2}}$$</p>
+<p>引入记号$b_m&#x3D;\displaystyle\sum_{\omega\neq 0}\frac{1}{\omega^{m}}$，用$b_m$表示$\wp(z)$和$\wp’(z)$的洛朗展式</p>
+<p>$$\wp(z)&#x3D;\displaystyle\frac{1}{z^2}+3b_4z^2+5b_6z^4+\cdots$$</p>
+<p>$$\wp’(z)&#x3D;\displaystyle-\frac{2}{z^3}+6b_4z+20b_6z^3+\cdots$$</p>
+<p>可构造$\wp(z)$和$\wp’(z)$的不含极点的多项式</p>
+<p>$$P(z)&#x3D;\wp’^2(z)-4\wp^3(z)+60b_4\wp(z)$$</p>
+<p>由定理1知椭圆函数$P(z)$为常数，计算等式右边常数项为$-140b_6$</p>
+<p>令$g_2&#x3D;60b_4$，$g_3&#x3D;140b_6$，可得微分方程</p>
+<p>$$\wp’^2(z)&#x3D;4\wp^3(z)-g_2\wp(z)-g_3$$</p>
+<p>令$u&#x3D;\wp(z)$，可解得</p>
+<p>$$z&#x3D;\int_{\infty}^u\frac{\dd u}{\sqrt{4u^3-g_2u-g_3}}$$</p>
+<p>说明$\wp(z)$为<strong>椭圆积分的逆</strong>，根式下多项式不能有重根，否则积分将会有初等表示</p>
+<p>设$\wp’(z)$的零点为$e_1,e_2,e_3$，微分方程可写为</p>
+<p>$$\wp’^2(z)&#x3D;4(\wp(z)-e_1)(\wp(z)-e_2)(\wp(z)-e_3)$$</p>
+<p>由$\wp’(z)$为奇函数和其周期性可以定出</p>
+<p>$$\displaystyle e_1&#x3D;\wp(\frac{\omega_1}{2})\quad e_2&#x3D;\wp(\frac{\omega_2}{2})\quad e_3&#x3D;\wp(\frac{\omega_1+\omega_2}{2})$$</p>
+<p>由于$\wp’(z)$的零点为二阶椭圆函数$\wp(z)$的二阶零点，可知这$\wp’(z)$的三个零点确实<strong>互异</strong></p>
+<p>由韦达定理可得</p>
+<p>$$e_1+e_2+e_3&#x3D;0$$</p>
+<p>$$e_1e_2+e_2e_3+e_3e_1&#x3D;-\frac{g_2}{4}$$</p>
+<p>$$e_1e_2e_3&#x3D;\frac{g_3}{4}$$</p>
+<p>$\omega_1&#x3D;2i,\omega_2&#x3D;2$时$\wp(z)$图像如下</p>
+<table>
+<thead>
+<tr>
+<th><img src="/images/wp.png"></th>
+<th><img src="/images/wp%E5%8F%8D.png"></th>
+<th><img src="/images/%E8%BE%90%E8%A7%92.png"></th>
+</tr>
+</thead>
+</table>
+<h3 id="zeta-函数"><a href="#zeta-函数" class="headerlink" title="$\zeta$函数"></a>$\zeta$函数</h3><p>由于$\wp(z)$仅有二阶极点，留数为零，故其可写成某单值函数的导数，习惯上记为$-\zeta(z)$，直接对$\wp(z)$表达式积分并要求$\zeta(z)$为<strong>奇函数</strong>可得</p>
+<p>$$\zeta(z)&#x3D;\frac{1}{z}+\sum_{\omega\neq 0}\left(\frac{1}{z-\omega}+\frac{1}{\omega}+\frac{z}{\omega^2}\right)$$</p>
+<p>由引理1知$\zeta(z)$同样为$\mathbb{C}$上亚纯函数，利用$\wp(z)$周期性和对称性可知</p>
+<p>$$\zeta(z+\omega_i)&#x3D;\zeta(z)+\eta_i\qquad \eta_i&#x3D;2\zeta\left(\frac{\omega_i}{2}\right)\qquad i&#x3D;1,2$$</p>
+<p>因此称$\zeta(z)$为<strong>准周期函数</strong>，$\eta_1,\eta_2$为$\zeta(z)$的<strong>基本准周期</strong></p>
+<p>选取基本平行四边形$P$使得$\zeta(z)$在$\partial P$上无极点，对$\zeta(z)$在$\partial P$上积分</p>
+<p>$$\begin{aligned}<br>\int_{\partial P}\zeta(z)\dd z&amp;&#x3D;\left[\left(\int_{a}^{a+\omega_1}-\int_{a+\omega_2}^{a+\omega_1+\omega_2}\right)+\left(\int_{a+\omega_1}^{a+\omega_1+\omega_2}-\int_{a}^{a+\omega_2}\right)\right]\zeta(z)\dd z\\<br>\quad\\<br>&amp;&#x3D;-\eta_2\omega_1+\eta_1\omega_2<br>\end{aligned}$$</p>
+<p>由于$\zeta(z)$在$\partial P$内留数为1，故有<strong>Legendre关系</strong></p>
+<p>$$\eta_1\omega_2-\eta_2\omega_1&#x3D;2\pi i$$</p>
+<p>$\omega_1&#x3D;2i,\omega_2&#x3D;2$时$\zeta(z)$图像如下</p>
+<table>
+<thead>
+<tr>
+<th><img src="/images/wpzeta.png"></th>
+<th><img src="/images/wpzeta%E5%8F%8D.png"></th>
+<th><img src="/images/%E8%BE%90%E8%A7%92.png"></th>
+</tr>
+</thead>
+</table>
+<h3 id="sigma-函数"><a href="#sigma-函数" class="headerlink" title="$\sigma$函数"></a>$\sigma$函数</h3><p>继续对$\zeta(z)$进行积分，由于积分结果为多值对数函数，故用指数函数来消除多值性，并且需将积分后的级数每项减去常数$\ln(-\omega)$以保证其收敛性，将此函数记为$\sigma(z)$</p>
+<p>$\sigma(z)&#x3D;\exp\left[{\displaystyle\int\zeta(z)}-\displaystyle\sum_{\omega\neq 0}\ln(-\omega)\right]$，即$\displaystyle\frac{\sigma’(z)}{\sigma(z)}&#x3D;\zeta(z)$，可得其典范乘积表达式</p>
+<p>$$\sigma(z)&#x3D;z\prod_{\omega\neq 0}\left(1-\frac{z}{\omega}\right)\exp\left[\frac{z}{\omega}+\frac{1}{2}\left(\frac{z}{\omega}\right)^2\right]$$</p>
+<p>从表达式可知$\sigma(z)$为<strong>奇函数</strong></p>
+<p>令$\displaystyle E(z)&#x3D;(1-z)\exp\left(z+\frac{z^2}{2}\right)&#x3D;\displaystyle\exp\left(-\sum_{k&#x3D;3} \frac{z^k}{k}\right)$</p>
+<p>利用不等式$|e^z-1|\le e^{|z|}-1$和$e^x-1\le xe^x$</p>
+<p><strong>引理2</strong>$\quad$令$\displaystyle E(z)&#x3D;(1-z)\exp\left(z+\frac{z^2}{2}\right)$，则 $\forall\;|z|\le \displaystyle\frac{1}{2},|E(z)-1|\le 2|z|^3$</p>
+<p>由引理2，$\sigma(z)$为$\mathbb{C}$上整函数</p>
+<p>由$\zeta(z)$准周期性，$\displaystyle\frac{\sigma’(z+\omega_1)}{\sigma(z+\omega_1)}&#x3D;\frac{\sigma’(z)}{\sigma(z)}+\eta_1$，积分并利用$\sigma(z)$为奇函数可得</p>
+<p>$$\sigma(z+\omega_i)&#x3D;-\sigma(z)\exp\left(\eta_i z+\frac{\eta_i\omega_i}{2}\right)\qquad i&#x3D;1,2$$</p>
+<p>$\omega_1&#x3D;2i,\omega_2&#x3D;2$时$\sigma(z)$图像如下，其中模做了对数处理 $|w|\mapsto\ln(1+|w|)$</p>
+<table>
+<thead>
+<tr>
+<th><img src="/images/wpsigma.png"></th>
+<th><img src="/images/wpsigma%E5%8F%8D.png"></th>
+<th><img src="/images/%E8%BE%90%E8%A7%92.png"></th>
+</tr>
+</thead>
+</table>
+<p><strong>定理7</strong>$\quad$若$f(z)$为$n$阶椭圆函数，将$f(z)$在$\mathbb{C}&#x2F;L$上所有高阶零点和极点按阶数拆分后单独计数，记$f(z)$所有零点为$a_k$，所有极点为$b_k$，$1\le k\le n$，则存在常数$c$，使得$f(z)$可表示为如下形式</p>
+<p>$$f(z)&#x3D;c\prod_{k&#x3D;1}^{n}\frac{\sigma(z-a_k)}{\sigma(z-b_k)}$$</p>
+<p><strong>证明</strong>$\quad$令 $\displaystyle\Omega&#x3D;\sum_{k&#x3D;1}^{n} a_k-\sum_{k&#x3D;1}^{n} b_k$，$F(z)&#x3D;\displaystyle\left[\prod_{k&#x3D;1}^{n-1}\frac{\sigma(z-a_k)}{\sigma(z-b_k)}\right]\frac{\sigma(z-a_n)}{\sigma(z-b_n-\Omega)}$</p>
+<p>$F(z)$拥有与$f(z)$相同的零点与极点，由$\sigma(z)$性质</p>
+<p>$$F(z+\omega_i)&#x3D;F(z)\frac{\exp\left(\displaystyle-\eta_i\sum_{k&#x3D;1}^{n} a_k\right)}{\exp\left(\displaystyle-\eta_i\sum_{k&#x3D;1}^{n} b_k-\eta_i\Omega\right)}&#x3D;F(z)\qquad i&#x3D;1,2$$</p>
+<p>$F(z)$拥有与$f(z)$相同的基本周期，因此$f(z)&#x2F;F(z)$为无极点椭圆函数</p>
+<p>由定理1，$f(z)&#x3D;cF(z)$</p>
+<p>由定理6，$\Omega\in M$，总可以选取恰当的基本平行四边形使得$\Omega&#x3D;0$，因此定理7成立</p>
+<p>由定理7，取$u\notin M$，$\wp(p)-\wp(u)$可写为下式，除以$\sigma^{2}(u)$是以防$\pm u$不在基本平行四边形中</p>
+<p>$$\wp(z)-\wp(u)&#x3D;-\frac{\sigma(z+u)\sigma(z-u)}{\sigma^2(z)\sigma^2(u)}$$</p>
+<h2 id="Jacobi椭圆函数"><a href="#Jacobi椭圆函数" class="headerlink" title="Jacobi椭圆函数"></a>Jacobi椭圆函数</h2>
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+    </div>
+    <div>
+      
+        <a href="../../05/%E7%BE%A4%E8%AE%BA/%E7%BE%A4%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          群的基本概念
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- Busuanzi Analytics -->
+<div class="flex items-center gap-2">
+  <span>Visitor Count</span>
+  <span id="busuanzi_value_site_uv"></span>
+  <span>Totalview</span>
+  <span id="busuanzi_value_site_pv"></span>
+</div>
+<!-- End Busuanzi Analytics -->
+
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2023</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

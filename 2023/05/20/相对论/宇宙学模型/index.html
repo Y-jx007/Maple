@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>宇宙学模型 | 枫</title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      isDark = !isDark;
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="枫" />
+          枫
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        宇宙学模型
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        宇宙学模型
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-05-28 20:14:50</time>
+          <span class="text-gray-400">·</span>
+          <span>7 min</span>
+          <span class="text-gray-400">·</span>
+          <span>1.5k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="Friedmann–Robertson–Walker度规"><a href="#Friedmann–Robertson–Walker度规" class="headerlink" title="Friedmann–Robertson–Walker度规"></a>Friedmann–Robertson–Walker度规</h2><p><strong>宇宙学原理</strong> 宇宙是均匀且各向同性的</p>
+<p>唯一与宇宙学原理相容的背景是弗里德曼-罗伯逊-沃尔克度规，其线元为</p>
+<p>$$\dd s^2&#x3D;-c^2\dd t^2+a^2\left(\frac{\dd r^2}{1-kr^2}+r^2\dd \theta^2+r^2\sin^2\theta^2\dd\phi^2\right)$$</p>
+<p>$a&#x3D;a(t)$为标度因子，$k$为常数，可通过调节径向坐标使其取$-1,0,1$，对应三种情况</p>
+<p>$k&#x3D;1$，<strong>闭合宇宙</strong>；$k&#x3D;0$，<strong>平坦宇宙</strong>；$k&#x3D;-1$，<strong>开放宇宙</strong></p>
+<p>计算可得曲率标量 $R&#x3D;\displaystyle 6\frac{kc^2+\dot{a}^2+\ddot{a}a}{a^2c^2}$，$k&#x3D;0,\dot{a}&#x3D;0$ 对应闵可夫斯基时空</p>
+<p>克莱舒曼标量 $\mathscr{H}&#x3D;\displaystyle\frac{k^2c^4+2kc^2\dot{a}^2+\dot{a}^4+\ddot{a}^2a^2}{a^4c^2}$，$a&#x3D;0$ 为大爆炸</p>
+<p>对于拓扑平凡宇宙，$k&#x3D;0$ 时其体积有限 $V&#x3D;\displaystyle\int_V g^{3&#x2F;2}\text{d}^3 x&#x3D;\pi^2 a^3$</p>
+<h2 id="Friedmann-方程组"><a href="#Friedmann-方程组" class="headerlink" title="Friedmann 方程组"></a>Friedmann 方程组</h2><p>假设宇宙物质由理想流体能动张量$T^{\mu\nu}&#x3D;\displaystyle(\rho+P)\frac{u^\mu u^\nu}{c^2}+Pg^{\mu\nu}$描述，对于流体静止系，四维速度$u^\mu&#x3D;(c,0,0,0)$</p>
+<p>爱因斯坦方程 $tt$ 分量给出 <strong>第一弗里德曼方程</strong>，记$H&#x3D;\displaystyle\frac{\dot{a}}{a}$ 为<strong>Hubble参数</strong><br>$$H^2&#x3D;\frac{8\pi G_N}{3c^2}\rho-\frac{kc^2}{a^2}$$</p>
+<p>其他分量 给出<strong>第二弗里德曼方程</strong></p>
+<p>$$\frac{\ddot{a}}{a}&#x3D;-\frac{4\pi G_N}{3c^2}(\rho +P)$$</p>
+<p>能动张量协变性给出 $\displaystyle\dot{\rho}&#x3D;-3H(\rho+P)$，但并不独立于以上两个方程</p>
+<p>引入<strong>物态方程</strong> $P&#x3D;w\rho $，对尘埃$w&#x3D;0$，辐射$w&#x3D;\displaystyle-\frac{1}{3}$，真空$w&#x3D;-1$</p>
+<p>定义<strong>临界密度</strong>为平坦宇宙能量密度 $\rho_c&#x3D;\displaystyle\frac{3H_0^2c^2}{8\pi G_N}$，哈勃常数目前测量值为$H_0&#x3D;100h_0\displaystyle\frac{\text{km}}{\text{s}\cdot\text{Mpc}}$，$h_0\approx 0.7$</p>
+<h2 id="宇宙学模型"><a href="#宇宙学模型" class="headerlink" title="宇宙学模型"></a>宇宙学模型</h2><p>结合能动张量协变性和物态方程可得能量密度$\rho\propto \displaystyle a^{-3(1+w)}$<br>对尘埃$\rho\propto \displaystyle\frac{1}{a^3}$，对辐射 $\rho\propto \displaystyle\frac{1}{a^4}$，对真空 $\rho$ 为常数</p>
+<p>代入第一弗里德曼方程，忽略$\displaystyle\frac{kc^2}{a^2}$ 项可得 $a\propto t^{\alpha}$，$\alpha&#x3D;\displaystyle\frac{2}{3(1+w)}$</p>
+<h3 id="爱因斯坦宇宙"><a href="#爱因斯坦宇宙" class="headerlink" title="爱因斯坦宇宙"></a>爱因斯坦宇宙</h3><p>对于一般物质 $\rho+3P&gt;0$，故弗里德曼方程隐含$\ddot{a}&lt;0$，宇宙是不稳定的，爱因斯坦引入宇宙学常数$\varLambda$修正爱因斯坦场方程，弗里德曼方程成为</p>
+<p>$$H^2&#x3D;\frac{8\pi G_N}{3c^2}\rho+\frac{\Lambda c^2}{3}-\frac{kc^2}{a^2}$$</p>
+<p>$$\frac{\ddot{a}}{a}&#x3D;-\frac{4\pi G_N}{3c^2}(\rho +P)+\frac{\Lambda c^2}{3}$$</p>
+<p>要求$\dot{a},\ddot{a}&#x3D;0$，可解得$\rho&#x3D;\displaystyle\frac{\Lambda c^4}{4\pi G_N}$，$a&#x3D;\displaystyle\frac{1}{\sqrt{\Lambda}}$，$k&#x3D;1$</p>
+<p>然而爱因斯坦宇宙也是不稳定的，微小扰动会使其永远坍缩或膨胀，1929年哈勃发现宇宙膨胀后宇宙学常数暂时从爱因斯坦方程中被移除</p>
+<h3 id="物质主导的宇宙"><a href="#物质主导的宇宙" class="headerlink" title="物质主导的宇宙"></a>物质主导的宇宙</h3><p>令 $\rho&#x3D;C_1&#x2F;a^3$，第一弗里德曼方程成为$\displaystyle\dot{a}^2&#x3D;\displaystyle\frac{8\pi G_N}{3c^2}\frac{C_1}{a}-kc^2$</p>
+<p>引入 $\displaystyle\frac{\dd\eta}{\dd t}&#x3D;\frac{1}{a}$，$’$代表对$\eta$求导，则$\displaystyle a’^2&#x3D;\displaystyle\frac{8\pi G_N}{3c^2}C_1 a-kc^2a^2$，</p>
+<p>根据初始条件$a(0)&#x3D;0$，引入$A&#x3D;\displaystyle\frac{1}{|k|c^2}$，解得</p>
+<p>闭合宇宙</p>
+<p>$$a&#x3D;\frac{4\pi G_N}{3c^2}C_1A\left(1-\cos\frac{\eta}{\sqrt{A}}\right)\quad t&#x3D;\frac{4\pi G_N}{3c^2}C_1A\left(\eta-\sqrt{A}\sin\frac{\eta}{\sqrt{A}}\right)$$</p>
+<p>平坦宇宙</p>
+<p>$$a&#x3D;\frac{2\pi G_N}{3c^2}C_1\eta^2\quad t&#x3D;\frac{2\pi G_N}{9c^2}C_1\eta^3$$</p>
+<p>开放宇宙</p>
+<p>$$a&#x3D;\frac{4\pi G_N}{3c^2}C_1A\left(\cosh\frac{\eta}{\sqrt{A}}-1\right)\quad t&#x3D;\frac{4\pi G_N}{3c^2}C_1A\left(\sqrt{A}\sinh\frac{\eta}{\sqrt{A}}-\eta\right)$$</p>
+<center><img src=/images/物质主导.png width=60% /></center>
+
+<h3 id="辐射主导的宇宙"><a href="#辐射主导的宇宙" class="headerlink" title="辐射主导的宇宙"></a>辐射主导的宇宙</h3><p>令 $\rho&#x3D;C_2&#x2F;a^4$，第一弗里德曼方程成为$\displaystyle\dot{a}^2&#x3D;\displaystyle\frac{8\pi G_N}{3c^2}\frac{C_2}{a^2}-kc^2$，可解得</p>
+<p>$$a&#x3D;\left[\sqrt{\frac{32\pi G_NC_2}{3c^2}}t-kc^2t^2\right]^{1&#x2F;2}$$</p>
+<center><img src=/images/辐射主导.png width=60% /></center>
+
+<h3 id="真空主导的宇宙"><a href="#真空主导的宇宙" class="headerlink" title="真空主导的宇宙"></a>真空主导的宇宙</h3><p>$\rho&#x3D;P&#x3D;0$，考虑宇宙学常数 $H^2&#x3D;\displaystyle\frac{\Lambda c^2}{3}-\frac{kc^2}{a^2}$，$\displaystyle\frac{\ddot{a}}{a}&#x3D;\displaystyle\frac{\Lambda c^2}{3}$</p>
+<p>对于$\Lambda&gt;0$，无论$k$取何值宇宙都将膨胀，不存在大爆炸</p>
+<p>闭合宇宙</p>
+<p>$$a&#x3D;\sqrt{\frac{3}{\Lambda}}\cosh\left(\sqrt{\frac{\Lambda}{3}}ct\right)$$</p>
+<p>平坦宇宙</p>
+<p>$$a&#x3D;a(0)\exp\left(\sqrt{\frac{\Lambda}{3}}ct\right)$$</p>
+<p>开放宇宙</p>
+<p>$$a&#x3D;\sqrt{\frac{-3}{\Lambda}}\sinh\left(\sqrt{\frac{\Lambda}{3}}ct\right)$$</p>
+<p>对于$\Lambda&lt;0$，仅存在坍缩开放宇宙</p>
+<p>$$$$</p>
+<p>$$a&#x3D;\sqrt{\frac{-3}{\Lambda}}\cos\left(\sqrt{-\frac{\Lambda}{3}}ct\right)$$</p>
+<p>对于$\Lambda&#x3D;0$，仅存在平坦闵可夫斯基时空</p>
+<h2 id="Friedmann–Robertson–Walker度规的性质"><a href="#Friedmann–Robertson–Walker度规的性质" class="headerlink" title="Friedmann–Robertson–Walker度规的性质"></a>Friedmann–Robertson–Walker度规的性质</h2><h3 id="宇宙学红移"><a href="#宇宙学红移" class="headerlink" title="宇宙学红移"></a>宇宙学红移</h3><p>拉格朗日量$L&#x3D;\displaystyle\frac{1}{2}g_{\mu\nu}x’^\mu x’^\nu$，$’$表示对固有时求导，由于度规与$t$有关，故粒子能量不是运动常数</p>
+<p>对光子有 $g_{\mu\nu}x’^\mu x’^\nu&#x3D;0$，考虑径向运动，则</p>
+<p>$$c^2t’^2-a^2\frac{r’^2}{1-kr^2}&#x3D;0$$</p>
+<p>拉格朗日方程</p>
+<p>$$t’’+\frac{a\dot{a}}{c^2}\frac{r’^2}{1-kr^2}&#x3D;0$$</p>
+<p>联立可得 $t’’&#x3D;-\displaystyle\frac{a’}{a}t’$，$t’$ 正比于光子能量，故$E\propto\displaystyle\frac{1}{a}$，故宇宙膨胀会引起红移，这与$\rho\propto \displaystyle \frac{1}{a^4}$ 相符</p>
+<h3 id="粒子视界"><a href="#粒子视界" class="headerlink" title="粒子视界"></a>粒子视界</h3><p>位于$t$时刻的<strong>粒子视界</strong>为从大爆炸时刻至时间$t$，一个光子所传播的距离，考虑平坦宇宙</p>
+<p>$$r&#x3D;\displaystyle\int \text{d}r&#x3D;c\int\frac{\dd t}{a}&#x3D;\displaystyle\frac{ct}{a(1-\alpha)}$$</p>
+<p>粒子视界随时间线性增长，而标度因子$a\propto t^{\alpha}$，对于物质和辐射主导的宇宙，$\alpha&#x3D;\displaystyle\frac{2}{3(1+w)}&lt;1$，随着时间推移，宇宙中越来越多的区域变得因果连通</p>
+<h2 id="原初等离子体"><a href="#原初等离子体" class="headerlink" title="原初等离子体"></a>原初等离子体</h2><h2 id="宇宙的年龄"><a href="#宇宙的年龄" class="headerlink" title="宇宙的年龄"></a>宇宙的年龄</h2>
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../22/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/Lorentz%E8%81%94%E7%BB%9C/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          自旋联络
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../19/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/%E5%90%91%E9%87%8F%E4%B8%9B%E4%B8%8EG-%E4%B8%BB%E4%B8%9B/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          向量丛与G-主丛
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- Busuanzi Analytics -->
+<div class="flex items-center gap-2">
+  <span>Visitor Count</span>
+  <span id="busuanzi_value_site_uv"></span>
+  <span>Totalview</span>
+  <span id="busuanzi_value_site_pv"></span>
+</div>
+<!-- End Busuanzi Analytics -->
+
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2023</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

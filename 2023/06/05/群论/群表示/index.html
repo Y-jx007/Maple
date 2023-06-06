@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>群表示 | 枫</title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      isDark = !isDark;
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="枫" />
+          枫
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        群表示
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        群表示
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-06-05 15:23:12</time>
+          <span class="text-gray-400">·</span>
+          <span>6 min</span>
+          <span class="text-gray-400">·</span>
+          <span>1.5k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>建立群元$g\in G$与线性空间算符之间的同态，算符对应的方阵$D(g)$称维群$G$的一个<strong>表示</strong>，表示的维数为矩阵维数，相似矩阵为<strong>等价表示</strong></p>
+<p>$$D(g_1)D(g_2)&#x3D;D(g_1g_2)$$</p>
+<p>若表示矩阵可通过相似变换化为如下形式，则称其为<strong>可约表示</strong>；若可以通过相似变换化为方块对角阵，则称<strong>完全可约表示</strong>，进而分解成不可约表示的<strong>直和</strong></p>
+<p>$$D(g)&#x3D;\begin{pmatrix}<br>    D_1(g)&amp;R(g)\\<br>    O&amp;D_2(g)<br>\end{pmatrix}$$</p>
+<p>群元的表示矩阵的迹称为其<strong>特征标</strong>，同一共轭类的元素特征标相同，</p>
+<p>$$\chi(g)&#x3D;\Tr{D(g)}$$</p>
+<p>表示矩阵全为酉阵的表示称为<strong>幺正表示</strong></p>
+<h2 id="基本定理"><a href="#基本定理" class="headerlink" title="基本定理"></a>基本定理</h2><p><strong>定理1</strong> 若群$G$含有正规子群$H$，则商群$G&#x2F;H$的表示也为$G$的非忠实表示；若$D(g)$为$G$的非忠实表示，则$G$存在正规子群$G$使得$D(g)$为$G&#x2F;H$的忠实表示</p>
+<p><strong>定理2</strong> 有限群可约表示一定完全可约</p>
+<p><strong>定理3</strong> 有限群的每个表示均有等价幺正表示</p>
+<p><strong>舒尔引理</strong> 设$D(g)$为群$G$的$d$维不可约表示，若$M$与所有表示矩阵对易，则$M&#x3D;\lambda I$</p>
+<p><strong>定理5</strong> 设$D^{(p)}(g)$与$D^{(q)}(g)$为群$G$的两个不等价不可约幺正表示，维数分别为$d_p,d_q$，若有$d_p\times d_q$矩阵$M$满足$MD^{(p)}(g)&#x3D;D^{(q)}(g)M$，则有</p>
+<ol>
+<li>若$d_p\neq d_q$，则$M&#x3D;0$</li>
+<li>若$d_p&#x3D; d_q$，则$M&#x3D;0$或$\det{M}\neq 0$</li>
+</ol>
+<p><strong>广义正交定理</strong> 设$D^{(p)}(g)$与$D^{(q)}(g)$为$n$阶群$G$的两个不可约表示，维数分别为$d_p,d_q$</p>
+<p>$$\sum_{g\in G}D^{(p)*}_{\mu\nu}D^{(q)}_{\mu’\nu’}&#x3D;\frac{n}{d_p}\delta_{pq}\delta_{\mu\mu’}\delta_{\nu\nu’}$$</p>
+<p><strong>Burnside定理</strong> 群$G$的所有不等价不可约表示维数的平方和等于$G$的维数</p>
+<p>$$d_1^2+d_2^2+\cdots d_r^2&#x3D;n$$</p>
+<p><strong>特征标正交定理</strong> 设$D^{(p)}(g)$与$D^{(q)}(g)$为$n$阶群$G$的两个不等价不可约表示</p>
+<p>$$\sum_{g\in G}\chi^{(p)*}\chi^{(q)}&#x3D;n\delta_{pq}$$</p>
+<p><strong>定理9</strong> 群$G$不等价不可约表示的个数等于$G$共轭类的个数</p>
+<p><strong>定理10</strong> 两个表示等价的充要条件为群元特征标相同</p>
+<h2 id="正则表示"><a href="#正则表示" class="headerlink" title="正则表示"></a>正则表示</h2><p>用群元作为负载表示的基，可得到正则表示矩阵</p>
+<p>$$gg_i&#x3D;\displaystyle\sum_k g_k D^{(c)}(g)_{ki}$$</p>
+<p>$$D^{(c)}(g)_{ki}&#x3D;\left\lbrace\begin{aligned}<br>    &amp;1\qquad g_k&#x3D;gg_i\\<br>    &amp;0\qquad \text{other}<br>\end{aligned}\right.$$</p>
+<p>$$\chi^{(c)}(g)\qquad \left\lbrace\begin{array}<br>    &amp;n\qquad g&#x3D;e\\<br>    0\qquad g\neq e<br>\end{array}\right.$$</p>
+<p>可以构造$g_i\sim g_j^{-1}$的乘法表写出正则表示矩阵</p>
+<p>由于$\displaystyle\sum_{g\in G}\chi^{(c)*}\chi^{(c)}&#x3D;n^2&gt;n$，故正则表示一定为可约表示，可以约化为$G$所有不可约表示的直和，每个不可约表示的重数与其维数相同</p>
+<p>$$D^{(c)}(g)&#x3D;\sum_{p}d_p D^{(p)}(g)$$</p>
+<p>$$\chi^{(c)}(g)&#x3D;\sum_{p}d_p \chi^{(p)}(g)$$</p>
+<h2 id="基础表示"><a href="#基础表示" class="headerlink" title="基础表示"></a>基础表示</h2><p>用子群$H$的陪集作为负载表示的基，可得到基础表示矩阵</p>
+<p>$$g(g_iH)&#x3D;\displaystyle\sum_k (g_kH) D^{(d)}(g)_{ki}$$</p>
+<p>$$D^{(d)}(g)_{ki}&#x3D;\left\lbrace\begin{aligned}<br>    &amp;1\qquad g_kH&#x3D;gg_iH\\<br>    &amp;0\qquad \text{other}<br>\end{aligned}\right.$$</p>
+<p>可以构造$g_iH\sim Hg_j^{-1}$的乘法表写出基础表示矩阵</p>
+<h2 id="诱导表示"><a href="#诱导表示" class="headerlink" title="诱导表示"></a>诱导表示</h2><p>群$G$的表示一定是其子群$H$的表示，反之从$H$的不可约表示可以诱导出$G$中的不可约表示</p>
+<p>先用$H$的陪集构造$G$的基础表示$D^{(d)}(g)$，再将其与$H$的不可约表示$D^{(H)}(h)$直积，即可得到$D^{(H)}(g)$在$G$中的诱导表示$D^{(I)}(g)$</p>
+<p>$$D^{(I)}(g)&#x3D;D^{(d)}(g) \otimes D^{(H)}(h)$$</p>
+<p>诱导表示一般为$G$的可约表示，$G$的不可约表示一般为$H$的可约表示</p>
+<p><strong>Frobenuis倒易定理</strong> $D^{(I)}(g)&#x3D;D^{(d)}(g) \otimes D^{(H)}(h)$中包含$G$不可约表示$D^{G}(g)$的重数等于$D^{G}(h)$中包含$H$的不可约表示$D^{(H)}(h)$的重数</p>
+<h2 id="特征标表"><a href="#特征标表" class="headerlink" title="特征标表"></a>特征标表</h2><p>找出群$G$的所有不等价不可约表示$\Gamma^{(i)}$和所有共轭类$g_{(i)}$，可以由特征标正交关系求出$g_{(i)}$在$\Gamma^{(i)}$下的特征标，从而构造$G$的特征标表$\Gamma^{(i)}\sim g_{(i)}$</p>
+<h2 id="直积与Clebsch-Gordan系数"><a href="#直积与Clebsch-Gordan系数" class="headerlink" title="直积与Clebsch-Gordan系数"></a>直积与Clebsch-Gordan系数</h2><p>不同群的不可约表示的直积为群直积的不可约表示</p>
+<p><strong>定理11</strong> 同一个群的不可约幺正表示的直积仍为该群的幺正表示，一般为可约表示</p>
+<p>$$D^{(p,g)}(g)&#x3D;D^{(p)}(g)\otimes D^{(q)}(g)$$</p>
+<p>$$\chi^{(p,g)}(g)&#x3D;\chi^{(p)}(g)\chi^{(q)}(g)$$</p>
+<p>由群$G$的特征标表可将其不可约表示的直积约化为不可约表示的直和</p>
+<p>$$D^{(p,q)}(g)&#x3D;\sum_\lambda a_\lambda D^{(\lambda)}(g)$$</p>
+<p>$$\chi^{(p,q)}(g)&#x3D;\sum_\lambda a_\lambda \chi^{(\lambda)}(g)$$</p>
+<p>表示的约化相当于负载基的重新线性组合，组合系数称为<strong>Clebsch-Gordan系数</strong></p>
+<p>$$w_l^{(\lambda)\alpha}&#x3D;\sum_{i,j}\braket{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}w_{i,j}$$</p>
+<p>$$w_{i,j}&#x3D;\sum_{\alpha,\lambda,l}\braket{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}w_l^{(\lambda)\alpha}$$</p>
+<p>由于为幺正变换</p>
+<p>$$\braket{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}&#x3D;\braket{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}^*$$</p>
+<p>有正交关系</p>
+<p>$$\sum_{\alpha,\lambda,l}\braket{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}\braket{\begin{matrix}\lambda \\l\end{matrix}\;\;\alpha}{\begin{matrix}p&amp;q\\i’&amp;j’\end{matrix}}&#x3D;\delta_{ii’}\delta_{jj’}$$</p>
+<p>$\alpha&gt;1$时C-G系数不能唯一确定，$\alpha&#x3D;1$时可以确定到差一个相因子</p>
+<p>$$\left|\braket{\begin{matrix}p&amp;q\\i&amp;j\end{matrix}}{\begin{matrix}\lambda \\k\end{matrix}}\right|^2&#x3D;\frac{d_\lambda}{n}\sum_{g\in G}D^{(p)}_{ii}D^{(q)}_{jj}D^{(\lambda)}_{kk}$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../%E7%89%B9%E5%BE%81%E6%A0%87%E8%A1%A8%E8%A1%A8/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          特征标表表
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../04/%E5%A4%8D%E5%88%86%E6%9E%90/%E9%BB%8E%E6%9B%BC-zeta/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          黎曼$\zeta$函数
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- Busuanzi Analytics -->
+<div class="flex items-center gap-2">
+  <span>Visitor Count</span>
+  <span id="busuanzi_value_site_uv"></span>
+  <span>Totalview</span>
+  <span id="busuanzi_value_site_pv"></span>
+</div>
+<!-- End Busuanzi Analytics -->
+
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2023</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>
