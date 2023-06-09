@@ -37,7 +37,7 @@
 
 
 
-<title>路径积分 | 枫</title>
+<title>二次量子化 | 枫</title>
 
 
 
@@ -175,7 +175,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        路径积分
+        二次量子化
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -226,10 +226,10 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
 
@@ -242,36 +242,55 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        路径积分
+        二次量子化
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-06-02 21:56:03</time>
+          <time>2023-06-07 22:18:02</time>
           <span class="text-gray-400">·</span>
-          <span>3 min</span>
+          <span>4 min</span>
           <span class="text-gray-400">·</span>
-          <span>611 words</span>
+          <span>807 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="传播子"><a href="#传播子" class="headerlink" title="传播子"></a>传播子</h2><p>演化算符 $\ket{\psi(t)}&#x3D;\hat{U}(t,t_0)\ket{\psi(t_0)}$ ，薛定谔方程 $i\hbar \partial_t \ket{\psi(t)}&#x3D;\hat{H}\ket{\psi(t)}$</p>
-<p>$\hat{H}\hat{U}&#x3D;i\hbar\partial_t\hat{U}$，若哈密顿量不显含时间，得$\hat{U}(t,t_0)&#x3D;\displaystyle \theta(t-t_0)e^{-i\hat{H}(t-t_0)&#x2F;\hbar}$</p>
-<p>$\psi(x,t)&#x3D;\braket{x}{\psi(t)}&#x3D;\bra{x}\hat{U}(t,t_0)\ket{\psi(t_0)}&#x3D;\displaystyle\int_{x_0}\bra{x}\hat{U}(t,t_0)\ket{x_0}\bra{x_0}\ket{\psi(t_0)}\dd x_0$</p>
-<p>传播子 $\psi(x,t)&#x3D;\displaystyle\int_{x_0}U(x,t;x_0,t_0)\psi(x_0,t_0)\dd x_0$</p>
-<p>$U(x,t;x_0,t_0)&#x3D;\bra{x}\hat{U}(t,t_0)\ket{x_0}&#x3D;\displaystyle\sum_n \bra{x}\hat{U}(t,t_0)\ket{n}\bra{n}\ket{x_0}&#x3D;\sum_n \bra{x}e^{-i\hat{H}(t-t_0)&#x2F;\hbar}\ket{n}\bra{n}\ket{x_0}$</p>
-<p>$U(x,t;x_0,t_0)&#x3D;\displaystyle\sum_n e^{-iE_n(t-t_0)&#x2F;\hbar}\psi_n(x)\psi_n^*(x_0)$</p>
-<h2 id="路径积分"><a href="#路径积分" class="headerlink" title="路径积分"></a>路径积分</h2><p>$\hat{U}(t,t_0)&#x3D;\hat{U}(t,t_{n-1})\hat{U}(t_{n-1},t_{n-2})\cdots \hat{U}(t_{1},t_{0})$</p>
-<p>$$\begin{aligned}<br>    U(x_{i+1},t_{i+1};x_i,t_i)&amp;&#x3D;\bra{x_{i+1}}e^{-i\hat{H}{\Delta t}&#x2F;\hbar}\ket{x_i}\\<br>\qquad\\<br>&amp;&#x3D;\int \dd p_i \bra{x_{i+1}}\ket{p_i}\bra{p_i}e^{-i\hat{H}{\Delta t}&#x2F;\hbar}\ket{x_i}\\<br>\qquad\\<br>&amp;&#x3D;\int \frac{\dd p_i}{2\pi \hbar}e^{ip_i\Delta x&#x2F;\hbar}e^{-iH(x_i,p_i){\Delta t}&#x2F;\hbar}\\<br>\qquad\\<br>&amp;\approx\int \frac{\dd p_i}{2\pi \hbar}e^{iL(x_i,p_i)\Delta t&#x2F;\hbar}<br>\end{aligned}$$</p>
-<p>$$\begin{aligned}U(x,t;x_0,t_0)&amp;\approx \int \prod _{i&#x3D;0}^{n-1}\frac{\dd p_i}{2\pi \hbar}\prod _{i&#x3D;0}^{n-1} \dd x_i\exp\left[\sum_{\Delta t}\frac{iL(x_i,p_i)\Delta t}{\hbar}\right]\\<br>\qquad\\<br>&amp;\approx \int \prod _{i&#x3D;0}^{n-1}\frac{\dd p_i}{2\pi \hbar}\prod _{i&#x3D;0}^{n-1} \dd x_i\exp\left[\frac{i}{\hbar}\sum_{\Delta t} \left(p_i\dot{x}_i-\frac{p_i^2}{2m}-V(x_i)\right)\Delta t\right]\\<br>\qquad\\<br>&amp; &#x3D; \left(\frac{m}{2\pi\hbar i\Delta t}\right)^{n&#x2F;2}\int \prod _{i&#x3D;0}^{n-1} \dd x_i\exp\left[\frac{i}{\hbar}\int_{t_0}^t L(x(t’),p(t’))\dd t’\right]\\<br>\qquad\\<br>&amp;&#x3D; \int \mathcal{D}x(t’)\exp\left[\frac{i}{\hbar}S(x,t;x_0,t_0)\right]<br>\end{aligned}<br>$$</p>
-<h2 id="含时哈密顿量"><a href="#含时哈密顿量" class="headerlink" title="含时哈密顿量"></a>含时哈密顿量</h2><p>哈密顿量显含时间时，对 $\hat{H}\hat{U}&#x3D;i\hbar\partial_t\hat{U}$ 积分得</p>
-<p> $U(t,t_0)&#x3D;1-\displaystyle\frac{i}{\hbar}\int_{t_0}^t H(t’)U(t’,t_0)\dd t’$，迭代逐段积分</p>
-<p> $$\begin{aligned}<br>    U(t,t_0)&amp;&#x3D;1-\displaystyle\frac{i}{\hbar}\int_{t_0}^t H(t_1)\left[1-\displaystyle\frac{i}{\hbar}\int_{t_0}^{t_1} H(t_2)U(t_2,t_0)\dd t_2\right]\dd t_1&#x3D;\cdots\\<br>    \qquad\\<br>    &amp;&#x3D;1+\sum_{n&#x3D;1}^\infty\left(-\frac{i}{\hbar}\right)^n\int_{t_0}^{t}\dd t_1\int_{t_0}^{t_1}\dd t_2\cdots\int_{t_0}^{t_{n-1}}\dd t_n H(t_1)H(t_2)\cdots H(t_n)<br> \end{aligned}$$</p>
+    <h2 id="产生算符和湮灭算符"><a href="#产生算符和湮灭算符" class="headerlink" title="产生算符和湮灭算符"></a>产生算符和湮灭算符</h2><p>波函数$\ket{n_1n_2\cdots n_m}$表示在态$\lambda$上粒子数为$n_\lambda$，</p>
+<p>定义<strong>产生算符</strong>$a_\lambda^\dagger$，<strong>湮灭算符</strong>$a_\lambda$，<strong>占有数算符</strong>$N_\lambda$</p>
+<p>$$\ket{n_1n_2\cdots n_m}&#x3D;\prod_{\lambda&#x3D;1}^m\frac{1}{\displaystyle\sqrt{n_\lambda!}}(a_\lambda^\dagger)^{n_\lambda}\ket{0}$$</p>
+<p>$$\bra{n_1n_2\cdots n_m}&#x3D;\bra{0}\prod_{\lambda&#x3D;m}^1\frac{1}{\displaystyle\sqrt{n_\lambda!}}(a_\lambda)^{n_\lambda}$$</p>
+<p>$$N_\lambda&#x3D;a_\lambda^\dagger a_\lambda&#x3D;n_\lambda$$</p>
+<p><strong>玻色子</strong>算符对易关系</p>
+<p>$$[a_\lambda,a_{\lambda’}]&#x3D;[a_\lambda^\dagger,a_{\lambda’}^\dagger]&#x3D;0$$</p>
+<p>$$[a_\lambda,a_{\lambda’}^\dagger]&#x3D;\delta_{\lambda\lambda’}$$</p>
+<p><strong>费米子</strong>算符对易关系</p>
+<p>$$\lbrace a_\lambda,a_{\lambda’}\rbrace&#x3D;\lbrace a_\lambda^\dagger,a_{\lambda’}^\dagger\rbrace&#x3D;0$$</p>
+<p>$$\lbrace a_\lambda,a_{\lambda’}^\dagger\rbrace&#x3D;\delta_{\lambda\lambda’}$$</p>
+<p>$$$$</p>
+<h2 id="算符二次量子化"><a href="#算符二次量子化" class="headerlink" title="算符二次量子化"></a>算符二次量子化</h2><p>单体作用</p>
+<p>$$\hat{O}_\text{2nd}&#x3D;\sum_{\mu\nu}\bra{\mu}\hat{O}\ket{\nu}a_\mu^\dagger a_\nu$$</p>
+<p>二体作用</p>
+<p>$$\hat{V}_\text{2nd}&#x3D;\frac{1}{2}\sum_{\mu\mu’}\sum_{\nu\nu’}(\mu\nu|\hat{V}|\mu’\nu’)a_\mu^\dagger a_\nu^\dagger a_{\nu’}a_{\mu’}$$</p>
+<h3 id="自旋算符"><a href="#自旋算符" class="headerlink" title="自旋算符"></a>自旋算符</h3><p>$$\hat{S}_z&#x3D;\frac{\hbar}{2}(a_+^\dagger a_+^\dagger-a_-^\dagger a_-)$$</p>
+<p>$$\hat{S}&#x3D;\sum_{\alpha\alpha’}\bra{\alpha}\sigma\ket{\alpha’}a_\alpha^\dagger a_{\alpha’}$$</p>
+<h3 id="哈密顿量"><a href="#哈密顿量" class="headerlink" title="哈密顿量"></a>哈密顿量</h3><p>$$\begin{aligned}\hat{H}&amp;&#x3D;\int \text{d}^3 \boldsymbol{x}\; \psi(\boldsymbol{x})^\dagger \left[-\frac{\hbar^2}{2m}\nabla^2+U(\boldsymbol{x})\right]\psi(\boldsymbol{x})\\<br>\quad\\<br>&amp;+\frac{1}{2}\int \text{d}^3 \boldsymbol{x}\text{d}^3 \boldsymbol{x}’\; V(\boldsymbol{x}-\boldsymbol{x}’)\psi(\boldsymbol{x})^\dagger\psi(\boldsymbol{x’})^\dagger\psi(\boldsymbol{x’})\psi(\boldsymbol{x})<br>\end{aligned}$$</p>
+<p>$\psi(\boldsymbol{x})^\dagger,\psi(\boldsymbol{x})$为产生湮灭算符的连续化，满足与$a_\lambda,a_\lambda’$相似的对易关系，只需将$\delta_{\lambda\lambda’}$替换为三维$\delta$函数$\delta(\boldsymbol{x}-\boldsymbol{x’})$</p>
+<h3 id="电子气"><a href="#电子气" class="headerlink" title="电子气"></a>电子气</h3><p>电子动量与自旋共同本征态$\ket{\boldsymbol{k}\lambda}$</p>
+<p>$$\braket{\boldsymbol{x}\lambda}{\boldsymbol{k}\lambda}&#x3D;\frac{1}{\sqrt{V}}e^{i\boldsymbol{k}\cdot\boldsymbol{x}}\eta_\lambda$$</p>
+<p>电子、正电荷背景与二者相互作用哈密顿量，先将库伦势加上指数衰减因子$\mu$防止积分发散，再令$\mu\to 0$</p>
+<p>$$H&#x3D;H_e+H_b+H_{eb}$$</p>
+<p>$$H_b&#x3D;\frac{e^2}{2}\int \text{d}^3 \boldsymbol{x}\text{d}^3 \boldsymbol{x}’ \frac{n(\boldsymbol{x})n(\boldsymbol{x’})\exp(-\mu|\boldsymbol{x}-\boldsymbol{x’}|)}{|\boldsymbol{x}-\boldsymbol{x’}|}&#x3D;\frac{2\pi N^2 e^2}{\mu^2 V}$$</p>
+<p>$$H_{eb}&#x3D;-e^2\sum_{i&#x3D;1}^N\int \text{d}^3 \boldsymbol{x}\frac{n(\boldsymbol{x})\exp(-\mu|\boldsymbol{x}-\boldsymbol{r}_i|)}{|\boldsymbol{x}-\boldsymbol{r}_i|}&#x3D;\frac{-4\pi N^2 e^2}{\mu^2 V}$$</p>
+<p>$$H_e&#x3D;T+U$$</p>
+<p>$$T&#x3D;\sum_\sigma\int\text{d}^3\boldsymbol{k} \frac{\hbar^2 k^2}{2m}a_{\boldsymbol{k}\sigma}^\dagger a_{\boldsymbol{k}\sigma}$$</p>
+<p>$$\begin{aligned}<br>U&amp;&#x3D;\frac{e^2}{2}\sum_{ij}\sum_{\sigma\sigma’}\sum_{\lambda\lambda’}\int\text{d}^3\boldsymbol{k}\text{d}^3\boldsymbol{k’}\text{d}^3\boldsymbol{p}\text{d}^3\boldsymbol{p’}(k\sigma,p\lambda|\frac{\exp(-\mu|\boldsymbol{r}_i-\boldsymbol{r}_j|)}{|\boldsymbol{r}_i-\boldsymbol{r}_j|}|k’\sigma’,p’\lambda’)a_{k\sigma}^\dagger a_{p\lambda}^\dagger a_{p’\lambda’} a_{k’\sigma’}\\<br>\quad\\<br>&amp;&#x3D;\frac{2\pi (N^2-N) e^2}{\mu^2 V}+\frac{2\pi e^2}{V}\sum_{\sigma\lambda}\int_{q\neq 0} \frac{1}{q^2} a_{k+q,\sigma}^\dagger a_{k’-q,\lambda}^\dagger a_{k’\lambda}a_{k\sigma}<br>\end{aligned}$$</p>
+<p>$$H&#x3D;H_0+H_1&#x3D;\sum_\sigma\int\text{d}^3\boldsymbol{k} \frac{\hbar^2 k^2}{2m}a_{\boldsymbol{k}\sigma}^\dagger a_{\boldsymbol{k}\sigma}+2\pi e^2 \sum_{\sigma\lambda}\int_{q\neq 0} \text{d}^3 q\text{d}^3 k\text{d}^3 k’\; \frac{1}{q^2} a_{k+q,\sigma}^\dagger a_{k’-q,\lambda}^\dagger a_{k’\lambda}a_{k\sigma}$$</p>
+<p>$$\langle H\rangle&#x3D;\frac{3\hbar^2k_F^2N}{10m}$$</p>
 
   </article>
   <!-- tag -->
@@ -282,16 +301,11 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="../../../03/%E7%BE%A4%E8%AE%BA/Lie%E7%BE%A4/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          Lie群
-        </a>
-      
     </div>
     <div>
       
-        <a href="../../../../05/27/%E7%9B%B8%E5%AF%B9%E8%AE%BA/%E5%8F%B2%E7%93%A6%E8%A5%BF%E6%97%B6%E7%A9%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          史瓦西时空
+        <a href="../../../06/%E6%A4%AD%E5%9C%86%E5%87%BD%E6%95%B0/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          椭圆函数
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
@@ -338,7 +352,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../lib/clipboard.min.js"></script>
+<script src="../../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -379,7 +393,7 @@
 
 
 
-<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -403,7 +417,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   

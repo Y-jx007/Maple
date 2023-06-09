@@ -226,10 +226,10 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
 
@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-06-07 00:12:01</time>
+          <time>2023-06-09 23:52:34</time>
           <span class="text-gray-400">·</span>
-          <span>12 min</span>
+          <span>15 min</span>
           <span class="text-gray-400">·</span>
-          <span>2.5k words</span>
+          <span>3.1k words</span>
         </section>
       </div>
     </div>
@@ -314,7 +314,7 @@
 <p>$$e_1+e_2+e_3&#x3D;0$$</p>
 <p>$$e_1e_2+e_2e_3+e_3e_1&#x3D;-\frac{g_2}{4}$$</p>
 <p>$$e_1e_2e_3&#x3D;\frac{g_3}{4}$$</p>
-<p>$\omega_1&#x3D;2i,\omega_2&#x3D;2$时$\wp(z)$图像如下</p>
+<p>$\omega_1&#x3D;4,\omega_2&#x3D;4i$ 时，$e_1&#x3D;-e_2&#x3D;\displaystyle\frac{\displaystyle\Gamma\left(1&#x2F;4\right)^{4}}{128\pi},e_3&#x3D;0$，$\wp(z)$图像如下</p>
 <table>
 <thead>
 <tr>
@@ -333,7 +333,7 @@
 <p>$$\begin{aligned}<br>\int_{\partial P}\zeta(z)\dd z&amp;&#x3D;\left[\left(\int_{a}^{a+\omega_1}-\int_{a+\omega_2}^{a+\omega_1+\omega_2}\right)+\left(\int_{a+\omega_1}^{a+\omega_1+\omega_2}-\int_{a}^{a+\omega_2}\right)\right]\zeta(z)\dd z\\<br>\quad\\<br>&amp;&#x3D;-\eta_2\omega_1+\eta_1\omega_2<br>\end{aligned}$$</p>
 <p>由于$\zeta(z)$在$\partial P$内留数为1，故有<strong>Legendre关系</strong></p>
 <p>$$\eta_1\omega_2-\eta_2\omega_1&#x3D;2\pi i$$</p>
-<p>$\omega_1&#x3D;2i,\omega_2&#x3D;2$时$\zeta(z)$图像如下</p>
+<p>$\omega_1&#x3D;4,\omega_2&#x3D;4i$ 时$\zeta(z)$图像如下</p>
 <table>
 <thead>
 <tr>
@@ -353,7 +353,7 @@
 <p>由引理2，$\sigma(z)$为$\mathbb{C}$上整函数</p>
 <p>由$\zeta(z)$准周期性，$\displaystyle\frac{\sigma’(z+\omega_1)}{\sigma(z+\omega_1)}&#x3D;\frac{\sigma’(z)}{\sigma(z)}+\eta_1$，积分并利用$\sigma(z)$为奇函数可得</p>
 <p>$$\sigma(z+\omega_i)&#x3D;-\sigma(z)\exp\left(\eta_i z+\frac{\eta_i\omega_i}{2}\right)\qquad i&#x3D;1,2$$</p>
-<p>$\omega_1&#x3D;2i,\omega_2&#x3D;2$时$\sigma(z)$图像如下，其中模做了对数处理 $|w|\mapsto\ln(1+|w|)$</p>
+<p>$\omega_1&#x3D;4,\omega_2&#x3D;4i$ 时$\sigma(z)$图像如下，其中模做了对数处理 $|w|\mapsto\ln(1+|w|)$</p>
 <table>
 <thead>
 <tr>
@@ -373,7 +373,79 @@
 <p>由定理6，$\Omega\in M$，总可以选取恰当的基本平行四边形使得$\Omega&#x3D;0$，因此定理7成立</p>
 <p>由定理7，取$u\notin M$，$\wp(p)-\wp(u)$可写为下式，除以$\sigma^{2}(u)$是以防$\pm u$不在基本平行四边形中</p>
 <p>$$\wp(z)-\wp(u)&#x3D;-\frac{\sigma(z+u)\sigma(z-u)}{\sigma^2(z)\sigma^2(u)}$$</p>
-<h2 id="Jacobi椭圆函数"><a href="#Jacobi椭圆函数" class="headerlink" title="Jacobi椭圆函数"></a>Jacobi椭圆函数</h2>
+<h2 id="Jacobi椭圆函数"><a href="#Jacobi椭圆函数" class="headerlink" title="Jacobi椭圆函数"></a>Jacobi椭圆函数</h2><p>记$\omega_3&#x3D;\omega_1+\omega_2$，$\eta_3&#x3D;\eta_1+\eta_2$，由上节内容</p>
+<p>$$\displaystyle\wp(z)-e_k&#x3D;\wp(z)-\wp(\frac{\omega_k}{2})&#x3D;\frac{\sigma^2(\displaystyle z-\frac{\omega_k}{2})e^{\eta_kz}}{\sigma^2(z)\sigma^2(\displaystyle\frac{\omega_k}{2})}&#x3D;\frac{\sigma^2(\displaystyle z+\frac{\omega_k}{2})e^{-\eta_kz}}{\sigma^2(z)\sigma^2(\displaystyle\frac{\omega_k}{2})}$$</p>
+<p>令$\displaystyle\sigma_k(z)&#x3D;-\frac{\sigma(\displaystyle z-\frac{\omega_k}{2})e^{\eta_kz&#x2F;2}}{\sigma(\displaystyle\frac{\omega_k}{2})}&#x3D;\frac{\sigma(\displaystyle z+\frac{\omega_k}{2})e^{-\eta_kz&#x2F;2}}{\sigma(\displaystyle\frac{\omega_k}{2})}$，易知$\sigma_k(z)$为<strong>偶函数</strong></p>
+<p>$$\wp(z)-e_k&#x3D;\left(\frac{\sigma_k(z)}{\sigma(z)}\right)^2$$</p>
+<p>$$\sigma_k(z+\omega_l)&#x3D;(1-2\delta_{kl})\sigma_k(z)\exp\left(\eta_lz+\frac{\eta_l\omega_l}{2}\right)$$</p>
+<p>由 $\wp’^2(z)&#x3D;4(\wp(z)-e_1)(\wp(z)-e_2)(\wp(z)-e_3)$，比较原点处奇异部分可得</p>
+<p>$$\wp’(z)&#x3D;-2\frac{\sigma_1(z)\sigma_2(z)\sigma_3(z)}{\sigma^3(z)}$$</p>
+<p>令$\displaystyle\lambda&#x3D;\sqrt{e_1-e_2},t&#x3D;\frac{z}{\lambda}$，得到三个<strong>雅可比椭圆函数</strong></p>
+<p>$$\text{sn}\,z&#x3D;\lambda\frac{\sigma(t)}{\sigma_2(t)}\qquad\text{cn}\,z&#x3D;\frac{\sigma_1(t)}{\sigma_2(t)}\qquad\text{dn}\,z&#x3D;\frac{\sigma_3(t)}{\sigma_2(t)}$$</p>
+<p>令$\displaystyle K_1&#x3D;\frac{\lambda\omega_1}{2},iK_2&#x3D;\frac{\lambda\omega_2}{2}$，可验证雅可比椭圆函数具有如下极点、零点和周期，三个函数均为具有两个单极点的二阶椭圆函数</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">零点</th>
+<th align="center">极点</th>
+<th align="center">周期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$\text{sn}\,z$</td>
+<td align="center">$0$，$2K_1$</td>
+<td align="center">$iK_2$，$2K_1+iK_2$</td>
+<td align="center">$4K_1$，$2iK_2$</td>
+</tr>
+<tr>
+<td align="center">$\text{cn}\,z$</td>
+<td align="center">$K_1$，$3K_1$</td>
+<td align="center">$iK_2$，$2K_1+iK_2$</td>
+<td align="center">$4K_1$，$2K_1+2iK_2$</td>
+</tr>
+<tr>
+<td align="center">$\text{dn}\,z$</td>
+<td align="center">$K_1+iK_2$，$K_1+3iK_2$</td>
+<td align="center">$iK_2$，$3iK_2$</td>
+<td align="center">$2K_1$，$4iK_2$</td>
+</tr>
+</tbody></table>
+<p>雅可比椭圆函数只由<strong>基本周期比</strong> $\tau&#x3D;\displaystyle\frac{\omega_2}{\omega_1}$决定，与$\omega_1,\omega_2$的绝对大小无关</p>
+<p>$\tau&#x3D;i$ 时$K_1&#x3D;\displaystyle\frac{\Gamma(1&#x2F;4)^2}{4\sqrt{\pi}}$，$iK_2&#x3D;i\displaystyle\frac{\Gamma(1&#x2F;4)^2}{4\sqrt{\pi}}$，雅可比椭圆函数图像如下</p>
+<table>
+<thead>
+<tr>
+<th align="center">$\text{sn}\,z$</th>
+<th align="center">$\text{cn}\,z$</th>
+<th align="center">$\text{dn}\,z$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="/images/sncam.png"></td>
+<td align="center"><img src="/images/cncam.png"></td>
+<td align="center"><img src="/images/dncam.png"></td>
+</tr>
+</tbody></table>
+<p>引入<strong>模常数</strong> $k&#x3D;\displaystyle\sqrt{\frac{e_3-e_2}{e_1-e_2}}$，也仅由$\tau$决定，雅可比函数之间关系为</p>
+<p>$$\text{sn}^2\,z+\text{cn}^2\,z&#x3D;1\qquad k^2\text{sn}^2\,z+\text{dn}^2\,z&#x3D;1$$</p>
+<p>对式 $\wp(z)-e_2&#x3D;\displaystyle\left(\frac{\sigma_2(z)}{\sigma(z)}\right)^2$ 微分并利用上述关系可得</p>
+<p>$$\text{sn}’\,z&#x3D;\sqrt{(1-\text{sn}^2\,z)(1-k^2\text{sn}^2\,z)}$$</p>
+<p>$$z&#x3D;\int_0^{\text{sn}\,z}\frac{\dd u}{\sqrt{(1-u^2)(1-k^2u^2)}}$$</p>
+<p>说明$\text{sn}\,z$也为<strong>椭圆积分的逆</strong>，由Schwarz-Christoff公式，$0&lt;k&lt;1$时，此积分将$w&#x3D;\text{sn}\,z$的上半平面共形映为$z$平面的长方形</p>
+<p>$$0\mapsto 0\qquad 1\mapsto K_1\qquad \frac{1}{k}\mapsto K_1+iK_2\qquad\infty\mapsto iK_2$$</p>
+<p>映射后长方形区域为 $x\in [-K_1,K_1],y\in [0,K_2]$</p>
+<p>$k&#x3D;\displaystyle\frac{\sqrt{2}}{2}$时映射如图所示</p>
+<table>
+<thead>
+<tr>
+<th><center><img src=/images/椭圆积分前.png width=100%/></center></th>
+<th><center><img src=/images/椭圆积分后.png width=100%/></center></th>
+</tr>
+</thead>
+</table>
+<h2 id="椭圆模函数"><a href="#椭圆模函数" class="headerlink" title="椭圆模函数"></a>椭圆模函数</h2><p><img src="/images/%E6%A8%A1%E5%87%BD%E6%95%B0.png"></p>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
@@ -382,6 +454,11 @@
   <!-- prev and next -->
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
+      
+        <a href="../../07/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/%E4%BA%8C%E6%AC%A1%E9%87%8F%E5%AD%90%E5%8C%96/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          二次量子化
+        </a>
       
     </div>
     <div>
@@ -434,7 +511,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../lib/clipboard.min.js"></script>
+<script src="../../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -475,7 +552,7 @@
 
 
 
-<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -499,7 +576,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   

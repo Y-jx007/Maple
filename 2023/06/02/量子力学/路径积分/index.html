@@ -37,7 +37,7 @@
 
 
 
-<title>不含时微扰 | 枫</title>
+<title>路径积分 | 枫</title>
 
 
 
@@ -175,7 +175,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        不含时微扰
+        路径积分
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -226,10 +226,10 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
 
@@ -242,48 +242,36 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        不含时微扰
+        路径积分
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-19 12:25:09</time>
+          <time>2023-06-02 21:56:03</time>
           <span class="text-gray-400">·</span>
           <span>3 min</span>
           <span class="text-gray-400">·</span>
-          <span>865 words</span>
+          <span>611 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="非简并微扰"><a href="#非简并微扰" class="headerlink" title="非简并微扰"></a>非简并微扰</h2><p>原解$H^0\psi_n^0&#x3D;E_n^0\psi_n^0$，$\psi_n^0$为归一化的相互正交的波函数，非简并条件下不同波函数对应的能量本征值不同，加入微扰$\lambda H’$，（$\lambda$为小量，之后将令其为$1$），总哈密顿量变为$H+\lambda H’$</p>
-<p>将$\psi$和$E$用$\lambda$展开至二阶小量，代入薛定谔方程</p>
-<p>$(H^0+\lambda H’)(\psi_n^0+\lambda\psi_n^1+\lambda^2\psi_n^2+o(\lambda^2))&#x3D;(E_n^0+\lambda E_n^1+\lambda^2 E_n^2+o(\lambda^2))(\psi_n^0+\lambda\psi_n^1+\lambda^2\psi_n^2+o(\lambda^2))$</p>
-<p>比较同阶$\lambda$系数得</p>
-<p>${H^0\psi_n^1}+H’\psi_n^0&#x3D;{E_n^0\psi_n^1}+E_n^1\psi_n^0$ </p>
-<p>${H^0\psi_n^2}+H’\psi_n^1&#x3D;{E_n^0\psi_n^2}+E_n^1\psi_n^1+E_n^2\psi_n^0$</p>
-<p>由这两个关系可以解得能量与波函数的一、二阶修正项，此时可令$\lambda&#x3D;1$，用真实微扰哈密顿量$H’$进行计算</p>
-<h3 id="能量和波函数一阶修正"><a href="#能量和波函数一阶修正" class="headerlink" title="能量和波函数一阶修正"></a>能量和波函数一阶修正</h3><p>将第一个关系式与$\psi_n^0$作内积，由于$H^0$为厄米算符，</p>
-<p>$\bra{\psi_n^0}\ket{H^0\psi_n^1}&#x3D;\bra{H^0\psi_n^0}\ket{\psi_n^1}&#x3D;E_n^0\braket{\psi_n^0}{\psi_n^1}$，</p>
-<p>故能量的一阶修正为$E_n^1&#x3D;\bra{\psi_n^0}H’\ket{\psi_n^0}$</p>
-<p>为求得波函数一阶修正，将第一个关系式重写为$(H^0-E_n^0)\psi_n^1&#x3D;(E_n^1-H’)\psi_n^0$ </p>
-<p>将$\psi_n^1$用非微扰波函数展开$\psi_n^1&#x3D;\displaystyle\sum_{m}c_m^n\psi_m^0$，取$c_n^n&#x3D;0$ 以保证$\psi$的归一性($\lambda$一阶项系数为$0$)，代入上式得$\displaystyle\sum_{m\neq n}(E_m^0-E_n^0)c_m^n\psi_m^0&#x3D;(E_n^1-H’)\psi_n^0$</p>
-<p>与$\psi_m^0$内积求得$c_m^n&#x3D;\displaystyle\frac{\bra{\psi_n^0}H’\ket{\psi_m^0}^*}{E_n^0-E_m^0}$</p>
-<p>故波函数一阶修正为$\psi_n^1&#x3D;\displaystyle\sum_{m\neq n}\frac{\bra{\psi_n^0}H’\ket{\psi_m^0}^*}{E_n^0-E_m^0}\psi_m^0$</p>
-<h3 id="能量二阶修正"><a href="#能量二阶修正" class="headerlink" title="能量二阶修正"></a>能量二阶修正</h3><p>与一阶修正相仿，将第二个关系式与$\psi_n^0$内积，$H^0\psi_n^2$与$E_n^0\psi_n^2$抵消，利用$\psi_n^1$表达式，得到能量二阶修正</p>
-<p>$E_n^2&#x3D;\displaystyle\sum_{m\neq n}\frac{\left|\bra{\psi_n^0}H’\ket{\psi_m^0}\right|^2}{E_n^0-E_m^0}$</p>
-<h2 id="简并微扰"><a href="#简并微扰" class="headerlink" title="简并微扰"></a>简并微扰</h2><p>若不同本征态$\psi_n^0$能级$E_n^0$简并，则非简并微扰给出的公式将出现分母为零的项，说明其不适用于简并情况，即使是能量的一阶修正公式也是不可靠的</p>
-<p>原因在于若求出厄米矩阵$H^0$数个本征态的本征值相同，则在这些本征态张成的子空间中有无数组归一正交基，需将其进行线性变换得到唯一的<strong>真正</strong>本征态族</p>
-<p>假设所求的简并本征态族$\psi_l^0$与真正的本征态族$\tilde{\psi}_l^0$ 本征值均为$E^0$，其之间存在关系$\tilde{\psi}_l^0&#x3D;\displaystyle\sum_m A_{lm}\psi_m^0$，不妨令$\boldsymbol{A}$为实矩阵</p>
-<p>将关系式${H^0\tilde{\psi}_l^1}+H’\tilde{\psi}_l^0&#x3D;{E^0\tilde{\psi}_l^1}+\tilde{E}_l^1\tilde{\psi}_l^0$与$\psi_n^0$ 作内积</p>
-<p>$\displaystyle\sum_m A_{lm}\bra{\psi_n^0}H’\ket{\psi_m^0}&#x3D;A_{ln}\tilde{E}_l^1\Rightarrow \boldsymbol{W}\vec{A_l}&#x3D;\tilde{E}_l^1 \vec{A_l}$</p>
-<p>说明能量的一阶修正$\tilde{E}_l^1$为矩阵$W_{nm}&#x3D;\bra{\psi_n^0}H’\ket{\psi_m^0}$的$l$个本征值，真正的本征态的线性组合系数为$\boldsymbol{W}$的本征向量，$W$在真正本征态下化为对角阵</p>
-<hr>
-<p>From David J.Griffiths’s <a target="_blank" rel="noopener" href="https://lib-aengblafbai7xaxd7n24rzvv.thanks.sbs/book/3719241/8d29b2">Introduction To Quantum Mechanics</a></p>
+    <h2 id="传播子"><a href="#传播子" class="headerlink" title="传播子"></a>传播子</h2><p>演化算符 $\ket{\psi(t)}&#x3D;\hat{U}(t,t_0)\ket{\psi(t_0)}$ ，薛定谔方程 $i\hbar \partial_t \ket{\psi(t)}&#x3D;\hat{H}\ket{\psi(t)}$</p>
+<p>$\hat{H}\hat{U}&#x3D;i\hbar\partial_t\hat{U}$，若哈密顿量不显含时间，得$\hat{U}(t,t_0)&#x3D;\displaystyle \theta(t-t_0)e^{-i\hat{H}(t-t_0)&#x2F;\hbar}$</p>
+<p>$\psi(x,t)&#x3D;\braket{x}{\psi(t)}&#x3D;\bra{x}\hat{U}(t,t_0)\ket{\psi(t_0)}&#x3D;\displaystyle\int_{x_0}\bra{x}\hat{U}(t,t_0)\ket{x_0}\bra{x_0}\ket{\psi(t_0)}\dd x_0$</p>
+<p>传播子 $\psi(x,t)&#x3D;\displaystyle\int_{x_0}U(x,t;x_0,t_0)\psi(x_0,t_0)\dd x_0$</p>
+<p>$U(x,t;x_0,t_0)&#x3D;\bra{x}\hat{U}(t,t_0)\ket{x_0}&#x3D;\displaystyle\sum_n \bra{x}\hat{U}(t,t_0)\ket{n}\bra{n}\ket{x_0}&#x3D;\sum_n \bra{x}e^{-i\hat{H}(t-t_0)&#x2F;\hbar}\ket{n}\bra{n}\ket{x_0}$</p>
+<p>$U(x,t;x_0,t_0)&#x3D;\displaystyle\sum_n e^{-iE_n(t-t_0)&#x2F;\hbar}\psi_n(x)\psi_n^*(x_0)$</p>
+<h2 id="路径积分"><a href="#路径积分" class="headerlink" title="路径积分"></a>路径积分</h2><p>$\hat{U}(t,t_0)&#x3D;\hat{U}(t,t_{n-1})\hat{U}(t_{n-1},t_{n-2})\cdots \hat{U}(t_{1},t_{0})$</p>
+<p>$$\begin{aligned}<br>    U(x_{i+1},t_{i+1};x_i,t_i)&amp;&#x3D;\bra{x_{i+1}}e^{-i\hat{H}{\Delta t}&#x2F;\hbar}\ket{x_i}\\<br>\qquad\\<br>&amp;&#x3D;\int \dd p_i \bra{x_{i+1}}\ket{p_i}\bra{p_i}e^{-i\hat{H}{\Delta t}&#x2F;\hbar}\ket{x_i}\\<br>\qquad\\<br>&amp;&#x3D;\int \frac{\dd p_i}{2\pi \hbar}e^{ip_i\Delta x&#x2F;\hbar}e^{-iH(x_i,p_i){\Delta t}&#x2F;\hbar}\\<br>\qquad\\<br>&amp;\approx\int \frac{\dd p_i}{2\pi \hbar}e^{iL(x_i,p_i)\Delta t&#x2F;\hbar}<br>\end{aligned}$$</p>
+<p>$$\begin{aligned}U(x,t;x_0,t_0)&amp;\approx \int \prod _{i&#x3D;0}^{n-1}\frac{\dd p_i}{2\pi \hbar}\prod _{i&#x3D;0}^{n-1} \dd x_i\exp\left[\sum_{\Delta t}\frac{iL(x_i,p_i)\Delta t}{\hbar}\right]\\<br>\qquad\\<br>&amp;\approx \int \prod _{i&#x3D;0}^{n-1}\frac{\dd p_i}{2\pi \hbar}\prod _{i&#x3D;0}^{n-1} \dd x_i\exp\left[\frac{i}{\hbar}\sum_{\Delta t} \left(p_i\dot{x}_i-\frac{p_i^2}{2m}-V(x_i)\right)\Delta t\right]\\<br>\qquad\\<br>&amp; &#x3D; \left(\frac{m}{2\pi\hbar i\Delta t}\right)^{n&#x2F;2}\int \prod _{i&#x3D;0}^{n-1} \dd x_i\exp\left[\frac{i}{\hbar}\int_{t_0}^t L(x(t’),p(t’))\dd t’\right]\\<br>\qquad\\<br>&amp;&#x3D; \int \mathcal{D}x(t’)\exp\left[\frac{i}{\hbar}S(x,t;x_0,t_0)\right]<br>\end{aligned}<br>$$</p>
+<h2 id="含时哈密顿量"><a href="#含时哈密顿量" class="headerlink" title="含时哈密顿量"></a>含时哈密顿量</h2><p>哈密顿量显含时间时，对 $\hat{H}\hat{U}&#x3D;i\hbar\partial_t\hat{U}$ 积分得</p>
+<p> $U(t,t_0)&#x3D;1-\displaystyle\frac{i}{\hbar}\int_{t_0}^t H(t’)U(t’,t_0)\dd t’$，迭代逐段积分</p>
+<p> $$\begin{aligned}<br>    U(t,t_0)&amp;&#x3D;1-\displaystyle\frac{i}{\hbar}\int_{t_0}^t H(t_1)\left[1-\displaystyle\frac{i}{\hbar}\int_{t_0}^{t_1} H(t_2)U(t_2,t_0)\dd t_2\right]\dd t_1&#x3D;\cdots\\<br>    \qquad\\<br>    &amp;&#x3D;1+\sum_{n&#x3D;1}^\infty\left(-\frac{i}{\hbar}\right)^n\int_{t_0}^{t}\dd t_1\int_{t_0}^{t_1}\dd t_2\cdots\int_{t_0}^{t_{n-1}}\dd t_n H(t_1)H(t_2)\cdots H(t_n)<br> \end{aligned}$$</p>
 
   </article>
   <!-- tag -->
@@ -294,16 +282,16 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="../../../15/%E7%9B%B8%E5%AF%B9%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="../../../03/%E7%BE%A4%E8%AE%BA/Lie%E7%BE%A4/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          广义相对论实验验证
+          Lie群
         </a>
       
     </div>
     <div>
       
-        <a href="../../../06/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/%E7%8B%84%E6%8B%89%E5%85%8B%E6%96%B9%E7%A8%8B/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          狄拉克方程
+        <a href="../../../../05/27/%E7%9B%B8%E5%AF%B9%E8%AE%BA/%E5%8F%B2%E7%93%A6%E8%A5%BF%E6%97%B6%E7%A9%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          史瓦西时空
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
@@ -350,7 +338,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../lib/clipboard.min.js"></script>
+<script src="../../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -391,7 +379,7 @@
 
 
 
-<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -415,7 +403,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   
