@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-06-09 23:52:34</time>
+          <time>2023-06-11 00:48:38</time>
           <span class="text-gray-400">·</span>
-          <span>15 min</span>
+          <span>20 min</span>
           <span class="text-gray-400">·</span>
-          <span>3.1k words</span>
+          <span>4.1k words</span>
         </section>
       </div>
     </div>
@@ -286,7 +286,7 @@
 <p>可知$P_n$上含有$8n$个$M$中的周期，令原点到$\partial P_1$的距离为$d$，考虑如下级数</p>
 <p>$$\begin{aligned}\sum_{\omega \neq 0}\frac{1}{|\omega|^{2+\epsilon}}&amp;&#x3D;\sum_{n&#x3D;1}^\infty\sum_{\omega \in P_n}\frac{1}{|\omega|^{2+\epsilon}}\\<br>\qquad\\<br>&amp;\le \frac{1}{d^2}\sum_{n&#x3D;1}^\infty\frac{1}{n^{1+\epsilon}}<br>\end{aligned}$$</p>
 <p><strong>引理1</strong>$\quad$ $\displaystyle\sum_{\omega \neq 0}\frac{1}{|\omega|^{\alpha}}$在$\alpha&gt;2$时收敛</p>
-<h3 id="wp-函数"><a href="#wp-函数" class="headerlink" title="$\wp$函数"></a>$\wp$函数</h3><p>$$\wp(z)&#x3D;\frac{1}{z^2}+\sum_{\omega\neq 0}\left[\frac{1}{(z-\omega)^{2}}-\frac{1}{\omega^{2}}\right]$$</p>
+<h3 id="wp-函数"><a href="#wp-函数" class="headerlink" title="$\wp$ 函数"></a>$\wp$ 函数</h3><p>$$\wp(z)&#x3D;\frac{1}{z^2}+\sum_{\omega\neq 0}\left[\frac{1}{(z-\omega)^{2}}-\frac{1}{\omega^{2}}\right]$$</p>
 <p>$$\wp’(z)&#x3D;-2\sum_{\omega}\frac{1}{(z-\omega)^{3}}$$</p>
 <p>由引理1可知$\wp(z)$与$\wp’(z)$均为$\mathbb{C}$上亚纯偶函数，又$\wp’(z)&#x3D;\wp’(z+\omega)$，积分有$\wp(z)&#x3D;\wp(z+\omega)+C$，取$z&#x3D;-\omega&#x2F;2$，因为$\wp(z)$为<strong>偶函数</strong>，可得$C&#x3D;0$</p>
 <p>故$\wp(z)$为基本周期为$\omega_1,\omega_2$的二阶椭圆函数，$\omega\in M$为其二阶极点</p>
@@ -305,6 +305,7 @@
 <p>令$u&#x3D;\wp(z)$，可解得</p>
 <p>$$z&#x3D;\int_{\infty}^u\frac{\dd u}{\sqrt{4u^3-g_2u-g_3}}$$</p>
 <p>说明$\wp(z)$为<strong>椭圆积分的逆</strong>，根式下多项式不能有重根，否则积分将会有初等表示</p>
+<p>重根判别式为$\Delta&#x3D;g_2^3-27g_3^2$，无重根对应$\Delta\neq 0$</p>
 <p>设$\wp’(z)$的零点为$e_1,e_2,e_3$，微分方程可写为</p>
 <p>$$\wp’^2(z)&#x3D;4(\wp(z)-e_1)(\wp(z)-e_2)(\wp(z)-e_3)$$</p>
 <p>由$\wp’(z)$为奇函数和其周期性可以定出</p>
@@ -324,7 +325,7 @@
 </tr>
 </thead>
 </table>
-<h3 id="zeta-函数"><a href="#zeta-函数" class="headerlink" title="$\zeta$函数"></a>$\zeta$函数</h3><p>由于$\wp(z)$仅有二阶极点，留数为零，故其可写成某单值函数的导数，习惯上记为$-\zeta(z)$，直接对$\wp(z)$表达式积分并要求$\zeta(z)$为<strong>奇函数</strong>可得</p>
+<h3 id="zeta-函数"><a href="#zeta-函数" class="headerlink" title="$\zeta$ 函数"></a>$\zeta$ 函数</h3><p>由于$\wp(z)$仅有二阶极点，留数为零，故其可写成某单值函数的导数，习惯上记为$-\zeta(z)$，直接对$\wp(z)$表达式积分并要求$\zeta(z)$为<strong>奇函数</strong>可得</p>
 <p>$$\zeta(z)&#x3D;\frac{1}{z}+\sum_{\omega\neq 0}\left(\frac{1}{z-\omega}+\frac{1}{\omega}+\frac{z}{\omega^2}\right)$$</p>
 <p>由引理1知$\zeta(z)$同样为$\mathbb{C}$上亚纯函数，利用$\wp(z)$周期性和对称性可知</p>
 <p>$$\zeta(z+\omega_i)&#x3D;\zeta(z)+\eta_i\qquad \eta_i&#x3D;2\zeta\left(\frac{\omega_i}{2}\right)\qquad i&#x3D;1,2$$</p>
@@ -343,7 +344,7 @@
 </tr>
 </thead>
 </table>
-<h3 id="sigma-函数"><a href="#sigma-函数" class="headerlink" title="$\sigma$函数"></a>$\sigma$函数</h3><p>继续对$\zeta(z)$进行积分，由于积分结果为多值对数函数，故用指数函数来消除多值性，并且需将积分后的级数每项减去常数$\ln(-\omega)$以保证其收敛性，将此函数记为$\sigma(z)$</p>
+<h3 id="sigma-函数"><a href="#sigma-函数" class="headerlink" title="$\sigma$ 函数"></a>$\sigma$ 函数</h3><p>继续对$\zeta(z)$进行积分，由于积分结果为多值对数函数，故用指数函数来消除多值性，并且需将积分后的级数每项减去常数$\ln(-\omega)$以保证其收敛性，将此函数记为$\sigma(z)$</p>
 <p>$\sigma(z)&#x3D;\exp\left[{\displaystyle\int\zeta(z)}-\displaystyle\sum_{\omega\neq 0}\ln(-\omega)\right]$，即$\displaystyle\frac{\sigma’(z)}{\sigma(z)}&#x3D;\zeta(z)$，可得其典范乘积表达式</p>
 <p>$$\sigma(z)&#x3D;z\prod_{\omega\neq 0}\left(1-\frac{z}{\omega}\right)\exp\left[\frac{z}{\omega}+\frac{1}{2}\left(\frac{z}{\omega}\right)^2\right]$$</p>
 <p>从表达式可知$\sigma(z)$为<strong>奇函数</strong></p>
@@ -435,7 +436,7 @@
 <p>说明$\text{sn}\,z$也为<strong>椭圆积分的逆</strong>，由Schwarz-Christoff公式，$0&lt;k&lt;1$时，此积分将$w&#x3D;\text{sn}\,z$的上半平面共形映为$z$平面的长方形</p>
 <p>$$0\mapsto 0\qquad 1\mapsto K_1\qquad \frac{1}{k}\mapsto K_1+iK_2\qquad\infty\mapsto iK_2$$</p>
 <p>映射后长方形区域为 $x\in [-K_1,K_1],y\in [0,K_2]$</p>
-<p>$k&#x3D;\displaystyle\frac{\sqrt{2}}{2}$时映射如图所示</p>
+<p>$\tau&#x3D;i$ 时 $k&#x3D;\displaystyle\frac{\sqrt{2}}{2}$，映射如图所示</p>
 <table>
 <thead>
 <tr>
@@ -444,7 +445,77 @@
 </tr>
 </thead>
 </table>
-<h2 id="椭圆模函数"><a href="#椭圆模函数" class="headerlink" title="椭圆模函数"></a>椭圆模函数</h2><p><img src="/images/%E6%A8%A1%E5%87%BD%E6%95%B0.png"></p>
+<h2 id="椭圆模函数"><a href="#椭圆模函数" class="headerlink" title="椭圆模函数"></a>椭圆模函数</h2><p>周期模$M$中的一组线性无关的基本周期$\omega_1,\omega_2$称为$M$的<strong>基</strong></p>
+<p>不同基构成的基本平行四边形有向面积相等，基之间的线性变换$A$称为<strong>幺模变换</strong></p>
+<p>$$\begin{pmatrix}\omega_2’\\\omega_1’\end{pmatrix}&#x3D;A \begin{pmatrix}\omega_2\\\omega_1\end{pmatrix}\qquad \det{A}&#x3D;1$$</p>
+<p><strong>定理8</strong>$\quad$ $M$的任意两组基由一幺模变换相联系</p>
+<p>所有幺模变换构成<strong>模群</strong> $SL(2,\mathbb{Z})$，其存在<strong>mod 2 同余子群</strong> $SL(2,\mathbb{Z}_2)(\text{mod}\; 2)$</p>
+<p>下图蓝色区域称为模群的<strong>基本域</strong> $D$</p>
+<center><img src=/images/基本域.png width=100% /></center>
+
+<p>令 $\tau&#x3D;\displaystyle\frac{\omega_2}{\omega_1}$，且规定 $\Im\;\tau&gt;0$，否则$\tau\mapsto -\tau$，基本域中的$\tau$对应的基称为<strong>典范基</strong></p>
+<p><strong>定理9</strong>$\quad$ $M$存在唯一典范基，即存在唯一 $\tau\in D$</p>
+<p>在线性变换构成的群下不变的亚纯函数称<strong>自守函数</strong>，模群子群下的自守函数称<strong>模函数</strong></p>
+<p>由上节知模常数 $k$ 仅与 $\tau$ 有关，引入 $\lambda(\tau)&#x3D;k^2$</p>
+<h3 id="lambda-函数"><a href="#lambda-函数" class="headerlink" title="$\lambda$ 函数"></a>$\lambda$ 函数</h3><p>$$\lambda(\tau)&#x3D;\frac{e_3-e_2}{e_1-e_2}$$</p>
+<p>由$e_k$互异知$\lambda(\tau)$为定义在上半复平面 $\Im\;\tau&gt;0$ 的<strong>不取</strong>$\boldsymbol{0,1}$的解析函数</p>
+<p>在 $SL(2,\mathbb{Z}_2)$ 对基 $\omega_1,\omega_2$ 作用下 $ \tau \mapsto \tau’$ 可能不再处于基本域中，$\lambda(\tau)\mapsto \lambda(\tau’)$</p>
+<table>
+<thead>
+<tr>
+<th align="center">A(mod 2)</th>
+<th align="center">$\lambda(\tau’)$</th>
+<th align="center">A(mod 2)</th>
+<th align="center">$\lambda(\tau’)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}$</td>
+<td align="center">$\lambda(\tau)$</td>
+<td align="center">$\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}$</td>
+<td align="center">$\displaystyle\frac{\lambda(\tau)-1}{\lambda(\tau)}$</td>
+</tr>
+<tr>
+<td align="center">$\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}$</td>
+<td align="center">$1-\lambda(\tau)$</td>
+<td align="center">$\begin{pmatrix}1&amp;0\\1&amp;1\end{pmatrix}$</td>
+<td align="center">$\displaystyle\frac{1}{\lambda(\tau)}$</td>
+</tr>
+<tr>
+<td align="center">$\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}$</td>
+<td align="center">$\displaystyle\frac{\lambda(\tau)}{\lambda(\tau)-1}$</td>
+<td align="center">$\begin{pmatrix}0&amp;1\\1&amp;1\end{pmatrix}$</td>
+<td align="center">$\displaystyle\frac{1}{1-\lambda(\tau)}$</td>
+</tr>
+</tbody></table>
+<p>可知$\lambda(\tau)$关于模群的子群 $I_2(\text{mod}\;2)$ 自守，因此称$\lambda(\tau)$为<strong>椭圆模函数</strong></p>
+<p>$\displaystyle \begin{pmatrix}1&amp;2\\0&amp;1\end{pmatrix} \in I_2(\text{mod}\;2)$，可知$\lambda(\tau+2)&#x3D;\lambda(\tau)$，即$\lambda(\tau)$<strong>周期为2</strong></p>
+<p>这六个线性变换将基本域 $D$ 拓展为以下区域 $\Omega$</p>
+<p>蓝色区域由基本域右半部分经六种变换得到，橙色区域由蓝色区域关于虚轴对称得到</p>
+<p><img src="/images/%E5%9F%9F.png"></p>
+<p><strong>定理10</strong>$\quad$ $\lambda(\tau)$将 $\Omega$ 一对一共形映到 $\mathbb{C}\backslash\{0,1\}$</p>
+<p>虚轴映为实轴，$\Re\;\Omega&gt;0$映为上半平面，$\Re\;\Omega&lt;0$映为下半平面</p>
+<p>边界点的对应关系为</p>
+<p>$$0,1,\infty\mapsto 1,\infty,0$$</p>
+<p>由$\lambda(\tau)\mapsto\lambda(\tau’)$ 的模群作用可知</p>
+<p>$$\lambda(i)&#x3D;\displaystyle\frac{1}{2},\;\;\lambda(1+i)&#x3D;-1,\;\;\lambda\left(\frac{1+i}{2}\right)&#x3D;2$$</p>
+<p>$$\lambda(e^{i\pi&#x2F;3})&#x3D;e^{i\pi&#x2F;3},\;\;\lambda(e^{i2\pi&#x2F;3})&#x3D;e^{-i\pi&#x2F;3}$$</p>
+<p>$\lambda(\tau)$图像如下</p>
+<p><img src="/images/%E6%A8%A1%E5%87%BD%E6%95%B0.png"></p>
+<h3 id="J-函数"><a href="#J-函数" class="headerlink" title="$J$ 函数"></a>$J$ 函数</h3><p>利用$\lambda(\tau)$可构造关于整个模群自守的<strong>Klein J函数</strong>，可知其<strong>周期为1</strong></p>
+<p>$$J(\tau)&#x3D;\frac{4}{27}\frac{(1-\lambda+\lambda^2)^3}{\lambda^2(1-\lambda)^2}$$</p>
+<p>可用 $e_k$ 或 $g_2,g_3$ 表示为</p>
+<p>$$J(\tau)&#x3D;-4\frac{(e_1e_2+e_2e_3+e_3e_1)^3}{(e_1-e_2)^2(e_2-e_3)^2(e_3-e_1)^2}$$</p>
+<p>$$J(\tau)&#x3D;\frac{g_2^3}{g_2^3-27g_3^2}$$</p>
+<p>可知$J(\tau)$为上半平面解析函数且能取遍$\mathbb{C}$上所有值，讨论$J(\tau)$取$0,1$的条件</p>
+<p>$$J(\tau)&#x3D;0\Leftrightarrow (\lambda-e^{i\pi&#x2F;3})^3(\lambda-e^{-i\pi&#x2F;3})^3&#x3D;0$$</p>
+<p>$$J(\tau)&#x3D;1\Leftrightarrow (2\lambda-1)^2(\lambda+1)^2(\lambda-2)^2&#x3D;0$$</p>
+<p>由$\lambda(\tau)$取值知$\tau&#x3D;e^{i\pi&#x2F;3}$ 为$J(\tau)$<strong>三重零点</strong>，$\tau&#x3D;i,\displaystyle\frac{1+i}{2}$为$J(\tau)-1$<strong>二重零点</strong></p>
+<p>可以发现这些点位于$\Omega$蓝色区域与橙色区域交界处，且相交曲线条数即为取值重数</p>
+<p><strong>定理11</strong>$\quad$ $J(\tau)$将基本域 $D$ 一对一共形映到 $\mathbb{C}$</p>
+<p>虚轴映为实轴，$\Re\;D&gt;0$映为上半平面，$\Re\;D&lt;0$映为下半平面</p>
+<p>$J(\tau)$图像如下</p>
+<p><img src="/images/KleinJ.png"></p>
 
   </article>
   <!-- tag -->
