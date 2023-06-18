@@ -37,7 +37,7 @@
 
 
 
-<title>二次量子化 | 枫</title>
+<title>固体物理早期发展 | 枫</title>
 
 
 
@@ -175,7 +175,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        二次量子化
+        固体物理早期发展
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -242,55 +242,76 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        二次量子化
+        固体物理早期发展
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-06-07 22:18:02</time>
+          <time>2023-06-12 21:31:44</time>
           <span class="text-gray-400">·</span>
-          <span>4 min</span>
+          <span>7 min</span>
           <span class="text-gray-400">·</span>
-          <span>807 words</span>
+          <span>1.3k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="产生算符和湮灭算符"><a href="#产生算符和湮灭算符" class="headerlink" title="产生算符和湮灭算符"></a>产生算符和湮灭算符</h2><p>波函数$\ket{n_1n_2\cdots n_m}$表示在态$\lambda$上粒子数为$n_\lambda$，</p>
-<p>定义<strong>产生算符</strong>$a_\lambda^\dagger$，<strong>湮灭算符</strong>$a_\lambda$，<strong>占有数算符</strong>$N_\lambda$</p>
-<p>$$\ket{n_1n_2\cdots n_m}&#x3D;\prod_{\lambda&#x3D;1}^m\frac{1}{\displaystyle\sqrt{n_\lambda!}}(a_\lambda^\dagger)^{n_\lambda}\ket{0}$$</p>
-<p>$$\bra{n_1n_2\cdots n_m}&#x3D;\bra{0}\prod_{\lambda&#x3D;m}^1\frac{1}{\displaystyle\sqrt{n_\lambda!}}(a_\lambda)^{n_\lambda}$$</p>
-<p>$$N_\lambda&#x3D;a_\lambda^\dagger a_\lambda&#x3D;n_\lambda$$</p>
-<p><strong>玻色子</strong>算符对易关系</p>
-<p>$$[a_\lambda,a_{\lambda’}]&#x3D;[a_\lambda^\dagger,a_{\lambda’}^\dagger]&#x3D;0$$</p>
-<p>$$[a_\lambda,a_{\lambda’}^\dagger]&#x3D;\delta_{\lambda\lambda’}$$</p>
-<p><strong>费米子</strong>算符对易关系</p>
-<p>$$\lbrace a_\lambda,a_{\lambda’}\rbrace&#x3D;\lbrace a_\lambda^\dagger,a_{\lambda’}^\dagger\rbrace&#x3D;0$$</p>
-<p>$$\lbrace a_\lambda,a_{\lambda’}^\dagger\rbrace&#x3D;\delta_{\lambda\lambda’}$$</p>
-<p>$$$$</p>
-<h2 id="算符二次量子化"><a href="#算符二次量子化" class="headerlink" title="算符二次量子化"></a>算符二次量子化</h2><p>单体作用</p>
-<p>$$\hat{O}_\text{2nd}&#x3D;\sum_{\mu\nu}\bra{\mu}\hat{O}\ket{\nu}a_\mu^\dagger a_\nu$$</p>
-<p>二体作用</p>
-<p>$$\hat{V}_\text{2nd}&#x3D;\frac{1}{2}\sum_{\mu\mu’}\sum_{\nu\nu’}(\mu\nu|\hat{V}|\mu’\nu’)a_\mu^\dagger a_\nu^\dagger a_{\nu’}a_{\mu’}$$</p>
-<h3 id="自旋算符"><a href="#自旋算符" class="headerlink" title="自旋算符"></a>自旋算符</h3><p>$$\hat{S}_z&#x3D;\frac{\hbar}{2}(a_+^\dagger a_+^\dagger-a_-^\dagger a_-)$$</p>
-<p>$$\hat{S}&#x3D;\sum_{\alpha\alpha’}\bra{\alpha}\sigma\ket{\alpha’}a_\alpha^\dagger a_{\alpha’}$$</p>
-<h3 id="哈密顿量"><a href="#哈密顿量" class="headerlink" title="哈密顿量"></a>哈密顿量</h3><p>$$\begin{aligned}\hat{H}&amp;&#x3D;\int \text{d}^3 \boldsymbol{x}\; \psi(\boldsymbol{x})^\dagger \left[-\frac{\hbar^2}{2m}\nabla^2+U(\boldsymbol{x})\right]\psi(\boldsymbol{x})\\<br>\quad\\<br>&amp;+\frac{1}{2}\int \text{d}^3 \boldsymbol{x}\text{d}^3 \boldsymbol{x}’\; V(\boldsymbol{x}-\boldsymbol{x}’)\psi(\boldsymbol{x})^\dagger\psi(\boldsymbol{x’})^\dagger\psi(\boldsymbol{x’})\psi(\boldsymbol{x})<br>\end{aligned}$$</p>
-<p>$\psi(\boldsymbol{x})^\dagger,\psi(\boldsymbol{x})$为产生湮灭算符的连续化，满足与$a_\lambda,a_\lambda’$相似的对易关系，只需将$\delta_{\lambda\lambda’}$替换为三维$\delta$函数$\delta(\boldsymbol{x}-\boldsymbol{x’})$</p>
-<h3 id="电子气"><a href="#电子气" class="headerlink" title="电子气"></a>电子气</h3><p>电子动量与自旋共同本征态$\ket{\boldsymbol{k}\lambda}$</p>
-<p>$$\braket{\boldsymbol{x}\lambda}{\boldsymbol{k}\lambda}&#x3D;\frac{1}{\sqrt{V}}e^{i\boldsymbol{k}\cdot\boldsymbol{x}}\eta_\lambda$$</p>
-<p>电子、正电荷背景与二者相互作用哈密顿量，先将库伦势加上指数衰减因子$\mu$防止积分发散，再令$\mu\to 0$</p>
-<p>$$H&#x3D;H_e+H_b+H_{eb}$$</p>
-<p>$$H_b&#x3D;\frac{e^2}{2}\int \text{d}^3 \boldsymbol{x}\text{d}^3 \boldsymbol{x}’ \frac{n(\boldsymbol{x})n(\boldsymbol{x’})\exp(-\mu|\boldsymbol{x}-\boldsymbol{x’}|)}{|\boldsymbol{x}-\boldsymbol{x’}|}&#x3D;\frac{2\pi N^2 e^2}{\mu^2 V}$$</p>
-<p>$$H_{eb}&#x3D;-e^2\sum_{i&#x3D;1}^N\int \text{d}^3 \boldsymbol{x}\frac{n(\boldsymbol{x})\exp(-\mu|\boldsymbol{x}-\boldsymbol{r}_i|)}{|\boldsymbol{x}-\boldsymbol{r}_i|}&#x3D;\frac{-4\pi N^2 e^2}{\mu^2 V}$$</p>
-<p>$$H_e&#x3D;T+U$$</p>
-<p>$$T&#x3D;\sum_\sigma\int\text{d}^3\boldsymbol{k} \frac{\hbar^2 k^2}{2m}a_{\boldsymbol{k}\sigma}^\dagger a_{\boldsymbol{k}\sigma}$$</p>
-<p>$$\begin{aligned}<br>U&amp;&#x3D;\frac{e^2}{2}\sum_{ij}\sum_{\sigma\sigma’}\sum_{\lambda\lambda’}\int\text{d}^3\boldsymbol{k}\text{d}^3\boldsymbol{k’}\text{d}^3\boldsymbol{p}\text{d}^3\boldsymbol{p’}(k\sigma,p\lambda|\frac{\exp(-\mu|\boldsymbol{r}_i-\boldsymbol{r}_j|)}{|\boldsymbol{r}_i-\boldsymbol{r}_j|}|k’\sigma’,p’\lambda’)a_{k\sigma}^\dagger a_{p\lambda}^\dagger a_{p’\lambda’} a_{k’\sigma’}\\<br>\quad\\<br>&amp;&#x3D;\frac{2\pi (N^2-N) e^2}{\mu^2 V}+\frac{2\pi e^2}{V}\sum_{\sigma\lambda}\int_{q\neq 0} \frac{1}{q^2} a_{k+q,\sigma}^\dagger a_{k’-q,\lambda}^\dagger a_{k’\lambda}a_{k\sigma}<br>\end{aligned}$$</p>
-<p>$$H&#x3D;H_0+H_1&#x3D;\sum_\sigma\int\text{d}^3\boldsymbol{k} \frac{\hbar^2 k^2}{2m}a_{\boldsymbol{k}\sigma}^\dagger a_{\boldsymbol{k}\sigma}+2\pi e^2 \sum_{\sigma\lambda}\int_{q\neq 0} \text{d}^3 q\text{d}^3 k\text{d}^3 k’\; \frac{1}{q^2} a_{k+q,\sigma}^\dagger a_{k’-q,\lambda}^\dagger a_{k’\lambda}a_{k\sigma}$$</p>
-<p>$$\langle H\rangle&#x3D;\frac{3\hbar^2k_F^2N}{10m}$$</p>
+    <h2 id="固体比热容"><a href="#固体比热容" class="headerlink" title="固体比热容"></a>固体比热容</h2><h3 id="Dulong–Petit"><a href="#Dulong–Petit" class="headerlink" title="Dulong–Petit"></a>Dulong–Petit</h3><p>理想固体模型，每个振动自由度能量$\varepsilon^v&#x3D;\displaystyle\frac{p^2}{2m}+\frac{m\omega^2q^2}{2}$，具有两个正平方项，</p>
+<p>由能量均分定理，每个正平方项平均能量为 $k_BT&#x2F;2$，$\overline{\varepsilon^v}&#x3D;k_BT$，</p>
+<p>$N$原子固体具有$3N-6\approx 3N$个振动自由度，因此比热容为</p>
+<p>$$C&#x3D;3Nk_B$$</p>
+<h3 id="Einstein"><a href="#Einstein" class="headerlink" title="Einstein"></a>Einstein</h3><p>振动同频假设，一维振子能量本征值$\displaystyle E_n&#x3D;(n+\frac{1}{2})\hbar\omega$，</p>
+<p>配分函数$\displaystyle Z_{1D}&#x3D;\sum_n e^{-\beta E_n}&#x3D;1&#x2F;2\sinh(\beta \hbar\omega&#x2F;2)$，$Z_{3D}&#x3D;(Z_{1D})^3$</p>
+<p>$\langle E\rangle&#x2F;N&#x3D;\displaystyle -\frac{3}{Z_{1D}}\frac{\partial{Z_{1D}}}{\partial{\beta}}&#x3D;3(n_B(\beta\hbar\omega)+\frac{1}{2})\hbar\omega$，</p>
+<p>玻色占有数因子$n_B(x)&#x3D;1&#x2F;(e^x-1)$，因此比热容为</p>
+<p>$$C&#x3D;\frac{\partial \langle E\rangle}{\partial T}&#x3D;3Nk_B(\beta\hbar\omega)^2\frac{e^{\beta\hbar\omega}}{(e^{\beta\hbar\omega}-1)^2}$$</p>
+<p>爱因斯坦温度$\hbar\omega&#x3D;k_BT_{\text{Einstein}}$</p>
+<h3 id="Debye"><a href="#Debye" class="headerlink" title="Debye"></a>Debye</h3><p>周期性边界条件$\displaystyle \boldsymbol{k}&#x3D;\frac{2\pi(n_1,n_2,n_3)}{L}$，连续化$\displaystyle\sum_\boldsymbol{k}\to \frac{L^3}{(2\pi)^3}\int \text{d}\boldsymbol{k}$，<br>各向同性假设$\displaystyle k&#x3D;\frac{\omega}{v}$，状态数密度$\displaystyle\int_0^{\omega_{d}} g(\omega)\dd\omega&#x3D;3N$</p>
+<p>$$\langle E\rangle&#x3D;\frac{L^3}{(2\pi)^3}\int 3(n_B(\beta\hbar\omega(\boldsymbol{k}))+\frac{1}{2})\hbar\omega(\boldsymbol{k})\text{d}\boldsymbol{k}\\<br>&#x3D;\displaystyle\int_0^{\omega_{d}} (n_B(\beta\hbar\omega)+\frac{1}{2})\hbar\omega g(\omega)\dd\omega$$</p>
+<p>德拜频率$\omega_d^3&#x3D;6\pi^2nv^3$，状态数密度$g(\omega)&#x3D;\displaystyle N\frac{9\omega^2}{\omega_d^3}$</p>
+<p>$$\langle E\rangle&#x3D;\frac{9N\hbar}{\omega_d^3}\int_0^{\omega_{d}}\frac{\omega^3\dd\omega}{e^{\beta\hbar\omega}-1}+与T无关常量\\<br>&#x3D;9N\frac{(k_BT)^4}{(\hbar\omega_d)^3}\int_0^{x_{d}}\frac{x^3\dd x}{e^x-1}+与T无关常量$$</p>
+<p>低温$x_{d}&#x3D;\displaystyle\frac{\hbar\omega_{d}}{k_BT}\to \infty$，$\displaystyle\int_0^{x_{d}}\frac{x^3\dd x}{e^x-1}\to 3!\zeta(4)&#x3D;\frac{\pi^4}{15}$，<br>德拜温度$\hbar\omega_d&#x3D;k_BT_{\text{Debye}}$</p>
+<p>$$C&#x3D;3Nk_B\left(\frac{T}{T_{\text{Debye}}}\right)^3\frac{4\pi^4}{5}\propto T^3$$</p>
+<p>高温$x_{d}&#x3D;\displaystyle\frac{\hbar\omega_{d}}{k_BT}\to 0$，$\displaystyle\int_0^{\omega_{d}}\frac{9N\hbar\omega^3\dd \omega}{\omega_d^3(e^{\beta\hbar\omega}-1)}\to &#x3D;3Nk_BT$，<br>比热容回归<qg>Dulong–Petit</qg>定律</p>
+<h2 id="Drude-Theory"><a href="#Drude-Theory" class="headerlink" title="Drude Theory"></a>Drude Theory</h2><h3 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h3><p>$1.$ 电子具有特征散射时间 $\tau$，其在时间$\text{d} t$内被散射的概率为$\displaystyle\frac{\text{d} t}{\tau}$</p>
+<p>$2.$ 电子被散射后动量变为零</p>
+<p>$3.$ 在两次散射间隔之内电子仅受外部电磁场影响</p>
+<p>由上述假设有</p>
+<p>$$\langle\boldsymbol{p}(t+\text{d} t)\rangle&#x3D;(1-\text{d} t&#x2F;\tau)(\boldsymbol{p}(t)+\boldsymbol{F}\text{d} t)$$</p>
+<p>$$\frac{\text{d} \boldsymbol{p}}{\text{d} t}&#x3D;\boldsymbol{F}-\frac{\boldsymbol{p}}{\tau}\qquad \boldsymbol{F}&#x3D;-e(\boldsymbol{E}+\boldsymbol{v}\times\boldsymbol{B})$$</p>
+<p>在无外场条件下电子动量期望随时间指数衰减</p>
+<h3 id="电磁场"><a href="#电磁场" class="headerlink" title="电磁场"></a>电磁场</h3><p>稳态下$\dot{\boldsymbol{p}}&#x3D;0$，</p>
+<p>若只存在电场，$\boldsymbol{p}&#x3D;-e\tau\boldsymbol{E}$</p>
+<p>设电子数密度为$n$，质量为$m$，可求出电导率 $\sigma&#x3D;\displaystyle\frac{ne^2 \tau}{m}$</p>
+<p>若存在电磁场，假设磁场方向沿$\hat{z}$</p>
+<p>$$\boldsymbol{E}&#x3D;\frac{m}{ne^2\tau}\boldsymbol{j}+\frac{1}{ne}\boldsymbol{j}\times\boldsymbol{B}&#x3D;\boldsymbol{\rho}\boldsymbol{j}$$</p>
+<p>$$\boldsymbol{\rho}&#x3D;\begin{pmatrix}<br>\displaystyle\frac{m}{ne^2\tau}&amp;\displaystyle\frac{B}{ne}&amp;0\\<br>-\displaystyle\frac{B}{ne}&amp;\displaystyle\frac{m}{ne^2\tau}&amp;0\\<br>0&amp;0&amp;\displaystyle\frac{m}{ne^2\tau}\end{pmatrix}$$</p>
+<p>$$\boldsymbol{\sigma}&#x3D;\boldsymbol{\rho}^{-1}&#x3D;\begin{pmatrix}<br>\displaystyle\frac{ne^2\tau}{\displaystyle m\left(1+\frac{B^2e^2\tau^2}{m^2}\right)}&amp;-\frac{\displaystyle ne^2\tau}{\displaystyle m\left(\frac{m}{Be\tau}+\frac{Be\tau}{m}\right)}&amp;0\\<br>\displaystyle\frac{ne^2\tau}{m\displaystyle\left(\frac{m}{Be\tau}+\frac{Be\tau}{m}\right)}&amp;\displaystyle\frac{ne^2\tau}{\displaystyle m\left(1+\frac{B^2e^2\tau^2}{m^2}\right)}&amp;0\\<br>0&amp;0&amp;\displaystyle\frac{ne^2\tau}{m}\end{pmatrix}$$</p>
+<p>霍尔系数 </p>
+<p>$$\displaystyle R_H&#x3D;\frac{\rho_{yx}}{B}&#x3D;-\frac{1}{ne}$$</p>
+<h3 id="热传导"><a href="#热传导" class="headerlink" title="热传导"></a>热传导</h3><p>$$\boldsymbol{j}_T&#x3D;-\kappa\nabla T$$</p>
+<p>由</p>
+<p><strong>热导率公式</strong>，散射长度$\lambda&#x3D;\langle v\rangle\tau$，式中$\langle v\rangle^2$也可用$\langle v^2\rangle$替代</p>
+<p>$$\kappa&#x3D;\displaystyle\frac{1}{3}nc_v\langle v\rangle\lambda&#x3D;\displaystyle\frac{4}{\pi}\frac{n\tau k_B^2T}{m}$$</p>
+<p><strong>Wiedemann–Franz</strong></p>
+<p>$$L&#x3D;\frac{\kappa}{T\sigma}&#x3D;\frac{4}{\pi}\left(\frac{k_B}{e}\right)^2\approx 0.94\times 10^{-8}\;\text{V}^2&#x2F; \text{K}^2$$</p>
+<h2 id="Sommerfeld-Theory"><a href="#Sommerfeld-Theory" class="headerlink" title="Sommerfeld Theory"></a>Sommerfeld Theory</h2><h3 id="Fermi–Dirac-Statistics"><a href="#Fermi–Dirac-Statistics" class="headerlink" title="Fermi–Dirac Statistics"></a>Fermi–Dirac Statistics</h3><p>占有数因子</p>
+<p>$$n_F&#x3D;\displaystyle\frac{1}{e^{\beta(E-\mu)}+1}\qquad$$</p>
+<p>定义费米能 $E_F$ 为 $T&#x3D;0$ 时化学势，此时占有数因子为阶跃函数，电子均匀分布在自由电子费米球$|k|&lt;k_F$内</p>
+<p>$$E_F&#x3D;\frac{\hbar^2k_F^2}{2m}\qquad T_F&#x3D;\frac{E_F}{k_B}$$</p>
+<p>连续化$\displaystyle\sum_{\boldsymbol{k}\sigma}&#x3D;\frac{2V}{(2\pi)^3}\int\text{d}\boldsymbol{k}$，电子总数</p>
+<p>$$N&#x3D;\frac{2V}{(2\pi)^3}\int_0^{k_F}\;\text{d}\boldsymbol{k}&#x3D;\frac{Vk_F^3}{3\pi^2}$$</p>
+<p>$$k_F&#x3D;(3\pi^2n)^{1&#x2F;3}\qquad E_F&#x3D;\frac{\hbar^2(3\pi^2 n)^{2&#x2F;3}}{2m}$$</p>
+<h3 id="电子比热容"><a href="#电子比热容" class="headerlink" title="电子比热容"></a>电子比热容</h3><p>能量</p>
+<p>$$\begin{aligned}<br>E&amp;&#x3D;\frac{2V}{(2\pi)^3}\int_0^{\infty}\epsilon(\boldsymbol{k})n_F(\boldsymbol{k})\;\text{d}\boldsymbol{k}\\<br>\qquad\\<br>&amp;&#x3D;\frac{2V}{(2\pi)^3}\int_0^{\infty}\frac{\hbar^2k^2}{2m}\cdot\frac{1}{\exp\left(\displaystyle\frac{\beta\hbar^2k^2}{2m}-\beta\mu\right)+1}\;\text{d}\boldsymbol{k}\\<br>\qquad\\<br>&amp;&#x3D;\left(\frac{2m}{\hbar^2}\right)^{3&#x2F;2}\frac{V}{2\pi^2}\int_0^{\infty}\frac{\epsilon^{3&#x2F;2}\dd \epsilon}{e^{\beta(\epsilon-\mu)}+1}\\<br>\qquad\\<br>&amp;\overset{T\to 0}{\approx}\frac{3Nk_BT}{2}\int_0^{\infty}\frac{y^{3&#x2F;2}\dd y}{e^{T_F&#x2F;T(y-1)}+1}<br>\end{aligned}$$</p>
+<p>比热容</p>
+<p>$$C&#x3D;\frac{\pi^2 Nk_B}{2}\frac{T}{T_F}$$</p>
+<p>低温下晶体总比热容</p>
+<p>$$C&#x3D;\alpha T^3+\beta T$$</p>
 
   </article>
   <!-- tag -->
@@ -301,16 +322,16 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="../../../11/%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86/%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86%E6%97%A9%E6%9C%9F%E5%8F%91%E5%B1%95/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="../../../18/%E9%9F%B3%E4%B9%90/%E9%9F%B3%E9%98%B6%E8%89%B2%E5%BD%A9/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          固体物理早期发展
+          音阶色彩
         </a>
       
     </div>
     <div>
       
-        <a href="../../../06/%E5%A4%8D%E5%88%86%E6%9E%90/%E6%A4%AD%E5%9C%86%E5%87%BD%E6%95%B0/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          椭圆函数
+        <a href="../../../07/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/%E4%BA%8C%E6%AC%A1%E9%87%8F%E5%AD%90%E5%8C%96/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          二次量子化
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
