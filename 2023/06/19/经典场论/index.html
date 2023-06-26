@@ -37,11 +37,11 @@
 
 
 
-<title>归档 | 枫</title>
+<title>经典场论 | 枫</title>
 
 
 
-<link rel="icon" href="../images/favicon.png">
+<link rel="icon" href="../../../../images/favicon.png">
 
 
 
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        
+        经典场论
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="../archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="../categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -224,222 +224,221 @@
 </div>
 
   <main class="p-12">
-    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
-  <div class="flex flex-col h-48 items-center justify-center">
-    <h1 class="site-title text-4xl leading-relaxed">
-      枫
-    </h1>
-    <p class="text-gray-500 mt-2">
-      
-    </p>
-  </div>
-  
-  
-    
-    
-      <div class="relative pointer-events-none">
-        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        经典场论
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-06-26 15:14:33</time>
+          <span class="text-gray-400">·</span>
+          <span>2 min</span>
+          <span class="text-gray-400">·</span>
+          <span>458 words</span>
+        </section>
       </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="Lagrangian-and-Hamiltonian"><a href="#Lagrangian-and-Hamiltonian" class="headerlink" title="Lagrangian and Hamiltonian"></a>Lagrangian and Hamiltonian</h2><p><strong>经典作用量</strong></p>
+<p>$$S[q_n]&#x3D;\int L(q_n,\dot{q}_n)\dd t$$</p>
+<p>作用量对$q_n$变分为零给出 <strong>Euler-Lagrange方程</strong></p>
+<p>$$\frac{\dd}{\dd t}\frac{\partial L}{\partial \dot{q}_n}-\frac{\partial L}{\partial q_n}&#x3D;0$$</p>
+<p>定义<strong>动量</strong> $\displaystyle p_n\equiv\frac{\partial L}{\partial \dot{q}_n}$，由此定义<strong>Hamiltonian</strong></p>
+<p>$$H(q_n,p_n)\equiv\sum_{n}p_n\dot{q}_n-L(q_n,\dot{q}_n)$$</p>
+<p>定义<strong>泊松括号</strong></p>
+<p>$$\{f,g\}\equiv\frac{\partial f}{\partial q_n}\frac{\partial g}{\partial p_n}-\frac{\partial f}{\partial p_n}\frac{\partial g}{\partial q_n}$$</p>
+<p><strong>对易关系</strong></p>
+<p>$$\{q_m,p_n\}&#x3D;\delta_{mn}$$</p>
+<p>与Euler-Lagrange方程等价 <strong>Hamilton方程</strong></p>
+<p>$$\dot{q}_n&#x3D;\{q_n,H\}&#x3D;\frac{\partial H}{\partial p_n}\qquad \dot{p}_n&#x3D;\{p_n,H\}&#x3D;-\frac{\partial H}{\partial q_n}$$</p>
+<p><strong>量子化</strong></p>
+<p>$$[q_m,p_n]&#x3D;i\hbar\delta_{mn}$$</p>
+<p><strong>Heisenberg方程</strong></p>
+<p>$$\dot{q}_n&#x3D;\frac{1}{i\hbar}[q_n,H]$$</p>
+<h2 id="场形式化"><a href="#场形式化" class="headerlink" title="场形式化"></a>场形式化</h2><p><strong>经典场作用量</strong></p>
+<p>$$S&#x3D;\int\text{d}^4x\; \mathcal{L}(\phi_a,\partial_\mu\phi_a)$$</p>
+<p>作用量对$\phi_a$变分为零给出 <strong>Euler-Lagrange方程</strong></p>
+<p>$$\partial_\mu\left(\frac{\partial \mathcal{L}}{\partial(\partial_\mu\phi_a)}\right)-\frac{\partial \mathcal{L}}{\partial \phi_a}&#x3D;0$$</p>
+<p>定义<strong>动量密度</strong> $\displaystyle \pi(\boldsymbol{x})\equiv\frac{\partial \mathcal{L}}{\partial \phi(\boldsymbol{x})}$，由此定义<strong>Hamiltonian密度</strong></p>
+<p>$$\mathcal{H}\equiv\pi(\boldsymbol{x})\dot{\phi}(\boldsymbol{x})-\mathcal{L}$$</p>
+<p>$$H\equiv \int\text{d}^3 x\;[\pi(\boldsymbol{x})\dot{\phi}(\boldsymbol{x})-\mathcal{L}]$$</p>
+<p>自由标量场<strong>Lagrange密度</strong></p>
+<p>$$\mathcal{L}&#x3D;\frac{1}{2}\partial_\mu\phi\;\partial^\mu\phi-\frac{1}{2}m^2\phi^2$$</p>
+<p>Euler-Lagrange方程给出 <strong>Klein-Gordon方程</strong></p>
+<p>$$(\partial^\mu\partial_\mu+m^2)\phi&#x3D;0$$</p>
+<p><strong>Hamiltonian</strong></p>
+<p>$$H&#x3D;\int\text{d}^3x\;\left[\frac{1}{2}\pi^2+\frac{1}{2}(\nabla\phi)^2+\frac{1}{2}m^2\phi^2\right]$$</p>
+<h2 id="Symmetry-and-Noether’s-theorem"><a href="#Symmetry-and-Noether’s-theorem" class="headerlink" title="Symmetry and Noether’s theorem"></a>Symmetry and Noether’s theorem</h2><p>场作用量应满足 <strong>Lorentz不变性</strong>，在变换 $x^\mu\to (x’)^\mu&#x3D;\Lambda_{\;\nu}^{\mu}x^\nu$ 下</p>
+<p>$$g_{\mu\nu}\to g_{\mu\nu}\Lambda_{\;\rho}^\mu\Lambda_{\;\sigma}^\nu$$</p>
+<p>$$\phi(\boldsymbol{x})\to\phi(\Lambda^{-1}\boldsymbol{x}’)$$</p>
+<p>$$A_\mu(\boldsymbol{x})\to \Lambda A_\mu(\Lambda^{-1}\boldsymbol{x}’)$$</p>
+<p><strong>Noether’s theorem</strong>$\quad$ 每个连续对称性对应一个<strong>Noether current</strong> $j^\mu(\boldsymbol{x})$</p>
+<p>$$\partial_\mu j^\mu&#x3D;0$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
     
-    <a href="../2023/06/19/%E7%BB%8F%E5%85%B8%E5%9C%BA%E8%AE%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
-          经典场论
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 19
-          ·
-          2 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../2023/06/19/Stiefel-Whitney/">
-      <header>
-        <h2 class="font-bold text-xl">
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+    </div>
+    <div>
+      
+        <a href="../Stiefel-Whitney/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           Stiefel-Whitney Classes
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 19
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
     
-    
-    <a href="../2023/06/18/%E9%9F%B3%E4%B9%90/%E9%9F%B3%E9%98%B6%E8%89%B2%E5%BD%A9/">
-      <header>
-        <h2 class="font-bold text-xl">
-          音阶色彩
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 18
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../2023/06/11/%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86/%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86%E6%97%A9%E6%9C%9F%E5%8F%91%E5%B1%95/">
-      <header>
-        <h2 class="font-bold text-xl">
-          固体物理早期发展
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 11
-          ·
-          7 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../2023/06/07/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/%E4%BA%8C%E6%AC%A1%E9%87%8F%E5%AD%90%E5%8C%96/">
-      <header>
-        <h2 class="font-bold text-xl">
-          二次量子化
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 07
-          ·
-          4 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../2023/06/06/%E5%A4%8D%E5%88%86%E6%9E%90/%E6%A4%AD%E5%9C%86%E5%87%BD%E6%95%B0/">
-      <header>
-        <h2 class="font-bold text-xl">
-          椭圆函数
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 06
-          ·
-          20 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../2023/06/05/%E7%BE%A4%E8%AE%BA/%E7%BE%A4%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
-      <header>
-        <h2 class="font-bold text-xl">
-          群的基本概念
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../2023/06/05/%E7%BE%A4%E8%AE%BA/%E7%BD%AE%E6%8D%A2%E7%BE%A4/">
-      <header>
-        <h2 class="font-bold text-xl">
-          置换群
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          5 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../2023/06/05/%E7%BE%A4%E8%AE%BA/%E7%89%B9%E5%BE%81%E6%A0%87%E8%A1%A8%E8%A1%A8/">
-      <header>
-        <h2 class="font-bold text-xl">
-          特征标表表
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../2023/06/05/%E7%BE%A4%E8%AE%BA/%E7%BE%A4%E8%A1%A8%E7%A4%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
-          群表示
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
 </section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
 
   </main>
   <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">

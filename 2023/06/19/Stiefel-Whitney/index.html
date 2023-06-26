@@ -37,11 +37,11 @@
 
 
 
-<title>点群和空间群 | 枫</title>
+<title>Stiefel-Whitney Classes | 枫</title>
 
 
 
-<link rel="icon" href="../../../../../images/favicon.png">
+<link rel="icon" href="../../../../images/favicon.png">
 
 
 
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        点群和空间群
+        Stiefel-Whitney Classes
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -233,128 +233,110 @@
 
 <!-- toc -->
 
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        点群和空间群
+        Stiefel-Whitney Classes
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-04-23 17:52:43</time>
+          <time>2023-06-26 22:01:29</time>
           <span class="text-gray-400">·</span>
-          <span>2 min</span>
+          <span>6 min</span>
           <span class="text-gray-400">·</span>
-          <span>697 words</span>
+          <span>1.4k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <p><qg>三维Eulid群$E_3$</qg></p>
-<p>旋转反演$\boldsymbol{R}$与平移$T(\boldsymbol{a})$复合操作$\{\boldsymbol{R}|\boldsymbol{a}\}\boldsymbol{r}&#x3D;\boldsymbol{Rr}+\boldsymbol{a}$构成群$E_3$</p>
-<p>平移群$\{\boldsymbol{I}|\boldsymbol{a}\}$为不变子群，旋转群$\{\boldsymbol{R}|\boldsymbol{0}\}$不是</p>
-<p>平移旋转一般不对易，$E_3&#x3D;T\rtimes R$</p>
-<p>研究$E_3$分立子群，取定三维晶格，保持晶格不变的操作$\{\boldsymbol{R}|\boldsymbol{a}\}$称为对称操作，满足<br>$|\boldsymbol{a}|\ge a_0$的对称操作构成的群称为晶格空间群</p>
-<p>空间群三类基本操作为平移操作$T&#x3D;\{\boldsymbol{I}|\boldsymbol{r_n}\}$、点操作$P&#x3D;\{\boldsymbol{\alpha_s}|\boldsymbol{0}\}$、复合操作<br>$\{\boldsymbol{\alpha_P}|\boldsymbol{\tau}\}$为旋转反演后进行一个非整数平移</p>
-<p><qg>点群中的对称元素和对称算符</qg></p>
-<p>$n$度轴$C_n$，其对称元素为$c_n^k$；反射面$\sigma$，与轴垂直为$\sigma_h$，包含轴为$\sigma_v$，平分两轴为<br>$\sigma_d$；中心反演$i$；$n$度像转轴$S_n&#x3D;C_n\sigma_h$</p>
-<p>夹角为$\varphi$的两个$2$度轴复合，得到与其均垂直的旋转$c_{2A}c_{2B}&#x3D;c(-2\varphi)$，注意此处定义操作先后顺序为从左到右</p>
-<p>夹角为$\varphi$的两个含轴反射面复合，得到沿轴的旋转$\sigma_v\sigma_{v’}&#x3D;c(-2\varphi)$</p>
-<p><qg>第一类点群</qg></p>
-<p>第一类点群仅包含纯旋转，以下讨论仅包含晶格点群</p>
-<p>单轴点群：$C_1,C_2,C_3,C_4,C_6$</p>
-<p>多边形点群：$D_2,D_3,D_4,D_6$</p>
-<p>多面体点群：$T,O$</p>
-<p>共$11$种</p>
-<p><qg>第二类点群</qg></p>
-<p>第二类点群包括反演</p>
-<p>中心反演：$C_i$</p>
-<p>平面反射：$C_s$</p>
-<p>旋转与垂直轴反射面复合：$C_{2h},C_{3h},C_{4h},C_{6h}\cong C_n\otimes C_s,C_{2h}\cong C_2\otimes C_i$</p>
-<p>旋转与包含轴反射面复合：$C_{2v},C_{3v},C_{4v},C_{6v}\cong D_n$</p>
-<p>包含像转轴：$S_4,S_6$</p>
-<p>多边形与垂直轴反射面复合：$D_{2h},D_{4h},D_{6h}\cong D_n\otimes C_i,D_{3h}\cong D_n \otimes C_s$</p>
-<p>多边形与平分轴反射面复合：$D_{2d},D_{3d}\cong D_3\otimes C_i$</p>
-<p>多面体与垂直轴反射面复合：$T_h\cong T\otimes C_i,O_h\cong O\otimes C_i$</p>
-<p>多边形与平分轴反射面复合：$T_d\cong O$</p>
-<p>共$21$种</p>
-<p>第一类晶格点群与第二类晶格点群共$32$种</p>
-<p><qg>Bravais格子和空间群</qg></p>
-<p>平移群的对称点群$P&#x3D;\{\alpha:\alpha\boldsymbol{r_n}&#x3D;\boldsymbol{r_n}’\in T\}$</p>
-<p>$P$点群包含反演，且有$C_{nv}$为其子群，一共七种晶系满足此条件</p>
-<p>三斜$C_i$，单斜$C_{2h}$，正交$D_{2h}$，四方$D_{4h}$，三角$D_{3d}$，六角$D_{6h}$，立方$O_h$</p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">晶系</td>
-<td align="center">点群个数</td>
-<td align="center">Bravais格子数</td>
-<td align="center">空间群个数</td>
-</tr>
-<tr>
-<td align="center">三斜</td>
-<td align="center">2</td>
-<td align="center">1</td>
-<td align="center">2</td>
-</tr>
-<tr>
-<td align="center">单斜</td>
-<td align="center">3</td>
-<td align="center">2</td>
-<td align="center">13</td>
-</tr>
-<tr>
-<td align="center">正交</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="center">59</td>
-</tr>
-<tr>
-<td align="center">四方</td>
-<td align="center">7</td>
-<td align="center">2</td>
-<td align="center">68</td>
-</tr>
-<tr>
-<td align="center">三角</td>
-<td align="center">5</td>
-<td align="center">1</td>
-<td align="center">25</td>
-</tr>
-<tr>
-<td align="center">六角</td>
-<td align="center">7</td>
-<td align="center">1</td>
-<td align="center">27</td>
-</tr>
-<tr>
-<td align="center">立方</td>
-<td align="center">5</td>
-<td align="center">3</td>
-<td align="center">36</td>
-</tr>
-<tr>
-<td align="center">总计</td>
-<td align="center">32</td>
-<td align="center">14</td>
-<td align="center">230</td>
-</tr>
-</tbody></table>
-<p>$\qquad\\$</p>
-<p><qg>平移群的不可约表示</qg></p>
+    <h2 id="Stiefel-Whitney-Classes"><a href="#Stiefel-Whitney-Classes" class="headerlink" title="Stiefel-Whitney Classes"></a>Stiefel-Whitney Classes</h2><p><strong>定理1</strong>$\quad$实射影空间$\mathbb{P}^n$上典范线丛$\gamma_n^1$非平凡</p>
+<p><strong>定理2</strong>$\quad$$\mathbb{R}^n$丛$\xi$为平凡丛当且仅当且其拥有$n$个线性独立的截面</p>
+<p>由如下四条公理定义底流形$B$上n维向量丛$\xi$的 <strong>Stiefel-Whitney Classes</strong> $\text{w}_i(\xi)$</p>
+<p><strong>公理1</strong></p>
+<p>$$\text{w}_i(\xi)\in H^i(B(\xi);\mathbb{Z}_2)$$</p>
+<p>$$\text{w}_0(\xi)&#x3D;1$$</p>
+<p>$$\text{w}_i(\xi)&#x3D;0\quad\text{for}\; i&gt;n$$</p>
+<p><strong>公理2(Naturality)</strong>$\quad$若$f:B(\xi)\to B(\eta)$ 被丛映射覆盖，则</p>
+<p>$$\text{w}_i(\xi)&#x3D;f^*\text{w}_i(\eta)$$</p>
+<p><strong>公理3(Whitney Product)</strong>$\quad$若$\xi,\eta$为相同底空间上向量丛，则</p>
+<p>$$\text{w}_k(\xi\oplus\eta)&#x3D;\sum_{i&#x3D;0}^k \text{w}_i(\xi)\smile \text{w}_{k-i}(\eta)$$</p>
+<p>在无歧义情况下将$\smile$省略</p>
+<p><strong>公理4</strong>$\quad$对圆周$\mathbb{P}^1$上典范线丛$\gamma_1^1$</p>
+<p>$$\text{w}_1(\gamma_1^1)\neq 0$$</p>
+<p><strong>推论1</strong>$\quad$若$\xi\cong\eta$</p>
+<p>$$\text{w}_i(\xi)&#x3D;\text{w}_i(\eta)$$</p>
+<p><strong>推论2,3</strong>$\quad$若$\varepsilon$为平凡丛，则</p>
+<p>$$\text{w}_i(\varepsilon)&#x3D;0\quad\text{for}\; i&gt;0$$</p>
+<p>$$\text{w}_i(\varepsilon\oplus\eta)&#x3D;\text{w}_i(\eta)$$</p>
+<p><strong>推论4</strong>$\quad$若$\xi$为配备欧式度规的$\mathbb{R}^n$丛，且$\xi$拥有$k$个线性独立的截面，则</p>
+<p>$$\text{w}_i(\xi)&#x3D;0\quad\text{for}\; i&gt;n-k$$</p>
+<p>对于$k&#x3D;1$的情况，线性独立条件即截面处处不为零</p>
+<p>记$H^\Pi(B;\mathbb{Z}_2)$为以下无穷级数构成的环</p>
+<p>$$a&#x3D;\sum_{i&#x3D;0}^\infty a_i\qquad a_i\in H^i(B;\mathbb{Z}_2)$$</p>
+<p>环中乘法满足交换律与结合律</p>
+<p>$$ab&#x3D;a_0b_0+(a_0b_1+a_1b_0)+(a_0b_2+a_1b_1+a_2b_0)+\cdots$$</p>
+<p>定义 <strong>total Stiefel-Whitney class</strong> $\text{w}(\xi)$为环中元素</p>
+<p>$$\text{w}(\xi)&#x3D;1+\sum_{i&#x3D;1}^\infty \text{w}_i(\xi)$$</p>
+<p>现在Whitney Product Theorem可写为</p>
+<p>$$\text{w}(\xi\oplus\eta)&#x3D;\text{w}(\xi)\text{w}(\eta)$$</p>
+<p>所有$\text{w}$构成交换群，记$\text{w}$的逆为$\overline{\text{w}}$</p>
+<p>$$\overline{\text{w}}&#x3D;1+\sum_{i&#x3D;1}^\infty \overline{\text{w}}_i$$</p>
+<p>$$\overline{\text{w}}_1&#x3D;\text{w}_1\qquad \overline{\text{w}}_n&#x3D;\sum_{i&#x3D;1}^{n-1}\text{w}_i\overline{\text{w}}_{n-i}+\text{w}_n$$</p>
+<p>由于切丛与法丛直和为平凡丛</p>
+<p><strong>定理3(Whitney Duality)</strong>$\quad$设$M$为欧式空间中流形，$\tau_M$ 为其切丛，$\nu$ 为其法丛</p>
+<p>$$\text{w}(\tau_M)\text{w}(\nu)&#x3D;1$$</p>
+<p>$S^n$ 切丛和法丛的 total Stiefel-Whitney class 均为$1$</p>
+<p><strong>引理1</strong>$\quad$对 $i\le n$，$H^i(\mathbb{P}^n;\mathbb{Z}_2)$为2阶循环群，若记$a$为$H^1(\mathbb{P}^n;\mathbb{Z}_2)$非零元，</p>
+<p>则在$\smile$下$a^i$为$H^i(\mathbb{P}^n;\mathbb{Z}_2)$非零元</p>
+<p>$\mathbb{P}^n$上典范线丛$\gamma_n^1$的总示性类为</p>
+<p>$$\text{w}(\gamma_n^1)&#x3D;1+a$$</p>
+<p>由于$\mathbb{P}^n$上典范线丛$\gamma_n^1$为平凡丛$\varepsilon^{n+1}$的子丛，记$\gamma^\perp$为$\gamma_n^1$正交补子丛，则</p>
+<p>$$\text{w}(\gamma^\perp)&#x3D;1+a+a^2+\cdots+a^n$$</p>
+<p><strong>引理2</strong>$\quad$若$\tau$为$\mathbb{P}^n$切丛，则$\tau\cong \text{Hom}(\gamma_n^1,\gamma^\perp)$</p>
+<p><strong>引理3</strong>$\quad$若$\varepsilon^1$为$\mathbb{P}^n$上平凡线丛，则</p>
+<p>$$\tau\oplus\varepsilon^1\cong \bigoplus_{i&#x3D;0}^n\gamma_n^1$$</p>
+<p><strong>定理4</strong>$\quad$</p>
+<p>$$\text{w}(\mathbb{P}^n)&#x3D;(1+a)^{n+1}$$</p>
+<p><strong>推论5(Stiefel)</strong>$\quad$$\text{w}(\mathbb{P}^n)&#x3D;1$ 当且仅当 $n+1&#x3D;2^m$</p>
+<p>已知 $\mathbb{P}^1,\mathbb{P}^3,\mathbb{P}^7$ 可平行化，但更高阶的射影空间不可平行化</p>
+<h2 id="商代数"><a href="#商代数" class="headerlink" title="商代数"></a>商代数</h2><p><strong>定理5(Stiefel)</strong>$\quad$若存在无零因子双线性算子$p$</p>
+<p>$$p:\mathbb{R}^n\times\mathbb{R}^n\to \mathbb{R}^n$$</p>
+<p>则$\mathbb{P}^{n-1}$为可平行化流形，即 $n&#x3D;2^m$</p>
+<p>$n&#x3D;1,2,4,8$ 分别对应实数、复数、四元数、八元数，不存在$n&gt;8$的商代数</p>
+<h2 id="浸入"><a href="#浸入" class="headerlink" title="浸入"></a>浸入</h2><p>当$n&#x3D;2^m$时</p>
+<p>$$\text{w}(\mathbb{P}^n)&#x3D;(1+a)^{2^m+1}&#x3D;1+a+a^{n}$$</p>
+<p>$$\overline{\text{w}}(\mathbb{P}^n)&#x3D;1+a+a^2+\cdots+a^{n-1}$$</p>
+<p>若$\mathbb{P}^n$能浸入$\mathbb{R}^{n+k}$中，$\mathbb{P}^n$法丛$\nu$示性类$\text{w}(\nu)&#x3D;\overline{\text{w}}(\mathbb{P}^n)$，故$\nu$维度至少为$n-1$</p>
+<p><strong>定理6</strong>$\quad$若$\mathbb{P}^{2^m}$能浸入$\mathbb{R}^{2^m+k}$中，则 $k\ge 2^m-1$</p>
+<p><strong>定理7(Witney)</strong>$\quad$任意$n&gt;1$维光滑紧致流形均可浸入$\mathbb{R}^{2n-1}$中</p>
+<h2 id="Stiefel-Whitney-Number"><a href="#Stiefel-Whitney-Number" class="headerlink" title="Stiefel-Whitney Number"></a>Stiefel-Whitney Number</h2><p>若$M$为闭$n$维流形(可以非连通)，则存在唯一<strong>基本同调类</strong></p>
+<p>$$\mu_M\in H_n(M,\mathbb{Z}_2)$$</p>
+<p>对任意上同调类 $v\in H^n(M;\mathbb{Z}_2)$，可以定义<strong>Kronecker指标</strong>，记为$v[M]$</p>
+<p>$$v[M]&#x3D;\langle v,\mu_M\rangle\in\mathbb{Z}_2$$</p>
+<p>令$r_1,r_2,\cdots,r_n$为非负整数，满足</p>
+<p>$$r_1+2r_2+3r_3+\cdots+nr_n&#x3D;n$$</p>
+<p>则对任意向量丛$\xi$可以构造单项式</p>
+<p>$$\text{w}_1^{r_1}(\xi)\text{w}_2^{r_2}(\xi)\cdots \text{w}_n^{r_n}(\xi)\in H^n(B(\xi),\mathbb{Z}_2)$$</p>
+<p>若取底流形为$M$，$\xi$为$M$切丛$\tau_M$，则可定义与此单项式相关的<strong>Stiefel-Whitney数</strong></p>
+<p>$$\text{w}_1^{r_1}\text{w}_2^{r_2}\cdots \text{w}_n^{r_n}[M]$$</p>
+<p>考虑$\mathbb{P}^n$与其切丛$\tau$，根据$\text{w}(\mathbb{P}^n)&#x3D;(1+a)^{n+1}$可知</p>
+<p>当$n$为偶数，$\text{w}_1^n[\mathbb{P}^n],\text{w}_n[\mathbb{P}^n]\neq 0$，若$n&#x3D;2^m$，则其他Stiefel-Whitney数均为零</p>
+<p>当$n$为奇数，$\text{w}(\mathbb{P}^n)&#x3D;(1+a^2)^{k}$，可知所有Stiefel-Whitney数均为零</p>
+<p><strong>定理8(Pontrjagin)</strong>$\quad$若$B$为$n+1$维光滑紧致带边流形，其边界为$M$，<br>则$M$的所有Stiefel-Whitney数均为零</p>
+<p><strong>定理9(Thom)</strong>$\quad$若$M$的所有Stiefel-Whitney数均为零，则$M$可视为某光滑紧致带边流形的边界</p>
+<p>两个闭$n$维流形属于同一个无定向<strong>配边类</strong>当且仅当其不交并为某光滑紧致$n+1$维流形的边缘</p>
+<p><strong>推论6</strong>$\quad$两个闭$n$维流形属于同一个配边类当且仅当其对应的Stiefel-Whitney数相同</p>
 
   </article>
   <!-- tag -->
@@ -365,16 +347,16 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="../../../../05/06/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/%E7%8B%84%E6%8B%89%E5%85%8B%E6%96%B9%E7%A8%8B/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="../%E7%BB%8F%E5%85%B8%E5%9C%BA%E8%AE%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          狄拉克方程
+          经典场论
         </a>
       
     </div>
     <div>
       
-        <a href="../../../../../2022/03/21/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/Levi-Civita%E8%81%94%E7%BB%9C/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          Levi-Civita联络
+        <a href="../../18/%E9%9F%B3%E4%B9%90/%E9%9F%B3%E9%98%B6%E8%89%B2%E5%BD%A9/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          音阶色彩
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
