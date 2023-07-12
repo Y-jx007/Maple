@@ -37,7 +37,7 @@
 
 
 
-<title>Grassmann流形和万有丛 | 枫</title>
+<title>Grassmann流形的胞结构 | 枫</title>
 
 
 
@@ -175,7 +175,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        Grassmann流形和万有丛
+        Grassmann流形的胞结构
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -242,55 +242,34 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        Grassmann流形和万有丛
+        Grassmann流形的胞结构
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-06-29 16:03:14</time>
+          <time>2023-06-30 11:10:24</time>
           <span class="text-gray-400">·</span>
-          <span>3 min</span>
+          <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>711 words</span>
+          <span>254 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="Grassmann流形"><a href="#Grassmann流形" class="headerlink" title="Grassmann流形"></a>Grassmann流形</h2><p>$\mathbb{R}^{n+k}$中所有过原点的$n$维平面的集合称为<strong>Grassmann流形</strong> $\text{Gr}_n(\mathbb{R}^{n+k})$</p>
-<p>$\mathbb{R}^{n+k}$中所有过原点的$n$维标架的集合称为<strong>Stiefel流形</strong> $\text{V}_n(\mathbb{R}^{n+k})$</p>
-<p>记$q$为从$\mathbb{R}^{n+k}$中$n$维标架到其张成$n$维平面的映射</p>
-<p>$$q:V_n(\mathbb{R}^{n+k})\to \text{Gr}_n(\mathbb{R}^{n+k})$$</p>
-<p><strong>引理1</strong>$\quad$$\text{Gr}_n(\mathbb{R}^{n+k})$为$nk$维紧致流形</p>
-<p>$\text{Gr}_n(\mathbb{R}^{n+1})&#x3D;\mathbb{P}^n$</p>
-<p>记$\text{Gr}_n(\mathbb{R}^{n+k})$上典范向量丛为$\gamma^n(\mathbb{R}^{n+k})$，其每点的纤维为对应的$n$维平面本身</p>
-<p><strong>引理2</strong>$\quad$$\gamma^n(\mathbb{R}^{n+k})$满足局部平凡化条件</p>
-<p>若$M\subset \mathbb{R}^{n+k}$为$n$维流形，可定义<strong>广义Gauss映射</strong>，其将$M$上每点映为该点的切空间</p>
-<p>$$\overline{g}:M\to \text{Gr}_n(\mathbb{R}^{n+k})$$</p>
-<p>此映射被以下丛映射覆盖，简记为$g:\tau_M\to \gamma^n(\mathbb{R}^{n+k})$</p>
-<p>$$g:E(\tau_M)\to E(\gamma^n(\mathbb{R}^{n+k}));(x,v)\mapsto ({\textbf{T}}_xM,v)$$</p>
-<p><strong>引理3</strong>$\quad$$k$足够大时，紧致流形上的任意$\mathbb{R}^{n}$丛都能映为$\gamma^n(\mathbb{R}^{n+k})$</p>
-<p>因此$\gamma^n(\mathbb{R}^{n+k})$称为<strong>万有丛</strong></p>
-<p>$\mathbb{R}^\infty$中所有过原点的$n$维平面的集合称为<strong>无限维Grassmann流形</strong> $\text{Gr}_n&#x3D;\text{Gr}_n(\mathbb{R}^\infty)$</p>
-<p>$\text{Gr}_1&#x3D;\mathbb{P}^\infty$，$\text{Gr}_n$ 上的典范向量丛记为 $\gamma^n$</p>
-<p>与有限维情况类似，$\gamma^n$满足局部平凡化条件</p>
-<h2 id="仿紧空间"><a href="#仿紧空间" class="headerlink" title="仿紧空间"></a>仿紧空间</h2><p>若Hausdorff空间$B$的任意开覆盖都存在局部有限加细，则称其<strong>仿紧</strong></p>
-<p><strong>定理1(A. H. Stone)</strong>$\quad$测度空间仿紧</p>
-<p><strong>定理2(Morita)</strong>$\quad$若正则拓扑空间为其可数紧子集的并，则其仿紧</p>
-<p><strong>推论1</strong>$\quad$$\text{Gr}_n$仿紧</p>
-<p><strong>定理3(Dieudonné)</strong>$\quad$仿紧空间正规</p>
-<p>以下两个定理说明$\gamma^n$为$\text{Gr}_n$ 上的万有丛</p>
-<p><strong>定理4</strong>$\quad$对仿紧底空间上的任意$\mathbb{R}^n$丛$\xi$，存在丛映射$\xi\to\gamma^n$</p>
-<p><strong>定理5</strong>$\quad$$\mathbb{R}^n$丛到$\gamma^n$的任意两个丛映射同伦</p>
-<p><strong>推论2</strong>$\quad$仿紧空间$B$上的$\mathbb{R}^n$丛$\xi$决定了唯一一个映射同伦类$\overline{f}_\xi$</p>
-<p>$$\overline{f}_\xi:B\to\text{Gr}_n$$</p>
-<p>令$c\in \text{H}^i(\text{Gr}_n;\Lambda)$为任意上同调类，则$c$与$\overline{f}_\xi$共同决定了<strong>示性上同调类</strong>$c(\xi)$</p>
-<p>$$c(\xi)&#x3D;\overline{f}_\xi^*c\in \text{H}^i(B;\Lambda)$$</p>
-<p>仿紧底空间上的$\mathbb{R}^n$丛的所有示性上同调类在系数环$\Lambda$下构成的环与$\text{H}^\bullet(\text{Gr}_n;\Lambda)$同构</p>
-<p>仿紧底空间上的两个$\mathbb{R}^n$丛 $\xi,\eta$ 同构当且仅当映射 $\overline{f}_\xi,\overline{f}_\eta$ 同伦</p>
+    <h2 id="CW复形"><a href="#CW复形" class="headerlink" title="CW复形"></a>CW复形</h2><p>同胚于单位圆盘$\mathbb{D}^p$，即$|v|\le1$的空间称为<strong>闭p胞</strong>，</p>
+<p>同胚于$\mathbb{D}^p$内部$|v|&lt;1$的空间称为<strong>开p胞</strong>，点同时为零维开胞和闭胞</p>
+<p>满足以下条件的Hausdorff空间$K$与其不交分解$\{e_\alpha\}$称为<strong>CW复形</strong></p>
+<p>$1.$$\quad$每个$e_\alpha$均为开胞，$\mathbb{D}^{n(\alpha)}$内部到$e_\alpha$的同胚称为<strong>示性映射</strong></p>
+<p>$2.$$\quad$对任意点$x$，若 $x\in\overline{e}_\alpha,x\notin e_\alpha$，则$x$属于比$e_\alpha$更低维的开胞</p>
+<p>称由$K$中一些开胞并成的$K$的闭子集为$K$的<strong>子复形</strong></p>
+<p>若$K$仅由有限个开胞构成，则上述两个条件足够，称此复形<strong>有限</strong>，否则称<strong>无限</strong></p>
+<p>对于无限复形，需附加以下两个条件</p>
+<p>$3.$<strong>闭有限</strong>$\quad$$K$中任意点属于有限子复形</p>
+<p>$4.$<strong>Whitehead拓扑</strong>$\quad$$K$中闭子集的充要条件为其与任意有限子复形的交仍为闭子集</p>
 
   </article>
   <!-- tag -->
@@ -301,11 +280,16 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
+        <a href="../../../07/04/%E5%8D%95%E5%80%BC%E5%8C%96%E5%AE%9A%E7%90%86/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          单值化定理
+        </a>
+      
     </div>
     <div>
       
-        <a href="../../19/%E7%BB%8F%E5%85%B8%E5%9C%BA%E8%AE%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          经典场论
+        <a href="../../27/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/Grassmann%20Manifold/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          Grassmann流形和万有丛
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       

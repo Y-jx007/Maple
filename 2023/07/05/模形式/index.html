@@ -37,7 +37,7 @@
 
 
 
-<title>Stiefel-Whitney Classes | 枫</title>
+<title>模形式 | 枫</title>
 
 
 
@@ -175,7 +175,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        Stiefel-Whitney Classes
+        模形式
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -242,101 +242,105 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        Stiefel-Whitney Classes
+        模形式
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-06-26 22:01:29</time>
+          <time>2023-07-11 16:42:28</time>
           <span class="text-gray-400">·</span>
           <span>6 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.4k words</span>
+          <span>1.3k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="Stiefel-Whitney-Classes"><a href="#Stiefel-Whitney-Classes" class="headerlink" title="Stiefel-Whitney Classes"></a>Stiefel-Whitney Classes</h2><p><strong>定理1</strong>$\quad$实射影空间$\mathbb{P}^n$上典范线丛$\gamma_n^1$非平凡</p>
-<p><strong>定理2</strong>$\quad$$\mathbb{R}^n$丛$\xi$为平凡丛当且仅当且其拥有$n$个线性独立的截面</p>
-<p>由如下四条公理定义底流形$B$上n维向量丛$\xi$的 <strong>Stiefel-Whitney Classes</strong> $\text{w}_i(\xi)$</p>
-<p><strong>公理1</strong></p>
-<p>$$\text{w}_i(\xi)\in H^i(B(\xi);\mathbb{Z}_2)$$</p>
-<p>$$\text{w}_0(\xi)&#x3D;1$$</p>
-<p>$$\text{w}_i(\xi)&#x3D;0\quad\text{for}\; i&gt;n$$</p>
-<p><strong>公理2(Naturality)</strong>$\quad$若$f:B(\xi)\to B(\eta)$ 被丛映射覆盖，则</p>
-<p>$$\text{w}_i(\xi)&#x3D;f^*\text{w}_i(\eta)$$</p>
-<p><strong>公理3(Whitney Product)</strong>$\quad$若$\xi,\eta$为相同底空间上向量丛，则</p>
-<p>$$\text{w}_k(\xi\oplus\eta)&#x3D;\sum_{i&#x3D;0}^k \text{w}_i(\xi)\smile \text{w}_{k-i}(\eta)$$</p>
-<p>在无歧义情况下将$\smile$省略</p>
-<p><strong>公理4</strong>$\quad$对圆周$\mathbb{P}^1$上典范线丛$\gamma_1^1$</p>
-<p>$$\text{w}_1(\gamma_1^1)\neq 0$$</p>
-<p><strong>推论1</strong>$\quad$若$\xi\cong\eta$</p>
-<p>$$\text{w}_i(\xi)&#x3D;\text{w}_i(\eta)$$</p>
-<p><strong>推论2,3</strong>$\quad$若$\varepsilon$为平凡丛，则</p>
-<p>$$\text{w}_i(\varepsilon)&#x3D;0\quad\text{for}\; i&gt;0$$</p>
-<p>$$\text{w}_i(\varepsilon\oplus\eta)&#x3D;\text{w}_i(\eta)$$</p>
-<p><strong>推论4</strong>$\quad$若$\xi$为配备欧式度规的$\mathbb{R}^n$丛，且$\xi$拥有$k$个线性独立的截面，则</p>
-<p>$$\text{w}_i(\xi)&#x3D;0\quad\text{for}\; i&gt;n-k$$</p>
-<p>对于$k&#x3D;1$的情况，线性独立条件即截面处处不为零</p>
-<p>记$H^\Pi(B;\mathbb{Z}_2)$为以下无穷级数构成的环</p>
-<p>$$a&#x3D;\sum_{i&#x3D;0}^\infty a_i\qquad a_i\in H^i(B;\mathbb{Z}_2)$$</p>
-<p>环中乘法满足交换律与结合律</p>
-<p>$$ab&#x3D;a_0b_0+(a_0b_1+a_1b_0)+(a_0b_2+a_1b_1+a_2b_0)+\cdots$$</p>
-<p>定义 <strong>total Stiefel-Whitney class</strong> $\text{w}(\xi)$为环中元素</p>
-<p>$$\text{w}(\xi)&#x3D;1+\sum_{i&#x3D;1}^\infty \text{w}_i(\xi)$$</p>
-<p>现在Whitney Product Theorem可写为</p>
-<p>$$\text{w}(\xi\oplus\eta)&#x3D;\text{w}(\xi)\text{w}(\eta)$$</p>
-<p>所有$\text{w}$构成交换群，记$\text{w}$的逆为$\overline{\text{w}}$</p>
-<p>$$\overline{\text{w}}&#x3D;1+\sum_{i&#x3D;1}^\infty \overline{\text{w}}_i$$</p>
-<p>$$\overline{\text{w}}_1&#x3D;\text{w}_1\qquad \overline{\text{w}}_n&#x3D;\sum_{i&#x3D;1}^{n-1}\text{w}_i\overline{\text{w}}_{n-i}+\text{w}_n$$</p>
-<p>由于切丛与法丛直和为平凡丛</p>
-<p><strong>定理3(Whitney Duality)</strong>$\quad$设$M$为欧式空间中流形，$\tau_M$ 为其切丛，$\nu$ 为其法丛</p>
-<p>$$\text{w}(\tau_M)\text{w}(\nu)&#x3D;1$$</p>
-<p>$S^n$ 切丛和法丛的 total Stiefel-Whitney class 均为$1$</p>
-<p><strong>引理1</strong>$\quad$对 $i\le n$，$H^i(\mathbb{P}^n;\mathbb{Z}_2)$为2阶循环群，若记$a$为$H^1(\mathbb{P}^n;\mathbb{Z}_2)$非零元，</p>
-<p>则在$\smile$下$a^i$为$H^i(\mathbb{P}^n;\mathbb{Z}_2)$非零元</p>
-<p>$\mathbb{P}^n$上典范线丛$\gamma_n^1$的总示性类为</p>
-<p>$$\text{w}(\gamma_n^1)&#x3D;1+a$$</p>
-<p>由于$\mathbb{P}^n$上典范线丛$\gamma_n^1$为平凡丛$\varepsilon^{n+1}$的子丛，记$\gamma^\perp$为$\gamma_n^1$正交补子丛，则</p>
-<p>$$\text{w}(\gamma^\perp)&#x3D;1+a+a^2+\cdots+a^n$$</p>
-<p><strong>引理2</strong>$\quad$若$\tau$为$\mathbb{P}^n$切丛，则$\tau\cong \text{Hom}(\gamma_n^1,\gamma^\perp)$</p>
-<p><strong>引理3</strong>$\quad$若$\varepsilon^1$为$\mathbb{P}^n$上平凡线丛，则</p>
-<p>$$\tau\oplus\varepsilon^1\cong \bigoplus_{i&#x3D;0}^n\gamma_n^1$$</p>
-<p><strong>定理4</strong>$\quad$</p>
-<p>$$\text{w}(\mathbb{P}^n)&#x3D;(1+a)^{n+1}$$</p>
-<p><strong>推论5(Stiefel)</strong>$\quad$$\text{w}(\mathbb{P}^n)&#x3D;1$ 当且仅当 $n+1&#x3D;2^m$</p>
-<p>已知 $\mathbb{P}^1,\mathbb{P}^3,\mathbb{P}^7$ 可平行化，但更高阶的射影空间不可平行化</p>
-<h2 id="商代数"><a href="#商代数" class="headerlink" title="商代数"></a>商代数</h2><p><strong>定理5(Stiefel)</strong>$\quad$若存在无零因子双线性算子$p$</p>
-<p>$$p:\mathbb{R}^n\times\mathbb{R}^n\to \mathbb{R}^n$$</p>
-<p>则$\mathbb{P}^{n-1}$为可平行化流形，即 $n&#x3D;2^m$</p>
-<p>$n&#x3D;1,2,4,8$ 分别对应实数、复数、四元数、八元数，不存在$n&gt;8$的商代数</p>
-<h2 id="浸入"><a href="#浸入" class="headerlink" title="浸入"></a>浸入</h2><p>当$n&#x3D;2^m$时</p>
-<p>$$\text{w}(\mathbb{P}^n)&#x3D;(1+a)^{2^m+1}&#x3D;1+a+a^{n}$$</p>
-<p>$$\overline{\text{w}}(\mathbb{P}^n)&#x3D;1+a+a^2+\cdots+a^{n-1}$$</p>
-<p>若$\mathbb{P}^n$能浸入$\mathbb{R}^{n+k}$中，$\mathbb{P}^n$法丛$\nu$示性类$\text{w}(\nu)&#x3D;\overline{\text{w}}(\mathbb{P}^n)$，故$\nu$维度至少为$n-1$</p>
-<p><strong>定理6</strong>$\quad$若$\mathbb{P}^{2^m}$能浸入$\mathbb{R}^{2^m+k}$中，则 $k\ge 2^m-1$</p>
-<p><strong>定理7(Witney)</strong>$\quad$任意$n&gt;1$维光滑紧致流形均可浸入$\mathbb{R}^{2n-1}$中</p>
-<h2 id="Stiefel-Whitney-Number"><a href="#Stiefel-Whitney-Number" class="headerlink" title="Stiefel-Whitney Number"></a>Stiefel-Whitney Number</h2><p>若$M$为闭$n$维流形(可以非连通)，则存在唯一<strong>基本同调类</strong></p>
-<p>$$\mu_M\in H_n(M,\mathbb{Z}_2)$$</p>
-<p>对任意上同调类 $v\in H^n(M;\mathbb{Z}_2)$，可以定义<strong>Kronecker指标</strong>，记为$v[M]$</p>
-<p>$$v[M]&#x3D;\langle v,\mu_M\rangle\in\mathbb{Z}_2$$</p>
-<p>令$r_1,r_2,\cdots,r_n$为非负整数，满足</p>
-<p>$$r_1+2r_2+3r_3+\cdots+nr_n&#x3D;n$$</p>
-<p>则对任意向量丛$\xi$可以构造单项式</p>
-<p>$$\text{w}_1^{r_1}(\xi)\text{w}_2^{r_2}(\xi)\cdots \text{w}_n^{r_n}(\xi)\in H^n(B(\xi),\mathbb{Z}_2)$$</p>
-<p>若取底流形为$M$，$\xi$为$M$切丛$\tau_M$，则可定义与此单项式相关的<strong>Stiefel-Whitney数</strong></p>
-<p>$$\text{w}_1^{r_1}\text{w}_2^{r_2}\cdots \text{w}_n^{r_n}[M]$$</p>
-<p>考虑$\mathbb{P}^n$与其切丛$\tau$，根据$\text{w}(\mathbb{P}^n)&#x3D;(1+a)^{n+1}$可知</p>
-<p>当$n$为偶数，$\text{w}_1^n[\mathbb{P}^n],\text{w}_n[\mathbb{P}^n]\neq 0$，若$n&#x3D;2^m$，则其他Stiefel-Whitney数均为零</p>
-<p>当$n$为奇数，$\text{w}(\mathbb{P}^n)&#x3D;(1+a^2)^{k}$，可知所有Stiefel-Whitney数均为零</p>
-<p><strong>定理8(Pontrjagin)</strong>$\quad$若$B$为$n+1$维光滑紧致带边流形，其边界为$M$，<br>则$M$的所有Stiefel-Whitney数均为零</p>
-<p><strong>定理9(Thom)</strong>$\quad$若$M$的所有Stiefel-Whitney数均为零，则$M$可视为某光滑紧致带边流形的边界</p>
-<p>两个闭$n$维流形属于同一个无定向<strong>配边类</strong>当且仅当其不交并为某光滑紧致$n+1$维流形的边缘</p>
-<p><strong>推论6</strong>$\quad$两个闭$n$维流形属于同一个配边类当且仅当其对应的Stiefel-Whitney数相同</p>
+    <h2 id="模形式"><a href="#模形式" class="headerlink" title="模形式"></a>模形式</h2><p><strong>定义1</strong>$\quad$令$L$为$\mathbb{C}$中所有平行四边形格点阵$\Lambda$的集合，若映射$F:L\to\mathbb{C}$为$-k$阶齐次方程且在$L$和$\infty$上全纯，则称$F$为权为$k$的<strong>模形式</strong></p>
+<p>对每个$\Lambda$，取其基本周期对$\langle \omega_1,\omega_2\rangle$ 使得 $\Im\displaystyle\frac{\omega_1}{\omega_2}&gt;0$，对应$\mathbb{H}$中一点$z&#x3D;\displaystyle\frac{\omega_1}{\omega_2}$</p>
+<p>由模函数齐次条件，$F( \omega_1\mathbb{Z}+\omega_2\mathbb{Z})&#x3D;\omega_2^{-k}F(z\mathbb{Z}+\mathbb{Z})$，定义$f(z)&#x3D;F(z\mathbb{Z}+\mathbb{Z})$</p>
+<p>由于对$z$作变换 $\gamma\in SL_2(\mathbb{Z}):z\mapsto \displaystyle\frac{az+b}{cz+d}$ 后格点不变</p>
+<p>$$f(\gamma z)&#x3D;(cz+d)^kF((az+b)\mathbb{Z}+(cz+d)\mathbb{Z})&#x3D;F(z\mathbb{Z}+\mathbb{Z})$$</p>
+<p>可以得到模形式的等价定义</p>
+<p><strong>定义2</strong>$\quad$若$f:\mathbb{H}\to\mathbb{C}$在$\mathbb{H}$和$\infty$上全纯，且满足以下条件，则称$f$为权为$k$的<strong>模形式</strong></p>
+<p>$$f(\gamma z)&#x3D;(cz+d)^kf(z)$$</p>
+<p>若$f(\infty)&#x3D;0$，则称$f$为<strong>尖点形式</strong>；若将全纯改为亚纯，则退化为在$SL_2(\mathbb{Z})$下自守的<strong>模函数</strong>的定义，以下提及模函数均默认其在$SL_2(\mathbb{Z})$下自守</p>
+<p>记所有权为$k$的模形式的集合为$\mathcal{M}_k(SL_2(\mathbb{Z}))$，尖点形式的集合为$\mathcal{S}_k(SL_2(\mathbb{Z}))$，简记为$\mathcal{M}_k$和$\mathcal{S}_k$</p>
+<p>由定义知不同权模形式线性独立，同权模形式之比为模函数，$\mathcal{M}_{k_1}\mathcal{M}_{k_2}\subset\mathcal{M}_{k_1+k_2}$</p>
+<p>取$\gamma&#x3D;-I_2$，$f(z)&#x3D;(-1)^kf(z)$，故除零以外不存在权为奇数的模形式</p>
+<p>取$\gamma&#x3D;T&#x3D;\displaystyle\begin{pmatrix}<br>    1&amp;1\\0&amp;1<br>\end{pmatrix}$，$f(z+1)&#x3D;f(z)$，模形式周期为$1$</p>
+<p>取$\gamma&#x3D;S&#x3D;\displaystyle\begin{pmatrix}0&amp;1\\-1&amp;0<br>\end{pmatrix}$，$f(-1&#x2F;z)&#x3D;(-z)^kf(z)$</p>
+<p>由于 $SL_2(\mathbb{Z})$ 可由$T,S$ 生成，故满足如下两个<strong>模变换规律</strong>即为模形式</p>
+<p>$$f(z+1)&#x3D;f(z)$$</p>
+<p>$$f(-1&#x2F;z)&#x3D;(-z)^kf(z)$$</p>
+<p>$k\ge 3$ 时，$G_k(\Lambda)&#x3D;\displaystyle\sum_{\omega\in\Lambda^*}\frac{1}{\omega^k}$ 为模形式，但不是尖点形式</p>
+<p>利用黎曼$\zeta$函数取值 $\zeta(4)&#x3D;\displaystyle\frac{\pi^4}{90},\zeta(6)&#x3D;\frac{\pi^6}{945}$</p>
+<p>可知 $\Delta&#x3D;g_2^3-27g_3^2&#x3D;(60G_4)^3-27(140G_6)^2$ 为12权尖点形式</p>
+<p>$\infty$为<strong>j-不变量</strong> $j&#x3D;\displaystyle\frac{1728g_2^3}{\Delta}$ 单极点，因此$j$为0权模函数，但不是模形式</p>
+<h2 id="级数展开"><a href="#级数展开" class="headerlink" title="级数展开"></a>级数展开</h2><p>由于模形式周期为$1$，故可用$q&#x3D;e^{i2\pi z}$展开</p>
+<p>$$f(z)&#x3D;\sum_{n&#x3D;0}^\infty a_n q^n$$</p>
+<p>利用 $\sin{\pi z}&#x3D;\pi z\displaystyle\prod_{m&#x3D;1}^\infty\left(1-\frac{z^2}{m^2}\right)$，两边取对数后求二阶导可得</p>
+<p><strong>引理1</strong>$\quad$$k\ge 2$，$z\in\mathbb{H}$</p>
+<p>$$\sum_{m\in\mathbb{Z}}\frac{1}{(z+m)^k}&#x3D;\frac{(-2\pi i)^k}{(k-1)!}\sum_{m&#x3D;1}^\infty m^{k-1}q^{m}$$</p>
+<p>由引理可得 $G_k(z)&#x3D;G_k(z\mathbb{Z}+\mathbb{Z})$ 展开式，默认$k\ge 4$且为偶数</p>
+<p>引入<strong>除数函数</strong> $\sigma_s(n)&#x3D;\displaystyle\sum_{d|n}d^s$，其满足 $\sigma_s(mn)&#x3D;\sigma_s(m)\sigma_s(n)$</p>
+<p>$$G_k(z)&#x3D;2\zeta(k)+2\frac{(2\pi i)^k}{(k-1)!}\sum_{n&#x3D;1}\sigma_{k-1}(n)q^n$$</p>
+<p>由$G_k$定义标准<strong>Eisenstein级数</strong>$E_k$，利用$\zeta(k)$的素数无穷乘积展可得</p>
+<p>$$E_k(z):&#x3D;\frac{G_k(z)}{2\zeta(k)}&#x3D;\sum_{\gcd(c,d)&#x3D;1}\frac{1}{(cz+d)^k}$$</p>
+<p>其用$q$展开如下，其中$B_k$为Bernoulli数，$\displaystyle\frac{t}{e^t-1}&#x3D;\sum_{k&#x3D;0}^\infty B_k\frac{t^k}{k!}$</p>
+<p>$$E_k(z)&#x3D;1-\frac{2k}{B_k}\sum_{n&#x3D;1}^\infty\sigma_{k-1}(n)q^n$$</p>
+<p>尖点形式 $\Delta(z)$ 可写为</p>
+<p>$$\Delta(z)&#x3D;(12\pi)^{12}\sum_{n&#x3D;1}^\infty\tau(n)q^n$$</p>
+<p>$\tau$称为<strong>Ramanujan $\tau$ 函数</strong>，计算发现 $\tau(n)$ 的前几个值均为整数</p>
+<table>
+<thead>
+<tr>
+<th align="center">$n$</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$\tau(n)$</td>
+<td align="center">1</td>
+<td align="center">-24</td>
+<td align="center">252</td>
+<td align="center">-1472</td>
+<td align="center">4830</td>
+<td align="center">-6048</td>
+<td align="center">-16744</td>
+<td align="center">84480</td>
+</tr>
+</tbody></table>
+<p>引入<strong>Dedekind $\eta$ 函数</strong></p>
+<p>$$\eta(z)&#x3D;q^{1&#x2F;24}\prod_{n&#x3D;1}^\infty(1-q^n)$$</p>
+<p>计算对数导数得到变换规律 $\eta(-1&#x2F;z)&#x3D;\sqrt{-iz}\;\eta(z)$，可知 $\eta^{24}(z)$ 为12权尖点形式</p>
+<p>由下一节可知 $\dim_\mathbb{C}{\mathcal{S}_{12}}&#x3D;1$，因此 $\Delta$ 与 $\eta^{24}$ 线性相关</p>
+<p>比较系数可得以下 $\Delta$ 无穷乘积，由此说明 $\tau(n)\in\mathbb{Z}$</p>
+<p>$$\Delta(z)&#x3D;(2\pi)^{12}q\prod_{n&#x3D;1}^\infty(1-q^n)^{24}$$</p>
+<p><strong>Ramanujan猜想</strong>$\quad$</p>
+<p>$1.\quad$若$m,n$互素，则$\tau(mn)&#x3D;\tau(m)\tau(n)$</p>
+<p>$2.\quad$对素数$p$，$\tau(p^{r+1})&#x3D;\tau(p)\tau(p^r)-p^{11}\tau(p^{r-1})$</p>
+<p>$1.\quad$对素数$p$，$|\tau(p)|\le 2p^{11&#x2F;2}$</p>
+<h2 id="维度公式"><a href="#维度公式" class="headerlink" title="维度公式"></a>维度公式</h2><p><img src="/images/%E5%9F%BA%E6%9C%AC%E5%9F%9F.png"></p>
+<p>设$f$为模函数，将$\displaystyle\frac{f’}{f}$在如图所示基本域$\mathcal{F}$边界上积分得</p>
+<p><strong>定理1</strong>$\quad$对于非零$k$权模函数 $f:\mathbb{H}\to\mathbb{C}$，记$\text{ord}_z$为$f$在$z$处的阶数</p>
+<p>$$\text{ord}_\infty+\frac{1}{2}\text{ord}_i+\frac{1}{3}\text{ord}_{e^{\pi i&#x2F;3}}+\sum_{z\in\mathcal{F}\backslash\{i,e^{\pi i&#x2F;3}\}}\text{ord}_z&#x3D;\frac{k}{12}$$</p>
+<p><strong>定理2</strong></p>
+<p>$$\dim_\mathbb{C}\mathcal{M}_k&#x3D;\left\lbrace\begin{array}{l}\lfloor k&#x2F;12\rfloor &amp; k&#x3D; 2\;(\text{mod}\; 12)\\\lfloor k&#x2F;12\rfloor+1 &amp; k\neq 2\;(\text{mod}\; 12)\end{array}\right.$$</p>
+<p>$$\dim_\mathbb{C}\mathcal{S}_k&#x3D;\dim_\mathbb{C}\mathcal{M}_k-1$$</p>
+<p><strong>推论1</strong>$\quad$$G_4$和$G_6$可以生成所有模形式</p>
+<p>$$\bigoplus_{k&#x3D;1}^\infty\mathcal{M}_k&#x3D;\mathbb{C}[G_4,G_6]$$</p>
 
   </article>
   <!-- tag -->
@@ -347,16 +351,11 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="../%E7%BB%8F%E5%85%B8%E5%9C%BA%E8%AE%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          经典场论
-        </a>
-      
     </div>
     <div>
       
-        <a href="../../18/%E9%9F%B3%E4%B9%90/%E9%9F%B3%E9%98%B6%E8%89%B2%E5%BD%A9/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          音阶色彩
+        <a href="../../04/%E5%8D%95%E5%80%BC%E5%8C%96%E5%AE%9A%E7%90%86/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          单值化定理
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       

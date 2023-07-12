@@ -37,11 +37,11 @@
 
 
 
-<title>枫</title>
+<title>单值化定理 | 枫</title>
 
 
 
-<link rel="icon" href="/images/favicon.png">
+<link rel="icon" href="../../../../images/favicon.png">
 
 
 
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        
+        单值化定理
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="/archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="/categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -224,222 +224,206 @@
 </div>
 
   <main class="p-12">
-    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
-  <div class="flex flex-col h-48 items-center justify-center">
-    <h1 class="site-title text-4xl leading-relaxed">
-      枫
-    </h1>
-    <p class="text-gray-500 mt-2">
-      
-    </p>
-  </div>
-  
-  
-    
-    
-      <div class="relative pointer-events-none">
-        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        单值化定理
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-07-05 15:58:43</time>
+          <span class="text-gray-400">·</span>
+          <span>2 min</span>
+          <span class="text-gray-400">·</span>
+          <span>490 words</span>
+        </section>
       </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="黎曼曲面"><a href="#黎曼曲面" class="headerlink" title="黎曼曲面"></a>黎曼曲面</h2><p><strong>定义1</strong>$\quad$若第二可数Hausdorff空间满足如下条件，则称其为<strong>黎曼曲面</strong></p>
+<p>$1.\quad$存在开覆盖$\{U_\alpha\}$与同胚$\phi_\alpha:U_\alpha\to \mathbb{C}$</p>
+<p>$2.\quad$转移函数$\phi_\alpha\circ\phi_\beta^{-1}:\phi_\beta(U_\alpha\cap U_\beta)\to \phi_\alpha(U_\alpha\cap U_\beta)$全纯</p>
+<p><strong>定义2</strong>$\quad$设$f$为两个黎曼曲面之间的映射$f:M\to N$，$M,N$上同胚分别为$\psi_\alpha:U_\alpha\to \mathbb{C},\varphi_\beta:V_\beta\to \mathbb{C}$，若$\varphi_\beta\circ f\circ\psi_\alpha^{-1}:\psi_\alpha(U_\alpha)\to\varphi_\beta(V_\beta)$全纯，<br>则称$f$为<strong>全纯映射</strong></p>
+<p>全纯映射为开映射或常值映射，紧致黎曼曲面到$\mathbb{C}$的全纯映射为常值映射，全纯映射的原像点离散</p>
+<p><strong>定义3</strong>$\quad$若黎曼曲面之间全纯映射 $f:M\to N,g:N\to M$ 满足 $f\circ g&#x3D;\text{id}_N,g\circ f&#x3D;\text{id}_M$，则称$M,N$<strong>全纯同构</strong>，$f,g$为<strong>双全纯映射</strong></p>
+<p>$\mathbb{C}P^1,\mathbb{C}S^1,\mathbb{S}^2$ 均全纯同构，统称<strong>黎曼球面</strong></p>
+<p>若$\Lambda&#x3D;\langle\omega_1,\omega_2\rangle$为双周期网格，则$\mathbb{C}&#x2F;\Lambda$称为<strong>黎曼环面</strong></p>
+<p>$\mathbb{C}&#x2F;\Lambda\cong \mathbb{C}&#x2F;\langle 1,\tau\rangle$，周期比$\tau&#x3D;\omega_2&#x2F;\omega_1\quad\Im\;\tau&gt;0$</p>
+<p>两个黎曼环面同构的充要条件为 $\tau,\tau’$ 差一个$SL(2,\mathbb{Z})$中变换</p>
+<h2 id="Poincare-引理"><a href="#Poincare-引理" class="headerlink" title="Poincaré 引理"></a>Poincaré 引理</h2><p><strong>Poincaré引理</strong>$\quad$$\mathbb{C}$上闭形式必为恰当形式</p>
+<p>对于2-形式 $\omega&#x3D;F(x,y)\dd x\wedge\dd y$ 可以构造 $\eta&#x3D;\displaystyle\left[\int_0^x F(t,y)\dd t\right]\dd y$</p>
+<p>对于1-形式 $\omega&#x3D;p\dd x+q\dd y$ 可以构造 $\eta&#x3D;\displaystyle\int_0^x p(t,y)\dd t+\int_0^y p(0,t)\dd t$</p>
+<p>Poincaré引理对于$\mathbb{C}$上凸域也成立</p>
+<p><strong>Stokes公式</strong>$\quad$若$\omega$为黎曼曲面$M$上1-形式，$\Omega$为$M$中无边或边界正则的区域，$\text{supp}\;\omega\cap\Omega\Subset \Omega$，则</p>
+<p>$$\int_\Omega\dd\omega&#x3D;\int_{\partial\Omega}\omega$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
     
-    <a href="2023/07/05/%E6%A8%A1%E5%BD%A2%E5%BC%8F/">
-      <header>
-        <h2 class="font-bold text-xl">
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../05/%E6%A8%A1%E5%BD%A2%E5%BC%8F/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
           模形式
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 05
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/07/04/%E5%8D%95%E5%80%BC%E5%8C%96%E5%AE%9A%E7%90%86/">
-      <header>
-        <h2 class="font-bold text-xl">
-          单值化定理
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 04
-          ·
-          2 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/06/29/Grassmann%E6%B5%81%E5%BD%A2%E7%9A%84%E8%83%9E%E7%BB%93%E6%9E%84/">
-      <header>
-        <h2 class="font-bold text-xl">
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../06/29/Grassmann%E6%B5%81%E5%BD%A2%E7%9A%84%E8%83%9E%E7%BB%93%E6%9E%84/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           Grassmann流形的胞结构
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 29
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
     
-    
-    <a href="2023/06/27/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/Grassmann%20Manifold/">
-      <header>
-        <h2 class="font-bold text-xl">
-          Grassmann流形和万有丛
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 27
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/06/19/%E7%BB%8F%E5%85%B8%E5%9C%BA%E8%AE%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
-          经典场论
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 19
-          ·
-          2 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/06/19/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/Stiefel-Whitney/">
-      <header>
-        <h2 class="font-bold text-xl">
-          Stiefel-Whitney Classes
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 19
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/06/18/%E9%9F%B3%E4%B9%90/%E9%9F%B3%E9%98%B6%E8%89%B2%E5%BD%A9/">
-      <header>
-        <h2 class="font-bold text-xl">
-          音阶色彩
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 18
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/06/11/%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86/%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86%E6%97%A9%E6%9C%9F%E5%8F%91%E5%B1%95/">
-      <header>
-        <h2 class="font-bold text-xl">
-          固体物理早期发展
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 11
-          ·
-          7 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/06/07/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/%E4%BA%8C%E6%AC%A1%E9%87%8F%E5%AD%90%E5%8C%96/">
-      <header>
-        <h2 class="font-bold text-xl">
-          二次量子化
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 07
-          ·
-          4 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="2023/06/06/%E5%A4%8D%E5%88%86%E6%9E%90/%E6%A4%AD%E5%9C%86%E5%87%BD%E6%95%B0/">
-      <header>
-        <h2 class="font-bold text-xl">
-          椭圆函数
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 06
-          ·
-          20 min
-        </p>
-      </section>
-    </a>
-  
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
 </section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
 
 
   </main>
