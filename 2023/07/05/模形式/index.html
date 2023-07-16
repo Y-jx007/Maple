@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-07-11 16:42:28</time>
+          <time>2023-07-14 16:26:00</time>
           <span class="text-gray-400">·</span>
-          <span>6 min</span>
+          <span>7 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.3k words</span>
+          <span>1.4k words</span>
         </section>
       </div>
     </div>
@@ -334,13 +334,20 @@
 <p>$1.\quad$对素数$p$，$|\tau(p)|\le 2p^{11&#x2F;2}$</p>
 <h2 id="维度公式"><a href="#维度公式" class="headerlink" title="维度公式"></a>维度公式</h2><p><img src="/images/%E5%9F%BA%E6%9C%AC%E5%9F%9F.png"></p>
 <p>设$f$为模函数，将$\displaystyle\frac{f’}{f}$在如图所示基本域$\mathcal{F}$边界上积分得</p>
-<p><strong>定理1</strong>$\quad$对于非零$k$权模函数 $f:\mathbb{H}\to\mathbb{C}$，记$\text{ord}_z$为$f$在$z$处的阶数</p>
+<p><strong>定理1</strong>$\quad$对非零$k$权模函数 $f:\mathbb{H}\to\mathbb{C}$，记$\text{ord}_z$为$f$在$z$处阶数，零点为正，极点为负</p>
 <p>$$\text{ord}_\infty+\frac{1}{2}\text{ord}_i+\frac{1}{3}\text{ord}_{e^{\pi i&#x2F;3}}+\sum_{z\in\mathcal{F}\backslash\{i,e^{\pi i&#x2F;3}\}}\text{ord}_z&#x3D;\frac{k}{12}$$</p>
 <p><strong>定理2</strong></p>
 <p>$$\dim_\mathbb{C}\mathcal{M}_k&#x3D;\left\lbrace\begin{array}{l}\lfloor k&#x2F;12\rfloor &amp; k&#x3D; 2\;(\text{mod}\; 12)\\\lfloor k&#x2F;12\rfloor+1 &amp; k\neq 2\;(\text{mod}\; 12)\end{array}\right.$$</p>
 <p>$$\dim_\mathbb{C}\mathcal{S}_k&#x3D;\dim_\mathbb{C}\mathcal{M}_k-1$$</p>
-<p><strong>推论1</strong>$\quad$$G_4$和$G_6$可以生成所有模形式</p>
+<p><strong>推论1</strong>$\quad$$G_4$和$G_6$代数独立，且可以生成所有模形式</p>
 <p>$$\bigoplus_{k&#x3D;1}^\infty\mathcal{M}_k&#x3D;\mathbb{C}[G_4,G_6]$$</p>
+<h2 id="椭圆曲线"><a href="#椭圆曲线" class="headerlink" title="椭圆曲线"></a>椭圆曲线</h2><p>由Weirstrass椭圆函数微分方程</p>
+<p>$$\wp’^2(z)&#x3D;4\wp^3(z)-g_2\wp(z)-g_3$$</p>
+<p>每个格点阵 $\Lambda$ 对应如下复椭圆曲线 $E_\Lambda&#x3D;\overline{V(f)}$ </p>
+<p>$$f(x,y)&#x3D;4x^3-g_2x-g_3-y^2$$</p>
+<p>$E_\Lambda$ 上点具有形式 $P(z)&#x3D;(\wp(z),\wp’(z))$</p>
+<p>联立 $E_\Lambda$ 与直线方程，构造椭圆函数 $l(z)&#x3D;a\wp(z)+b\wp’(z)+c$</p>
+<p>若 $b \neq 0$ ，由于原点为 $l(z)$ 三阶极点，故 $l(z)$ 零点满足 $z_1+z_2+z_3\in\Lambda$</p>
 
   </article>
   <!-- tag -->
