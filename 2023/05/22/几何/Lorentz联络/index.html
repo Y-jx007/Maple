@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>自旋联络 | 枫</title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      isDark = !isDark;
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="枫" />
+          枫
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        自旋联络
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        自旋联络
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-07-16 17:03:19</time>
+          <span class="text-gray-400">·</span>
+          <span>10 min</span>
+          <span class="text-gray-400">·</span>
+          <span>2k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <p>时空线元$\dd s^2&#x3D;g_{\mu\nu}\dd x^\mu\dd x^\nu$，进行对偶基变换$\omega^a&#x3D;e^a_{\; \mu}\dd x^\mu$，使得新基下度规为洛伦兹度规$\dd s^2&#x3D;\eta_{ab}\omega^a\omega^b$，</p>
+<p>度规变换$g_{\mu\nu}&#x3D;e^a_{\; \mu} e^b_{\; \mu}\eta_{ab}$，对偶变换$\lbrace e_{a}^{\;\mu}\rbrace$满足$e_{a}^{\;\mu}e_{\;\nu}^a&#x3D;\delta_\nu^\mu$，$e_{a}^{\;\mu}e_{\;\mu}^b&#x3D;\delta_a^b$，基$v_a&#x3D;e_a^{\;\mu}\partial_\mu$满足$v_a\omega^b&#x3D;\delta_a^b$</p>
+<p>现在得到了分别由希腊字母$\mu,\nu,\lambda,\cdots$ 和阿拉伯字母$a,b,c,\cdots$ 表示的两组基，将前者称为<strong>时空基</strong>，后者称为<strong>自旋基</strong>，时空基到自旋基的变换$e^a_{\; \mu}$的选取并不唯一，可以差一个自旋基中的变换，即洛伦兹矩阵$e’^{a}_{\; \mu}&#x3D;L^a_{\; b}e^b_{\; \mu}$，变换后仍可得到洛伦兹度规，$L^a_{\; c}L^b_{\; d}\eta_{ab}&#x3D;\eta_{cd}$，</p>
+<p>在坐标$x$变化时，除了时空基$\partial_\mu$会产生改变外，也会使得自旋基$v_a$产生变化，对于基空间为时空基与自旋基直积空间的<strong>旋量</strong>而言，时空的切丛联络不能描述自旋基的变化，因此需引入能够描述<strong>混合基</strong> $e^a_{\; \mu}$ 变化的联络</p>
+<p>考虑自旋矢量场$A^a&#x3D;e^a_{\; \mu} A^\mu$，引入<strong>自旋联络</strong>，其描述当时空坐标变化时自旋基的变化情况</p>
+<p>$$\nabla_\mu A^a&#x3D;\partial_\mu A^a+\Gamma_\mu A^a&#x3D;\partial_\mu A^a+\omega_{\mu\; b}^{\;a} A^b \tag{1} \label{eq1}$$</p>
+<p>注意现在将变换$e^a_{\; \mu}$视为基，</p>
+<p>$$\nabla_\mu A^a&#x3D;\nabla_\mu(e^a_{\; \nu} A^\nu)&#x3D;(\nabla_\mu e^a_{\; \nu})A^\nu+e^a_{\; \nu}(\nabla_\mu A^\nu) \tag{2} \label{eq2}$$</p>
+<p>$A^\nu$为时空矢量，因此其协变导数由奇维塔联络$\nabla^L_\mu$决定，</p>
+<p>$$e^a_{\; \nu}(\nabla_\mu A^\nu)&#x3D;e^a_{\; \nu}(\partial_\mu A^\nu+\Gamma_{\mu\lambda}^\nu A^\lambda)$$</p>
+<p>代入$\eqref{eq2}$与$\eqref{eq1}$比较即可得到协变导数对基的作用，其应为零</p>
+<p>$$\nabla_\mu e^a_{\; \nu}&#x3D;\partial_\mu e^a_{\; \nu}-\Gamma_{\mu\nu}^\lambda e^a_{\; \lambda}+\omega_{\mu \; b}^{\; a} e^b_{\; \nu} \tag{3} \label{eq3}$$</p>
+<p>对于混合基矩阵 $M^{\;\mu}_{b} &#x3D;e_a^{\; \mu}A^aB_b $，</p>
+<p>$$\nabla_\mu M&#x3D;\nabla^L_\mu M+[\Gamma_\mu,M] \tag{4} \label{eq4}$$</p>
+<p>要求联络<strong>与度规适配</strong> $\nabla_\mu \eta_{ab}&#x3D;0$</p>
+<p>$$\nabla_\mu \eta_{ab}&#x3D;\partial_\mu \eta_{ab}-\omega_{\mu \; a}^{\;c}\eta_{cb}-\omega_{\mu \; b}^{\;c} \eta_{ca}$$</p>
+<p>可知$\omega$关于后两个指标 <strong>反对称</strong>，$\omega_{\mu ab}&#x3D;-\omega_{\mu ba}$，</p>
+<p><strong>联络形式</strong> $\omega^a_{\;b}&#x3D;\omega_{\mu \; b}^{\; a}\dd x^\mu$，</p>
+<p><strong>对易系数</strong> $[v_a,v_b]&#x3D;f_{\;ab}^c v_c$，<strong>反对易系数</strong> $\lbrace v_a,v_b\rbrace&#x3D;h_{\;ab}^c v_c$</p>
+<p>对$\omega^a$外微分，$\dd \omega^a&#x3D;\nabla_\mu^\text{L} e^a_{\; \nu} \dd x^\mu\wedge\dd x^\nu&#x3D;e^a_{\; [\nu,\mu]}\dd x^\mu\wedge\dd x^\nu$，</p>
+<p>由于用$\dd x^\mu$表示，故$\nabla_\mu^\text{L}$为奇维塔联络，$\nabla_\mu^\text{L} e^a_{\; \nu}&#x3D;\partial_\mu e^a_{\; \nu}-\Gamma_{\mu\nu}^\lambda e^a_{\; \lambda}$，</p>
+<p>由$\Gamma_{\mu\nu}^\lambda$对称性可进行反称化将其消去，$e^a_{\; [\nu,\mu]}&#x3D;\displaystyle\frac{1}{2}(\partial_\mu e^a_{\; \nu}-\partial_\nu e^a_{\; \mu})&#x3D;-\displaystyle\frac{1}{2}f_{\;\mu\nu}^a$</p>
+<p><strong>曲率形式</strong> $R^a_{\; b}&#x3D;\dd \omega^a_{\;b}+\omega^a_{\;c} \wedge \omega^c_{\;b}&#x3D;(\partial\sideset{_{[\mu}}{_{\nu]\; b} ^{\;\;a}}{\omega}+\omega_{[\mu \; c}^{\;\;a}\omega_{\nu] \; b}^{\;\;c})\dd x^\mu\wedge\dd x^\nu$</p>
+<p><strong>挠率形式</strong> $T^a&#x3D;\dd \omega^a+\omega^a_{\;b}\wedge \omega^b&#x3D;(e^a_{\; [\nu,\mu]}+\omega_{[\mu \;\nu]}^{\;\;a})\dd x^\mu\wedge\dd x^\nu$</p>
+<p>施加<strong>无挠条件</strong> $T^a&#x3D;0$，可解出<strong>自旋联络系数</strong></p>
+<p>$$\omega_{\mu \;b}^{\;a}&#x3D;-e_b^{\; \nu}(\partial_\mu e^a_{\; \nu}-\Gamma_{\mu\nu}^\lambda e^a_{\; \lambda}) \tag{5} \label{eq5}$$</p>
+<p>代入$\eqref{eq3}$可发现无挠条件实际上等价于</p>
+<p>$$\nabla_\mu e^a_{\; \nu}&#x3D;0$$ </p>
+<p>联络系数可用对易系数表示为</p>
+<p>$$\omega_{a\mu\nu}&#x3D;\frac{1}{2}(f_{a\mu\nu}+f_{\nu\mu a}-f_{\mu\nu a})$$</p>
+<p>$$\Gamma_{\mu\nu}^a&#x3D;-\displaystyle\frac{1}{2}h_{\;\mu\nu}^a$$</p>
+<p>旋量$\psi$在自旋基$v_a,\tilde{v}_a$下的转移函数为洛伦兹矩阵，$\tilde{\psi}&#x3D;L\psi$，其应满足</p>
+<p>$$\tilde{\Gamma}_\mu&#x3D;L \Gamma_\mu L^{-1}- (\partial_\mu L) L^{-1} \tag{6}\label{eq6}$$</p>
+<p>考虑无穷小洛伦兹变换$L^a_{\;b}&#x3D;\delta^a_{\;b}+\delta\epsilon^a_{\;b}$，由$L^a_{\;b}L^c_{\;d}\eta_{ac}&#x3D;\eta_{bd}$，可得$\delta\epsilon_{ab}$ 反称，$\delta\epsilon_{ab}&#x3D;\eta_{ac}\delta\epsilon^c_{\; b}&#x3D;-\delta\epsilon_{ba}$，</p>
+<p>而洛伦兹群李代数由反称阵张成，因此$L^a_{\;b}$的群表示也可写为 $S(L)&#x3D;I+i \delta\epsilon^{ab} S_{ab}$，$S_{ab}&#x3D;-S_{ba} \in \mathfrak{so}(1,n-1)$ ，注意$a,b$固定时$\delta\epsilon^{ab}$为数，而$S_{ab}$为矩阵</p>
+<p>两种表示之间关系 $\delta\epsilon^a_{\;b}&#x3D;i \delta\epsilon^{cd} (S_{cd})^a_{\; b}$，可知$(S_{cd})^a_{\; b}&#x3D;\displaystyle\frac{1}{2}(\delta_c^a\eta_{bd}-\delta_d^a\eta_{bc})$，将$S(L)&#x3D;I+i \delta\epsilon^{ab} S_{ab}$代入$\eqref{eq6}$中</p>
+<p>$$\tilde{\Gamma}_\mu&#x3D;\Gamma_\mu+i\delta\epsilon^{ab}[S_{ab},\Gamma_\mu]-i\partial_\mu(\delta\epsilon^{ab})S_{ab}\tag{7}\label{eq7}$$</p>
+<p>而联络$\Gamma_\mu$也应在李代数中取值，令其为$\Gamma_\mu&#x3D;\Gamma_\mu^{\; ab} S_{ab} $，由$S_{ab}$反称性，$\Gamma_\mu^{\; ab}$关于$a,b$反称，现在考虑$S_{ab}$的对易关系</p>
+<p>对于有限洛伦兹变换$S(L)&#x3D;\exp(i \epsilon^{ab} S_{ab})$，$S(L)S(L’)S(L^{-1})&#x3D;S(LL’L^{-1})$</p>
+<p>先将$L’$取为无穷小变换，对右边进行反称化，</p>
+<p>$$S(L)S_{ab}S(L^{-1})&#x3D;\displaystyle\frac{1}{2}[L^c_{\; a}(L^{-1})^d_{\; b}-L^c_{\; b}(L^{-1})^d_{\; a}]S_{cd}$$</p>
+<p>再将$L$取为无穷小变换可得对易关系</p>
+<p>$$[S_{ab},S_{cd}]&#x3D;\displaystyle\frac{i}{2}(\eta_{ac}S_{bd}+\eta_{bd}S_{ac}-\eta_{ad}S_{bc}-\eta_{bc}S_{ad}) \tag{8}\label{eq8}$$</p>
+<p>代入$\eqref{eq7}$中得</p>
+<p>$$\tilde{\Gamma}_\mu^{\; ab}&#x3D;\Gamma_\mu^{\; ab}+\Gamma_{\mu\; c}^{\; b}\delta\epsilon^{ca}-\Gamma_{\mu\; c}^{\; a}\delta\epsilon^{cb}-i\partial_\mu(\delta\epsilon^{ab})$$</p>
+<p>对$\omega_{\mu\; b}^{\;a}$作相似操作，$\tilde{\nabla}_\mu \tilde{\psi}&#x3D;L \nabla_\mu \psi$，可得</p>
+<p>$$\tilde{\omega}_\mu^{\; ab}&#x3D;\omega_\mu^{\; ab}+\omega_{\mu\; c}^{\; b}\delta\epsilon^{ca}-\omega_{\mu\; c}^{\; a}\delta\epsilon^{cb}-\partial_\mu(\delta\epsilon^{ab})$$</p>
+<p>比较即得$\Gamma_{\mu}^{\; ab}&#x3D;i\omega_{\mu}^{\; ab}$，旋量的协变导数和其对易现在可写为</p>
+<p>$$\nabla_\mu\psi&#x3D;\partial_\mu\psi+i\omega_{\mu}^{\; ab}S_{ab}\psi$$</p>
+<p>$$[\nabla_\mu,\nabla_\nu]\psi&#x3D;-iR_{\mu\nu}^{\;\;\;ab}S_{ab}\psi$$</p>
+<p>协变导数写成分量形式</p>
+<p>$$\nabla_\mu\psi^a&#x3D;\partial_\mu\psi^a+i\omega_{\mu}^{\; cd}(S_{cd})^a_{\; b}\psi^b$$</p>
+<p>现在考虑平直时空狄拉克方程 $(i\gamma^a \partial_a-m)\psi&#x3D;0$，$\lbrace \gamma^a,\gamma^b\rbrace&#x3D;2\eta^{ab}I$ 在弯曲时空的推广，将普通导数换为协变导数 $\partial_a \to e_a^{\;\mu} \nabla_\mu$</p>
+<p>$$(i\gamma^a e_a^{\;\mu} \nabla_\mu-m)\psi&#x3D;(i\underline{\gamma}^\mu \nabla_\mu-m)\psi&#x3D;0 $$</p>
+<p>$\underline{\gamma}^\mu&#x3D;\gamma^a e_a^{\;\mu}$ 为与时空有关的狄拉克矩阵，满足$\lbrace{\underline{\gamma}^\mu,\underline{\gamma}^\mu\rbrace}&#x3D;2g^{\mu\nu}I$</p>
+<p>现在考虑混合基变化$\psi’&#x3D;S(L)\psi$，$e^{\prime \;\nu}_b&#x3D;\displaystyle\frac{\partial x’^\nu}{\partial x^\mu}(L^{-1})^a_{\; b}e^{\;\mu}_{a}$，代入狄拉克方程</p>
+<p>$$(iS(L)\gamma^a S^{-1}(L)L^b_{\;a} e^{\prime \;\nu}_b \nabla’_\nu -m)\psi’&#x3D;0$$</p>
+<p>可知 $S(L)\gamma^a S^{-1}(L)L^b_{\;a}&#x3D;\gamma^b$，考虑无穷小变换$L^b_{\;a}&#x3D;\delta^b_{\;a}+\delta\epsilon^b_{\;a}$</p>
+<p>$$i\delta\epsilon_{cd}[S^{cd},\gamma^a]+\delta\epsilon^a_{\;b}\gamma^b&#x3D;0$$</p>
+<p>取$S^{cd}&#x3D;\displaystyle-\frac{i}{8}[\gamma^c,\gamma^d]$ 可同时满足该式和对易关系$\eqref{eq8}$，协变导数和其对易成为</p>
+<p>$$\nabla_\mu\psi&#x3D;\partial_\mu\psi +\frac{1}{8}\omega_{\mu ab}[\gamma^a,\gamma^b]\psi \tag{9}\label{eq9}$$</p>
+<p>$$[\nabla_\mu,\nabla_\nu]\psi&#x3D;-\frac{1}{8}R_{\mu\nu ab}[\gamma^a,\gamma^b]\psi \tag{10}\label{eq10}$$</p>
+<p>还原单位，狄拉克方程现在可写为</p>
+<p>$$ i\hbar\gamma^a(v_a+\frac{1}{8}\omega_{abc}[\gamma^b,\gamma^c])\psi&#x3D;mc \psi \tag{11}\label{eq11}$$</p>
+<p>利用$\eqref{eq4}$和$\eqref{eq5}$ 可得 </p>
+<p>$$\nabla_\mu\underline{\gamma}^\nu&#x3D;0$$</p>
+<p>结合$\eqref{eq10}$和比安基恒等式 $R_{\mu\nu\lambda\rho}+R_{\mu\lambda\rho\nu}+R_{\mu\rho\nu\lambda}&#x3D;0$ 可得</p>
+<p>$$(\underline{\gamma}^\mu\nabla_\mu)^2&#x3D;\square +\displaystyle\frac{R}{4} \tag{12}\label{eq12}$$</p>
+<hr>
+<p>From Quantum Field Theory In Curved Spacetime by Leonard Parker and David Toms</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../27/%E7%9B%B8%E5%AF%B9%E8%AE%BA/%E5%8F%B2%E7%93%A6%E8%A5%BF%E6%97%B6%E7%A9%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          史瓦西时空
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../20/%E7%9B%B8%E5%AF%B9%E8%AE%BA/%E5%AE%87%E5%AE%99%E5%AD%A6%E6%A8%A1%E5%9E%8B/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          宇宙学模型
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+<script
+  src="https://giscus.app/client.js"
+  data-repo="Y-jx007/Maple"
+  data-repo-id=""
+  data-category=""
+  data-category-id=""
+  data-mapping=""
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<script>
+  window.onload = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    giscusFrame.contentWindow.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark ? "dark" : "light",
+          },
+        },
+      },
+      "https://giscus.app"
+    );
+  };
+</script>
+
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- Busuanzi Analytics -->
+<div class="flex items-center gap-2">
+  <span>Visitor Count</span>
+  <span id="busuanzi_value_site_uv"></span>
+  <span>Totalview</span>
+  <span id="busuanzi_value_site_pv"></span>
+</div>
+<!-- End Busuanzi Analytics -->
+
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2023</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>
