@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>模形式 | 枫</title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      isDark = !isDark;
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="枫" />
+          枫
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        模形式
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        模形式
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-07-21 23:34:41</time>
+          <span class="text-gray-400">·</span>
+          <span>15 min</span>
+          <span class="text-gray-400">·</span>
+          <span>3.1k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="模形式"><a href="#模形式" class="headerlink" title="模形式"></a>模形式</h2><p><strong>定义1</strong>$\quad$令$L$为$\mathbb{C}$中所有平行四边形格点阵$\Lambda$的集合，若映射$F:L\to\mathbb{C}$为$-k\le 0$阶齐次方程且在$L$和$\infty$上全纯，则称$F$为权为$k$的<strong>模形式</strong></p>
+<p>对每个$\Lambda$，取其基本周期对$\langle \omega_1,\omega_2\rangle$ 使得 $\Im\displaystyle\frac{\omega_1}{\omega_2}&gt;0$，对应$\mathbb{H}$中一点$z&#x3D;\displaystyle\frac{\omega_1}{\omega_2}$</p>
+<p>由模函数齐次条件，$F( \omega_1\mathbb{Z}+\omega_2\mathbb{Z})&#x3D;\omega_2^{-k}F(z\mathbb{Z}+\mathbb{Z})$，定义$f(z)&#x3D;F(z\mathbb{Z}+\mathbb{Z})$</p>
+<p>由于对$z$作变换 $\gamma\in \text{SL}_2(\mathbb{Z}):z\mapsto \displaystyle\frac{az+b}{cz+d}$ 后格点不变</p>
+<p>$$f(\gamma z)&#x3D;(cz+d)^kF((az+b)\mathbb{Z}+(cz+d)\mathbb{Z})&#x3D;F(z\mathbb{Z}+\mathbb{Z})$$</p>
+<p>可以得到模形式的等价定义</p>
+<p><strong>定义2</strong>$\quad$若$f:\mathbb{H}\to\mathbb{C}$在$\mathbb{H}$和$\infty$上全纯，且满足以下条件，则称$f$为权为$k$的<strong>模形式</strong></p>
+<p>$$f(\gamma z)&#x3D;(cz+d)^kf(z)$$</p>
+<p>引入$k$权算子$[\gamma]_k$，其中<strong>自守因子</strong> $j_\gamma(z)&#x3D;cz+d$，</p>
+<p>$$f[\gamma]_k(z)&#x3D;j_\gamma(z)^{-k}f(\gamma z)$$</p>
+<p>算子具有以下性质</p>
+<p>$1.\quad$$j_{\gamma_1\gamma_2}(z)&#x3D;j_{\gamma_1}(\gamma_2 z)j_{\gamma_2}(z)$</p>
+<p>$2.\quad$$(\gamma_1\gamma_2 )z&#x3D;\gamma_1(\gamma_2 z)$</p>
+<p>$3.\quad$$f[\gamma_1\gamma_2]_k&#x3D; (f[\gamma_1]_k) [\gamma_2]_k$</p>
+<p>$4.\quad$$\Im\;(\gamma z)&#x3D;\displaystyle\frac{\Im\;z}{|j_\gamma(z)|^2}$</p>
+<p>现在 $\text{SL}_2(\mathbb{Z})$ 下的<strong>弱模条件</strong>可简记为</p>
+<p>$$f[\gamma]_k&#x3D;f\qquad\forall{\gamma\in \text{SL}_2(\mathbb{Z})}$$</p>
+<p>若$f(\infty)&#x3D;0$，则称$f$为<strong>尖点形式</strong>；若将全纯改为亚纯，则退化为在$\text{SL}_2(\mathbb{Z})$下自守的<strong>模函数</strong>的定义，以下提及模函数均默认其在$\text{SL}_2(\mathbb{Z})$下自守</p>
+<p>记所有权为$k$的模形式的集合为$\mathcal{M}_k(\text{SL}_2(\mathbb{Z}))$，尖点形式的集合为$\mathcal{S}_k(\text{SL}_2(\mathbb{Z}))$，简记为$\mathcal{M}_k$和$\mathcal{S}_k$</p>
+<p>由定义知不同权模形式线性独立，同权模形式之比为模函数，$\mathcal{M}_{k_1}\mathcal{M}_{k_2}\subset\mathcal{M}_{k_1+k_2}$</p>
+<p>取$\gamma&#x3D;-I_2$，$f(z)&#x3D;(-1)^kf(z)$，故除零以外不存在权为奇数的模形式</p>
+<p>取$\gamma&#x3D;T&#x3D;\displaystyle\begin{pmatrix}<br>    1&amp;1\\0&amp;1<br>\end{pmatrix}$，$f(z+1)&#x3D;f(z)$，模形式周期为$1$</p>
+<p>取$\gamma&#x3D;S&#x3D;\displaystyle\begin{pmatrix}0&amp;1\\-1&amp;0<br>\end{pmatrix}$，$f(-1&#x2F;z)&#x3D;(-z)^kf(z)$</p>
+<p>由于 $\text{SL}_2(\mathbb{Z})$ 可由$T,S$ 生成，故满足如下两个<strong>模变换规律</strong>即为模形式</p>
+<p>$$f(z+1)&#x3D;f(z)$$</p>
+<p>$$f(-1&#x2F;z)&#x3D;(-z)^kf(z)$$</p>
+<p>$k\ge 3$ 时，$G_k(\Lambda)&#x3D;\displaystyle\sum_{\omega\in\Lambda^*}\frac{1}{\omega^k}$ 为模形式，但不是尖点形式</p>
+<p>利用黎曼$\zeta$函数取值 $\zeta(4)&#x3D;\displaystyle\frac{\pi^4}{90},\zeta(6)&#x3D;\frac{\pi^6}{945}$</p>
+<p>可知 $\Delta&#x3D;g_2^3-27g_3^2&#x3D;(60G_4)^3-27(140G_6)^2$ 为12权尖点形式</p>
+<p>$\infty$为<strong>j-不变量</strong> $j&#x3D;\displaystyle\frac{1728g_2^3}{\Delta}$ 单极点，因此$j$为0权模函数，但不是模形式</p>
+<h2 id="级数展开"><a href="#级数展开" class="headerlink" title="级数展开"></a>级数展开</h2><p>由于模形式周期为$1$，故可用 $q&#x3D;e^{i2\pi z}$ 展开</p>
+<p>$$f(z)&#x3D;\sum_{n&#x3D;0}^\infty a_n q^n$$</p>
+<p>利用 $\sin{\pi z}&#x3D;\pi z\displaystyle\prod_{m&#x3D;1}^\infty\left(1-\frac{z^2}{m^2}\right)$，两边取对数后求二阶导可得</p>
+<p><strong>引理1</strong>$\quad$$k\ge 2$，$z\in\mathbb{H}$</p>
+<p>$$\sum_{m\in\mathbb{Z}}\frac{1}{(z+m)^k}&#x3D;\frac{(-2\pi i)^k}{(k-1)!}\sum_{m&#x3D;1}^\infty m^{k-1}q^{m}$$</p>
+<p>由引理可得 $G_k(z)&#x3D;G_k(z\mathbb{Z}+\mathbb{Z})$ 展开式，默认$k\ge 4$且为偶数</p>
+<p>引入<strong>除数函数</strong> $\sigma_s(n)&#x3D;\displaystyle\sum_{d|n}d^s$，其满足 $\sigma_s(mn)&#x3D;\sigma_s(m)\sigma_s(n)$</p>
+<p>$$G_k(z)&#x3D;2\zeta(k)+2\frac{(2\pi i)^k}{(k-1)!}\sum_{n&#x3D;1}\sigma_{k-1}(n)q^n$$</p>
+<p>尖点形式 $\Delta(z)$ 可写为</p>
+<p>$$\Delta(z)&#x3D;(12\pi)^{12}\sum_{n&#x3D;1}^\infty\tau(n)q^n$$</p>
+<p>$\tau$称为<strong>Ramanujan $\tau$ 函数</strong>，计算发现 $\tau(n)$ 的前几个值均为整数</p>
+<table>
+<thead>
+<tr>
+<th align="center">$n$</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$\tau(n)$</td>
+<td align="center">1</td>
+<td align="center">-24</td>
+<td align="center">252</td>
+<td align="center">-1472</td>
+<td align="center">4830</td>
+<td align="center">-6048</td>
+<td align="center">-16744</td>
+<td align="center">84480</td>
+</tr>
+</tbody></table>
+<p>引入<strong>Dedekind $\eta$ 函数</strong></p>
+<p>$$\eta(z)&#x3D;q^{1&#x2F;24}\prod_{n&#x3D;1}^\infty(1-q^n)$$</p>
+<p>计算对数导数得到变换规律 $\eta(-1&#x2F;z)&#x3D;\sqrt{-iz}\;\eta(z)$，可知 $\eta^{24}(z)$ 为12权尖点形式</p>
+<p>由下一节可知 $\dim_\mathbb{C}{\mathcal{S}_{12}}&#x3D;1$，因此 $\Delta$ 与 $\eta^{24}$ 线性相关</p>
+<p>比较系数可得以下 $\Delta$ 无穷乘积，由此说明 $\tau(n)\in\mathbb{Z}$</p>
+<p>$$\Delta(z)&#x3D;(2\pi)^{12}q\prod_{n&#x3D;1}^\infty(1-q^n)^{24}$$</p>
+<p><strong>Ramanujan猜想</strong>$\quad$</p>
+<p>$1.\quad$若$m,n$互素，则$\tau(mn)&#x3D;\tau(m)\tau(n)$</p>
+<p>$2.\quad$对素数$p$，$\tau(p^{r+1})&#x3D;\tau(p)\tau(p^r)-p^{11}\tau(p^{r-1})$</p>
+<p>$3.\quad$对素数$p$，$|\tau(p)|\le 2p^{11&#x2F;2}$</p>
+<h2 id="维度公式"><a href="#维度公式" class="headerlink" title="维度公式"></a>维度公式</h2><p><img src="/images/%E5%9F%BA%E6%9C%AC%E5%9F%9F.png"></p>
+<p>设$f$为模函数，将$\displaystyle\frac{f’}{f}$在如图所示基本域$\mathcal{F}$边界上积分得</p>
+<p><strong>定理1</strong>$\quad$对非零$k$权模函数 $f:\mathbb{H}\to\mathbb{C}$，记$\text{ord}_z$为$f$在$z$处阶数，零点为正，极点为负</p>
+<p>$$\text{ord}_\infty+\frac{1}{2}\text{ord}_i+\frac{1}{3}\text{ord}_{e^{\pi i&#x2F;3}}+\sum_{z\in\mathcal{F}\backslash\{i,e^{\pi i&#x2F;3}\}}\text{ord}_z&#x3D;\frac{k}{12}$$</p>
+<p><strong>定理2</strong></p>
+<p>$$\dim_\mathbb{C}\mathcal{M}_k&#x3D;\left\lbrace\begin{array}{l}\lfloor k&#x2F;12\rfloor &amp; k&#x3D; 2\;(\text{mod}\; 12)\\\lfloor k&#x2F;12\rfloor+1 &amp; k\neq 2\;(\text{mod}\; 12)\end{array}\right.$$</p>
+<p>$$\dim_\mathbb{C}\mathcal{S}_k&#x3D;\dim_\mathbb{C}\mathcal{M}_k-1$$</p>
+<p>由维度公式知非零模形式的权数 $k\ge 4$</p>
+<p><strong>推论1</strong>$\quad$$G_4$和$G_6$代数独立，且可以生成所有模形式</p>
+<p>$$\bigoplus_{k&#x3D;1}^\infty\mathcal{M}_k&#x3D;\mathbb{C}[G_4,G_6]$$</p>
+<h2 id="椭圆曲线"><a href="#椭圆曲线" class="headerlink" title="椭圆曲线"></a>椭圆曲线</h2><p>由Weirstrass椭圆函数微分方程</p>
+<p>$$\wp’^2(z)&#x3D;4\wp^3(z)-g_2\wp(z)-g_3$$</p>
+<p>每个格点阵 $\Lambda$ 对应如下复椭圆曲线 $E_\Lambda&#x3D;\overline{V(f)}$ </p>
+<p>$$f(x,y)&#x3D;4x^3-g_2x-g_3-y^2$$</p>
+<p>$E_\Lambda$ 上点具有形式 $P(z)&#x3D;(\wp(z),\wp’(z))$，其上无穷远点记为 $O&#x3D;(\wp(0),\wp’(0))$</p>
+<p>由于 $z+\Lambda\in \mathbb{C}&#x2F;\Lambda$ 与 $P(z)$ 之间存在双射，故可定义椭圆曲线上点的<strong>加法</strong> </p>
+<p>$$P(z_1)+P(z_2)&#x3D;P(z_1+z_2)$$</p>
+<p>可知无穷远点 $O$ 在此加法下的地位相当于零</p>
+<p>联立 $E_\Lambda$ 与直线方程，构造椭圆函数 $l(z)&#x3D;a\wp(z)+b\wp’(z)+c$</p>
+<p>若 $b \neq 0$ ，由于原点为 $l(z)$ 三阶极点，故 $l(z)$ 三个零点满足 $z_1+z_2+z_3\in\Lambda$</p>
+<p>若 $b&#x3D;0$ ，原点为 $l(z)$ 二阶极点，$l(z)$ 两个零点满足 $z_1+z_2\in\Lambda$</p>
+<p>在 $b&#x3D;0$ 情况下，将 $O$ 视为 $l$ 与 $E_\Lambda$ 的第三个交点，于是 $l$ 与 $E_\Lambda$ 的三个交点满足</p>
+<p>$$P_1+P_2+P_3&#x3D;O$$</p>
+<p>由此可知椭圆曲线上两点相加得到其连线与椭圆曲线的另一个交点关于$x$轴的对称点</p>
+<p>利用$j(z)$建立的基本域与$\mathbb{C}$之间的双射，可知</p>
+<p><strong>定理3</strong>$\quad$对任意复椭圆曲线$y^2&#x3D;4x^3-a_2x-a_3$，$a_2^3-27a_3^2$，<br>均存在$\Lambda$，使得$g_2(\Lambda)&#x3D;a_2,g_3(\Lambda)&#x3D;a_3$</p>
+<h2 id="同余子群"><a href="#同余子群" class="headerlink" title="同余子群"></a>同余子群</h2><p><strong>引理2</strong>$\quad$若$\Gamma$为$\text{SL}_2(\mathbb{Z})$的有限指数子群，则</p>
+<p>$1.\quad$$\text{SL}_2(\mathbb{Z})$ 对 $\overline{\mathbb{Q}}$ 的群作用可迁</p>
+<p>$2.\quad$$\text{SL}_2(\mathbb{Z})_x$ 非平凡(含抛物变换)当且仅当 $x\in\overline{\mathbb{Q}}$</p>
+<p>$3.\quad$对 $x\in\overline{\mathbb{Q}}$，$\Gamma_x$ 为抛物变换生成的循环群</p>
+<p>$4.\quad$$\Gamma$ 作用于 $\overline{\mathbb{Q}}$ 得到的轨道数目有限</p>
+<p>$\Gamma$-轨道称为<strong>尖点</strong>，称属于同一轨道的元素$\Gamma$-等价，$\Gamma(1)&#x3D;\text{SL}_2(\mathbb{Z})$ 只有一个尖点</p>
+<p><strong>定义3</strong>$\quad$若$f:\mathbb{H}\to\mathbb{C}$ 在 $\mathbb{H}$ 和 $\Gamma$-尖点上全纯，且满足 $\Gamma$ 下的<strong>弱模条件</strong>，则称$f$为 $\Gamma$ 下权为$k$的<strong>模形式</strong></p>
+<p>$$f[\gamma]_k&#x3D;f\qquad \forall{\gamma}\in \Gamma$$</p>
+<p>记 $\text{SL}_2(\mathbb{Z})$ 的模 $n$ <strong>同余主子群</strong>为 $\Gamma(n)\equiv I_2(\text{mod}\; n)$</p>
+<p>记 $\text{SL}_2(\mathbb{Z})$ 两个常用模 $n$ <strong>同余子群</strong> 为 </p>
+<p>$\Gamma_0(n)\equiv\displaystyle\begin{pmatrix}<br> * &amp; *\\ 0 &amp;*<br>\end{pmatrix}(\text{mod}\; n),\Gamma_1(n)\equiv\displaystyle\begin{pmatrix}<br> 1 &amp; *\\ 0 &amp;1<br>\end{pmatrix}(\text{mod}\; n)$</p>
+<p>记$p$为素数，利用 Euler totient 函数 $\phi(n)&#x3D;\displaystyle n\prod_{p|n}(1-p^{-1})$ 与商关系</p>
+<p>$\#\text{GL}_2(\mathbb{Z}_p)&#x3D;(p^2-1)(p^2-p)$，$[\text{GL}_2(\mathbb{Z}_p):\text{SL}_2(\mathbb{Z}_p)]&#x3D;p-1$</p>
+<p>$[\mathbb{Z}_{p^{m+1}}:\mathbb{Z}_{p^m}]&#x3D;p$，$\mathbb{Z}_n&#x3D;\displaystyle\bigoplus_{i}\mathbb{Z}_{p_i^{m_i}}\quad n&#x3D;\prod_{i}p_i^{m_i}$</p>
+<p>$[\Gamma(1):\Gamma(n)]&#x3D;\# \text{SL}_2(\mathbb{Z}_n)$，$[\Gamma(n):\Gamma_1(n)]&#x3D;n$，$[\Gamma_0(n):\Gamma_1(n)]&#x3D;\phi(n)$</p>
+<p>可得以下公式</p>
+<p>$$[\Gamma(1):\Gamma(n)]&#x3D;n^3\prod_{p|n}(1-p^{-2})$$</p>
+<p>$$[\Gamma(1):\Gamma_1(n)]&#x3D;n^2\prod_{p|n}(1-p^{-2})$$</p>
+<p>$$[\Gamma(1):\Gamma_0(n)]&#x3D;n\prod_{p|n}(1+p^{-1})$$</p>
+<p><strong>引理3</strong>$\quad$ $\overline{\mathbb{Q}}$ 中两个最简分数 $\displaystyle\frac{a}{b},\frac{c}{d}$ 属于相同 $\Gamma(n)$-尖点的充要条件为</p>
+<p>$$\begin{pmatrix}a\\b\end{pmatrix}\equiv \pm \begin{pmatrix}c\\d\end{pmatrix} \quad(\text{mod}\; n)$$  </p>
+<p><strong>引理4</strong>$\quad$ 若 $(a,b)\in\mathbb{Z}^2$，$(\bar{a},\bar{b})\in\mathbb{Z}_n^2$ 为其模$n$等价对，则以下三个条件等价</p>
+<p>$1.\quad$$(a,b)$ 存在互素模$n$等价对</p>
+<p>$2.\quad$$\gcd(a,b,n)&#x3D;1$</p>
+<p>$3.\quad$$$</p>
+<p>由引理可得 $\Gamma(n)$-尖点的数目 $h_n$</p>
+<p>$$h_n&#x3D;\left\{\begin{array} &amp; \displaystyle\frac{n^2}{2}\prod_{p|n}(1-p^{-2}) &amp; n&gt;2\\3 &amp; n&#x3D;2\end{array}\right.$$</p>
+<h2 id="Poincare-级数"><a href="#Poincare-级数" class="headerlink" title="Poincaré 级数"></a>Poincaré 级数</h2><p>由 $G_k$ 定义标准 <strong>Eisenstein 级数</strong> $E_k$，利用 $\zeta(k)&#x3D;\displaystyle\prod_p\left(1-p^{-1}\right)^{-1}$</p>
+<p>$$E_k(z):&#x3D;\frac{G_k(z)}{2\zeta(k)}&#x3D;\frac{1}{2}\sum_{\gcd(c,d)&#x3D;1}\frac{1}{(cz+d)^k}$$</p>
+<p>其用 $q&#x3D;e^{i2\pi z}$ 展开如下，其中$B_k$为Bernoulli数，$\displaystyle\frac{t}{e^t-1}&#x3D;\sum_{k&#x3D;0}^\infty B_k\frac{t^k}{k!}$</p>
+<p>$$E_k(z)&#x3D;1-\frac{2k}{B_k}\sum_{n&#x3D;1}^\infty\sigma_{k-1}(n)q^n$$</p>
+<p>记 $\mathbb{Z}_{\text{pr}}^2&#x3D;\{(c,d)\in\mathbb{Z}^2:\gcd(c,d)&#x3D;1\}$，$\Gamma&#x3D;\text{SL}_2(\mathbb{Z})$</p>
+<p>无穷远点的稳定化子 $\Gamma_\infty&#x3D;\left\langle\pm\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\right\rangle$，其中元素第二行恒为 $\pm(0,1)$</p>
+<p>由于对 $\mathbb{Z}_{\text{pr}}^2$ 中任意元素 $(c,d)$ ，均存在 $\gamma&#x3D;\displaystyle \begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix} \in \Gamma$</p>
+<p>故可定义如下映射，易知其为双射</p>
+<p>$$\Gamma_\infty\backslash\Gamma\to \mathbb{Z}_{\text{pr}}^2&#x2F;\pm\qquad\Gamma_\infty\gamma\mapsto (0,1)\gamma$$</p>
+<p>默认$k$为偶数，因此Eisenstein级数可写为</p>
+<p>$$E_k(z)&#x3D;\sum_{\gamma\in \Gamma_\infty\backslash\Gamma}j_\gamma(z)^{-k}$$</p>
+<p><strong>定义4</strong>$\quad$若 $p:\mathbb{H}\to\mathbb{C}$ 全纯且周期为 $1$，则称如下级数为 <strong>Poincaré 级数</strong></p>
+<p>$$P(z)&#x3D;\sum_{\gamma\in\Gamma_\infty\backslash\Gamma}j_\gamma(z)^{-k}p(\gamma z)$$</p>
+<p>当 $p&#x3D;q^m\quad m\ge 0$ 时，称其为第$m$个$k$权Poincaré 级数，记为 $P_{m,k}$</p>
+<p>对同一个陪集中的 $\gamma_1,\gamma_2$，可以找出 $\gamma_0\in \Gamma_\infty$ ，使得 $\gamma_2&#x3D;\gamma_0\gamma_1$</p>
+<p>由 $j_{\gamma_0\gamma_1}(z)&#x3D;j_{\gamma_0}(\gamma_1 z)j_{\gamma_1}(z)&#x3D;\pm j_{\gamma_1}(z)$，$p(\gamma_0\gamma_1 z)&#x3D; p(\gamma_1 z+m)&#x3D;p(\gamma_1 z)$</p>
+<p>可知Poincaré 级数独立于陪集中代表元的选取，因此是良定义的</p>
+<p>利用 $j_\gamma(z)$ 的性质还可以证明 $P_{m,k}$ 为模形式</p>
+<p><strong>引理5</strong>$\quad$对$m\ge 1$，$P_{m,k}\in\mathcal{S}_k$</p>
+<p>若 $\Gamma$ 为 $\text{SL}_2(\mathbb{Z})$ 同余子群，记其不等价尖点集合为 $\mathcal{C}_\Gamma$，取 $\mathfrak{a}\in \mathcal{C}_\Gamma$，$\sigma_\mathfrak{a}$ 为将 $\infty$  映到$\mathfrak{a}$ 的变换矩阵</p>
+<p><strong>定义5</strong>$\quad$若 $p:\mathbb{H}\to\mathbb{C}$ 全纯且周期为 $1$，则称如下级数为$\Gamma$在$\mathfrak{a}$处的 <strong>Poincaré 级数</strong></p>
+<p>$$P_\mathfrak{a}(z)&#x3D;\sum_{\gamma\in\Gamma_\mathfrak{a}\backslash\Gamma}j_{\sigma_\mathfrak{a}^{-1}\gamma}(z)^{-k}p(\sigma_\mathfrak{a}^{-1}\gamma z)$$</p>
+<p>当 $p&#x3D;q^m\quad m\ge 0$ 时，称其为$\Gamma$在$\mathfrak{a}$处的第$m$个Poincaré 级数，记为 $P_{\mathfrak{a},m}$，称 $E_{\mathfrak{a}}&#x3D;P_{\mathfrak{a},0}$ 为 $\Gamma$在$\mathfrak{a}$处的Eisenstein 级数</p>
+<p>易知以上定义的级数同样独立于陪集中代表元的选取</p>
+<p>容易验证 $k\ge 3,m\ge 0$ 时，$P_{\mathfrak{a},m}$ 满足 $\Gamma$ 下的弱模条件，若其在 $\mathcal{C}_\Gamma$ 上全纯即可证明 $P_{\mathfrak{a},m}$ 为 $\Gamma$ 下的模形式</p>
+<p>令$k\ge 4,m\ge 1$，将尖点形式 $P_{m,k}$ 用 $q&#x3D;e^{i2\pi z}$ 展开</p>
+<p>$$P_{m,k}(z)&#x3D;\sum_{n&#x3D;1}^\infty \hat{p}(m,n)q^n\qquad \hat{p}(m,n)&#x3D;\int_0^1P_{m,k}(z)q^{-n}\dd x$$</p>
+<p>引入经典 <strong>Kloosterman 和</strong> $S(m,n;c)$</p>
+<p>$$S(m,n;c)&#x3D;\sum_{ad \equiv 1 (\text{mod}\;c)}\exp\left(2\pi i\times\frac{ma+nd}{c} \right)$$</p>
+<p>$S(m,n;c)$ 满足如下性质</p>
+<p>$1.\quad$$S(m,n;c)&#x3D;S(n,m;c)$</p>
+<p>$2.\quad$若 $\gcd(a,c)&#x3D;1$，则 $S(am,n;c)&#x3D;S(m,an;c)$</p>
+<p>$3.\quad$$f[\gamma_1\gamma_2]_k&#x3D; (f[\gamma_1]_k) [\gamma_2]_k$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../16/%E5%A4%8D%E5%88%86%E6%9E%90/%E5%8F%8C%E6%9B%B2%E5%87%A0%E4%BD%95/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          双曲几何
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../04/%E5%A4%8D%E5%88%86%E6%9E%90/%E5%8D%95%E5%80%BC%E5%8C%96%E5%AE%9A%E7%90%86/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          单值化定理
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2023</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

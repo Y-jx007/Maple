@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>时空对称性拓展 | 枫</title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      isDark = !isDark;
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="枫" />
+          枫
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        时空对称性拓展
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        时空对称性拓展
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-08-22 23:09:19</time>
+          <span class="text-gray-400">·</span>
+          <span>5 min</span>
+          <span class="text-gray-400">·</span>
+          <span>1.2k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="Coleman-Mandula-定理"><a href="#Coleman-Mandula-定理" class="headerlink" title="Coleman-Mandula 定理"></a>Coleman-Mandula 定理</h2><p>若 $G$ 为散射矩阵 $S&#x3D;1-i(2\pi)^4\delta(P_\mu-P’_\mu)T$ 的连通对称Lie群，且以下条件成立</p>
+<p>$1.(\text{Lorentz invariance})\quad$$G$包含局部同构于Poincaré群$P$的子群</p>
+<p>$2.(\text{Particle-finiteness})\quad$任何粒子均对应$P$的正能量表示，给定质量$M$，仅存在有限种质量小于$M$的粒子</p>
+<p>$3.(\text{Weak elastic analyticity})\quad$除去法线阈外，在物理区域的邻域，弹性散射振幅为质心能$s$和动量不变演化参数$t$的解析函数</p>
+<p>$4.(\text{Occurrence of scattering})\quad$若$\ket{p}$，$\ket{p’}$ 为两个单粒子动量本征态，则最多除去一些离散取值的$s$之外</p>
+<p>$$T\ket{p,p’}\neq 0$$</p>
+<p>亦即两列平面波对于质心能取值$s$几乎处处散射</p>
+<p>$5.(\text{An ugly technical assumption})\quad$存在$G$单位元邻域，其中任意元素位于某单参群$g(t)$上，若$x,y\in\mathscr{D}$为具有紧支集的无穷可微单粒子态，则以下极限存在，且定义了一个关于$y$线性，关于$x$反线性的函数</p>
+<p>$$\lim_{t\to 0}\frac{1}{i}\frac{\dd}{\dd t}(x,g(t)y)&#x3D;(x,Ay)$$</p>
+<p>则$G$局部同构于Poincaré群与内禀对称群的<strong>直积群</strong></p>
+<h2 id="Haag–Lopuszanski–Sohnius-定理"><a href="#Haag–Lopuszanski–Sohnius-定理" class="headerlink" title="Haag–Łopuszański–Sohnius 定理"></a>Haag–Łopuszański–Sohnius 定理</h2><p>若将Coleman-Mandula 定理中散射矩阵对称群为Lie群的条件放宽为分次Lie群，则可将时空的Poincaré对称性拓展为超对称，<strong>超对称代数</strong>是唯一能生成相对论性量子场论中散射矩阵对称群的分次Lie代数</p>
+<p>分次Lie代数在对易子的基础上引入了反对易子</p>
+<p>$$\{Q,Q’\}&#x3D;X\qquad [X,X’]&#x3D;X’’\qquad[Q,X]&#x3D;Q’$$</p>
+<p>$X$为代数中对易生成元，其为Poincaré代数$\mathscr{P}&#x3D;\{P_m,M_{mn}\}$或Lorentz-invariant紧Lie代数$\mathscr{A}&#x3D;\mathscr{A}_1\oplus\mathscr{A}_2$中的元素，其中$\mathscr{A}$为半单Lie代数，$\mathscr{A}_2$为Abelian代数</p>
+<p>$Q$为代数中反对易生成元，可按Lorentz群$\mathscr{L}$的齐次不可约自旋$\displaystyle\frac{1}{2}(a+b)$表示分解，由反对易性知 $a+b$ 为奇数</p>
+<p>$$Q&#x3D;\sum Q_{\underline{\alpha_1\ \cdots\ \alpha_a} ,\ \underline{\dot\beta_1\ \cdots\ \dot\beta_b}}$$</p>
+<p>其中用下划线表示位于其上的指标对称，下划括号表示位于其上的指标反对称</p>
+<p>附加以下两个条件</p>
+<p>$1.\quad$算符$Q$作用于配备正定度规的Hilbert空间</p>
+<p>$2.\quad$$Q$与其Hermitian共轭$\bar Q$均属于此代数</p>
+<p>考虑如下反对易子，其指标全为$1$，为隶属于 $\displaystyle\frac{1}{2}(a+b,a+b)$ 型旋量表示的对易生成元的分量，然而 $j&gt;1$ 时由于不存在隶属于 $\displaystyle\frac{1}{2}(j,j)$ 型旋量表示的非零对易生成元，可知此反对易子为零</p>
+<p>$$\left\{Q_{\overset{\underline{1\ \cdots \ 1}}{a}\ ,\ \overset{\underline{\dot{1}\ \cdots\ \dot{1}}}{b}}\ ,\bar Q_{\overset{\underline{\dot 1\ \cdots \ \dot 1}}{a}\ ,\ \overset{\underline{1\ \cdots\ 1}}{b}}\right\}$$</p>
+<p>同时若 $Q$ 非零， 则 $\{Q,Q^\dagger\}$ 为配备正定度规的Hilbert空间中的正定算符，与反对易子为零矛盾，因此当 $a+b&gt;1$ 时 $Q_{\overset{\underline{1\ \cdots \ 1}}{a}\ ,\ \overset{\underline{\dot{1}\ \cdots\ \dot{1}}}{b}}&#x3D;0$，由于隶属于不可约表示的量不能有零分量，因此 $Q_{\alpha_1\ \cdots\ \alpha_a\ ,\ \dot\beta_1\ \cdots\ \dot\beta_b}$ 均为零</p>
+<p>因此 $a+b&#x3D;1$ ，代数的反对易成分仅由 $\mathscr{L}$ 的自旋$\displaystyle\frac{1}{2}$表示下旋量 $Q_\alpha^{\;\;L},\bar Q_{\dot\beta M}$ 构成，其反对易子为Hermitian算符，可对角化，而 $\{Q_1^{\;\;L},\bar Q_{\dot 1 L}\}$ 又为正定算符，故可选取合适的基使反对易子满足如下关系</p>
+<p>$$\{Q_\alpha^{\;\;L},\bar Q_{\dot\beta M}\}&#x3D;2\sigma_{\alpha\dot\beta}^{\;\;\; m}P_m\delta_{\;M}^{L}$$</p>
+<p>现考虑同型旋量$Q_\alpha^{\;\; L},Q_\beta^{\;\;M}$的反对易子，由于同时交换指标 $\alpha,\beta$ 和 $L,M$ 后反对易子不变，故可将其拆分为以下形式</p>
+<p>$$\{Q_\alpha^{\;\; L},Q_\beta^{\;\;M}\}&#x3D;\varepsilon_{\alpha\beta}X^{\underbracket{LM}}+M_{\underline{\alpha\beta}}Y^{\underline{LM}}$$</p>
+<p>其中对称部分 $Y^{\underline{LM}}$ 隶属于自旋$1$表示，由Coleman-Mandula 定理知此表示即为洛伦兹生成元 $M_{\underline{\alpha\beta}}$，然而可以证明 $P_m$ 与 $Q_\alpha^{\;\;L}$ 对易，因此 $Y^{\underline{LM}}$ 为零，反对易子可写为</p>
+<p>$$\{Q_\alpha^{\;\; L},Q_\beta^{\;\;M}\}&#x3D;\varepsilon_{\alpha\beta}a^{l,\underbracket{LM}}B_l$$</p>
+<p>其中$B_l$为代数对称部分中的Hermitian元素，由这些结果，超对称代数现在可写为</p>
+<p>$$\{Q_\alpha^{\;\;L},\bar Q_{\dot\beta M}\}&#x3D;2\sigma_{\alpha\dot\beta}^{\;\;\; m}P_m\delta_{\;M}^{L}$$</p>
+<p>$$[P_m,Q_\alpha^{\;\;L}]&#x3D;[P_m,\bar Q_{\dot\beta M}]&#x3D;0$$</p>
+<p>$$\{Q_\alpha^{\;\; L},Q_\beta^{\;\;M}\}&#x3D;\varepsilon_{\alpha\beta}a^{l,\underbracket{LM}}B_l&#x3D;\varepsilon_{\alpha\beta}X^{\underbracket{LM}}$$</p>
+<p>$$\{\bar Q_{\dot\alpha L},\bar Q_{\dot\beta M}\}&#x3D;\varepsilon_{\dot\alpha\dot\beta}a_{l,\underbracket{LM}}^*B^l&#x3D;\varepsilon_{\dot\alpha\dot\beta}X_{\underbracket{LM}}^\dagger$$</p>
+<p>$$[Q_\alpha^{\;\;L},B_l]&#x3D;S_{l\;\;M}^{\;L}Q_\alpha^{\;\;M}$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../30/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E6%97%8B%E9%87%8F%E4%BB%A3%E6%95%B0/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          旋量代数
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../%E5%A4%8D%E5%88%86%E6%9E%90/%E5%8F%8C%E6%9B%B2%E5%87%A0%E4%BD%95/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          双曲几何
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2023</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

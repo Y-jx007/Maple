@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>旋量代数 | 枫</title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      isDark = !isDark;
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="枫" />
+          枫
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        旋量代数
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        旋量代数
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-08-22 23:09:25</time>
+          <span class="text-gray-400">·</span>
+          <span>7 min</span>
+          <span class="text-gray-400">·</span>
+          <span>1.3k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="旋量"><a href="#旋量" class="headerlink" title="旋量"></a>旋量</h2><p>$\eta_{mn}\sim (-1,1,1,1)$，与度规相同，反称张量在$\text{SL}(2,\mathbb{C})$下不变</p>
+<p>$$\varepsilon_{\alpha\beta}&#x3D;\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\qquad\varepsilon^{\alpha\beta}&#x3D;\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}$$</p>
+<p>$$\varepsilon_{\alpha\beta}&#x3D;M_\alpha^{\;\gamma}M_\beta^{\;\delta}\varepsilon_{\gamma\delta}\qquad \varepsilon^{\alpha\beta}&#x3D;\varepsilon^{\gamma\delta}M_\gamma^{\;\alpha}M_\delta^{\;\beta}$$</p>
+<p>分别服从Lorentz群旋量表示$(1&#x2F;2,0),(0,1&#x2F;2)$下变换关系的 $\psi,\bar\psi$ 称为<strong>Weyl旋量</strong></p>
+<p>$$\psi_\alpha&#x3D;\varepsilon_{\alpha\beta}\psi^\beta\qquad\psi^\alpha&#x3D;\varepsilon^{\alpha\beta}\psi_\beta$$</p>
+<p>$$\psi’_\alpha&#x3D;M_\alpha^{\;\beta}\psi_\beta\qquad\bar\psi’_{\dot{\alpha}}&#x3D;(M^*)_\dot{\alpha}^{\;\dot{\beta}}\bar\psi_{\dot{\beta}}$$</p>
+<p>$$\psi’^\alpha&#x3D;{M^{-1}}_\beta^{\;\alpha}\psi^\beta\qquad\bar\psi’_{\dot{\alpha}}&#x3D;{(M^*)^{-1}}_\dot{\beta}^{\;\dot{\alpha}}\bar\psi^{\dot{\beta}}$$</p>
+<p>Weyl旋量直和可得<strong>Dirac旋量</strong>和<strong>Majorana旋量</strong>，服从Lorentz群四维表示下变换关系</p>
+<p>$$\Psi_D&#x3D;\begin{pmatrix}\chi_\alpha\\\bar\psi^\dot{\alpha}\end{pmatrix}\qquad\Psi_M&#x3D;\begin{pmatrix}\chi_\alpha\\\bar\chi^\dot{\alpha}\end{pmatrix}$$</p>
+<p>约定以下记号，默认旋量分量乘积服从反交换律</p>
+<p>$$\psi\chi&#x3D;\psi^\alpha\chi_\alpha&#x3D;-\psi_\alpha\chi^\alpha&#x3D;\chi^\alpha\psi_\alpha&#x3D;\chi\psi$$</p>
+<p>$$\bar\psi\bar\chi&#x3D;\bar\psi_{\dot\alpha}\bar\chi^{\dot\alpha}&#x3D;-\bar\psi^{\dot\alpha}\bar\chi_{\dot\alpha}&#x3D;\bar\chi_{\dot\alpha}\bar\psi^{\dot\alpha}&#x3D;\bar\chi\bar\psi$$</p>
+<p>$$(\chi\psi)^\dagger&#x3D;(\chi^\alpha\psi_\alpha)^\dagger&#x3D;\bar\psi_{\dot\alpha}\bar\chi^{\dot\alpha}&#x3D;\bar\psi\bar\chi&#x3D;\bar\chi\bar\psi$$</p>
+<h2 id="Sigma矩阵"><a href="#Sigma矩阵" class="headerlink" title="Sigma矩阵"></a>Sigma矩阵</h2><p>$$\sigma^0&#x3D;\begin{pmatrix}-1&amp;0\\0&amp;-1\end{pmatrix}\qquad<br>  \sigma^1&#x3D;\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}$$</p>
+<p>$$\sigma^2&#x3D;\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix}\qquad<br>  \sigma^3&#x3D;\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}$$</p>
+<p>$$\gamma^m&#x3D;\begin{pmatrix}0&amp;\sigma^m\\\bar\sigma^m&amp;0\end{pmatrix}\qquad\gamma^5&#x3D;\gamma^0\gamma^1\gamma^2\gamma^3&#x3D;\begin{pmatrix}-i&amp;0\\0&amp;i\end{pmatrix}$$</p>
+<p>$2\times2$ Hermitian矩阵可分解为$\sigma^m$的实系数线性组合，洛伦兹变换保持其行列式不变</p>
+<p>$$P&#x3D;P_m\sigma^m$$</p>
+<p>$$P’&#x3D;MP_m\sigma^mM^\dagger$$</p>
+<p>由此可得$\sigma$指标结构与升降规律</p>
+<p>$$\bar\sigma^{m\dot{\alpha}\alpha}&#x3D;\varepsilon^{\dot{\alpha}\dot{\beta}}\varepsilon^{\alpha\beta}\sigma_{\;\;\beta\dot{\beta}}^{m}$$</p>
+<p>双旋量和矢量可以通过$\sigma$相互转化</p>
+<p>$$v_{\alpha\dot{\alpha}}&#x3D;\sigma_{\alpha\dot{\alpha}}^{\;\;\;m}v_m\qquad v^m&#x3D;-\frac{1}{2}\bar\sigma^{m\dot{\alpha}\alpha}v_{\alpha\dot{\alpha}}$$</p>
+<p>Lorentz群生成元在旋量表示下可写为</p>
+<p>$$\sigma^{mn\;\;\beta}_{\;\;\;\;\alpha}&#x3D;\frac{1}{4}(\sigma_{\alpha\dot{\alpha}}^{\;\;\;m}\bar\sigma^{n\dot{\alpha}\beta}-\sigma_{\alpha\dot{\alpha}}^{\;\;\;n}\bar\sigma^{m\dot{\alpha}\beta})$$</p>
+<p>$$\bar\sigma^{mn\dot\alpha}_{\;\;\;\;\;\;\dot\beta}&#x3D;\frac{1}{4}(\bar\sigma^{m\dot\alpha\alpha}\sigma_{\alpha\dot{\beta}}^{\;\;\;n}-\bar\sigma^{n\dot\alpha\alpha}\sigma_{\alpha\dot{\beta}}^{\;\;\;m})$$</p>
+<p>与$\gamma$相似，$\sigma$具有以下性质，式中 $\varepsilon^{0123}&#x3D;1$</p>
+<p>$$\bar\sigma^0&#x3D;\sigma^0\qquad\bar\sigma^{1,2,3}&#x3D;-\sigma^{1,2,3}$$</p>
+<p>$$\tr{\sigma^m\bar\sigma^n}&#x3D;-2\eta^{mn}$$</p>
+<p>$$\sigma_{\alpha\dot{\alpha}}^{\;\;\;m}\bar\sigma_m^{\;\;\dot{\beta}\beta}&#x3D;-2\delta_\alpha^{\;\beta}\delta_{\dot\alpha}^{\;\dot\beta}$$</p>
+<p>$$(\sigma^m\bar\sigma^n+\sigma^n\bar\sigma^m)_\alpha^{\;\beta}&#x3D;-2\eta^{mn}\delta_\alpha^{\;\beta}$$</p>
+<p>$$(\bar\sigma^m\sigma^n+\bar\sigma^n\sigma^m)_{\;\dot\beta}^\dot{\alpha}&#x3D;-2\eta^{mn}\delta_{\;\dot\beta}^\dot{\alpha}$$</p>
+<p>$$\sigma^{mn\;\;\alpha}_{\;\;\;\;\alpha}&#x3D;0$$</p>
+<p>$$\sigma^{mn\;\;\beta}_{\;\;\;\;\alpha}\varepsilon_{\beta\gamma}&#x3D;\sigma^{mn\;\;\beta}_{\;\;\;\;\gamma}\varepsilon_{\beta\alpha}$$</p>
+<p>$$\varepsilon^{abcd}\sigma_{cd}&#x3D;-2i\sigma^{ab}$$</p>
+<p>$$\varepsilon^{abcd}\bar\sigma_{cd}&#x3D;2i\bar\sigma^{ab}$$</p>
+<p>$$\sigma_{\alpha\dot{\alpha}}^{\;\;\;m}\sigma_{\beta\dot{\beta}}^{\;\;\;n}-\sigma_{\alpha\dot{\alpha}}^{\;\;\;n}\sigma_{\beta\dot{\beta}}^{\;\;\;m}&#x3D;2[(\sigma^{mn}\varepsilon)_{\alpha\beta}\varepsilon_{\dot\alpha\dot\beta}+(\varepsilon\bar\sigma^{mn})_{\dot\alpha\dot\beta}\varepsilon_{\alpha\beta}]$$</p>
+<p>$$\sigma_{\alpha\dot{\alpha}}^{\;\;\;m}\sigma_{\beta\dot{\beta}}^{\;\;\;n}+\sigma_{\alpha\dot{\alpha}}^{\;\;\;n}\sigma_{\beta\dot{\beta}}^{\;\;\;m}&#x3D;-\eta^{mn}\varepsilon_{\alpha\beta}\varepsilon_{\dot\alpha\dot\beta}+4(\sigma^{lm}\varepsilon)_{\alpha\beta}(\varepsilon\bar\sigma^{ln})_{\dot\alpha\dot\beta}$$</p>
+<p>$$\tr{\sigma^{mn}\sigma^{kl}}&#x3D;-\frac{1}{2}(\eta^{mk}\eta^{nl}-\eta^{ml}\eta^{nk})-\frac{i}{2}\varepsilon^{mnkl}$$</p>
+<p>$$\sigma^a\bar\sigma^b\sigma^c+\sigma^c\bar\sigma^b\sigma^a&#x3D;2(\eta^{ac}\sigma^b-\eta^{bc}\sigma^a-\eta^{ab}\sigma^c)$$</p>
+<p>$$\bar\sigma^a\sigma^b\bar\sigma^c+\bar\sigma^c\sigma^b\bar\sigma^a&#x3D;2(\eta^{ac}\bar\sigma^b-\eta^{bc}\bar\sigma^a-\eta^{ab}\bar\sigma^c)$$</p>
+<p>$$\sigma^a\bar\sigma^b\sigma^c-\sigma^c\bar\sigma^b\sigma^a&#x3D;2i\varepsilon^{abcd}\sigma_d$$</p>
+<p>$$\bar\sigma^a\sigma^b\bar\sigma^c-\bar\sigma^c\sigma^b\bar\sigma^a&#x3D;-2i\varepsilon^{abcd}\bar\sigma_d$$</p>
+<h2 id="旋量代数"><a href="#旋量代数" class="headerlink" title="旋量代数"></a>旋量代数</h2><p>$$\theta^\alpha\theta^\beta&#x3D;-\frac{1}{2}\varepsilon^{\alpha\beta}\theta\theta\qquad \theta_\alpha\theta_\beta&#x3D;\frac{1}{2}\varepsilon_{\alpha\beta}\theta\theta$$</p>
+<p>$$\bar\theta^{\dot\alpha}\bar\theta^{\dot\beta}&#x3D;\frac{1}{2}\varepsilon^{\dot\alpha\dot\beta}\bar\theta\bar\theta\qquad \bar\theta_{\dot\alpha}\bar\theta_{\dot\beta}&#x3D;-\frac{1}{2}\varepsilon_{\dot\alpha\dot\beta}\bar\theta\bar\theta$$</p>
+<p>$$\theta\sigma^m\bar\theta\theta\sigma^n\bar\theta&#x3D;-\frac{1}{2}\theta\theta\bar\theta\bar\theta\eta^{mn}$$</p>
+<p>$$(\theta\phi)(\theta\psi)&#x3D;-\frac{1}{2}(\phi\psi)(\theta\theta)\qquad (\bar\theta\bar\phi)(\bar\theta\bar\psi)&#x3D;-\frac{1}{2}(\bar\phi\bar\psi)(\bar\theta\bar\theta)$$</p>
+<p>$$\varepsilon^{\alpha\beta}\frac{\partial}{\partial\theta^\beta}&#x3D;-\frac{\partial}{\partial\theta_\alpha}$$</p>
+<p>$$\varepsilon^{\alpha\beta}\frac{\partial}{\partial\theta^\alpha}\frac{\partial}{\partial\theta^\beta}\theta\theta&#x3D;4\qquad \varepsilon_{\dot\alpha\dot\beta}\frac{\partial}{\partial\bar\theta_{\dot\alpha}}\frac{\partial}{\partial\bar\theta_{\dot\beta}}\bar\theta\bar\theta&#x3D;4$$</p>
+<p>$$\chi\sigma^m\bar\psi&#x3D;-\bar\psi\bar\sigma^m\chi\qquad (\chi\sigma^m\bar\psi)^\dagger&#x3D;\psi\sigma^m\bar\chi$$</p>
+<p>$$\chi\sigma^m\bar\sigma^n\psi&#x3D;\psi\sigma^n\bar\sigma^m\chi\qquad (\chi\sigma^m\bar\sigma^n\psi)^\dagger&#x3D;\bar\psi\bar\sigma^n\sigma^m\bar\chi$$</p>
+<p>$$(\phi\psi)\bar\chi_{\dot\alpha}&#x3D;-\frac{1}{2}(\phi\sigma^m\bar\chi)(\psi\sigma_m)_{\dot\alpha}$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../%E7%BE%A4%E8%AE%BA/Lorentz%E7%BE%A4%E8%A1%A8%E7%A4%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          Lorentz群表示
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../16/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E6%97%B6%E7%A9%BA%E5%AF%B9%E7%A7%B0%E6%80%A7/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          时空对称性拓展
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2023</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>
