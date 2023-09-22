@@ -37,11 +37,11 @@
 
 
 
-<title>Lie群 | </title>
+<title>经典计算 | </title>
 
 
 
-<link rel="icon" href="../../../../../images/favicon.png">
+<link rel="icon" href="../../../../images/favicon.png">
 
 
 
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        Lie群
+        经典计算
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -242,50 +242,89 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        Lie群
+        经典计算
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-08-22 23:04:59</time>
+          <time>2023-09-16 16:57:26</time>
           <span class="text-gray-400">·</span>
-          <span>2 min</span>
+          <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>534 words</span>
+          <span>415 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="无穷小生成元"><a href="#无穷小生成元" class="headerlink" title="无穷小生成元"></a>无穷小生成元</h2><p>具有群结构的光滑流形$G$称为<strong>李群</strong>，其群元可由参数连续变化的解析函数表示</p>
-<p>选取参数令$g(0)&#x3D;I$，将群元$g(\alpha)$在原点附近对其参数$\alpha_i$泰勒展开</p>
-<p>$$g(\alpha)&#x3D;I+\alpha_i X_i+\displaystyle\frac{1}{2}\alpha_i\alpha_j X_{ij}+\cdots$$</p>
-<p>$X_i&#x3D;\displaystyle\left.\frac{\partial g(\alpha)}{\partial \alpha_i}\right|_{\alpha&#x3D;0}$ 称为<strong>无穷小生成元</strong>，其对应的算符$\hat{X}_i$ 称为<strong>无穷小算符</strong></p>
-<p>逆元展开</p>
-<p>$$g^{-1}(\alpha)&#x3D;I-\alpha_i X_i-\displaystyle\frac{1}{2}\alpha_i\alpha_j (X_{ij}-2X_iX_j)+\cdots$$</p>
-<p>考虑 $g(\alpha)&#x3D;g^{-1}(\beta)g^{-1}(\gamma)g(\beta)g(\gamma)&#x3D;I+\beta_i\gamma_j[X_i,X_j]+\cdots$</p>
-<p>可知$[X_i,X_j]&#x3D;c_{ij}^k X_k$，$c_{ij}$ 称为<strong>结构常数</strong></p>
-<p>记 $X_i$生成的流为 $\varphi_i(t)$，由流的性质可定义<strong>指数映射</strong></p>
-<p>$$\exp(\alpha_i X_i)&#x3D;\prod _{i}\varphi_i(\alpha_i)$$</p>
-<p>可调整群元参数令 $g(\alpha)&#x3D;\exp(\alpha_i X_i)$</p>
-<h2 id="不变积分"><a href="#不变积分" class="headerlink" title="不变积分"></a>不变积分</h2><p>对无限群$G$上函数$f(g)$积分，$\rho(\alpha)$ 为权函数</p>
-<p>$$\int_G f(g)\dd \tau_g&#x3D;\int f(g(\alpha))\rho(\alpha)\dd \alpha$$</p>
-<p>若积分满足有限群重排定理类似条件 </p>
-<p>$$\displaystyle\int_G f(g)\text{d}_L \tau_g&#x3D;\displaystyle\int_G f(g’g)\text{d}_L \tau_g\quad \forall g’\in G$$</p>
-<p>$$\displaystyle\int_G f(g)\text{d}_R \tau_g&#x3D;\displaystyle\int_G f(gg’)\text{d}_R \tau_g\quad \forall g’\in G$$</p>
-<p>则称其为左&#x2F;右<strong>不变积分</strong>，权函数为左&#x2F;右<strong>不变权函数</strong></p>
-<p>对于紧致李群，左&#x2F;右不变权函数相等且积分有限；而非紧致李群只能定义左不变或右不变积分，且积分可能发散</p>
-<p>若积分同时满足左右不变性，可写成 $\rho_L(\alpha),\rho_R(\alpha)&#x3D;\rho(\alpha)$</p>
-<p>由积分不变性可知在不同参数下测度不变，即$\rho(\alpha)&#x3D;\displaystyle\left|\frac{\partial \beta}{\partial \alpha}\right|_{\beta&#x3D;0}\rho(0)$</p>
-<p>要求归一性 $\displaystyle\int_G \dd \tau_g&#x3D;1$，可取$\rho(0)$为群体积倒数</p>
-<p>现在可将正交归一关系推广到李群</p>
-<p>$$\int_G D^{(l)*}(g)_{mn}D^{(l’)}(g)_{m’n’}\dd \tau_g&#x3D;\frac{1}{d_l}\delta_{ll’}\delta_{mm’}\delta_{nn’}$$</p>
-<p>取迹得到特征标正交归一关系</p>
-<p>$$\int_G \chi^{(l)*}(g)\chi^{(l’)}\dd \tau_g&#x3D;\delta_{ll’}$$</p>
-
+    <h2 id="Turing机"><a href="#Turing机" class="headerlink" title="Turing机"></a>Turing机</h2><p>Turing机由以下内容构成</p>
+<p>$1.\quad$<strong>无限长格带</strong>，每个格子状态为空或者为有限集合$\{a_1,a_2,\cdots,a_k\}$中的一种，称此集合为字母表</p>
+<p>$2.\quad$<strong>控制单元</strong>，其状态为有限集合$\{s_1,s_2,\cdots,s_l,H\}$中的一种，其中$H$为<strong>中止态</strong>，当控制单元处于中止态则停止计算，称此集合为内部状态</p>
+<p>$3.\quad$<strong>读写头</strong>，其每次读取和改变格带中一个格子的状态，当完成读写后，读写头左移或右移一格，或者中止计算</p>
+<p>Turing机的一次计算即为读写头将一格和控制单元改变为新的状态，然后左移或右移一格或者中止计算，可用以下映射来表示，其中 $d&#x3D;l,r,-$ 分别表示左移、右移和中止</p>
+<p>$$f:(s,a)\mapsto (\bar s,\bar a,d)$$</p>
+<p>通过特定状态集和映射函数可以让Turing机完成特定计算任务，称为<strong>专用Turing机</strong></p>
+<h3 id="加法Turing机"><a href="#加法Turing机" class="headerlink" title="加法Turing机"></a>加法Turing机</h3><p>所需字母表和内部状态分别为$A&#x3D;\{1\}，S&#x3D;\{s_1,s_2,s_3,s_4,H\}$，格子为空用$b$表示，所需计算的相加数字采用一元表示，即 $1&#x3D;1,2&#x3D;11,3&#x3D;111,\cdots$，以下格带表示计算 $2+3$ 的格带初始状态，箭头为读写头初始位置和状态</p>
+<p>$$\cdots|b|b|1|1|b|1|1|1|\overset{\overset{s_1}{\downarrow}}{b}|b|\cdots$$</p>
+<p>实现加法所需的映射函数如下</p>
+<p>$$$$</p>
+<table>
+<thead>
+<tr>
+<th align="center">$s$</th>
+<th align="center">$a$</th>
+<th align="center">$\bar s$</th>
+<th align="center">$\bar a$</th>
+<th align="center">$d$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$s_1$</td>
+<td align="center">$b$</td>
+<td align="center">$s_2$</td>
+<td align="center">$b$</td>
+<td align="center">$l$</td>
+</tr>
+<tr>
+<td align="center">$s_2$</td>
+<td align="center">$b$</td>
+<td align="center">$s_3$</td>
+<td align="center">$b$</td>
+<td align="center">$l$</td>
+</tr>
+<tr>
+<td align="center">$s_2$</td>
+<td align="center">$1$</td>
+<td align="center">$s_2$</td>
+<td align="center">$1$</td>
+<td align="center">$l$</td>
+</tr>
+<tr>
+<td align="center">$s_3$</td>
+<td align="center">$b$</td>
+<td align="center">$H$</td>
+<td align="center">$b$</td>
+<td align="center">$-$</td>
+</tr>
+<tr>
+<td align="center">$s_3$</td>
+<td align="center">$1$</td>
+<td align="center">$s_4$</td>
+<td align="center">$b$</td>
+<td align="center">$r$</td>
+</tr>
+<tr>
+<td align="center">$s_4$</td>
+<td align="center">$b$</td>
+<td align="center">$s_2$</td>
+<td align="center">$1$</td>
+<td align="center">$l$</td>
+</tr>
+</tbody></table>
+<h3 id="通用Turing机"><a href="#通用Turing机" class="headerlink" title="通用Turing机"></a>通用Turing机</h3>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
@@ -295,16 +334,16 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="../../../04/%E5%A4%8D%E5%88%86%E6%9E%90/%E9%BB%8E%E6%9B%BC-zeta/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="../../17/Euler%20Class/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          黎曼$\zeta$函数
+          定向丛和Euler Class
         </a>
       
     </div>
     <div>
       
-        <a href="../../../02/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          路径积分
+        <a href="../../11/%E5%9C%BA%E8%AE%BA/%E8%87%AA%E7%94%B1%E6%A0%87%E9%87%8F%E5%9C%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          自由标量场
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       

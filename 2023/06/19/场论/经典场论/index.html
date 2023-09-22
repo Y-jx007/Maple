@@ -226,10 +226,10 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
 
@@ -249,7 +249,7 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-09-11 12:05:59</time>
+          <time>2023-09-12 19:17:44</time>
           <span class="text-gray-400">·</span>
           <span>5 min</span>
           <span class="text-gray-400">·</span>
@@ -280,7 +280,7 @@
 <p>$$S&#x3D;\int\text{d}^4x\; \mathcal{L}(\phi_a,\partial_\mu\phi_a)$$</p>
 <p>作用量对$\phi_a$变分为零给出 <strong>Euler-Lagrange方程</strong></p>
 <p>$$\partial_\mu\left(\frac{\partial \mathcal{L}}{\partial(\partial_\mu\phi_a)}\right)-\frac{\partial \mathcal{L}}{\partial \phi_a}&#x3D;0$$</p>
-<p>定义<strong>动量密度</strong> $\displaystyle \pi(\boldsymbol{x})\equiv\frac{\partial \mathcal{L}}{\partial \phi(\boldsymbol{x})}$，由此定义<strong>Hamiltonian密度</strong></p>
+<p>定义<strong>动量密度</strong> $\displaystyle \pi(\boldsymbol{x})\equiv\frac{\partial \mathcal{L}}{\partial \dot\phi(\boldsymbol{x})}$，由此定义<strong>Hamiltonian密度</strong></p>
 <p>$$\mathcal{H}\equiv\pi(\boldsymbol{x})\dot{\phi}(\boldsymbol{x})-\mathcal{L}$$</p>
 <p>$$H\equiv \int\text{d}^3 x\;[\pi(\boldsymbol{x})\dot{\phi}(\boldsymbol{x})-\mathcal{L}]$$</p>
 <p>自由标量场<strong>Lagrange密度</strong></p>
@@ -305,13 +305,13 @@
 <p>守恒流 $j^\mu$ 同时对应了守恒荷 $Q$，假设 $|x|\to\infty$ 时 $\boldsymbol{j}$ 以足够快的速度趋于零</p>
 <p>$$Q&#x3D;\int_{\mathbb{R}^3}j^0\text{d}^3x$$</p>
 <p>$$\frac{\dd Q}{\dd t}&#x3D;\int_{\mathbb{R}^3}\frac{\dd j^0}{\dd t}\text{d}^3x&#x3D;-\int_{\mathbb{R}^3}\nabla\cdot\boldsymbol{j}\;\text{d}^3x&#x3D;0$$</p>
-<p><strong>能动张量</strong>$\quad$对时空变换应用Noether定理</p>
+<p><strong>能动张量</strong>$\quad$对时空平移对称应用Noether定理</p>
 <p>$$x^\mu\to x^\mu-a^\mu$$</p>
 <p>$$\phi(x)\to\phi(x+a)&#x3D;\phi(x)+a^\mu\partial_\mu\phi(x)$$</p>
 <p>$$\mathcal{L}\to \mathcal{L}+a^\mu\partial_\mu\mathcal{L}&#x3D;\mathcal{L}+a^\nu\partial_\mu(\delta_{\;\nu}^\mu\mathcal{L})$$</p>
-<p>可得对应守恒流，其中 $T^{0\mu}$ 对应平移对称下的能量密度和能流，$T^{ij}$ 对应旋转对称下的角动量密度</p>
+<p>可得对应守恒流，其中 $T^{0\mu}$ 为能量密度和能流，$T^{i\mu}$ 为动量密度和动量流密度</p>
 <p>$$T^\mu_{\;\;\nu}&#x3D;\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\partial_\nu\phi-\delta_{\;\nu}^\mu\mathcal{L}$$</p>
-<p>然而如此定义的能动张量并不一定关于 $\mu,\nu$ 对称，可以附加合适的散度项将其对称化，其中 $S^{\mu\nu\rho}$ 关于前两个指标反对称，从而保证对称后的能动张量散度仍然为零</p>
+<p>然而如此定义的能动张量并不关于 $\mu,\nu$ 对称，可以附加合适的散度项将其对称化，其中 $S^{\mu\nu\rho}$ 关于前两个指标反对称，从而保证对称后的能动张量散度仍然为零</p>
 <p>$$\Theta^{\mu\nu}&#x3D;T^{\mu\nu}+\partial_\rho S^{\rho\mu\nu}$$</p>
 <p>定义能动张量的另一种更加本质的方式如下</p>
 <p>$$S&#x3D;\int_\text{d}^4x\;\sqrt{-g}\mathcal{L}(g_{\mu\nu},\phi,\partial_\mu\phi)$$</p>
@@ -354,7 +354,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../../lib/clipboard.min.js"></script>
+<script src="../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -395,7 +395,7 @@
 
 
 
-<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -419,7 +419,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   

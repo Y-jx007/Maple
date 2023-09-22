@@ -226,10 +226,10 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
 
@@ -249,25 +249,101 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-09-11 21:39:05</time>
+          <time>2023-09-19 19:43:42</time>
           <span class="text-gray-400">·</span>
-          <span>1 min</span>
+          <span>14 min</span>
           <span class="text-gray-400">·</span>
-          <span>181 words</span>
+          <span>2.7k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="自由实标量场的量子化"><a href="#自由实标量场的量子化" class="headerlink" title="自由实标量场的量子化"></a>自由实标量场的量子化</h2><p>标量场满足以下正交条件</p>
+    <h2 id="标准量子化"><a href="#标准量子化" class="headerlink" title="标准量子化"></a>标准量子化</h2><p><strong>自由实标量场的量子化</strong></p>
+<p>标量场满足以下对易关系</p>
 <p>$$[\phi(\boldsymbol{x}),\pi(\boldsymbol{y})]&#x3D;i\delta^3(\boldsymbol{x}-\boldsymbol{y})$$</p>
 <p>$$[\phi(\boldsymbol{x}),\phi(\boldsymbol{y})]&#x3D;0&#x3D;[\pi(\boldsymbol{x}),\pi(\boldsymbol{y})]$$</p>
-<p>类比谐振子，引入产生湮灭算符，令 $E_\boldsymbol{p}&#x3D;\sqrt{|\boldsymbol{p}|^2+m^2}$</p>
+<p>对场进行Fourier变换，令 $E_\boldsymbol{p}&#x3D;\sqrt{|\boldsymbol{p}|^2+m^2}$</p>
+<p>$$\phi(\boldsymbol{x})&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}\frac{1}{\sqrt{2E_\boldsymbol{p}}}(a_\boldsymbol{p}e^{i\boldsymbol{p}\cdot\boldsymbol{x}}+a_\boldsymbol{p}^\dagger e^{-i\boldsymbol{p}\cdot\boldsymbol{x}})$$</p>
+<p>$$\pi(\boldsymbol{x})&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}(-i)\sqrt{\frac{E_\boldsymbol{p}}{2}}(a_\boldsymbol{p}e^{i\boldsymbol{p}\cdot\boldsymbol{x}}-a_\boldsymbol{p}^\dagger e^{-i\boldsymbol{p}\cdot\boldsymbol{x}})$$</p>
+<p>与谐振子类似，式中 $a_\boldsymbol{p}^\dagger,a_\boldsymbol{p}$ 即为产生湮灭算符</p>
 <p>$$a_\boldsymbol{p}&#x3D;\int\text{d}^3 x\; \left(\sqrt{\frac{E_\boldsymbol{p}}{2}}\phi(\boldsymbol{x})+\frac{i}{\sqrt{2E_\boldsymbol{p}}}\pi(\boldsymbol{x})\right)e^{-i\boldsymbol{p}\cdot\boldsymbol{x}}$$</p>
 <p>$$a_\boldsymbol{p}^\dagger&#x3D;\int\text{d}^3 x\; \left(\sqrt{\frac{E_\boldsymbol{p}}{2}}\phi(\boldsymbol{x})-\frac{i}{\sqrt{2E_\boldsymbol{p}}}\pi(\boldsymbol{x})\right)e^{i\boldsymbol{p}\cdot\boldsymbol{x}}$$</p>
 <p>$$[a_\boldsymbol{p},a_\boldsymbol{q}^\dagger]&#x3D;(2\pi)^3\delta^3(\boldsymbol{p}-\boldsymbol{q})$$</p>
 <p>$$[a_\boldsymbol{p},a_\boldsymbol{q}]&#x3D;0&#x3D;[a_\boldsymbol{p}^\dagger,a_\boldsymbol{q}^\dagger]$$</p>
+<p>将自由标量场Hamiltonian用产生湮灭算符表示</p>
+<p>$$\begin{aligned}H&amp;&#x3D;\int\text{d}^3x\;\left[\frac{1}{2}\pi^2+\frac{1}{2}(\nabla\phi)^2+\frac{1}{2}m^2\phi^2\right]\\&amp;&#x3D;\int\text{d}^3x\int\frac{\text{d}^3p\;\text{d}^3q}{(2\pi)^6}e^{i(\boldsymbol{p}+\boldsymbol{q})\cdot\boldsymbol{x}}\left[-\frac{\sqrt{E_\boldsymbol{p}E_\boldsymbol{q}}}{4}(a_\boldsymbol{p}-a_{\boldsymbol{-p}}^\dagger)(a_\boldsymbol{q}-a_{\boldsymbol{-q}}^\dagger)+\frac{-\boldsymbol{p}\cdot\boldsymbol{q}+m^2}{4\sqrt{E_\boldsymbol{p}E_\boldsymbol{q}}}(a_\boldsymbol{p}+a_{\boldsymbol{-p}}^\dagger)(a_\boldsymbol{q}+a_{\boldsymbol{-q}}^\dagger)\right]\\&amp;&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}E_\boldsymbol{p}\left(a_\boldsymbol{p}^\dagger a_\boldsymbol{p}+\frac{1}{2}[a_\boldsymbol{p},a_\boldsymbol{p}^\dagger]\right)\end{aligned}$$</p>
+<p>在无限的空间中积分导致Hamiltonian的发散，由于 $\displaystyle\int_{\mathbb{R}^3}\text{d}^3x\;e^{i\boldsymbol{p}\cdot\boldsymbol{x}}&#x3D;(2\pi)^3\delta^3(\boldsymbol{p})$，式中发散项 $V_{\mathbb{R}^3}&#x3D;(2\pi)^3\delta^3(0)$ 可视作 $\mathbb{R}^3$ 的体积，可自然将其舍弃</p>
+<p>将算符 $O$ 中的产生算符全部移至湮灭算符的左侧，称为<strong>正序</strong>，表示为 $:O:$</p>
+<p>$$:H:\;&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}E_\boldsymbol{p}a_\boldsymbol{p}^\dagger a_\boldsymbol{p}$$</p>
+<p>$$[H,a_\boldsymbol{p}^\dagger]&#x3D;E_\boldsymbol{p}a_\boldsymbol{p}^\dagger\qquad [H,a_\boldsymbol{p}]&#x3D;-E_\boldsymbol{p}a_\boldsymbol{p}$$</p>
+<p>类似地，可将动量算符用产生湮灭算符表示，记真空态为 $\ket{0}$，对应舍弃发散项之后的能量 $E&#x3D;0$，所有能量本征态可由产生算符作用于基态得到，通常将其归一化为以下形式，所有本征态构成<strong>Fock空间</strong></p>
+<p>$$\boldsymbol{P}&#x3D;-\int\text{d}^3x\;\pi(\boldsymbol{x})\nabla\phi(\boldsymbol{x})&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}\,\boldsymbol{p}\,a_\boldsymbol{p}^\dagger a_\boldsymbol{p}$$</p>
+<p>$$\ket{\boldsymbol{p}_1,\cdots,\boldsymbol{p}_n}&#x3D;\sqrt{2E_{\boldsymbol{p}_1}\cdots2E_{\boldsymbol{p}_n}}\;a_{\boldsymbol{p}_1}^\dagger\cdots a_{\boldsymbol{p}_n}^\dagger\ket{0}\qquad E&#x3D;\sum_{i&#x3D;1}^n E_{\boldsymbol{p}_i}$$</p>
+<p><strong>Lorentz不变性</strong></p>
+<p>由于 $\delta^3(\boldsymbol{p}-\boldsymbol{q})$ 在boost作用下变为以下形式，故单粒子态内积在Lorentz变换下不变</p>
+<p>$$\begin{aligned}\delta^3(\boldsymbol{p}’-\boldsymbol{q}’)&amp;&#x3D;\delta^3(\boldsymbol{p}-\boldsymbol{q})\frac{\dd p_1}{\dd p_1’}&#x3D;\delta^3(\boldsymbol{p}-\boldsymbol{q})\gamma\left(1+v\frac{\dd E_\boldsymbol{p}}{\dd p_1}\right)\\&amp;&#x3D;\delta^3(\boldsymbol{p}-\boldsymbol{q})\frac{\gamma}{E_\boldsymbol{p}}\left(E_\boldsymbol{p}+v p_1\right)&#x3D;\delta^3(\boldsymbol{p}-\boldsymbol{q})\frac{E_{\boldsymbol{p}’}}{E_\boldsymbol{p}}\end{aligned}$$</p>
+<p>$$\ket{\boldsymbol{p}}&#x3D;\sqrt{2E_\boldsymbol{p}}\;a_\boldsymbol{p}^\dagger\ket{0}$$</p>
+<p>$$\braket{\boldsymbol{p}}{\boldsymbol{q}}&#x3D;2E_\boldsymbol{p}(2\pi)^3\delta^3(\boldsymbol{p}-\boldsymbol{q})$$</p>
+<p>如下测度在Lorentz变换下也不变</p>
+<p>$$\int\frac{\text{d}^4p}{(2\pi)^3}\delta(p^2-m^2)\theta(p^0)&#x3D;\int\frac{\text{d}^3p}{(2\pi)^3}\frac{1}{2E_\boldsymbol{p}}$$</p>
+<p>可写出单粒子态恒等算符与位置本征态</p>
+<p>$${\Large\mathbb{1}}\;&#x3D;\int\frac{\text{d}^3p}{(2\pi)^3}\frac{1}{2E_\boldsymbol{p}}\ket{\boldsymbol{p}}\bra{\boldsymbol{p}}$$</p>
+<p>$$\ket{\boldsymbol{x}}&#x3D;\int\frac{\text{d}^3p}{(2\pi)^3}\frac{1}{2E_\boldsymbol{p}}e^{-i\boldsymbol{p}\cdot\boldsymbol{x}}\ket{\boldsymbol{p}}\qquad \braket{\boldsymbol{x}}{\boldsymbol{p}}&#x3D;e^{i\boldsymbol{p}\cdot\boldsymbol{x}}$$</p>
+<p>位置本征态可由算符 $\phi$ 作用于真空态得到</p>
+<p>$$\ket{\boldsymbol{x}}&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}\frac{1}{\sqrt{2E_\boldsymbol{p}}}(a_\boldsymbol{p}e^{i\boldsymbol{p}\cdot\boldsymbol{x}}+a_\boldsymbol{p}^\dagger e^{-i\boldsymbol{p}\cdot\boldsymbol{x}})\ket{0}&#x3D;\phi(\boldsymbol{x})\ket{0}$$</p>
+<p><strong>Heisenberg绘景</strong></p>
+<p>Heisenberg绘景下态不变，算符随时间演化</p>
+<p>$$\phi(x)&#x3D;\phi(\boldsymbol{x},t)&#x3D;e^{iHt}\phi(\boldsymbol{x})e^{-iHt}$$</p>
+<p>利用Hamiltonian和产生湮灭算符的对易关系</p>
+<p>$$e^{iHt}a_\boldsymbol{p}e^{-iHt}&#x3D;a_\boldsymbol{p}e^{-iE_\boldsymbol{p}\,t}\qquad e^{iHt}a_\boldsymbol{p}^\dagger e^{-iHt}&#x3D;a_\boldsymbol{p}^\dagger e^{iE_\boldsymbol{p}\,t}$$</p>
+<p>$$\phi(x)&#x3D;\phi(\boldsymbol{x},t)&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}\frac{1}{\sqrt{2E_\boldsymbol{p}}}(a_\boldsymbol{p}e^{-ip^\mu x_\mu}+a_\boldsymbol{p}^\dagger e^{ip^\mu x_\mu})$$</p>
+<p>$$\pi(x)&#x3D;\pi(\boldsymbol{x},t)&#x3D;\frac{\partial\phi(\boldsymbol{x},t)}{\partial t}$$</p>
+<p>若考虑动量算符和产生湮灭算符的对易关系</p>
+<p>$$e^{i\boldsymbol{P}\cdot\boldsymbol{x}}a_\boldsymbol{p}e^{-i\boldsymbol{P}\cdot\boldsymbol{x}}&#x3D;a_\boldsymbol{p}e^{-i\boldsymbol{p}\cdot\boldsymbol{x}}\qquad e^{i\boldsymbol{P}\cdot\boldsymbol{x}}a_\boldsymbol{p}^\dagger e^{-i\boldsymbol{P}\cdot\boldsymbol{x}}&#x3D;a_\boldsymbol{p}^\dagger e^{i\boldsymbol{p}\cdot\boldsymbol{x}}$$</p>
+<p>$$\phi(x)&#x3D;e^{iP^\mu x_\mu}\phi(0)e^{-iP^\mu x_\mu}$$</p>
+<p>场算符遵循以下对易关系</p>
+<p>$$[\phi(t,\boldsymbol{x}),\pi(t,\boldsymbol{y})]&#x3D;i\delta^3(\boldsymbol{x}-\boldsymbol{y})$$</p>
+<p>$$[\phi(t,\boldsymbol{x}),\phi(t,\boldsymbol{y})]&#x3D;0&#x3D;[\pi(t,\boldsymbol{x}),\pi(t,\boldsymbol{y})]$$</p>
+<h2 id="Feynman传播子"><a href="#Feynman传播子" class="headerlink" title="Feynman传播子"></a>Feynman传播子</h2><p><strong>因果律</strong></p>
+<p>距离类空的两点发生的事件互不影响，因此两处的局域算符对易</p>
+<p>$$[O(x),O(y)]&#x3D;0$$</p>
+<p>验证自由标量场理论满足因果律</p>
+<p>$$\begin{aligned}\commutator{\phi(x)}{\phi(y)}&amp;&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}\frac{1}{\sqrt{2E_\boldsymbol{p}}}\int\frac{\text{d}^3 q}{(2\pi)^3}\frac{1}{\sqrt{2E_\boldsymbol{q}}}[a_\boldsymbol{p}e^{-ip^\mu x_\mu}+a_\boldsymbol{p}^\dagger e^{ip^\mu x_\mu},a_\boldsymbol{q}e^{-iq^\mu y_\mu}+a_\boldsymbol{q}^\dagger e^{iq^\mu y_\mu}]\\&amp;&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}\frac{1}{2E_\boldsymbol{p}}(e^{-ip^\mu(x-y)_\mu}-e^{ip^\mu(x-y)_\mu})\\&amp;&#x3D;D(x-y)-D(y-x)\end{aligned}$$</p>
+<p>$$D(x-y)&#x3D;\bra{0}\phi(x)\phi(y)\ket{0}&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}\frac{1}{2E_\boldsymbol{p}}e^{-ip^\mu(x-y)_\mu}$$</p>
+<p>由于 $x,y$ 距离类空，Lorentz变换保持 $(x’-y’)^2&#x3D;(x-y)^2&lt;0 $，$x’-y’$ 在Lorentz变换下的轨迹形成单叶双曲面，因此可作Lorentz变换使得 $x-y\to y-x$，而 $D(x-y)$ Lorentz不变，即 $D(x-y)&#x3D;D(y-x)$，因此 $\phi(x),\phi(y)$ 对易</p>
+<p>然而两点的关联函数 $\bra{0}\phi(x)\phi(y)\ket{0}$ 非零，说明场在不同点的值存在关联，这是因为回溯足够长时间，这两点均处于某些事件的光锥之中，其历史并不互相独立，只是通过固定时空点的局部实验并不能获得这些联系</p>
+<p><strong>传播子</strong></p>
+<p>考虑时序两点函数，以下形式说明 $D_F(x-y)$ 将正频模式 $e^{-ip\cdot x}$沿时间向前传播，负频模式 $e^{ip\cdot x}$ 沿时间向后传播</p>
+<p>$$\begin{aligned}D_F(x-y) &amp;&#x3D; \left\lbrace \begin{array}{l} D(x-y)&amp;x^0&gt;y^0\\D(y-x) &amp;y^0&gt;x^0 \end{array}\right.\equiv\bra{0}T\phi(x)\phi(y)\ket{0}\\&amp;&#x3D;\int\frac{\text{d}^3p}{(2\pi)^3}\frac{1}{2E_\boldsymbol{p}}e^{i\boldsymbol{p}\cdot(\boldsymbol{x}-\boldsymbol{y})}\left(\theta(x^0-y^0)e^{-iE_\boldsymbol{p}(x^0-y^0)}+\theta(y^0-x^0)e^{iE_\boldsymbol{p}(x^0-y^0)}\right)\end{aligned}$$</p>
+<p>取如图所示围道，左右图围道分别记为$C_1,C_2$，可将传播子 $D_F(x-y)$ 中积分写为明显Lorentz不变的形式</p>
+<p><img src="/images/%E4%BC%A0%E6%92%AD%E5%AD%90%E5%9B%B4%E9%81%93.png"></p>
+<p>$$\begin{aligned}&amp;\int_{-\infty}^\infty\frac{\dd p_0}{2\pi}\frac{i}{p^2-m^2}e^{-ip_0(x_0-y_0)}\\\quad\\&#x3D;&amp;\left\lbrace\begin{array}{l} \displaystyle\int_{C_1}\frac{\dd p_0}{2\pi}\frac{i}{(p^0)^2-E_\boldsymbol{p}^2}e^{-ip_0(x_0-y_0)}&#x3D;\frac{1}{2E_\boldsymbol{p}}e^{-iE_\boldsymbol{p}(x^0-y^0)}&amp;x^0&gt;y^0\\ \displaystyle\int_{C_2}\frac{\dd p_0}{2\pi}\frac{i}{(p^0)^2-E_\boldsymbol{p}^2}e^{-ip_0(x_0-y_0)}&#x3D;\frac{1}{2E_\boldsymbol{p}}e^{iE_\boldsymbol{p}(x^0-y^0)}&amp;x^0&lt;y^0\end{array}\right.\end{aligned}$$</p>
+<p>$$D_F(x-y)&#x3D;\int_C\frac{\text{d}^4p}{(2\pi)^4}\frac{i}{p^2-m^2}e^{-ip(x-y)}&#x3D;\int\frac{\text{d}^4p}{(2\pi)^4}\frac{i}{p^2-m^2+i\epsilon}e^{-ip(x-y)}$$</p>
+<p>其中为防止积分函数分母为零，在计算过程中将两个极点取为 $p^0&#x3D;\pm(E_\boldsymbol{p}-i\epsilon)$，得到结果之后再令 $\epsilon\to 0$</p>
+<p>$D_F(x-y)$ 为Klein-Gordon方程的格林函数</p>
+<p>$$(\Box+m^2)D_F(x-y)&#x3D;\int\frac{\text{d}^4p}{(2\pi)^4}\frac{i}{p^2-m^2+i\epsilon}(-p^2+m^2)e^{-ip(x-y)}&#x3D;-i\delta^4(x-y)$$</p>
+<p>可利用其得到微扰下运动方程的经典解</p>
+<p>$$\mathcal{L}&#x3D;\frac{1}{2}\partial_\mu\phi\partial^\mu\phi-\frac{1}{2}m\phi^2+J\cdot\phi$$</p>
+<p>$$(\Box+m^2)\phi&#x3D;J(x)$$</p>
+<p>$$\phi_\text{cl}&#x3D;i\int\text{d}^4yD_F(x-y)J(y)$$</p>
+<p>若考虑将所有频率均沿时间向前传播或均向后传播，则得到提前或延迟格林函数</p>
+<p>$$D_A(x-y)\equiv\theta(x^0-y^0)\bra{0}[\phi(x),\phi(y)]\ket{0}$$</p>
+<p>$$D_R(x-y)\equiv\theta(y^0-x^0)\bra{0}[\phi(x),\phi(y)]\ket{0}$$</p>
+<h2 id="非相对论极限"><a href="#非相对论极限" class="headerlink" title="非相对论极限"></a>非相对论极限</h2><p>非相对论极限下 $|\boldsymbol{p}|\ll m$，$E_\boldsymbol{p}&#x3D;\sqrt{\boldsymbol{p}^2+m^2}\approx m$，Klein-Gordon方程近似解具有形式 $\phi_+(x)&#x3D;e^{-imt}\varphi(x)$，代入方程得</p>
+<p>$$i\frac{\partial \varphi}{\partial t}&#x3D;-\frac{\nabla^2}{2m}\varphi$$</p>
+<p>虽然形式与Schrodinger方程相同，但此时的$\varphi$为场算符而非波函数，二者含义有差别</p>
+<p>此方程可由以下Lagrangian得到</p>
+<p>$$\mathcal{L}&#x3D;i\varphi^*\dot\varphi-\frac{1}{2m}\nabla\varphi^*\cdot\nabla\varphi\qquad\pi&#x3D;\frac{\partial\mathcal{L}}{\partial\dot\varphi}&#x3D;\varphi^*$$</p>
+<p>$$\mathcal{H}&#x3D;\frac{1}{2m}\nabla\varphi^*\cdot\nabla\varphi$$</p>
+<p>波函数可由场算符对空间积分得到</p>
+<p>$$\ket{\psi}&#x3D;\int\text{d}^3x\;\psi(\boldsymbol{x})\ket{\boldsymbol{x}}&#x3D;\int\text{d}^3x\;\psi(\boldsymbol{x})[\varphi(\boldsymbol{x})+\varphi^*(\boldsymbol{x})]\ket{0}$$</p>
+<p>$$\varphi(\boldsymbol{x})&#x3D;\int\frac{\text{d}^3p}{(2\pi)^3}a_\boldsymbol{p}e^{i\boldsymbol{p}\cdot\boldsymbol{x}}\qquad \varphi^*(\boldsymbol{x})&#x3D;\int\frac{\text{d}^3p}{(2\pi)^3}a_\boldsymbol{p}^\dagger e^{-i\boldsymbol{p}\cdot\boldsymbol{x}}$$</p>
+<p>Hamiltonian作用于波函数可得，注意下式$a_\boldsymbol{p},a_\boldsymbol{p}^\dagger$对应于$\varphi(\boldsymbol{y})$，因此与$\psi(\boldsymbol{x})$对易</p>
+<p>$$\begin{aligned}H\ket{\psi}&amp;&#x3D;\int\text{d}^3x\;\text{d}^3y\;\frac{1}{2m}\nabla\varphi^*(\boldsymbol{y})\cdot\nabla\varphi(\boldsymbol{y})\;\psi(\boldsymbol{x})\ket{\boldsymbol{x}}\\&amp;&#x3D;\int\frac{\text{d}^3x\;\text{d}^3q\;\text{d}^3p}{(2\pi)^6}\frac{\boldsymbol{p}^2}{2m}a_\boldsymbol{p}^\dagger a_\boldsymbol{p}\psi(\boldsymbol{x})a_\boldsymbol{q}^\dagger e^{-i\boldsymbol{q}\cdot\boldsymbol{x}}\ket{0}\\&amp;&#x3D;\int\frac{\text{d}^3x\;\text{d}^3p}{(2\pi)^3}\frac{\boldsymbol{p}^2}{2m}a_\boldsymbol{p}^\dagger e^{-i\boldsymbol{p}\cdot\boldsymbol{x}}\psi(\boldsymbol{x})\ket{0}\\&amp;&#x3D;\int\text{d}^3x\left(-\frac{1}{2m}\nabla^2\psi\right)\ket{\boldsymbol{x}}\\&amp;&#x3D;-\frac{1}{2m}\nabla^2\ket{\psi}\end{aligned}$$</p>
+<p>由此得Schrodinger方程</p>
+<p>$$i\frac{\partial\ket{\psi}}{\partial t}&#x3D;-\frac{1}{2m}\nabla^2\ket{\psi}$$</p>
 
   </article>
   <!-- tag -->
@@ -277,6 +353,11 @@
   <!-- prev and next -->
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
+      
+        <a href="../../../16/%E7%BB%8F%E5%85%B8%E8%AE%A1%E7%AE%97/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          经典计算
+        </a>
       
     </div>
     <div>
@@ -296,7 +377,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../../lib/clipboard.min.js"></script>
+<script src="../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -337,7 +418,7 @@
 
 
 
-<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -361,7 +442,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   
