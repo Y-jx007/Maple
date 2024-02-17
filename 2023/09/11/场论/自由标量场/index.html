@@ -37,7 +37,7 @@
 
 
 
-<title>自由标量场 | </title>
+<title>Klein-Gordon场 | </title>
 
 
 
@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -162,7 +163,6 @@
 
 
 
-
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
   <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
@@ -175,7 +175,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        自由标量场
+        Klein-Gordon场
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -226,10 +226,10 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
 
@@ -242,14 +242,14 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        自由标量场
+        Klein-Gordon场
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-09-19 19:43:42</time>
+          <time>2024-01-26 13:10:08</time>
           <span class="text-gray-400">·</span>
           <span>14 min</span>
           <span class="text-gray-400">·</span>
@@ -260,7 +260,7 @@
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="标准量子化"><a href="#标准量子化" class="headerlink" title="标准量子化"></a>标准量子化</h2><p><strong>自由实标量场的量子化</strong></p>
+    <h2 id="正则量子化"><a href="#正则量子化" class="headerlink" title="正则量子化"></a>正则量子化</h2><p><strong>自由实标量场的量子化</strong></p>
 <p>标量场满足以下对易关系</p>
 <p>$$[\phi(\boldsymbol{x}),\pi(\boldsymbol{y})]&#x3D;i\delta^3(\boldsymbol{x}-\boldsymbol{y})$$</p>
 <p>$$[\phi(\boldsymbol{x}),\phi(\boldsymbol{y})]&#x3D;0&#x3D;[\pi(\boldsymbol{x}),\pi(\boldsymbol{y})]$$</p>
@@ -275,7 +275,7 @@
 <p>将自由标量场Hamiltonian用产生湮灭算符表示</p>
 <p>$$\begin{aligned}H&amp;&#x3D;\int\text{d}^3x\;\left[\frac{1}{2}\pi^2+\frac{1}{2}(\nabla\phi)^2+\frac{1}{2}m^2\phi^2\right]\\&amp;&#x3D;\int\text{d}^3x\int\frac{\text{d}^3p\;\text{d}^3q}{(2\pi)^6}e^{i(\boldsymbol{p}+\boldsymbol{q})\cdot\boldsymbol{x}}\left[-\frac{\sqrt{E_\boldsymbol{p}E_\boldsymbol{q}}}{4}(a_\boldsymbol{p}-a_{\boldsymbol{-p}}^\dagger)(a_\boldsymbol{q}-a_{\boldsymbol{-q}}^\dagger)+\frac{-\boldsymbol{p}\cdot\boldsymbol{q}+m^2}{4\sqrt{E_\boldsymbol{p}E_\boldsymbol{q}}}(a_\boldsymbol{p}+a_{\boldsymbol{-p}}^\dagger)(a_\boldsymbol{q}+a_{\boldsymbol{-q}}^\dagger)\right]\\&amp;&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}E_\boldsymbol{p}\left(a_\boldsymbol{p}^\dagger a_\boldsymbol{p}+\frac{1}{2}[a_\boldsymbol{p},a_\boldsymbol{p}^\dagger]\right)\end{aligned}$$</p>
 <p>在无限的空间中积分导致Hamiltonian的发散，由于 $\displaystyle\int_{\mathbb{R}^3}\text{d}^3x\;e^{i\boldsymbol{p}\cdot\boldsymbol{x}}&#x3D;(2\pi)^3\delta^3(\boldsymbol{p})$，式中发散项 $V_{\mathbb{R}^3}&#x3D;(2\pi)^3\delta^3(0)$ 可视作 $\mathbb{R}^3$ 的体积，可自然将其舍弃</p>
-<p>将算符 $O$ 中的产生算符全部移至湮灭算符的左侧，称为<strong>正序</strong>，表示为 $:O:$</p>
+<p>将算符 $O$ 中的产生算符全部移至湮灭算符的左侧，称为<strong>正规序</strong>，表示为 $:O:$</p>
 <p>$$:H:\;&#x3D;\int\frac{\text{d}^3 p}{(2\pi)^3}E_\boldsymbol{p}a_\boldsymbol{p}^\dagger a_\boldsymbol{p}$$</p>
 <p>$$[H,a_\boldsymbol{p}^\dagger]&#x3D;E_\boldsymbol{p}a_\boldsymbol{p}^\dagger\qquad [H,a_\boldsymbol{p}]&#x3D;-E_\boldsymbol{p}a_\boldsymbol{p}$$</p>
 <p>类似地，可将动量算符用产生湮灭算符表示，记真空态为 $\ket{0}$，对应舍弃发散项之后的能量 $E&#x3D;0$，所有能量本征态可由产生算符作用于基态得到，通常将其归一化为以下形式，所有本征态构成<strong>Fock空间</strong></p>
@@ -377,7 +377,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../lib/clipboard.min.js"></script>
+<script src="../../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -418,7 +418,7 @@
 
 
 
-<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -442,7 +442,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   
@@ -468,7 +468,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

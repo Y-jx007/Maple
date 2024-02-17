@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>柱面量子化 | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        柱面量子化
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        柱面量子化
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-01-26 13:09:05</time>
+          <span class="text-gray-400">·</span>
+          <span>22 min</span>
+          <span class="text-gray-400">·</span>
+          <span>4.3k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h3 id="Boson"><a href="#Boson" class="headerlink" title="Boson"></a>Boson</h3><p>将周长为 $L$ 的无穷长柱面上的Bose场 $\varphi(x,t)&#x3D;\varphi(x+L,t)$ 展开</p>
+<p>$$\varphi(x,t)&#x3D;\sum_{n}e^{2\pi i n x&#x2F;L}\varphi_n(t)\qquad \varphi_n(t)&#x3D;\frac{1}{L}\int \dd x\;e^{-2\pi i n x&#x2F;L}\varphi(x,t)$$</p>
+<p>计算Lagrangian与Hamiltonian</p>
+<p>$$\begin{aligned}L&amp;&#x3D;\frac{g}{2}\int\dd x\;[(\partial_t\varphi)^2-(\partial_x\varphi)^2]\\&amp;&#x3D;\frac{gL}{2}\sum_n\left[\dot\varphi_n\dot\varphi_{-n}-\left(\frac{2\pi n}{L}\right)^2\varphi_n\varphi_{-n}\right]\end{aligned}$$</p>
+<p>$$\pi_n&#x3D;gL\dot\varphi_{-n}\qquad[\varphi_n,\pi_m]&#x3D;i\delta_{nm}$$</p>
+<p>$$H&#x3D;\frac{1}{2gL}\sum_n\left[\pi_n\pi_{-n}+(2\pi n g)^2\varphi_n\varphi_{-n}\right]$$</p>
+<p>此Hamiltonian表示一系列频率为 $\omega_n&#x3D;2\pi|n|&#x2F;L$ 的解耦谐振子之和，其中零频成分是缺少质量项的结果，选取边界条件之后其等价于共性不变性</p>
+<p>由 $\varphi_n^\dagger&#x3D;\varphi_{-n},\pi_n^\dagger&#x3D;\pi_{-n}$，产生湮灭算符的通常定义方式如下</p>
+<p>$$\tilde{a}_n&#x3D;\frac{1}{\sqrt{4\pi g}}(2\pi g|n|\varphi_n+i\pi_{-n})$$</p>
+<p>$$[\tilde{a}_n,\tilde{a}_m]&#x3D;0\qquad [\tilde{a}_n,\tilde{a}_m^\dagger]&#x3D;\delta_{mn}$$</p>
+<p>然而以上对易关系不适用于零模 $\varphi_0$，因此定义以下算符，并单独处理 $\varphi_0$</p>
+<p>$$a_n&#x3D;\left\lbrace\begin{aligned} &amp;-i\sqrt{n}\tilde{a}_n&amp;(n&gt;0)\\ &amp; i\sqrt{-n}\tilde{a}_{-n}^\dagger &amp;(n&lt;0)\end{aligned}\right.\qquad \bar a_n&#x3D;\left\lbrace\begin{aligned} &amp;-i\sqrt{n}\tilde{a}_{-n}&amp;(n&gt;0)\\ &amp; i\sqrt{-n}\tilde{a}_{n}^\dagger &amp;(n&lt;0)\end{aligned}\right.$$</p>
+<p>$$[a_m,a_n]&#x3D;m\delta_{m+n}\qquad [a_m,\bar a_n]&#x3D;0\qquad[\bar a_m,\bar a_n]&#x3D;m\delta_{m+n}$$</p>
+<p>忽略常数，现在Hamiltonian可写为以下形式，可知 $a_{-m}\;(m&gt;0)$ 将 $H$ 能量为 $E$ 的本征态变为能量为 $E+2m\pi&#x2F;L$ 的本征态</p>
+<p>$$H&#x3D;\frac{1}{2gL}\pi_0^2+\frac{2\pi}{L}\sum_{n&gt;0}(a_{-n}a_n+\bar a_{-n}\bar a_n)$$</p>
+<p>$$[H,a_{-m}]&#x3D;\frac{2\pi}{L}m a_{-m}$$</p>
+<p>用 $a_n,\bar a_n$ 表示 $\varphi$</p>
+<p>$$\varphi_n&#x3D;\frac{i}{n\sqrt{4\pi g}}(a_n-\bar a_{-n})$$</p>
+<p>$$\varphi(x)&#x3D;\varphi_0+\frac{i}{\sqrt{4\pi g}}\sum_{n\neq 0}\frac{1}{n}(a_n-\bar a_{-n})e^{2\pi i n x L}$$</p>
+<p>由Hamiltonian可得Heisenberg绘景下算符的时间演化</p>
+<p>$$\varphi_0(t)&#x3D;\varphi_0(0)+\frac{1}{gL}\pi_0 t\qquad\begin{matrix} a_n(t)&#x3D;a_n(0)e^{-2\pi i n t&#x2F;L}\\ \bar a_n(t)&#x3D;\bar a_n(0)e^{-2\pi i n t&#x2F;L}\end{matrix}$$</p>
+<p>$$\varphi(x,t)&#x3D;\varphi_0+\frac{1}{gL}\pi_0 t+\frac{i}{\sqrt{4\pi g}}\sum_{n\neq 0}\frac{1}{n}(a_n e^{2\pi i n (x-t) L}-\bar a_{-n}e^{2\pi i n (x+t) L})$$</p>
+<p>作代换 $t&#x3D;-i\tau$，引入复变量，变换到Euclidian时空</p>
+<p>$$z&#x3D;e^{2\pi (\tau-ix)&#x2F;L}\qquad\bar z&#x3D;e^{2\pi (\tau+i x)&#x2F;L}$$</p>
+<p>$$\varphi(z,\bar z)&#x3D;\varphi_0-\frac{i}{4\pi g}\pi_0\ln(z\bar z)+\frac{i}{\sqrt{4\pi g}}\sum_{n\neq 0}\frac{1}{n}(a_n z^{-n}+\bar a_n\bar z^{-n})$$</p>
+<p>$\varphi(z,\bar z)$ 中全纯与反全纯成分完全解耦，考虑全纯场 $\partial\varphi(z)$</p>
+<p>$$i\partial\varphi(z)&#x3D;\frac{1}{4\pi g}\frac{\pi_0}{z}+\frac{1}{\sqrt{2\pi g}}\sum_{n\neq 0}a_n z^{-n-1}$$</p>
+<p>以上形式映证了 $\partial\varphi$ 确实为初级场，可定义对应零频算符 $a_0,\bar a_0$</p>
+<p>$$a_0\equiv\bar a_0\equiv\frac{\pi_0}{\sqrt{4\pi g}}$$</p>
+<p>$$i\partial\varphi(z)&#x3D;\frac{1}{\sqrt{4\pi g}}\sum_n a_n z^{-n-1}$$</p>
+<p>$\varphi$ 场的周期条件为全纯与反全纯激发解耦的来源，$a_n,\bar a_n$ 分别产生湮灭传播方向相反的激发；在弦论应用中，这些边界条件描述一条闭弦，零模 $\varphi_0$ 为弦的质心，$\pi_0$ 为弦的总动量</p>
+<h3 id="顶点算符"><a href="#顶点算符" class="headerlink" title="顶点算符"></a>顶点算符</h3><p>由于boson $\varphi$ 缩放维数为零，可不通过缩放引入一系列与 $\varphi$ 相联系的局部场，称为顶点算符</p>
+<p>$$\mathcal{V}_\alpha(z,\bar z)&#x3D;\;:e^{i\alpha\varphi(z,\bar z)}:$$</p>
+<p>正规序意味着其展开形式如下，其中每个中括号内算符均对易</p>
+<p>$$\begin{aligned}\mathcal{V}_\alpha(z,\bar z)&amp;&#x3D;\exp\left[i\alpha\varphi_0+\frac{\alpha}{\sqrt{4\pi g}}\sum_{n&gt;0}\frac{1}{n}(a_{-n}z^n+\bar a_{-n}\bar z^n)\right]\\&amp;\times\exp\left[\frac{\alpha}{4\pi g}\pi_0-\frac{\alpha}{\sqrt{4\pi g}}\sum_{n&gt;0}\frac{1}{n}(a_{n}z^{-n}+\bar a_{n}\bar z^{-n})\right]\end{aligned}$$</p>
+<p>为了解 $\mathcal{V}_\alpha$ 性质，首先计算 $\partial\varphi\mathcal{V}_\alpha$ OPE及 $T\mathcal{V}_\alpha$ OPE</p>
+<p>$$\begin{aligned}\partial\varphi(z)\mathcal{V}_\alpha(w,\bar w)&amp;&#x3D;\sum_{n&#x3D;0}^\infty\frac{(i\alpha)^n}{n!}\partial\varphi(z):\varphi(w,\bar w)^n:\\&amp;\sim-\frac{1}{4\pi g}\frac{1}{z-w}\sum_{n&#x3D;1}^\infty\frac{(i\alpha)^n}{(n-1)!}:\varphi(w,\bar w)^{n-1}:\\&amp;\sim-\frac{i\alpha}{4\pi g}\frac{\mathcal{V}_\alpha(w,\bar w)}{z-w}\end{aligned}$$</p>
+<p>$$\begin{aligned}T(z)\mathcal{V}_\alpha(w,\bar w)&amp;&#x3D;-2\pi g\sum_{n&#x3D;0}^\infty\frac{(i\alpha)^n}{n!}:\partial\varphi(z)\partial\varphi(z)::\varphi(w,\bar w)^n:\\&amp;\sim-\frac{1}{8\pi g}\frac{1}{(z-w)^2}\sum_{n&#x3D;2}^\infty\frac{(i\alpha)^n}{(n-2)!}:\varphi(w,\bar w)^{n-2}:\\&amp;+\frac{1}{z-w}\sum_{n&#x3D;1}^\infty\frac{(i\alpha)^n}{n!}n:\partial\varphi(z)\varphi(w,\bar w)^{n-1}:\\&amp;\sim\frac{\alpha^2}{8\pi g}\frac{\mathcal{V}_\alpha(w,\bar w)}{(z-w)^2}+\frac{\partial_w\mathcal{V}_\alpha(w,\bar w)}{z-w}\end{aligned}$$</p>
+<p>$T\mathcal{V}_\alpha$ OPE形式说明 $\mathcal{V}_\alpha(z,\bar z)$ 为初级场，其共形维数为</p>
+<p>$$h(\alpha)&#x3D;\bar h(\alpha)&#x3D;\frac{\alpha^2}{8\pi g}$$</p>
+<p>为计算 $\mathcal{V}_\alpha\mathcal{V}_\beta$ OPE，引入谐振子相干态  $\ket{z}$，其为湮灭算符的本征态</p>
+<p>$$\ket{z}&#x3D;e^{z a^\dagger}\ket{0}$$</p>
+<p>$$a\ket{z}&#x3D;z\ket{z}\qquad f(a)\ket{z}&#x3D;f(z)\ket{z}$$</p>
+<p>由Hausdorff关系</p>
+<p>$$e^{-A}B e^A&#x3D;B+[B,A]+\frac{1}{2}[[B,A],A]+\cdots$$</p>
+<p>取 $A&#x3D;za^\dagger,B&#x3D;w a$ 可得</p>
+<p>$$[a,e^{za^\dagger}]&#x3D;z e^{za^\dagger}$$</p>
+<p>由于 $[B,A]&#x3D;[ w a,z a^\dagger]&#x3D;wz$ 为常数，故以下关系也成立</p>
+<p>$$e^{B}e^A&#x3D;e^Ae^B e^{[B,A]}$$</p>
+<p>$$e^{wa}e^{z a^\dagger}&#x3D;e^{z a^\dagger} e^{wa}e^{wz}$$</p>
+<p>对顶点算符组成的弦 $:e^{A_1}::e^{A_2}:\cdots:e^{A_n}:\; (A_i&#x3D;\alpha_i a+\beta_i a^\dagger)$，由以上关系可将产生算符全部移至左侧</p>
+<p>$$:e^{A_1}::e^{A_2}:\cdots:e^{A_n}:\;\;&#x3D;e^{(\beta_1+\cdots+\beta_n)a^\dagger}e^{(\alpha_1+\cdots+\alpha_n)a}\exp{\sum_{i&lt;j}^n\alpha_i\beta_j}$$</p>
+<p>由于 $\ev{A_i A_j}&#x3D;\alpha_i\beta_j$，此式也可写为</p>
+<p>$$:e^{A_1}::e^{A_2}:\cdots:e^{A_n}:\;\;&#x3D;\;\;:e^{A_1+\cdots+A_n}:\exp{\sum_{i&lt;j}^n\ev{A_i A_j}}$$</p>
+<p>由此可得 $\mathcal{V}_\alpha\mathcal{V}_\beta$ OPE</p>
+<p>$$\mathcal{V}_\alpha(z,\bar z)\mathcal{V}_\beta(w,\bar w)\sim |z-w|^{2\alpha\beta&#x2F;4\pi g}\mathcal{V}_{\alpha+\beta}(w,\bar w)+\cdots$$</p>
+<p>然而关联函数应在全局共形群下保持不变，要求关联函数中场的共形维数相同；另外关联函数随距离增大应趋近于零，要求 $\alpha\beta&lt;0$，故唯一非零的OPE为 $\alpha&#x3D;-\beta$，取 $g&#x3D;1&#x2F;4\pi$ 可得</p>
+<p>$$\mathcal{V}_\alpha(z,\bar z)\mathcal{V}_{-\alpha}(w,\bar w)\sim |z-w|^{-2\alpha^2}+\cdots$$</p>
+<p>一般地，顶点算符 $\mathcal{V}_{\alpha_i}$ 组成的弦的关联函数只有在电荷之和 $\sum_i\alpha_i&#x3D;0$ 时非零</p>
+<h3 id="Fock空间"><a href="#Fock空间" class="headerlink" title="Fock空间"></a>Fock空间</h3><p>上文Hamiltonian与 $\varphi_0$ 无关意味着 $\pi_0$ 与 $H$ 对易，$\pi_0$ 的特征值为守恒量，即好量子数，因此可用来标记 $H$ 的不同本征态组，Fock空间构建在一单参真空族 $\ket{\alpha}$ 之上，其中 $\alpha$ 为 $a_0&#x3D;\pi_0&#x2F;\sqrt{4\pi g}$ 真空态本征值，$a_n,\bar a_n$ 在 $n&gt;0$ 时为湮灭算符，$n&lt;0$ 时为产生算符</p>
+<p>$$a_n\ket{\alpha}&#x3D;\bar a_n\ket{\alpha&#x3D;0}\quad(n&gt;0)$$</p>
+<p>$$a_0\ket{\alpha}&#x3D;\bar a_0\ket{\alpha}&#x3D;\alpha\ket{\alpha}$$</p>
+<p>将全纯能动张量写为产生湮灭算符形式</p>
+<p>$$T(z)&#x3D;-2\pi g:\partial\varphi\partial\varphi:&#x3D;\frac{1}{2}\sum_{m,n\in\mathbb{Z}}z^{-m-n-2}:a_n a_m:$$</p>
+<p>与能动张量的共形变换生成元展开式 $\displaystyle T(z)&#x3D;\sum_{n\in\mathbb{Z}}z^{-n-2}L_n$ 比较可得</p>
+<p>$$L_n&#x3D;\frac{1}{2}\sum_{m\in\mathbb{Z}}:a_{n-m}a_m:$$</p>
+<p>$$L_0&#x3D;\sum_{n&gt;0}a_{-n}a_n+\frac{1}{2}a_0^2$$</p>
+<p>由此Hamiltonian可写为以下形式，与 $L_0+\bar L_0$ 为时间平移生成元一致</p>
+<p>$$H&#x3D;\frac{2\pi}{L}(L_0+\bar L_0)$$</p>
+<p>由 $[L_0,a_{-m}]&#x3D;m a_{-m}$ 可知 $a_m$ 与 $L_m$ 对共形维数的作用相同；而 $L_0$ 的形式说明真空 $\ket{\alpha}$ 的共形维数为 $\alpha^2&#x2F;2$</p>
+<p>Fock空间的态可由产生算符作用于真空得到，其均为 $L_0$ 本征态</p>
+<p>$$a_{-1}^{n_1}a_{-1}^{n_1}\cdots\bar a_{-1}^{m_1}\bar a_{-1}^{m_1}\cdots\ket{\alpha}\qquad(n_i,m_j\ge 0)$$</p>
+<p>$$h&#x3D;\frac{1}{2}\alpha^2+\sum_{i}i n_i\qquad\bar h&#x3D;\frac{1}{2}\alpha^2+\sum_{j}jm_j$$</p>
+<p>以下证明真空 $\ket{\alpha}$ 可由顶点算符 $\mathcal{V}_\alpha(z,\bar z)&#x3D;\;\;:e^{i\alpha\varphi(z,\bar z)}:$ 作用于绝对真空 $\ket{0}$ 得到</p>
+<p>$$\ket{\alpha}&#x3D;\mathcal{V}_\alpha(0)\ket{0}$$</p>
+<p>由 $[B,A]$ 为常数时的 Hausdorff公式</p>
+<p>$$[B,e^A]&#x3D;e^A[B,A]$$</p>
+<p>取 $g&#x3D;1&#x2F;4\pi$，$A&#x3D;i\alpha \varphi(z,\bar z)$，再分别取 $B&#x3D;\pi_0,a_n$可得</p>
+<p>$$[\pi_0,\mathcal{V}_\alpha]&#x3D;\alpha\mathcal{V}_\alpha\qquad\pi_0\mathcal{V}_\alpha(0)\ket{0}&#x3D;\alpha\mathcal{V}_\alpha(0)\ket{0}$$</p>
+<p>$$[a_n,\mathcal{V}_\alpha]&#x3D;-\alpha z^n\mathcal{V}_\alpha\qquad a_n\mathcal{V}_\alpha(0)\ket{0}&#x3D;0\quad(n&gt;0)$$</p>
+<p>可见 $\mathcal{V}_\alpha(0)\ket{0}$ 即为真空 $\ket{\alpha}$，$\mathcal{V}_\alpha$ 相当于动量平移算符</p>
+<h3 id="扭转边界"><a href="#扭转边界" class="headerlink" title="扭转边界"></a>扭转边界</h3><p>反周期边界条件 $\varphi(x+L,t)&#x3D;-\varphi(x,t)$ 同样与Boson Lagrangian适配，此时 $\varphi$ 在柱面上成为双值函数，将其映射到平面可定义双页Riemann面上的理论</p>
+<p>反周期边界条件下 $\varphi$ 零模消失，且求和指标变为半整数，但并不影响算符对易关系</p>
+<p>$$\varphi(z,\bar z)&#x3D;\frac{i}{\sqrt{4\pi g}}\sum_{n\in\mathbb{Z}+1&#x2F;2}\frac{1}{n}(a_n z^{-n}+\bar a_n\bar z^{-n})$$</p>
+<p>$$[a_m,a_n]&#x3D;m\delta_{m+n}$$</p>
+<p>定义算符 $G$，其与 $\varphi$ 和所有产生湮灭算符 $a_n$ 反对易，与 $H$ 对易</p>
+<p>$$G\varphi G^{-1}&#x3D;-\varphi$$</p>
+<p>易知 $G$ 特征值为 $\pm 1$，并且 $\ket{\psi}$，$G\ket{\psi}$ 为简并态，事实上此系统的基态为双重简并，需要区分对应于 $G$ 本征值 $\pm 1$ 的两个真空 $\ket{0_+}$，$\ket{0_-}$</p>
+<p>取 $g&#x3D;1&#x2F;4\pi$，统一考虑两种边界条件，并验证由路径积分方法得到的周期边界条件两点关联函数 $\ev{\partial\varphi(z)\partial\varphi(w)}&#x3D;-\displaystyle\frac{1}{(z-w)^2}$ 可由算符方法得到</p>
+<p>计算以下关联函数 $(|z|&gt;|w|)$，由 $\ev{a_n a_m}&#x3D;n\delta_{n+m}\;\;(n&gt;0)$，其余情况为零有</p>
+<p>$$\begin{aligned}\ev{\varphi(z)\partial\varphi(w)}&amp;&#x3D;\sum_{m,n\neq 0}\frac{1}{n}\ev{a_n a_m}z^{-n} w^{-m-1}\\&amp;&#x3D;\frac{1}{w}\sum_{n&gt;0}\left(\frac{w}{z}\right)^n\end{aligned}$$</p>
+<p>对于周期边界条件，$n$ 取正整数，重新获得路径积分方法的两点关联函数</p>
+<p>$$\ev{\varphi(z)\partial\varphi(w)}&#x3D;\frac{1}{w}\frac{w&#x2F;z}{1-w&#x2F;z}&#x3D;\frac{1}{z-w}$$</p>
+<p>$$\ev{\partial\varphi(z)\partial\varphi(w)}&#x3D;-\frac{1}{(z-w)^2}$$</p>
+<p>对于反周期边界条件，$n$ 取半整数，关联函数具有支点 $0,\infty$</p>
+<p>$$\ev{\varphi(z)\partial\varphi(w)}&#x3D;\frac{1}{w}\sqrt{\frac{w}{z}}\frac{1}{1-w&#x2F;z}&#x3D;\sqrt{\frac{z}{w}}\frac{1}{z-w}$$</p>
+<p>$$\ev{\partial\varphi(z)\partial\varphi(w)}&#x3D;-\frac{1}{2}\frac{\sqrt{z&#x2F;w}+\sqrt{w&#x2F;z}}{(z-w)^2}$$</p>
+<p>在 $z\to w$ 极限下，两种边界条件的关联函数趋同，即理论的短程行为与边界条件无关</p>
+<p>接着计算能动张量真空期望</p>
+<p>$$\ev{T(z)}&#x3D;-\frac{1}{2}\lim_{\varepsilon\to 0}\left(\ev{\partial\varphi(z+\varepsilon)\partial\varphi(z)}+\frac{1}{\varepsilon^2}\right)$$</p>
+<p>$$\ev{T(z)}&#x3D;\left\lbrace\begin{array}{c}0&amp;\text{周期}\\ \displaystyle\frac{1}{16 z^2}&amp;\text{反周期}\end{array}\right.$$</p>
+<p>由 $\displaystyle T_\text{cyl.}(w)&#x3D;\left(\frac{2\pi}{L}\right)^2\left[T_\text{pl.}(z)-\frac{c}{24}\right]$ 可计算柱面能动张量真空期望</p>
+<p>$$\ev{T_\text{cyl.}}&#x3D;\left\lbrace\begin{array}{c}\displaystyle-\frac{1}{24}\left(\frac{2\pi}{L}\right)^2&amp;\text{周期}\\ \displaystyle\frac{1}{48}\left(\frac{2\pi}{L}\right)^2&amp;\text{反周期}\end{array}\right.$$</p>
+<p>由真空能期望可修正Hamiltonian中忽略的常数</p>
+<p>$$H&#x3D;\frac{2\pi}{L}[(L_0)_\text{cyl.}+(\bar L_0)_\text{cyl.}]$$</p>
+<p>$$(L_0)_\text{cyl.}&#x3D;\left\lbrace\begin{array}{c}\displaystyle\sum_{n&gt;0}a_{-n}a_n-\frac{1}{24}&amp;\text{周期}\\ \displaystyle\sum_{n&gt;0}a_{-n}a_n+\frac{1}{48}&amp;\text{反周期}\end{array}\right.$$</p>
+<h3 id="紧化Boson"><a href="#紧化Boson" class="headerlink" title="紧化Boson"></a>紧化Boson</h3><p>由于Boson Lagrangian在平移 $\varphi\to\varphi+\text{const}$ 下不变，意味着可以将 $\varphi$ 值域局限在圆上，即将 $\varphi$ 与 $\varphi+2\pi R$ 等同，这赋予了 $\varphi$ 角变量的特征</p>
+<p>$\varphi$ 的紧化首先带来的结果是质心动量 $\pi_0$ 即 $\alpha$ 取值只能为 $1&#x2F;R$ 的整数倍，否则不能良定义顶点算符 $\mathcal{V}_\alpha&#x3D;\;\;:e^{i\alpha\varphi}:\;\;$；其次边界条件可取以下更为一般的形式，$m$ 称为场的缠绕数</p>
+<p>$$\varphi(x+L,t)&#x3D;\varphi(x,t)+2\pi m R$$</p>
+<p>这两个结果使得 $\varphi$ 展开式成为</p>
+<p>$$\varphi(x,t)&#x3D;\varphi_0+\frac{n}{gRL}t+\frac{2\pi Rm}{L}x+\frac{i}{\sqrt{4\pi g}}\sum_{k\neq 0}\frac{1}{k}\left(a_k e^{2\pi i k(x-t)&#x2F;L}-\bar a_{-k}e^{2\pi i k(x+t)&#x2F;L}\right)$$</p>
+<p>$$\begin{aligned}\varphi(z,\bar z)&#x3D;\varphi_0&amp;-i\left(\frac{n}{4\pi g R}+\frac{1}{2}mR\right)\ln{z}+\frac{i}{\sqrt{4\pi g}}\sum_{k\neq 0}\frac{1}{k}a_k z^{-k}\\&amp;-i\left(\frac{n}{4\pi g R}-\frac{1}{2}mR\right)\ln{\bar z}+\frac{i}{\sqrt{4\pi g}}\sum_{k\neq 0}\frac{1}{k}\bar a_k \bar z^{-k}\end{aligned}$$</p>
+<p>$$i\partial\varphi(z)&#x3D;\left(\frac{n}{4\pi g R}+\frac{1}{2}mR\right)\frac{1}{z}+\frac{1}{\sqrt{4\pi g}}\sum_{k\neq 0} a_k z^{-k-1}$$</p>
+<p>生成元可写为</p>
+<p>$$L_0&#x3D;\sum_{n&gt;0}a_{-n}a_n+2\pi g\left(\frac{n}{4\pi g R}+\frac{1}{2}mR\right)^2$$</p>
+<p>$$\bar L_0&#x3D;\sum_{n&gt;0}\bar a_{-n}\bar a_n+2\pi g\left(\frac{n}{4\pi g R}-\frac{1}{2}mR\right)^2$$</p>
+<p>缠绕数 $m$ 可视为原点处的漩涡，这与经典 $XY$ 自旋模型相似；可由此定义产生旋量 $m$ 和动量 $n$ 的算符，将在之后讨论；现在只需将真空，即最高权态标记为 $\ket{n,m}$，其具有共形权 $h_{n,m}$，并且由算符 $a_{n&gt;0}$ 湮灭</p>
+<p>$$h_{n,m}&#x3D;2\pi g\left(\frac{n}{4\pi g R}+\frac{1}{2}mR\right)^2$$</p>
+<h3 id="Fermion"><a href="#Fermion" class="headerlink" title="Fermion"></a>Fermion</h3><p>自由 Majorana Fermion作用量</p>
+<p>$$S&#x3D;\frac{1}{2}g\int\text{d}^2 x\;\Psi^\dagger\gamma^0\gamma^\mu\partial_\mu\psi$$</p>
+<p>取 $g&#x3D;1&#x2F;2\pi$，得到 $\psi\psi$ OPE和能动张量表达式，$\psi$ 中心荷 $c&#x3D;1&#x2F;2$，共形维数 $h&#x3D;1&#x2F;2$</p>
+<p>$$\psi(z)\psi(w)\sim \frac{1}{z-w}\qquad T(z)&#x3D;-\frac{1}{2}:\psi(z)\partial\psi(z):$$</p>
+<p>将 $\psi$ 在周长为 $L$ 的柱面上展开</p>
+<p>$$\psi(x)&#x3D;\sqrt{\frac{2\pi}{L}}\sum_{k}b_k e^{2\pi i kx}&#x2F;L$$</p>
+<p>$$\{b_k,b_q\}&#x3D;\delta_{k+q,0}$$</p>
+<p>对周期边界条件(R)，$k$ 取整数；反周期边界条件(NS)，$k$ 取半整数</p>
+<p>$$\psi(x+L)\equiv\psi(x)\qquad\text{Ramond(R)}$$</p>
+<p>$$\psi(x+L)\equiv-\psi(x)\qquad\text{Neveu-Schwarz(NS)}$$</p>
+<p>计算Hamiltonian得</p>
+<p>$$H&#x3D;2\left(\sum_{k&gt;0}\omega_k b_{-k}b_k+E_0\right)\qquad\omega_k&#x3D;\frac{2\pi |k|}{L}$$</p>
+<p>Heisenberg绘景下算符时间演化如下，其中 $w&#x3D;\tau-ix$，$\tau&#x3D;it$ 为Euclidian时间</p>
+<p>$$b_k(t)&#x3D;b_k(0)e^{-2\pi ikt&#x2F;L}$$</p>
+<p>$$\psi(x,t)&#x3D;\sqrt{\frac{2\pi}{L}}\sum_k k_k e^{-2\pi k w L}$$</p>
+<p>将场映射到复平面，$z&#x3D;e^{2\pi w&#x2F;L}$，可知 $\psi$ 在周期边界(R)下为双值函数，与Boson相反</p>
+<p>$$\psi_\text{pl.}(z)&#x3D;\left(\frac{\dd w}{\dd z}\right)^{1&#x2F;2}\psi_\text{cyl.}(w)&#x3D;\sum_{k}b_k z^{-k-1&#x2F;2}$$</p>
+<p>计算以下关联函数，在NS边界条件下</p>
+<p>$$\begin{aligned}\ev{\psi(z)\psi(w)}&amp;&#x3D;\sum_{k,q\in\mathbb{Z}+1&#x2F;2}z^{-k-1&#x2F;2}w^{-q-1&#x2F;2}\ev{b_k b_q}\\&amp;&#x3D;\sum_{k\in\mathbb{Z}+1&#x2F;2,k&gt;0}z^{-k-1&#x2F;2}w^{k-1&#x2F;2}\\&amp;&#x3D;\frac{1}{z-w}\end{aligned}$$</p>
+<p>在R边界条件下</p>
+<p>$$\begin{aligned}\ev{\psi(z)\psi(w)}&amp;&#x3D;\sum_{k,q\in\mathbb{Z}}z^{-k-1&#x2F;2}w^{-q-1&#x2F;2}\ev{b_k b_q}\\&amp;&#x3D;\frac{1}{2\sqrt{zw}}+\sum_{k&#x3D;1}^\infty z^{-k-1&#x2F;2}w^{k-1&#x2F;2}\\&amp;&#x3D;\frac{1}{2}\frac{\sqrt{z&#x2F;w}+\sqrt{w&#x2F;z}}{z-w}\end{aligned}$$</p>
+<p>计算能动张量真空期望</p>
+<p>$$\ev{T(z)}&#x3D;-\frac{1}{2}\lim_{\varepsilon\to 0}\left(\ev{\partial\varphi(z+\varepsilon)\partial\varphi(z)}-\frac{1}{\varepsilon^2}\right)$$</p>
+<p>$$\ev{T(z)}&#x3D;\left\lbrace\begin{array}{c}0&amp;\text{NS sector}\\ \displaystyle\frac{1}{16 z^2}&amp;\text{R sector}\end{array}\right.$$</p>
+<p>将能动张量用产生湮灭算符展开，可得生成元的算符表示</p>
+<p>$$\begin{aligned}T_\text{pl.}(z)&amp;&#x3D;\frac{1}{2}\sum_{k,q}(k+1&#x2F;2)z^{-q-1&#x2F;2}z^{-o-3&#x2F;2}:b_q b_k:\\&amp;&#x3D;\frac{1}{2}\sum_{k,q}(k+1&#x2F;2)z^{-n-2}:b_{n-k}b_k:\end{aligned}$$</p>
+<p>$$L_n&#x3D;\frac{1}{2}\sum_{k}(k+1&#x2F;2):b_{n-k}b_k:$$</p>
+<p>对于 $L_0$，由真空能量密度可得</p>
+<p>$$L_0&#x3D;\sum_{k&gt;0}k{b_{-k}b_k}\qquad(\text{NS}:k\in\mathbb{Z}+1&#x2F;2)$$</p>
+<p>$$L_0&#x3D;\sum_{k&gt;0}k{b_{-k}b_k}+1&#x2F;16\qquad(\text{R}:k\in\mathbb{Z})$$</p>
+<p>将真空能量密度变换到柱面有</p>
+<p>$$\ev{T_\text{cyl.}}&#x3D;\left\lbrace\begin{array}{c}-\displaystyle\frac{1}{48}\left(\frac{2\pi}{L}\right)^2&amp;\text{NS sector}\\ \displaystyle\frac{1}{24}\left(\frac{2\pi}{L}\right)^2&amp;\text{R sector}\end{array}\right.$$</p>
+<p>柱面Hamiltonian可统一写为以下形式，以确保其真空期望与能动张量相符</p>
+<p>$$H&#x3D;\frac{2\pi}{L}\left(L_0+\bar L_0-\frac{c}{12}\right)$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../14/%E6%95%A3%E5%B0%84%E5%92%8C%E8%A1%8D%E5%B0%84/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          散射和衍射
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../05/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E8%87%AA%E7%94%B1%E5%9C%BAOPE/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          自由场OPE
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

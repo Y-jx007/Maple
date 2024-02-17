@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>超对称代数表示 | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        超对称代数表示
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        超对称代数表示
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-01-14 18:30:08</time>
+          <span class="text-gray-400">·</span>
+          <span>12 min</span>
+          <span class="text-gray-400">·</span>
+          <span>2.4k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="超对称代数"><a href="#超对称代数" class="headerlink" title="超对称代数"></a>超对称代数</h2><p>超对称代数的一个特征是其生成元 $Q_\alpha$ 可以表示为某些量子场论中的守恒荷</p>
+<p>$$Q_\alpha&#x3D;\int\text{d}^3 x\; J_\alpha^{\;0}\qquad \frac{\partial}{\partial x^m}J_\alpha^{\;m}&#x3D;0$$</p>
+<p>由于正则等时对易关系，并且Hilbert空间张成超对称代数表示，守恒荷满足以下关系</p>
+<p>$$\{Q_{\alpha}^{\;A},\bar{Q}_{\dot{\beta}B}\}&#x3D;2\sigma_{\alpha\dot{\beta}}^{\;\;\;m}P_m\delta_{\;B}^A$$</p>
+<p>$$\{Q_{\alpha}^{\;A},Q_{\beta}^{\;B}\}&#x3D;\{\bar{Q}_{\dot\alpha A},\bar{Q}_{\dot\beta B}\}&#x3D;0$$</p>
+<p>$$[P_m,Q_{\alpha}^{\;A}]&#x3D;[P_m,\bar{Q}_{\dot\alpha A}]&#x3D;0$$</p>
+<p>$$[P_m,P_n]&#x3D;0$$</p>
+<p>$P_m$ 与所有生成元对易，质量算符 $P^2$ 为Casimir算符，因此超对称代数的不可约表示均具有相同质量</p>
+<p>在构造不可约表示之前，引入fermion数算符 $N_F$，使得 $(-)^{N_F}$ 的特征值对bosonic态为 $+1$，对fermionic态为 $-1$，可知</p>
+<p>$$(-)^{N_F}Q_\alpha&#x3D;-Q_\alpha (-)^{N_F}$$</p>
+<p>对此代数的任意有限维表示，由上式有</p>
+<p>$$\Tr[(-)^{N_F}\{Q_{\alpha}^{\;A},\bar{Q}_{\dot{\beta}B}\}]&#x3D;\Tr[-Q_{\alpha}^{\;A}(-)^{N_F}\bar{Q}_{\dot{\beta}B}+Q_{\alpha}^{\;A}(-)^{N_F}\bar{Q}_{\dot{\beta}B}]&#x3D;0$$</p>
+<p>$$\Rightarrow 2\sigma_{\alpha\dot\beta}^{\;\;\;m}\delta_{\;B}^A\Tr[(-)^{N_F}P_m]&#x3D;0$$</p>
+<p>固定非零动量 $P_m$，可得下式，说明超对称表示中bosonic态和fermionic态数量相同</p>
+<p>$$\Tr(-)^{N_F}&#x3D;0$$</p>
+<h2 id="有质量表示"><a href="#有质量表示" class="headerlink" title="有质量表示"></a>有质量表示</h2><p>考虑有质量单粒子态 $P^2&#x3D;-M^2$ 的超对称代数表示，取相对静止系 $P_m&#x3D;(-M,0,0,0)$，其稳定群为 $\text{SU}(2)$，超对称代数成为</p>
+<p>$$\{Q_{\alpha}^{\;A},\bar{Q}_{\dot{\beta}B}\}&#x3D;2M\delta_{\alpha\dot{\beta}}\delta_{\;B}^A$$</p>
+<p>$$\{Q_{\alpha}^{\;A},Q_{\beta}^{\;B}\}&#x3D;\{\bar{Q}_{\dot\alpha A},\bar{Q}_{\dot\beta B}\}&#x3D;0$$</p>
+<p>重定义生成元，可知此代数同构于 $2N$ 对fermionic产生湮灭算符 $(a_\alpha^{\;A})^\dagger,a_\alpha^{\;A}$</p>
+<p>$$a_\alpha^{\;A}&#x3D;\frac{1}{\sqrt{2M}}Q_\alpha^{\;A}\qquad (a_\alpha^{\;A})^\dagger&#x3D;\frac{1}{\sqrt{2M}}\bar Q_{\dot\alpha A}$$</p>
+<p>$$\{a_\alpha^{\;A},(a_\beta^{\;B})^\dagger\}&#x3D;\delta_\alpha^{\;\beta}\delta^A_{\; B}$$</p>
+<p>$$\{a_\alpha^{\;A},a_\beta^{\;B}\}&#x3D;\{(a_\alpha^{\;A})^\dagger,(a_\beta^{\;B})^\dagger\}&#x3D;0$$</p>
+<p>此代数的表示可通过Clifford真空 $\Omega$ 构造</p>
+<p>$$a_\alpha^{\;A}\Omega&#x3D;0\qquad P^2\Omega&#x3D;-M^2\Omega$$</p>
+<p>态可由产生算符作用于真空得到，若真空非简并，则称下式为基础不可约质量多重态，其最多可含 $N$ 个对称旋量指标，可知唯一最高自旋态自旋为 $N&#x2F;2$</p>
+<p>$$\Omega^{(n)\alpha_1\;\;\;\cdots\;a_n}_{\;\;\;\;\;\;A_1\;\;\;\;\;\;\;A_n}&#x3D;\frac{1}{\sqrt{n!}}(a_{\alpha_1}^{\;\;A_1})^\dagger \cdots (a_{\alpha_n}^{\;\;A_n})^\dagger\Omega$$</p>
+<p>由产生算符的反对易关系知，非零态中任意两对 $\alpha_i A_i,\alpha_j A_j$ 取值不能相同，对给定的 $n$，共有 $\displaystyle{2N \choose n}$ 个不同的态，对 $n$ 求和可得表示维数，说明bosonic态和fermionic态的数量均为 $2^{2N-1}$</p>
+<p>$$d&#x3D;\sum_{n&#x3D;0}^{2N}{2N \choose n}&#x3D;2^{2N}$$</p>
+<p>所有其他质量多重态均基于真空 $\Omega$，注意 $\Omega$ 在稳定群下不满足不变性，这些多重态的表示均可分解为基础多重态表示的直和</p>
+<p>以 $N&#x3D;1$ 为例，其基础表示由两个 spin-$0$ 单态和一个 spin-$\displaystyle\frac{1}{2}$ 二重态构成</p>
+<p>$$\Omega\qquad\text{spin-}0$$</p>
+<p>$$(a_\alpha)^\dagger\Omega\qquad \text{spin-}\frac{1}{2}$$</p>
+<p>$$\frac{1}{\sqrt{2}}(a_\alpha)^\dagger(a_\beta)^\dagger\Omega&#x3D;-\frac{1}{2\sqrt{2}}\varepsilon^{\alpha\beta}(a^\gamma)^\dagger(a_\gamma)^\dagger\Omega\qquad\text{spin-}0$$</p>
+<p>对于 $N&#x3D;2$，则有五个 spin-$0$ 单态，四个 spin-$\displaystyle\frac{1}{2}$ 二重态和一个 spin-$1$ 三重态</p>
+<p>$$\Omega\qquad\text{spin-}0$$</p>
+<p>$$(a_\alpha^{\;A,B})^\dagger\Omega\qquad 2\times\text{spin-}\frac{1}{2}$$</p>
+<p>$$\frac{1}{\sqrt{2}}(a_\alpha^{\;A})^\dagger(a_\beta^{\;A})^\dagger\Omega\quad \frac{1}{\sqrt{2}}(a_\alpha^{\;B})^\dagger(a_\beta^{\;B})^\dagger\Omega\qquad 2\times\text{spin-}0$$</p>
+<p>$$\frac{1}{\sqrt{2}}(a_\alpha^{\;A})^\dagger(a_\beta^{\;B})^\dagger\Omega\qquad \text{spin-}1+\text{spin-}0$$</p>
+<p>$$\frac{1}{\sqrt{6}}(a_\alpha^{\;A})^\dagger(a_\beta^{\;A})^\dagger(a_\gamma^{\;B})^\dagger\Omega\quad \frac{1}{\sqrt{6}}(a_\alpha^{\;A})^\dagger(a_\beta^{\;B})^\dagger(a_\gamma^{\;B})^\dagger\Omega\qquad 2\times\text{spin-}\frac{1}{2}$$</p>
+<p>$$\frac{1}{\sqrt{24}}(a_\alpha^{\;A})^\dagger(a_\beta^{\;A})^\dagger(a_\gamma^{\;B})^\dagger(a_\lambda^{\;B})^\dagger\Omega\qquad\text{spin-}0$$</p>
+<p>若真空 $\Omega_j$ 具有自旋 $j$，则其属于稳定群 $\text{SU}(2)$ 的 $(2j+1)$ 维表示，与零自旋真空下多重态表示直积分解可得相应多重态，以下为 $N&#x3D;1,2,3,4$ 的有质量多重态表格</p>
+<p>$N&#x3D;1$</p>
+<table>
+<thead>
+<tr>
+<th align="center">Spin</th>
+<th align="center">$\Omega_0$</th>
+<th align="center">$\Omega_{1&#x2F;2}$</th>
+<th align="center">$\Omega_1$</th>
+<th align="center">$\Omega_{3&#x2F;2}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">1&#x2F;2</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">3&#x2F;2</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>$N&#x3D;2$</p>
+<table>
+<thead>
+<tr>
+<th align="center">Spin</th>
+<th align="center">$\Omega_0$</th>
+<th align="center">$\Omega_{1&#x2F;2}$</th>
+<th align="center">$\Omega_1$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1&#x2F;2</td>
+<td align="center">4</td>
+<td align="center">6</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">3&#x2F;2</td>
+<td align="center"></td>
+<td align="center">1</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>$N&#x3D;3$</p>
+<table>
+<thead>
+<tr>
+<th align="center">Spin</th>
+<th align="center">$\Omega_0$</th>
+<th align="center">$\Omega_{1&#x2F;2}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">14</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="center">1&#x2F;2</td>
+<td align="center">14</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">6</td>
+<td align="center">15</td>
+</tr>
+<tr>
+<td align="center">3&#x2F;2</td>
+<td align="center">1</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>$N&#x3D;4$</p>
+<table>
+<thead>
+<tr>
+<th align="center">Spin</th>
+<th align="center">$\Omega_0$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">42</td>
+</tr>
+<tr>
+<td align="center">1&#x2F;2</td>
+<td align="center">48</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">27</td>
+</tr>
+<tr>
+<td align="center">3&#x2F;2</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>代数的表示空间同样张成其不变群的表示空间，由产生湮灭算符满足的代数关系可知 $\text{SU}(2)\otimes \text{U}(N)$ 为其可能的不变群，然而实际上 $\text{SO}(4)$ 为此代数的一个更大不变群，$\text{SU}(2)\otimes \text{U}(N)$ 和 $\text{SU}(2)\otimes \text{USp}(2N)$ 均为 $\text{SO}(4)$ 子群；为使此代数的 $\text{SO}(4)$ 对称性更加明显，定义以下算符</p>
+<p>$$\Gamma^l&#x3D;\frac{1}{\sqrt{2}}[a_1^{\;\;l}+(a_1^{\;\;l})^\dagger]\qquad\Gamma^{N+l}&#x3D;\frac{1}{\sqrt{2}}[a_2^{\;\;l}+(a_2^{\;\;l})^\dagger]$$</p>
+<p>$$\Gamma^{2N+l}&#x3D;\frac{i}{\sqrt{2}}[a_1^{\;\;l}-(a_1^{\;\;l})^\dagger]\qquad\Gamma^{3N+l}&#x3D;\frac{i}{\sqrt{2}}[a_2^{\;\;l}-(a_2^{\;\;l})^\dagger]$$</p>
+<p>现在产生湮灭算符代数关系可写为Clifford代数形式，易知 $\text{SO}(4)$ 为其不变群；基础表示的 $2^{2N}$ 个态张成 $\text{SO}(4)$ 的旋量表示，其为两个 $2^{2N-1}$ 维不可约表示直和，分别对应bosonic和fermionic态</p>
+<p>$$\{\Gamma^r,\Gamma^s\}&#x3D;\delta^{rs}\qquad r,s&#x3D;1,2,\cdots,4N$$</p>
+<p>还可以定义以下算符来显示此代数的 $\text{SU}(2)\otimes \text{USp}(2N)$ 对称性</p>
+<p>$$q_\alpha^{\;\;l}&#x3D;a_\alpha^{\;\;l}\qquad q_\alpha^{\;\;N+l}&#x3D;\sum_{\beta&#x3D;1}^2\varepsilon_{\alpha\beta}(a_\beta^{\;\;l})^\dagger$$</p>
+<p>$$(q_\alpha^{\;\;l})^\dagger&#x3D;\varepsilon^{\alpha\beta}\Lambda^{rt}q^t_{\;\beta}\qquad\Lambda&#x3D;\begin{pmatrix}0&amp;I_N\\-I_N&amp;0\end{pmatrix}$$</p>
+<p>由以上定义，产生湮灭算符代数可写为明显具有 $\text{SU}(2)\otimes \text{USp}(2N)$ 对称性的形式，此对称群说明给定自旋态在 $\text{USp}(N)$ 下不可约地变换</p>
+<p>$$\{q_\alpha^{\;r},q_\beta^{\;t}\}&#x3D;-\varepsilon_{\alpha\beta}\Lambda^{rt}$$</p>
+<h2 id="无质量表示"><a href="#无质量表示" class="headerlink" title="无质量表示"></a>无质量表示</h2><p>考虑无质量单粒子态 $P^2&#x3D;0$ 的超对称代数表示，取 $P_m&#x3D;(-E,0,0,E)$ 系，其稳定群为 $\text{ISO}(2)$，超对称代数成为</p>
+<p>$$\{Q_{\alpha}^{\;A},\bar{Q}_{\dot{\beta}B}\}&#x3D;2\begin{pmatrix}2E&amp;0\\0&amp;0\end{pmatrix}\delta_{\;B}^A$$</p>
+<p>$$\{Q_{\alpha}^{\;A},Q_{\beta}^{\;B}\}&#x3D;\{\bar{Q}_{\dot\alpha A},\bar{Q}_{\dot\beta B}\}&#x3D;0$$</p>
+<p>重定义生成元，得到 $N$ 对产生湮灭算符 $a^\dagger_{\;A},a^A$，其中 $Q_2^{\;A},\bar Q_{\dot 2 A}$ 反对易，故为零</p>
+<p>$$a^A&#x3D;\frac{1}{2\sqrt{E}}Q_1^{\;A}\qquad a^\dagger_{\;A}&#x3D;\frac{1}{2\sqrt{E}}\bar Q_{\dot 1}^{\;A}&#x3D;(a^A)^\dagger$$</p>
+<p>$$\{a^A,a^\dagger_{\;B}\}&#x3D;\delta^A_{\;B}$$</p>
+<p>$$\{a^A,a^B\}&#x3D;\{a^\dagger_{\;A},a^\dagger_{\;B}\}&#x3D;0$$</p>
+<p>$a^\dagger_{\;A},a^A$ 同时也是螺旋度升降算符，记Clifford真空即最低螺旋度态为 $\Omega_{\underline\lambda}$</p>
+<p>$$a^A\Omega_{\underline\lambda}$$</p>
+<p>态可由产生算符作用于真空得到，易知螺旋度 $\underline{\lambda}+n&#x2F;2$ 态为 $\displaystyle {N\choose n}$ 重简并，最高螺旋度态螺旋度 $\bar\lambda&#x3D;\underline{\lambda}+N&#x2F;2$，对 $n$ 求和可知表示维数为 $2^N$</p>
+<p>$$\Omega^{(n)}_{\;\;\underline{\lambda}+n&#x2F;2,A_1\;\cdots\; A_n}&#x3D;\frac{1}{\sqrt{n!}} a^\dagger_{\;A_n}\cdots a^\dagger_{\;A_1}\Omega_{\underline\lambda}$$</p>
+<p>在CPT不变理论中，由于CPT改变螺旋度符号，故一般来说态的数量必须翻倍，但某些多重态自然CPT完备，例如 $N&#x3D;2,\underline{\lambda}&#x3D;-1&#x2F;2;N&#x3D;4,\underline{\lambda}&#x3D;-1;N&#x3D;8,\underline{\lambda}&#x3D;-2$</p>
+<h2 id="中心荷超对称代数"><a href="#中心荷超对称代数" class="headerlink" title="中心荷超对称代数"></a>中心荷超对称代数</h2><p>考虑 $P^2&#x3D;-M^2$，中心荷超对称代数成为</p>
+<p>$$\{Q_\alpha^{\;L},(Q_\beta^{\;M})^\dagger\}&#x3D;2M\delta_\alpha^{\;\beta}\delta^L_{\;M}$$</p>
+<p>$$\{Q_\alpha^{\;L},Q_\beta^{\;M})&#x3D;\varepsilon_{\alpha\beta}Z^{LM}$$</p>
+<p>$$\{(Q_\alpha^{\;L})^\dagger,(Q_\beta^{\;M})^\dagger\}&#x3D;\varepsilon^{\alpha\beta}Z_{\;LM}^*$$</p>
+<p>$$Z^{LM}&#x3D;-Z^{ML}$$</p>
+<p>由于中心荷 $Z^{LM}$ 与所有生成元对易，可以将其酉对角化，与 $\varepsilon$ 直积得到 $N\times N$ 反对称阵，其中 $D$ 为具有实特征值 $Z_m$ 的对角阵，$\varepsilon^{12}&#x3D;1$</p>
+<p>$$\tilde{Z}^{LM}&#x3D;U^L_{\;\;K}U^M_{\;\;\;N}Z^{KN}$$</p>
+<p>$$\tilde{Z}&#x3D;\varepsilon\otimes D\qquad (N\;\text{even})$$</p>
+<p>$$\tilde{Z}&#x3D;\begin{pmatrix}\varepsilon\otimes D&amp;0\\0&amp;0\end{pmatrix}\qquad (N\;\text{odd})$$</p>
+<p>不妨考虑 $N$ 为偶数的情况，分解内禀指标，并对生成元作相应酉变换</p>
+<p>$$L&#x3D;(a,m)\qquad M&#x3D;(b,n)$$</p>
+<p>$$a,b&#x3D;1,2\qquad m,n&#x3D;1,2,\cdots,N&#x2F;2$$</p>
+<p>$$\tilde Q_\alpha^{\;L}&#x3D;U^L_{\;\;K}Q_\alpha^{\;K}$$</p>
+<p>现在中心荷超对称代数可写为</p>
+<p>$$\{\tilde Q_\alpha^{\;\;am},(\tilde Q_\beta^{\;\;bn})^\dagger\}&#x3D;2M\delta_\alpha^{\;\beta}\delta^a_{\;b}\delta^m_{\;n}$$</p>
+<p>$$\{\tilde Q_\alpha^{\;\;am},\tilde Q_\beta^{\;\;bn})&#x3D;\varepsilon_{\alpha\beta}\varepsilon^{ab}\delta^{mn}Z_n$$</p>
+<p>$$\{(\tilde Q_\alpha^{\;\;am})^\dagger,(\tilde Q_\beta^{\;\;bn})^\dagger\}&#x3D;\varepsilon^{\alpha\beta}\varepsilon_{ab}\delta_{mn}Z_n$$</p>
+<p>相对应地可以定义产生湮灭算符并得到由其表示的中心荷超对称代数</p>
+<p>$$a_\alpha^{\;m}&#x3D;\frac{1}{\sqrt{2}}[\tilde{Q}_\alpha^{\;1m}+\varepsilon_{\alpha\beta}(\tilde{Q}_\beta^{\;2m})^\dagger]$$</p>
+<p>$$b_\alpha^{\;m}&#x3D;\frac{1}{\sqrt{2}}[\tilde{Q}_\alpha^{\;1m}-\varepsilon_{\alpha\beta}(\tilde{Q}_\beta^{\;2m})^\dagger]$$</p>
+<p>$$\{a_\alpha^{\;m},a_\beta^{\;n}\}&#x3D;\{b_\alpha^{\;m},b_\beta^{\;n}\}&#x3D;\{a_\alpha^{\;m},b_\beta^{\;n}\}&#x3D;0$$</p>
+<p>$$\{a_\alpha^{\;m},(a_\beta^{\;n})^\dagger\}&#x3D;\delta_{\alpha\beta}\delta^{mn}(2M+Z_n)$$</p>
+<p>$$\{b_\alpha^{\;m},(b_\beta^{\;n})^\dagger\}&#x3D;\delta_{\alpha\beta}\delta^{mn}(2M-Z_n)$$</p>
+<p>由代数关系可知对所有 $n$ 均有 $Z_n\le 2M$，若某些 $Z_i&#x3D;2M\quad i&#x3D;1,2,\cdots,r$，则相应的算符 $b_i$ 为零，得到具有 $2(N-r)$ 对产生湮灭算符的 Clifford 代数</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../18/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E8%B6%85%E5%9C%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          超场
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../../07/30/%E7%BE%A4%E8%AE%BA/Lorentz%E7%BE%A4%E8%A1%A8%E7%A4%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          Lorentz群表示
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

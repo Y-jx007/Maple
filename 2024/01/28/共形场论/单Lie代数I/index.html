@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>单Lie代数I | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        单Lie代数I
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        单Lie代数I
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-02-07 23:51:45</time>
+          <span class="text-gray-400">·</span>
+          <span>23 min</span>
+          <span class="text-gray-400">·</span>
+          <span>5.2k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="代数结构"><a href="#代数结构" class="headerlink" title="代数结构"></a>代数结构</h2><p>配备对易子 $[,]:\mathfrak{g}\times \mathfrak{g}\to \mathfrak{g}$ 且满足Jacobi等式的矢量空间 $\mathfrak{g}$ 称为Lie代数</p>
+<p>$$[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]&#x3D;0\qquad\text{for}\;X,Y,Z\in\mathfrak{g}$$</p>
+<p>Lie代数 $\mathfrak{g}$ 的指数映射 $\mathfrak{g}\to G:X\mapsto e^{ia X}$ 构成对应Lie群 $G$ 包含单位元的连通部分，$\mathfrak{g}$ 描述 $G$ 中单位元的邻域</p>
+<p>Lie代数的表示指对 $\mathfrak{g}$ 中每个元素均有与之对应的可反映 $\mathfrak{g}$ 对易关系的矢量空间 $V$ 中的线性算符，张成 $V$ 的极大线性无关态的数目称为表示的维数</p>
+<p>对给定的基，$\mathfrak{g}$ 中每个元素均可由方阵和列矢量基表示，若方阵无法通过改变基化为对角阵，则称此表示为不可约表示</p>
+<p>Lie代数具体表示可由其生成元 $\{J^a\}$ 和对易关系确定，生成元的数量即为表示的维数，其中 $f^{ab}_{\;\;\;c}$ 称为结构常数，对Hermitian生成元结构常数为实数</p>
+<p>$$[J^a,J^b]&#x3D;\sum_c f^{ab}_{\;\;\;c} J^c$$</p>
+<p>若代数无真理想，即生成元不存在真子集 $\{L^a\}$ 使得 $[L^a,J^b]\in \{L^a\}$，则称此代数为单Lie代数，单Lie代数的直和称为半单Lie代数</p>
+<h3 id="Cartan-Weyl基"><a href="#Cartan-Weyl基" class="headerlink" title="Cartan-Weyl基"></a>Cartan-Weyl基</h3><p>半单Lie代数的标准Cartan-Weyl基可通过以下方式构造，先寻找极大对易Hermitian生成元组 $\{H^i\},\;\; i&#x3D;1,\cdots,r$ ，$r$ 为代数的秩，这些生成元可同时对角化，其构成Cartan子代数 $\mathfrak{h}$，</p>
+<p>$$[H^i,H^j]&#x3D;0$$</p>
+<p>再选择满足以下关系的 $\{E^\alpha\}$ 构成完整线性无关生成元组，其中 $\alpha&#x3D;(\alpha^1,\cdots,\alpha^r)$ 称为根，$E^\alpha$ 称为梯算符，由 $\mathfrak{h}$ 为 $\mathfrak{g}$ 极大Abelian子代数知代数的根非简并；同时根构成映射 $\mathfrak{h}\to \mathbb{R}:H^i\mapsto \alpha(H^i)&#x3D;\alpha^i$，因此根属于Cartan子代数的对偶 $\alpha\in \mathfrak{h}^*$</p>
+<p>$$[H^i,E^\alpha]&#x3D;\alpha^i E^\alpha$$</p>
+<p>对上式取Hermitian共轭，可知 $-\alpha$ 也为根，下文用 $\Delta$ 表示所有根的集合</p>
+<p>$$E^{-\alpha}&#x3D;(E^\alpha)^\dagger$$</p>
+<p>在特殊表示中根可视作 $H^i$ 的非零特征值，称为伴随表示，即Lie代数本身充当生成元作用的矢量空间，在此表示下可将生成元与态等同</p>
+<p>$$E^\alpha\mapsto\ket{E^\alpha}\equiv\ket{\alpha}$$</p>
+<p>$$H^i\mapsto\ket{H^i}$$</p>
+<p>记伴随表示下生成元的作用为 $\text{ad}(X)$</p>
+<p>$$\text{ad}(X) Y&#x3D;[X,Y]$$</p>
+<p>$$\text{ad}(H^i)E^\alpha&#x3D;\alpha^i E^\alpha\quad\mapsto\quad H^i\ket{\alpha}&#x3D;\alpha^i\ket{\alpha}$$</p>
+<p>梯算符与生成元的一一对应反映了根非简并的特征，而零特征值的简并度为 $r$</p>
+<p>对此代数应用Jacobi等式</p>
+<p>$$[H^i,[E^\alpha,E^\beta]]&#x3D;(\alpha^i+\beta^i)[E^\alpha,E^\beta]$$</p>
+<p>可知若 $\alpha+\beta\in\Delta$，$[E^\alpha,E^\beta]\propto E^{\alpha+\beta}$；若 $\alpha+\beta\notin\Delta$，$[E^\alpha,E^\beta]&#x3D;0$，对 $\alpha&#x3D;-\beta$，$[E^\alpha,E^{-\alpha}]$ 为Cartan子代数中生成元的线性组合，可将梯算符归一化，使得此对易子值为 $2\alpha\cdot H&#x2F;|\alpha|^2$</p>
+<p>综上，Cartan-Weyl基下完整的对易关系为</p>
+<p>$$\begin{aligned}\ [H^i,H^j] &amp; &#x3D;0 &amp;\\ [H^i,E^\alpha] &amp;&#x3D;\alpha^i E^\alpha  &amp;\\ [E^\alpha,E^\beta] &amp;&#x3D;N_{\alpha,\beta}E^{\alpha+\beta}&amp;\text{if}\quad\alpha+\beta\in\Delta\\&amp;&#x3D;\frac{2}{|\alpha|^2}\alpha\cdot H&amp;\text{if}\quad\alpha+\beta\notin\Delta\\&amp;&#x3D;0&amp;\text{otherwise}\end{aligned}$$</p>
+<h3 id="Killing形式"><a href="#Killing形式" class="headerlink" title="Killing形式"></a>Killing形式</h3><p>用以确定对易子的归一化通常由以下Killing形式引入，其赋予了Lie代数标量乘法运算，若在某组基 $\{T^b\}$ 下计算，可先求出 $[X,[Y,T^b]]$ 中 $T^b$ 的系数，将所有系数相加即可得到所需的迹</p>
+<p>$$\tilde{K}(X,Y)&#x3D;\Tr(\text{ad}X\text{ad}Y)$$</p>
+<p>对于半单Lie代数，Killing形式非简并，$\tilde{K}(X,Y)&#x3D;0\;\;\;\forall\;Y\quad\Leftrightarrow\quad X&#x3D;0$</p>
+<p>下文中将使用Killing形式的重整化版本，其中 $g$ 为常数，将在之后定义</p>
+<p>$$K(X,Y)&#x3D;\frac{1}{2g}\Tr(\text{ad}X\text{ad}Y)$$</p>
+<p>由于Killing形式关于 $X,Y$ 对称，故其可在某组基 $\{J^a\}$ 下正交归一，称为标准基</p>
+<p>$$K(X,Y)&#x3D;[X_a T^a,[Y_b T^b,T^c]]T_c&#x3D;g^{ab} X_aY_b\qquad g^{ab}&#x3D;f^{ad}_{\;\;\;c}f^{bc}_{\;\;\;d}$$</p>
+<p>$$K(J^a,J^b)&#x3D;\delta^{a,b}$$</p>
+<p>要求Cartan子代数生成元也满足此条件</p>
+<p>$$K(H^i,H^j)&#x3D;\delta^{i,j}$$</p>
+<p>由于Killing形式定义了标量积，$g^{ab}&#x3D;K(T^a,T^b)$ 相当于度规张量，可用其升降指标，可知 $f_{abc}$ 为反对称张量，在标准基下指标的上下无关紧要</p>
+<p>$$f_{abc}&#x3D;g_{ad}\;g_{be}f^{d e}_{\;\;\; c}$$</p>
+<p>由于迹循环对称，Killing形式也满足以下等式</p>
+<p>$$K([Z,X],Y)+K(X,[Z,Y])&#x3D;0$$</p>
+<p>由以上关系可得</p>
+<p>$$[E^\alpha,E^{-\alpha}]&#x3D;K(E^\alpha,E^{-\alpha})\alpha\cdot H$$</p>
+<p>可知上文梯算符归一化即为</p>
+<p>$$K(E^\alpha,E^{-\alpha})&#x3D;\frac{2}{|\alpha|^2}$$</p>
+<p>Killing形式的基本作用为建立Cartan子代数 $\mathfrak{h}$ 与其对偶 $\mathfrak{h}^*$ 之间的同构，$K(H^i,\cdot)$ 将 $\mathfrak{h}$ 中每个元素映为实数，因此对 $\gamma\in \mathfrak{h}^*$，存在 $H^\gamma\in \mathfrak{h}$ 使得</p>
+<p>$$\gamma(H^i)&#x3D;K(H^i,H^\gamma)$$</p>
+<p>由此同构，Killing形式可转化为对偶空间中的正定标量积</p>
+<p>$$(\beta,\gamma)&#x3D;K(H^\beta,H^\gamma)$$</p>
+<p>由于根为 $\mathfrak{h}^*$ 中元素，故可由上定义根空间内积，可知 $|\alpha|^2&#x3D;(\alpha,\alpha)$</p>
+<h3 id="权"><a href="#权" class="headerlink" title="权"></a>权</h3><p>在Lie代数的一般表示中，由以下特征值构成的矢量 $\lambda&#x3D;(\lambda^1,\cdots,\lambda^r)$ 称为权，其同样位于 $\mathfrak{h}^*$ 中，可以由Killing形式定义内积，伴随表示中权称为根</p>
+<p>$$H^i\ket{\lambda}&#x3D;\lambda^i\ket{\lambda}$$</p>
+<p>由下式可知梯算符作用于权本征态 $\ket{\lambda}$ 得到的非零态正比于 $\ket{\lambda+\alpha}$</p>
+<p>$$H^i E^\alpha&#x3D;[H^i,E^\alpha]\ket{\lambda}+E^\alpha H^i\ket{\lambda}&#x3D;(\lambda^i+\alpha^i)E^\alpha\ket{\lambda}$$</p>
+<p>以下证明对有限维表示态 $\ket{\lambda}$，任取根 $\alpha$，均存在非负整数 $p,q$ 使得</p>
+<p>$$(E^\alpha)^{p+1}\ket{\lambda}\sim E^\alpha\ket{\lambda+p\alpha}&#x3D;0$$</p>
+<p>$$(E^{-\alpha})^{q+1}\ket{\lambda}\sim E^{-\alpha}\ket{\lambda-q\alpha}&#x3D;0$$</p>
+<p>注意到 $E^\alpha,E^{-\alpha},\alpha\cdot H&#x2F;|\alpha|^2$ 形成 $\mathfrak{su}(2)$ 子代数 $\{J^+,J^-,J^3\}$</p>
+<p>$$[J^+,J^-]&#x3D;2J^3\qquad[J^3,J_\pm]&#x3D;\pm J^\pm$$</p>
+<p>若 $\ket{\lambda}$ 属于有限维表示，则其在对应于根 $\alpha$ 的 $\mathfrak{su}(2)$ 子代数上的投影也为有限维，设为 $2j+1$，因此对 $\ket{\lambda}$ 连续作用有限个梯算符 $J^\pm$ 可达到 $J^3&#x3D;\alpha\cdot H&#x2F;|\alpha|^2$ 本征值 $m&#x3D;\pm j$ 投影态</p>
+<p>$$j&#x3D;\frac{(\alpha,\lambda)}{|\alpha|^2}+p\qquad -j&#x3D;\frac{(\alpha,\lambda)}{|\alpha|^2}-q$$</p>
+<p>消去 $j$ 即得所需关系，此式说明对任意有限维表示权 $\lambda$，$(\alpha,\lambda)&#x2F;|\alpha|^2$ 为整数</p>
+<p>$$2\frac{(\alpha,\lambda)}{|\alpha|^2}&#x3D;-(p-q)$$</p>
+<h3 id="单根与Cartan矩阵"><a href="#单根与Cartan矩阵" class="headerlink" title="单根与Cartan矩阵"></a>单根与Cartan矩阵</h3><p>取 $\mathfrak{h}^*$ 中一组基 $\{\beta_1,\beta_2,\cdots,\beta_r\}$，任意根可写为其线性组合</p>
+<p>$$\alpha&#x3D;\sum_{i&#x3D;1}^r n_i\beta_i$$</p>
+<p>若序列 $(n_1,n_2,\cdots,n_r)$ 中第一个非零数为正数，则称 $\alpha$ 为正根，反之为负根，正根与负根的集合满足 $\Delta_+&#x3D;-\Delta_-$</p>
+<p>若正&#x2F;负根 $\alpha_i$ 不能写为两个正&#x2F;负根之和，则称其为单根，单根集 $\{\alpha_1,\cdots,\alpha_r\}$ 构成根空间最为方便的一组基，由单根定义可知，两个单根之差不是根，$\alpha_i-\alpha_j\notin \Delta$，并且任意正根可写为一系列正根之和</p>
+<p>由单根的标量积可定义Cartan矩阵，其为整数阵，对角元为 $2$，一般为非对称阵</p>
+<p>$$A_{ij}&#x3D;\frac{2(\alpha_i,\alpha_j)}{\alpha_j^2}$$</p>
+<p>由Schwarz不等式知 $A_{ij}A_{ji}&lt;4\;\;\text{for}\;\;i\neq j$，另外由 $\alpha_i-\alpha_j$ 非根可知 $E^{-\alpha_j}\ket{\alpha_i}&#x3D;0$，即 $q&#x3D;0$，$(\alpha_i,\alpha_j)\le 0$，说明 $A_{ij}$ 非对角元为非正整数，结合不等式可知其取值集合只能为 $\{0,-1,-2,-3\}$，可知两不同单根夹角取值集合为 $\{\pi&#x2F;2,2\pi&#x2F;3,3\pi&#x2F;4,5\pi&#x2F;6\}$</p>
+<p>由上可知对于单Lie代数，根的长度最多只有两种，且长根与短根长度比为 $\sqrt{2}$ 或 $\sqrt{3}$，若所有根长度相等，则称为单缀Lie代数</p>
+<p>引入 $\alpha_i^\vee$ ，称为 $\alpha_i$ 的伴根，Cartan矩阵可表示为</p>
+<p>$$A_{ij}&#x3D;(\alpha_i,\alpha_j^\vee)\qquad \alpha_j^\vee&#x3D;\frac{2\alpha_j}{|\alpha_j|^2}$$</p>
+<p>记 $\Delta$ 中最高根为 $\theta$，即对展开式 $\sum m_i\alpha_i$，系数和 $\sum m_i$ 最大，$\Delta$ 中所有元素均可由 $\theta$ 减去一系列单根得到，$\theta$ 在基 $\{\alpha_i\}$，$\{\alpha_i^\vee\}$ 下的展开系数 $(a_i)$，$(a_i^\vee)$ 分别称为标和伴标</p>
+<p>$$\theta&#x3D;\sum_{i&#x3D;1}^r a_i\alpha_i&#x3D;\sum_{i&#x3D;1}^r a_i^\vee\alpha_i^\vee\qquad a_i,a_i^\vee\in\mathbb{N}$$</p>
+<p>标和伴标满足以下关系</p>
+<p>$$a_i&#x3D;\frac{2 a_i^\vee}{|\alpha_i|^2}$$</p>
+<p>定义对偶Coxeter数，由于下文不会出现Coxeter数，故省略其角标 $\vee$</p>
+<p>$$g&#x3D;\sum_{i&#x3D;1}^r a_i^\vee+1$$</p>
+<h3 id="Chevalley基"><a href="#Chevalley基" class="headerlink" title="Chevalley基"></a>Chevalley基</h3><p>下文将说明完整根集可由单根集重新构造得到，而单根集可由Cartan矩阵简单得到，并且Cartan矩阵完全确定了代数的对易关系；证明的关键在于利用以下Chevalley基</p>
+<p>$$e^i&#x3D;E^{\alpha_i}\qquad f^i&#x3D;E^{-\alpha_i}\qquad h^i&#x3D;\frac{2\alpha_i\cdot H}{|\alpha_i|^2}$$</p>
+<p>以上三种生成元的对易关系为</p>
+<p>$$[h^i,h^j]&#x3D;0$$</p>
+<p>$$[h^i,e^j]&#x3D;A_{ji}e^j$$</p>
+<p>$$[h^i,f^j]&#x3D;-A_{ji}f^j$$</p>
+<p>$$[e^i,f^j]&#x3D;\delta_{ij}h^i$$</p>
+<p>剩余梯算符的对易关系可写为以下Serre关系</p>
+<p>$$[\text{ad}(e^i)]^{1-A_{ji}}e^j&#x3D;0$$</p>
+<p>$$[\text{ad}(f^i)]^{1-A_{ji}}f^j&#x3D;0$$</p>
+<p>Serre关系反映了根属于两个不交集合 $\Delta_\pm$ 的特征，其与基本对易关系均可由Cartan矩阵表示，说明 $A_{ij}$ 包含单Lie代数的全部结构信息，另外Cartan矩阵也是Lie代数推广的有效出发点</p>
+<p>Chevalley基下Cartan子代数的Killing形式为</p>
+<p>$$K(h^i,h^j)&#x3D;(\alpha_i^\vee,\alpha_j^\vee)$$</p>
+<h3 id="Dynkin图"><a href="#Dynkin图" class="headerlink" title="Dynkin图"></a>Dynkin图</h3><p>Cartan矩阵中所有信息均可封装在简单平面图中，称为Dykin图，其作图过程为：先对每个单根 $\alpha_i$ 画一个节点，长根为白，短根为黑；接着将节点 $i,j$ 用 $A_{ij}A_{ji}$ 根线段相连，可知正交根不相连，夹角为 $120,135,150$ 度的根分别用 $1,2,3$ 根线段相连</p>
+<p>现在单Lie代数的分类可归结为Dynkin图的分类，完整的分类包括四种无限族 $A_r,B_r,C_r,D_r$，分别对应经典代数 $\mathfrak{su}(r+1),\mathfrak{so}(2r+1),\mathfrak{sp}(2r),\mathfrak{so}(2r)$，和五种特殊情况 $E_6,E_7,E_8,F_4,G_2$，其角标表示代数的秩，其中 $A,D,E$ 为单缀代数</p>
+<h3 id="基本权"><a href="#基本权" class="headerlink" title="基本权"></a>基本权</h3><p>由于权与根位于 $r$ 维矢量空间，因此权可用单根基展开，但此种展开方式的系数不为整数，使用不便；对于权展开最方便的基实际上是与单伴根对偶的基 $\{\omega_i\}$，称为基本权</p>
+<p>$$(\omega_i,\alpha_j^\vee)&#x3D;\delta_{ij}$$</p>
+<p>权 $\lambda$ 在基本权基下的展开系数 $\lambda_i$ 称为Dynkin标，有限维不可约表示下权的Dynkin标为整数，这些权称为积分，现在权可默认写为Dynkin标分量形式</p>
+<p>$$\lambda&#x3D;\sum_{i&#x3D;1}^r\lambda_i\omega_i\qquad\Leftrightarrow\qquad\lambda_i&#x3D;(\lambda,\alpha_i^\vee)$$</p>
+<p>$$\lambda&#x3D;(\lambda_1,\cdots,\lambda_r)$$</p>
+<p>单根的Dynkin标即为Cartan矩阵的行矢量</p>
+<p>$$\alpha_i&#x3D;\sum_j A_{ij}\omega_j$$</p>
+<p>Dynkin标为Cartan子代数Chevalley生成元的本征值，注意 $\lambda_i$ 表示 $h^i$ 本征值，$\lambda^i$ 表示 $H^i$ 本征值</p>
+<p>$$h^i\ket{\lambda}&#x3D;\lambda(h^i)\ket{\lambda}&#x3D;(\lambda,\alpha_i^\vee)\ket{\lambda}$$</p>
+<p>$$h^i\ket{\lambda}&#x3D;\lambda_i\ket{\lambda}$$</p>
+<p>将所有Dynkin标均为 $1$ 的特殊权称为Weyl矢量，记为 $\rho$</p>
+<p>$$\rho&#x3D;\sum_i\omega_i&#x3D;(1,1,\cdots,1)$$</p>
+<p>Weyl矢量有以下等价定义，将在下文证明</p>
+<p>$$\rho&#x3D;\frac{1}{2}\sum_{\alpha\in\Delta_+}\alpha$$</p>
+<p>基本权的标量积构成对称二次型矩阵 $F_{ij}$，其为 $\{\omega_i\}$ 和 $\{\alpha_i^\vee\}$ 之间的转移矩阵</p>
+<p>$$(\omega_i,\omega_j)&#x3D;F_{ij}\qquad\omega_i&#x3D;\sum_j F_{ij}\alpha_j^\vee$$</p>
+<p>可知 $F_{ij}$ 为单伴根的Dynkin标构成矩阵的逆，其与Cartan矩阵关系如下</p>
+<p>$$F_{ij}&#x3D;(A^{-1})_{ij}\frac{\alpha_j^2}{2}$$</p>
+<p>权的标量积可用二次型表示如下</p>
+<p>$$(\lambda,\mu)&#x3D;\sum_{i,j}\lambda_i\mu_j(\omega_i,\omega_j)&#x3D;\sum_{ij}\lambda_i\mu_j F_{ij}$$</p>
+<h3 id="Weyl群"><a href="#Weyl群" class="headerlink" title="Weyl群"></a>Weyl群</h3><p>现在回到伴随表示在 $\mathfrak{su}(2)$ 子代数上的对应于根 $\alpha$ 的投影，记 $m$ 为 $J^3&#x3D;\alpha\cdot H&#x2F;|\alpha|^2$ 在 $\ket{\beta}$ 态的本征值</p>
+<p>$$2m&#x3D;(\alpha^\vee,\beta)$$</p>
+<p>若 $m$ 不为零，则存在本征值为 $-m$ 的态 $\ket{\beta+l\alpha}$</p>
+<p>$$(\alpha^\vee,\beta+l\alpha)&#x3D;(\alpha^\vee,\beta)+2l&#x3D;-(\alpha^\vee,\beta)$$</p>
+<p>上式说明若 $\beta$ 为根，则 $\beta-(\alpha^\vee,\beta)\alpha$ 也为根</p>
+<p>定义算符 $s_\alpha$，其为与 $\alpha$ 垂直的超平面的反射</p>
+<p>$$s_\alpha\beta&#x3D;\beta-(\alpha^\vee,\beta)\alpha$$</p>
+<p>所有根的反射构成群，称为代数的Weyl群，记为 $W$，其由 $r$ 个单Weyl反射 $s_i\equiv s_{\alpha_i}$ 生成，群元 $w\in W$ 可分解为一系列单Weyl反射乘积</p>
+<p>$$w&#x3D;s_i s_j\cdots s_k$$</p>
+<p>容易验证单Weyl反射满足以下性质</p>
+<p>$$s_i^2&#x3D;1\qquad s_is_j&#x3D;s_js_i\quad\text{if}\quad A_{ij}&#x3D;0$$</p>
+<p>其推广满足以下Coxeter群的性质，其中 $\theta_{ij}$ 为单根 $\alpha_i$ 和 $\alpha_j$ 之间的夹角，此性质也可视为Weyl群的定义，其信息同样与Cartan矩阵直接相关</p>
+<p>$$(s_i s_j)^{m_{ij}}&#x3D;1\qquad m_{ij}&#x3D;\left\lbrace\begin{array}{c}2&amp;\text{if}\quad i&#x3D;j\\\displaystyle\frac{\pi}{\pi-\theta_{ij}}&amp;\text{if}\quad i\neq j\end{array}\right.$$</p>
+<p>对于单根，$s_i$ 的作用为</p>
+<p>$$s_i\alpha_j&#x3D;\alpha_j-A_{ij}\alpha_i$$</p>
+<p>$W$ 将 $\Delta$ 映到自身，其提供了从单根获得 $\Delta$ 的简单方式</p>
+<p>$$\Delta&#x3D;\{w\alpha_1,\cdots,w\alpha_r|w\in W\}$$</p>
+<p>由此构造可知选定 $w’$，$\{w’\alpha_i\}$ 可作为单根的一组基</p>
+<p>现在证明 $\rho$ 两种定义的等价性，由第一种定义，$(\rho,\alpha_i^\vee)&#x3D;1\quad\forall\; i$，下面说明第二种定义同样满足此性质，设 $\sigma&#x3D;\displaystyle\frac{1}{2}\sum_{\alpha&gt;0}\alpha$，考虑 $s_i\sigma$，由于 $A_{ij}\le 0\quad\text{for}\; i\neq j$，故 $s_i$ 将除 $\alpha_i$ 之外的正根重新排列，将 $\alpha_i$ 变为 $-\alpha_i$</p>
+<p>$$s_i\sigma&#x3D;\frac{1}{2}\sum_{\alpha&gt;0,\alpha\neq \alpha_i}\alpha-\frac{1}{2}\alpha_i&#x3D;\frac{1}{2}\sum_{\alpha&gt;0}-\alpha_i$$</p>
+<p>与伴根作标量积得</p>
+<p>$$(s_i\sigma,\alpha_i^\vee)&#x3D;(\sigma-\alpha_i,\alpha_i^\vee)&#x3D;(\sigma,\alpha_i^\vee)-2$$</p>
+<p>另外由标量积在Weyl变换下不变可得</p>
+<p>$$(s_i\sigma,\alpha_i^\vee)&#x3D;(\sigma,s_i\alpha_i^\vee)&#x3D;-(\sigma,\alpha_i^\vee)$$</p>
+<p>两式结合可得 $(\sigma,\alpha_i^\vee)&#x3D;1$，说明 $\sigma&#x3D;\rho$</p>
+<p>将Weyl群对根作用推广为对权作用</p>
+<p>$$s_\alpha\lambda&#x3D;\lambda-(\alpha^\vee,\lambda)\alpha$$</p>
+<p>容易验证此作用保持权标量积不变</p>
+<p>$$(s_\alpha\lambda,s_\alpha\mu)&#x3D;(\lambda,\mu)$$</p>
+<p>$$(w\lambda,\mu)&#x3D;(\lambda,w^{-1}\mu)$$</p>
+<p>Weyl群自然诱导出 $r$ 维权矢量空间的单锥腔划分，腔的数目等于 $W$ 的阶数，腔壁 $(w\lambda,\alpha_i)&#x3D;0$ 为 $s_i$ 的反射超平面</p>
+<p>$$C_w&#x3D;\{\lambda|(w\lambda,\alpha_i)\ge 0,i&#x3D;1,\cdots,r\}\qquad w\in W$$</p>
+<p>对应于Weyl群单位元的腔称为基本腔，记为 $C_0$，对任意权 $\lambda\notin C_0$，均存在 $w\in W$ 使得 $w\lambda\in C_0$，更准确地，每个权的 $W$ 轨道恰好有一个点在基本腔中</p>
+<p>称在基本腔中并且Dynkin标均为正整数的权为支配权，最高根 $\theta$ 即为支配权</p>
+<p>引入几个将在下文中使用的记号，其中移位Weyl反射用 $\cdot$ 表示</p>
+<p>$$w\cdot\lambda\equiv w(\lambda+\rho)-\rho$$</p>
+<p>容易验证移位Weyl反射满足</p>
+<p>$$w\cdot(w’\cdot\lambda)&#x3D;(ww’)\cdot\lambda$$</p>
+<p>$w$ 的长度，记为 $l(w)$，为分解 $w&#x3D;\prod_i s_i$ 中所需 $s_i$ 的最小数目；$w$ 的符号，定义为</p>
+<p>$$\epsilon(w)&#x3D;(-1)^{l(w)}$$</p>
+<p>在 $w$ 的线性表示中，$w$ 的符号即为 $\det(w)$；记Weyl群中最长的元素为 $w_0$，其为将 $\Delta_+$ 映为 $\Delta_-$ 的唯一元素</p>
+<h3 id="点阵"><a href="#点阵" class="headerlink" title="点阵"></a>点阵</h3><p>$\mathbb{R}^d$ 中基 $(\epsilon_1,\cdots,\epsilon_d)$ 的点阵为 $\{\epsilon_i\}$ 的 $\mathbb{Z}$ span，Lie代数的 $r$ 维权、根和伴根阵为</p>
+<p>$$P&#x3D;\mathbb{Z}\omega_1+\cdots+\mathbb{Z}\omega_r$$</p>
+<p>$$Q&#x3D;\mathbb{Z}\alpha_1+\cdots+\mathbb{Z}\alpha_r$$</p>
+<p>$$Q^\vee&#x3D;\mathbb{Z}\alpha_1^\vee+\cdots+\mathbb{Z}\alpha_r^\vee$$</p>
+<p>权阵 $P$ 的存在建立在有限维表示的权具有整数Dynkin标的基础之上，$P$ 与Lie群生成元的关系是双层的，首先，$P$ 中用以确定权位置的整数为Chevalley生成元 $h^i$ 的本征值；其次，其他生成元的作用为将这些特征值平移根阵 $Q$ 中的某个元素</p>
+<p>由于根为在特殊有限维表示下的权，故 $Q\subset P$，可知在 $E^\alpha$ 作用下，$P$ 中点仍然变换为 $P$ 中点；下文中用 $P_+$ 表示支配权阵</p>
+<p>$$P_+&#x3D;\mathbb{Z}_+\omega_1+\cdots+\mathbb{Z}_+\omega_r$$</p>
+<p>对于代数 $G_2,F_4$ 和 $E_8$，$Q&#x3D;P$，其余情况下 $Q$ 均为 $P$ 真子集，$P&#x2F;Q$ 为有限群，由 $\alpha_i&#x3D;\sum_j A_{ij}\omega_j$ 可知其阶 $|P&#x2F;Q|$ 等于Cartan矩阵行列式，实际上 $P&#x2F;Q$ 同构于代数对应Lie群的中心，其中元素定义了同余类，也称共轭类</p>
+<p>$\mathfrak{su}(N)$ 的同余类为</p>
+<p>$$\lambda_1+2\lambda_2+\cdots+(N-1)\lambda_{N-1}\;\mod N$$</p>
+<p>对任意代数 $\mathfrak{g}$，同余类具有以下形式，其中 $\nu$ 称为同余矢量</p>
+<p>$$\lambda\cdot \nu&#x3D;\sum_{i&#x3D;1}^r\lambda_i\nu_i\;\mod |P&#x2F;Q|\quad( \text{mod}\;\mathbb{Z}_2\quad\text{for}\quad \mathfrak{g}&#x3D;D_{2l})$$</p>
+<p>由于基 $\{\omega_i\}$ 与 $\{\alpha_i^\vee\}$ 对偶，故 $P$，$Q^\vee$ 为对偶阵，单Lie代数中仅 $E_8$ 的权阵自对偶</p>
+<h3 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h3><p>代数中最高根为长根，将其长度归一化为 $\sqrt{2}$，则 $|\alpha_i|^2\le 2$</p>
+<p>$$|\theta|^2&#x3D;2$$</p>
+<p>结合 $a_i&#x3D;2 a_i^\vee&#x2F;|\alpha_i|^2$ 可知</p>
+<p>$$a_i\ge a_i^\vee\qquad\Rightarrow\qquad a_i^\vee &#x3D;1\quad\text{if}\quad a_i&#x3D;1$$</p>
+<p>进而有</p>
+<p>$$\alpha_i^\vee&#x3D;\alpha_i\frac{a_i}{a_i^\vee}\qquad\Rightarrow\qquad\alpha_i^\vee\ge \alpha_i$$</p>
+<h3 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h3><h4 id="mathfrak-su-2"><a href="#mathfrak-su-2" class="headerlink" title="$\mathfrak{su}(2)$"></a>$\mathfrak{su}(2)$</h4><p>$\mathfrak{su}(2)$ 为唯一秩为 $1$ 的Lie代数，其Cartan矩阵 $A&#x3D;(2)$</p>
+<p>$$\alpha_1&#x3D;2\omega_1\qquad(\omega_1,\omega_1)&#x3D;\frac{1}{2}$$</p>
+<p>其Weyl群为 $\{1,s_1\}$，生成元 $s_1$ 对权 $\lambda&#x3D;\lambda_1\omega_1$ 的作用为</p>
+<p>$$s_1(\lambda_1\omega_1)&#x3D;\lambda_1\omega_1-\lambda_1\alpha_1&#x3D;-\lambda_1\omega_1$$</p>
+<p>可知其根集也只含两个元素 $\Delta&#x3D;\{\alpha_1,-\alpha_1\}$</p>
+<p>为了后续应用，将不同基下的对易关系显式写出，在Chevalley基下</p>
+<p>$$[e,f]&#x3D;h\qquad[h,e]&#x3D;2e\qquad[h,f]&#x3D;-2 f$$</p>
+<p>$$h\ket{\lambda}&#x3D;\lambda_1\ket{\lambda}$$</p>
+<p>在Cartan-Weyl基下，生成元及其对易关系如下，其中 $E^\pm\equiv E^{\pm\alpha_1}$</p>
+<p>$$H&#x3D;h&#x2F;\sqrt{2}\qquad E^+&#x3D;e\qquad E^-&#x3D;f$$</p>
+<p>$$[E^+,E^-]&#x3D;\sqrt{2}H\qquad [H,E^\pm]&#x3D;\pm \sqrt{2}E^\pm$$</p>
+<p>$$H\ket{\lambda}&#x3D;\lambda_1\ket{\lambda}&#x3D;\lambda_1&#x2F;\sqrt{2}\ket{\lambda}$$</p>
+<p>另一种常用的 $\mathfrak{su}(2)$ 基为自旋基</p>
+<p>$$J^0&#x3D;\frac{H}{\sqrt{2}}\qquad J^\pm&#x3D;E^\pm$$</p>
+<p>$$[J^+,J^-]&#x3D;2J^0\qquad[J^0,J^\pm]&#x3D;\pm J^\pm$$</p>
+<p>生成元对态 $\ket{\lambda}&#x3D;\ket{j,m}$ 作用为</p>
+<p>$$J^0\ket{j,m}&#x3D;m\ket{j,m}$$</p>
+<p>$$J^\pm\ket{j,m}&#x3D;\sqrt{j(j+1)-m(m\pm 1)}\ket{j,m\pm 1}$$</p>
+<h4 id="mathfrak-su-3"><a href="#mathfrak-su-3" class="headerlink" title="$\mathfrak{su}(3)$"></a>$\mathfrak{su}(3)$</h4><p>$\mathfrak{su}(3)$ 秩为 $2$，其Cartan矩阵为</p>
+<p>$$A&#x3D;\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}$$</p>
+<p>代数的两个单根长度相同，其与基本权的关系为</p>
+<p>$$\alpha_1&#x3D;\alpha_1^\vee&#x3D;2\omega_1-\omega_2&#x3D;(2,-1)$$</p>
+<p>$$\alpha_2&#x3D;\alpha_2^\vee&#x3D;-\omega_1+2\omega_2&#x3D;(-1,2)$$</p>
+<p>$$(\omega_1,\omega_1)&#x3D;(\omega_2,\omega_2)&#x3D;\frac{2}{3}\qquad(\omega_1,\omega_2)&#x3D;\frac{1}{3}$$</p>
+<p>其反射算符关系及Weyl群为</p>
+<p>$$(s_1 s_2)^3&#x3D;1\Rightarrow s_1s_2s_1&#x3D;s_2s_1s_2$$</p>
+<p>$$W&#x3D;\{1,s_1,s_2,s_1s_2,s_2s_1,s_1s_2s_1\}$$</p>
+<p>反射算符对权作用为</p>
+<p>$$s_1(\lambda_1,\lambda_2)&#x3D;(\lambda_1,\lambda_2)-\lambda_1\alpha_1&#x3D;(-\lambda_1,\lambda_1+\lambda_2)$$</p>
+<p>$$s_2(\lambda_1,\lambda_2)&#x3D;(\lambda_1,\lambda_2)-\lambda_2\alpha_2&#x3D;(\lambda_1+\lambda_2,-\lambda_2)$$</p>
+<p>$$s_1s_2(\lambda_1,\lambda_2)&#x3D;(-\lambda_1-\lambda_2,\lambda_1)$$</p>
+<p>$$s_2s_1(\lambda_1,\lambda_2)&#x3D;(\lambda_2,-\lambda_1-\lambda_2)$$</p>
+<p>$$s_1s_2s_1(\lambda_1,\lambda_2)&#x3D;s_2s_1s_2(\lambda_1,\lambda_2)&#x3D;(-\lambda_2,-\lambda_1)$$</p>
+<p>通过反射算符对单根作用可得完整根集</p>
+<p>$$\Delta&#x3D;\{\alpha_1,\alpha_2,\alpha_1+\alpha_2,-\alpha_1,-\alpha_2,-\alpha_1,-\alpha_2\}$$</p>
+<p>$$\theta&#x3D;\alpha_1+\alpha_2\qquad\Rightarrow\qquad a_i&#x3D;a_i^\vee&#x3D;1,i&#x3D;1,2$$</p>
+<p>此代数的根与Weyl腔如下图所示，其中虚线为腔壁</p>
+<p><img src="/images/su(3)Weyl%E7%BE%A4.png"></p>
+<h4 id="mathfrak-sp-4"><a href="#mathfrak-sp-4" class="headerlink" title="$\mathfrak{sp}(4)$"></a>$\mathfrak{sp}(4)$</h4><p>$\mathfrak{sp}(4)$ 同样为 $2$ 秩代数，但并不单缀，其Cartan矩阵为</p>
+<p>$$A&#x3D;\begin{pmatrix}2&amp;-1\\-2&amp;2\end{pmatrix}$$</p>
+<p>可知单根与基本权性质如下</p>
+<p>$$\alpha_1&#x3D;\frac{1}{2}\alpha_1^\vee&#x3D;2\omega_1-\omega_2&#x3D;(2,-1)$$</p>
+<p>$$\alpha_2&#x3D;\alpha_2^\vee&#x3D;-2\omega_1+2\omega_2&#x3D;(-2,2)$$</p>
+<p>$$(\omega_1,\omega_1)&#x3D;(\omega_1,\omega_2)&#x3D;\frac{1}{2}\qquad(\omega_2,\omega_2)&#x3D;1$$</p>
+<p>$$|\alpha_2|^2&#x3D;2\qquad\Rightarrow\qquad|\alpha_1|^2&#x3D;1$$</p>
+<p>其反射算符关系及Weyl群为</p>
+<p>$$(s_1 s_2)^4&#x3D;1$$</p>
+<p>$$W&#x3D;\{s_1,s_2,s_1s_2,s_2s_1,s_1s_2s_1,s_2s_1s-2,s_1s_2s_1s_2\}$$</p>
+<p>由Weyl群可构造根集</p>
+<p>$$\Delta&#x3D;\{\alpha_1,\alpha_2,\alpha_1+\alpha_2,2\alpha_1+\alpha_2,-\alpha_1,-\alpha_2,-\alpha_1-\alpha_2,-2\alpha_1-\alpha_2\}$$</p>
+<p>$$\theta&#x3D;2\alpha_1+\alpha_2&#x3D;2\alpha_1^\vee+\alpha_2^\vee\qquad\Rightarrow\qquad a_1&#x3D;2,a_2&#x3D;a_1^\vee&#x3D;a_2^\vee&#x3D;1$$</p>
+<p>此代数的根与Weyl腔如下图所示，其中根矢量本身为腔壁</p>
+<p><img src="/images/sp(4)Weyl%E7%BE%A4.png"></p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../31/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E6%9E%81%E5%B0%8F%E6%A8%A1%E5%9E%8BI/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          极小模型I
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../24/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E5%85%B1%E5%BD%A2%E6%97%8F%E4%B8%8E%E7%AE%97%E7%AC%A6%E4%BB%A3%E6%95%B0/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          共形族与算符代数
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

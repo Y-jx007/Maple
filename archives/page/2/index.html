@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -241,10 +241,10 @@
         <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
       </div>
     
-    <a href="../../../2023/07/16/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E6%97%B6%E7%A9%BA%E5%AF%B9%E7%A7%B0%E6%80%A7/">
+    <a href="../../../2023/11/30/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA%E5%9F%BA%E7%A1%80/">
       <header>
         <h2 class="font-bold text-xl">
-          时空对称性拓展
+          共形场论基础
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -252,7 +252,47 @@
           
         </p>
         <p class="line-clamp-4">
-          7月 16
+          11月 30
+          ·
+          24 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../../2023/11/22/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E5%85%B1%E5%BD%A2%E4%B8%8D%E5%8F%98%E6%80%A7/">
+      <header>
+        <h2 class="font-bold text-xl">
+          共形不变性
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          11月 22
+          ·
+          11 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../../2023/11/20/%E5%9C%BA%E8%AE%BA/Dirac%E5%9C%BA/">
+      <header>
+        <h2 class="font-bold text-xl">
+          Dirac场
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          11月 20
           ·
           5 min
         </p>
@@ -261,10 +301,10 @@
   
     
     
-    <a href="../../../2023/07/16/%E5%A4%8D%E5%88%86%E6%9E%90/%E5%8F%8C%E6%9B%B2%E5%87%A0%E4%BD%95/">
+    <a href="../../../2023/11/18/%E4%B8%8A%E5%90%8C%E8%B0%83/">
       <header>
         <h2 class="font-bold text-xl">
-          双曲几何
+          上同调
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -272,67 +312,7 @@
           
         </p>
         <p class="line-clamp-4">
-          7月 16
-          ·
-          2 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../../2023/07/05/%E5%A4%8D%E5%88%86%E6%9E%90/%E6%A8%A1%E5%BD%A2%E5%BC%8F/">
-      <header>
-        <h2 class="font-bold text-xl">
-          模形式
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 05
-          ·
-          15 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../../2023/07/04/%E5%A4%8D%E5%88%86%E6%9E%90/%E5%8D%95%E5%80%BC%E5%8C%96%E5%AE%9A%E7%90%86/">
-      <header>
-        <h2 class="font-bold text-xl">
-          单值化定理
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 04
-          ·
-          2 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../../2023/06/29/%E7%A4%BA%E6%80%A7%E7%B1%BB/Grassmann%E6%B5%81%E5%BD%A2%E7%9A%84%E8%83%9E%E7%BB%93%E6%9E%84/">
-      <header>
-        <h2 class="font-bold text-xl">
-          Grassmann流形的胞结构
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 29
+          11月 18
           ·
           1 min
         </p>
@@ -341,10 +321,10 @@
   
     
     
-    <a href="../../../2023/06/27/%E7%A4%BA%E6%80%A7%E7%B1%BB/Grassmann%20Manifold/">
+    <a href="../../../2023/11/18/Stiefel-Whitney%E5%AD%98%E5%9C%A8%E6%80%A7/">
       <header>
         <h2 class="font-bold text-xl">
-          Grassmann流形和万有丛
+          Stiefel-Whitney Classes的存在性
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -352,7 +332,67 @@
           
         </p>
         <p class="line-clamp-4">
-          6月 27
+          11月 18
+          ·
+          1 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../../2023/10/29/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
+      <header>
+        <h2 class="font-bold text-xl">
+          量子计算
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          10月 29
+          ·
+          2 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../../2023/10/27/Green%E5%87%BD%E6%95%B0/">
+      <header>
+        <h2 class="font-bold text-xl">
+          Green函数
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          10月 27
+          ·
+          1 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../../2023/10/24/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E4%B8%AD%E7%9A%84%E7%94%B5%E7%A3%81%E5%9C%BA/">
+      <header>
+        <h2 class="font-bold text-xl">
+          连续介质中的电磁场
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          10月 24
           ·
           3 min
         </p>
@@ -361,10 +401,10 @@
   
     
     
-    <a href="../../../2023/06/19/%E5%9C%BA%E8%AE%BA/%E7%BB%8F%E5%85%B8%E5%9C%BA%E8%AE%BA/">
+    <a href="../../../2023/09/24/%E5%9C%BA%E8%AE%BA/%E5%9C%BA%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8/">
       <header>
         <h2 class="font-bold text-xl">
-          经典场论
+          场相互作用
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -372,19 +412,19 @@
           
         </p>
         <p class="line-clamp-4">
-          6月 19
+          9月 24
           ·
-          5 min
+          16 min
         </p>
       </section>
     </a>
   
     
     
-    <a href="../../../2023/06/19/%E7%A4%BA%E6%80%A7%E7%B1%BB/Stiefel-Whitney/">
+    <a href="../../../2023/09/23/shadertoy/">
       <header>
         <h2 class="font-bold text-xl">
-          Stiefel-Whitney Classes
+          Shadertoy
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -392,49 +432,9 @@
           
         </p>
         <p class="line-clamp-4">
-          6月 19
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../../2023/06/18/%E9%9F%B3%E4%B9%90/%E9%9F%B3%E9%98%B6%E8%89%B2%E5%BD%A9/">
-      <header>
-        <h2 class="font-bold text-xl">
-          音阶色彩
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 18
+          9月 23
           ·
           1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../../2023/06/11/%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86/%E5%9B%BA%E4%BD%93%E7%89%A9%E7%90%86%E6%97%A9%E6%9C%9F%E5%8F%91%E5%B1%95/">
-      <header>
-        <h2 class="font-bold text-xl">
-          固体物理早期发展
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 11
-          ·
-          7 min
         </p>
       </section>
     </a>
@@ -448,7 +448,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

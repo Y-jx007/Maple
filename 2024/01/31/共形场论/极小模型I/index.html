@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>极小模型I | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        极小模型I
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        极小模型I
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-02-09 23:44:45</time>
+          <span class="text-gray-400">·</span>
+          <span>9 min</span>
+          <span class="text-gray-400">·</span>
+          <span>1.9k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h3 id="Virasoro-示性数"><a href="#Virasoro-示性数" class="headerlink" title="Virasoro 示性数"></a>Virasoro 示性数</h3><p>对由Virasoro生成元 $L_n$ 生成的作用于最高权态 $\ket{h}$ 的Verma模 $V(c,h)$，定义生成函数 $\chi_{(c,h)}(\tau)$，称为此模的示性数，其中 $\dim(n+h)$ 为Verma模中线性独立的 $n$ 级裔数目</p>
+<p>$$\begin{aligned}\chi_{(c,h)}(\tau)&amp;&#x3D;\Tr\; q^{L_0-c&#x2F;24}\qquad(q&#x3D;e^{2\pi i\tau})\\&amp;&#x3D;\sum_{n&#x3D;0}^\infty\dim(h+n)q^{n+h-c&#x2F;24}\end{aligned}$$</p>
+<p>设 $p(n)$ 为可能的最大线性独立 $n$ 级裔数目，$\dim(n+h)\le p(n)$，由下式知示性数中级数在 $|q|&lt;1$ 时一致收敛</p>
+<p>$$\frac{1}{\varphi(q)}&#x3D;\prod_{n&#x3D;1}^\infty\frac{1}{1-q^n}&#x3D;\sum_{n&#x3D;0}^\infty p(n)q^n$$</p>
+<p>由此一般Virasoro示性数可写为</p>
+<p>$$\chi_{(c,h)}(\tau)&#x3D;\frac{q^{h-c&#x2F;24}}{\varphi(q)}$$</p>
+<p>进一步利用Dedekind函数有</p>
+<p>$$\eta(\tau)&#x3D;q^{1&#x2F;24}\varphi(q)&#x3D;q^{1&#x2F;24}\prod_{n&#x3D;1}^\infty(1-q^n)$$</p>
+<p>$$\chi_{(c,h)}(\tau)&#x3D;\frac{q^{h+(1-c)&#x2F;24}}{\eta(\tau)}$$</p>
+<h3 id="奇异矢量"><a href="#奇异矢量" class="headerlink" title="奇异矢量"></a>奇异矢量</h3><p>称Verma模中能由 $L_n\;(n&gt;0)$ 湮灭的非最高权态 $\ket{\chi}$ 为奇异矢量，其可生成 $V(c,h)$ 的子模 $V_\chi$，奇异矢量与 $V(c,h)$ 中所有态正交，包括自身</p>
+<p>$$\bra{\chi}L_{-k_1}\cdots L_{-k_n}\ket{h}&#x3D;\bra{h}L_{k_n}\cdots L_{k_1}\ket{\chi}^*&#x3D;0$$</p>
+<p>又Verma模不同级裔正交，可知 $V_\chi$ 与 $V(c,h)$ 正交，说明 $V_\chi$ 中态的模长均为零</p>
+<p>由算符-场的对应关系，奇异态 $\ket{\chi}$ 对应奇异场 $\chi(z)$，由于 $(L_n \chi)(z)&#x3D;0\;(n&gt;0)$，$\chi(z)$ 同时为初级场与次级场</p>
+<p>对于包含奇异矢量的Verma模，可以将其商去对应的奇异模，即将相减得到模长为零的态的两个态等同，以构造Virasoro代数的不可约表示，记为 $M(c,h)$，其为构建极小模型的基础</p>
+<h3 id="酉表示和Kac行列式"><a href="#酉表示和Kac行列式" class="headerlink" title="酉表示和Kac行列式"></a>酉表示和Kac行列式</h3><p>若Virasoro代数的表示不包含虚模长态(弦论中称为鬼场)，则称其为酉表示，由于内积只依赖于最高权 $h$ 与中心荷 $c$，要求表示为酉即为对参数 $h,c$ 施加限制条件</p>
+<p>考虑态 $L_{-n}$ 的模长可得 $(h,c)$ 的一个简单酉边界</p>
+<p>$$\bra{h}L_nL_{-n}\ket{h}&#x3D;[2n h+\frac{1}{12}cn(n^2-1)]\bra{h}\ket{h}$$</p>
+<p>若 $c&lt;0$，则当 $n\to\infty$ 时模长平方为负，可见中心荷为负的表示均非酉；另外取 $n&#x3D;1$ 可知共形维数 $h$ 为负的表示也均非酉</p>
+<p>酉表示的充要条件可通过考虑以下Gram矩阵得到，将Verma模中态记为 $\ket{i}$</p>
+<p>$$M_{ij}&#x3D;\bra{i}\ket{j}\qquad (M^\dagger&#x3D;M)$$</p>
+<p>Gram矩阵为分块对角阵，$l$ 级裔态构成块 $M^{(l)}$，一般态 $\ket{a}&#x3D;\sum_i a_i\ket{i}$ 的模方为</p>
+<p>$$\braket{a}&#x3D;a^\dagger M a$$</p>
+<p>由于 $M$ 为Heimitian阵，可将其酉对角化 $M&#x3D;U\Lambda U^\dagger$，记 $b&#x3D;U a$</p>
+<p>$$\braket{a}&#x3D;\sum_i\Lambda_i |b_i|^2$$</p>
+<p>因此存在虚模长态的充要条件为 $M$ 有负本征值；另外若 $M$ 有零本征值，则存在奇异矢量，Verma模可约</p>
+<p>以下为 $l&#x3D;0,1,2$ 的矩阵块 $M^{(l)}$</p>
+<p>$$\begin{aligned}&amp; M^{(0)}&#x3D;1\\&amp; M^{(1)}&#x3D;2h\\&amp; M^{(2)}&#x3D;\begin{pmatrix} 4h(2h+1)&amp;6h\\ 6h&amp; 4h+c&#x2F;2\end{pmatrix}\end{aligned}$$</p>
+<p>$M^{(l)}&#x3D;h$ 说明酉表示 $h&gt;0$；接着计算 $M^{(2)}$ 的行列式与迹，酉表示要求其均为正</p>
+<p>$$\begin{aligned}\det M^{(2)}&amp;&#x3D;32 h^3-20 h^2+4 h^2 c+ 2h c\\&amp;&#x3D;32(h-h_{1,2})(h-h_{1,2})(h-h_{2,1})\end{aligned}$$</p>
+<p>$$\begin{aligned}&amp; h_{1,1}&#x3D;0\\&amp; h_{1,2}&#x3D;\frac{1}{16}\left(5-c-\sqrt{(1-c)(25-c)}\right)\\&amp;h_{2,1}&#x3D;\frac{1}{16}\left(5-c+\sqrt{(1-c)(25-c)}\right)\end{aligned}$$</p>
+<p>$$\Tr M^{(2)}&#x3D;8h(h+1)+c&#x2F;2$$</p>
+<p>考虑一般的Gram矩阵块 $M^{(l)}$ 的行列式，称为Kac行列式，其具有以下形式，式中 $p(n)$ 表示整数 $n$ 的配分数</p>
+<p>$$\det M^{(l)}&#x3D;\alpha_l\prod_{r,s\ge 1; rs\le l}[h-h_{r,s}(c)]^{p(l-rs)}$$</p>
+<p>$$\alpha_l&#x3D;\prod_{r,s\ge 1; rs\le l}[(2r)^s s!]^{m(r,s)}\qquad m(r,s)&#x3D;p(l-rs)-p(l-r(s+1))$$</p>
+<p>函数 $h_{r,s}$ 有多种表示，通常可写为</p>
+<p>$$h_{r,s}(c)&#x3D;h_0+\frac{1}{4}(r\alpha_++s\alpha_-)^2$$</p>
+<p>$$h_0&#x3D;\frac{1}{24}(c-1)$$</p>
+<p>$$\alpha_\pm&#x3D;\frac{\sqrt{1-c}\pm\sqrt{25-c}}{\sqrt{24}}$$</p>
+<p>$h_{r,s}$ 的另一种表示如下，其中 $t$ 为复数，其有两支，当 $c&lt;1\;\text{or}\; c&gt;25$ 时，$t$ 为实数；当 $1&lt;c&lt;25$ 时，$t$ 位于单位圆上</p>
+<p>$$c&#x3D;13-6\left(t+\frac{1}{t}\right)$$</p>
+<p>$$h_{r,s}(t)&#x3D;\frac{1}{4}(r^2-1)t+\frac{1}{4}(s^2-1)\frac{1}{t}-\frac{1}{2}(rs-1)$$</p>
+<p>$$t&#x3D;1+\frac{1}{12}\left[1-c\pm\sqrt{(1-c)(25-c)}\right]$$</p>
+<p>$$\alpha_+&#x3D;\sqrt{t}\qquad\alpha_-&#x3D;-\frac{1}{\sqrt{t}}$$</p>
+<p>$h_{r,s}$ 还可以表示为以下形式</p>
+<p>$$c&#x3D;1-\frac{6}{m(m+1)}$$</p>
+<p>$$h_{r,s}(m)&#x3D;\frac{[(m+1)r-ms]^2-1}{4m(m+1)}$$</p>
+<p>$$m&#x3D;-\frac{1}{2}\pm \frac{1}{2}\sqrt{\frac{25-c}{1-c}}$$</p>
+<p>$$t&#x3D;\frac{m}{m+1}\quad\text{or}\quad t&#x3D;\frac{m+1}{m}$$</p>
+<p>在曲线 $h&#x3D;h_{r,s}(c)$ 上Kac行列式为零，称为零曲线，记作 $C_{r,s}$；对于 $l&gt;1$，根 $h_{r,s}$ 的数目超过配分数 $p(l)$，由 $p(l-rs)&#x3D;0\quad\text{for}\quad l&lt;rs$ 结合Kac行列式一般形式知可约Verma模 $V(c,h_{r,s})$ 的第一个奇异态出现在 $l&#x3D;rs$ 级矩阵块</p>
+<h3 id="c-ge-1-酉表示"><a href="#c-ge-1-酉表示" class="headerlink" title="$c\ge 1$ 酉表示"></a>$c\ge 1$ 酉表示</h3><p>以下证明 $c\ge 1,h\ge 0$ 时表示为酉，先写出 $h_{r,s}$ 显式表达式</p>
+<p>$$h_{r,s}(c)&#x3D;\frac{1-c}{96}\left\{\left[(r+s)+(r-s)\sqrt{\frac{25-c}{1-c}}\right]^2-4\right\}$$</p>
+<p>当 $1&lt;c&lt;25$ 时除 $r&#x3D;s$ 外 $h_{r,s}$ 非实数，对于 $r&#x3D;s$，$h_{r,s}\le 0$；当 $c\ge 25$ 时可知 $-1&lt;m&lt;0$，$m(m+1)&lt;0$ 并且</p>
+<p>$$[(m+1)r-ms]^2&#x3D;[(1-|m|)r+|m|s]\ge 1$$</p>
+<p>说明 $c&gt; 1$ 时零曲线 $C_{r,s}$ 位于 $h&#x3D;0$ 或其下方，即区域 $R&#x3D;\{c&gt;1,h&gt;0\}$ 中Kac行列式符号相同；对给定的 $l$，取 $|h|&gt;&gt;\max{|h_{r,s}|}$，可得 $M^{(l)}\approx\alpha_l h^r$，由于 $\alpha_l$ 为正常数，故Kac行列式在此极限下也为正，说明 $R$ 中Kac行列式恒为正</p>
+<p>由于 $M^{(l)}$ 负特征值数目只在穿过 $C_{r,s}$ 时改变，可知 $R$ 中其恒定且为偶数，为证明 $M^{(l)}$ 正定，只需说明其在区域中某点无负特征值，选择以下 $l$ 级裔态为基，其长度 $n(\alpha)$ 为态中算符 $L_k$ 的个数</p>
+<p>$$L_{-k_1}L_{-k_2}\cdots L_{-k_n}\ket{h}\qquad(k_1\ge k_2\ge\cdots\ge k_n)$$</p>
+<p>可知由 $h$ 主导的态内积的渐近行为</p>
+<p>$$\braket{\alpha}{\alpha}&#x3D;c_\alpha h^{n(\alpha)}[1+O(1&#x2F;h)]$$</p>
+<p>$$\braket{\alpha}{\beta}&#x3D;O(h^{(n(\alpha)+n(\beta))&#x2F;2-1})+\cdots$$</p>
+<p>将基按长度降序排列，子矩阵 $M_n^{(l)}$ 仅由长度为 $n$ 的态内积构成，由以上渐近行为可知当 $h$ 足够大时 $M_n^{(l)}$ 正定，取极限即得 $M^{(l)}$ 正定，故 $c\ge 1,h\ge 0$ 中表示均为酉</p>
+<p>下图绘制了酉表示区域及一些零曲线</p>
+<h3 id="c-lt-1-酉表示"><a href="#c-lt-1-酉表示" class="headerlink" title="$c&lt; 1$ 酉表示"></a>$c&lt; 1$ 酉表示</h3><p>对于区域 $R&#x3D;\{0&lt;c&lt;1,h&gt;0\}$，酉表示仅存在于以下离散集中</p>
+<p>$$c&#x3D;1-\frac{6}{m(m+1)}\qquad h_{r,s}(m)&#x3D;\frac{[(m+1)r-ms]^2-1}{4m(m+1)}$$</p>
+<p>$$1\le r&lt;m,1\le s&lt;r,m\ge 2\qquad m,r,s\in\mathbb{Z}$$</p>
+<p><img src="/images/Virasoro%E9%85%89%E8%A1%A8%E7%A4%BA.png"></p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../../02/15/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E5%8D%95Lie%E4%BB%A3%E6%95%B0II/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          单Lie代数II
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../28/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E5%8D%95Lie%E4%BB%A3%E6%95%B0I/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          单Lie代数I
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

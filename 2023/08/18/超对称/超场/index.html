@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -226,10 +226,10 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
 
@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-09-09 14:03:42</time>
+          <time>2024-01-12 00:40:55</time>
           <span class="text-gray-400">·</span>
-          <span>16 min</span>
+          <span>22 min</span>
           <span class="text-gray-400">·</span>
-          <span>3.2k words</span>
+          <span>4.3k words</span>
         </section>
       </div>
     </div>
@@ -328,7 +328,7 @@
 <p>$$\begin{aligned}\Phi&amp;&#x3D;A(y)+\sqrt{2}\theta\psi(y)+\theta\theta F(y)\\&amp;&#x3D;A(x)+i\theta\sigma^m\bar\theta\partial_m A(x)+\frac{1}{4}\theta\theta\bar\theta\bar\theta\Box A(x)\\&amp;+\sqrt{2}\theta\psi(x)-\frac{i}{\sqrt{2}}\theta\theta\partial_m\psi(x)\sigma^m\bar\theta+\theta\theta F(x)\end{aligned}$$</p>
 <p>微分算符 $D,\bar D$ 在坐标 $y,\theta,\bar\theta$ 下的形式为</p>
 <p>$$D_\alpha&#x3D;\frac{\partial}{\partial \theta^\alpha}+2i\sigma_{\alpha\dot\alpha}^{\;\;\;m}\bar\theta^{\dot\alpha}\frac{\partial}{\partial y^m}$$</p>
-<p>$$\bar D_{\dot\alpha}&#x3D;-\frac{\partial}{\partial \theta^{\dot\alpha}}$$</p>
+<p>$$\bar D_{\dot\alpha}&#x3D;-\frac{\partial}{\partial \bar\theta^{\dot\alpha}}$$</p>
 <p>类似地有<strong>反手性超场</strong></p>
 <p>$$D_{\alpha}\Phi^\dagger&#x3D;0$$</p>
 <p>${y^\dagger}^ m&#x3D;x^m+i\theta\sigma^m\bar\theta$ 和 $\bar\theta$ 均为此方程的解</p>
@@ -365,6 +365,43 @@
 <p>$$\begin{aligned}V(x,\theta,\bar\theta)&amp;&#x3D;C(x)+i\theta\chi(x)-i\bar\theta\bar\chi(x)\\&amp;+\frac{i}{2}\theta\theta[M(x)+iN(x)]-\frac{i}{2}\bar\theta\bar\theta[M(x)-iN(x)]-\theta\sigma^m\bar\theta v_m(x)\\&amp;+i\theta\theta\bar\theta\left[\bar\lambda(x)+\frac{i}{2}\bar\sigma^m\partial_m\chi(x)\right]-i\bar\theta\bar\theta\theta\left[\lambda(x)+\frac{i}{2}\sigma^m\partial_m\bar\chi(x)\right]\\&amp;+\frac{1}{2}\theta\theta\bar\theta\bar\theta\left[D(x)+\frac{1}{2}\Box C(x)\right]\end{aligned}$$</p>
 <p>式中系数为根据手性超场与其Hermitian共轭之和的形式特殊选取</p>
 <p>$$\begin{aligned}\Phi+\Phi^\dagger&amp;&#x3D;A+A^*+\sqrt{2}(\theta\psi+\bar\theta\bar\psi)\\&amp;+\theta\theta F+\bar\theta\bar\theta F^*+i\theta\sigma^m\bar\theta\partial_m(A-A^*)\\&amp;+\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^m\partial_m\psi+\frac{i}{\sqrt{2}}\bar\theta\bar\theta\theta\sigma^m\partial_m\bar\psi\\&amp;+\frac{1}{4}\theta\theta\bar\theta\bar\theta\Box(A+A^*)\end{aligned}$$</p>
+<p>观察 $\theta\sigma^m\bar\theta$ 的系数 $i\partial_m(A-A^*)$，比较可知超矢量场的规范变换形式</p>
+<p>$$V\to V+\Phi+\Phi^\dagger$$</p>
+<p>其参数变换为</p>
+<p>$$C\to C+A+A^*$$</p>
+<p>$$\chi\to \chi-i\sqrt{2}\psi$$</p>
+<p>$$M+iN\to M+iN-2iF$$</p>
+<p>$$v_m\to v_m-i\partial_m(A-A^*)$$</p>
+<p>$$\lambda\to\lambda$$</p>
+<p>$$D\to D$$</p>
+<p>选取Wess-Zumino规范使得 $C,\chi,M,N$ 均为零，得到通常规范变换 $v_m\to v_m+\partial_m a$，在此规范下容易计算 $V$ 的幂</p>
+<p>$$V&#x3D;-\theta\sigma^m\bar\theta v_m(x)+i\theta\theta\bar\theta\bar\lambda(x)-i\bar\theta\bar\theta\theta\lambda(x)+\frac{1}{2}\theta\theta\bar\theta\bar\theta D(x)$$</p>
+<p>$$V^2&#x3D;-\frac{1}{2}\theta\theta\bar\theta\bar\theta v_m v^m$$</p>
+<p>$$V^3&#x3D;0$$</p>
+<p>可将 $V$ 视为Yang-Mills势的超对称推广，由于 $\lambda_\alpha,\bar\lambda_{\dot\alpha}$ 为 $V$ 中最低维规范不变分量场，可在其基础上构造超对称场强</p>
+<p>$$W_\alpha&#x3D;-\frac{1}{4}\bar D\bar D D_\alpha V$$</p>
+<p>$$\bar W_{\dot\alpha}&#x3D;-\frac{1}{4}DD\bar D_{\dot\alpha} V$$</p>
+<p>由此构造的超场满足手性与规范不变性</p>
+<p>$$\bar D_{\dot\beta}W_\alpha&#x3D;0\qquad D_\beta\bar W_{\dot\alpha}&#x3D;0$$</p>
+<p>$$W_\alpha\to -\frac{1}{4}\bar D\bar D D_\alpha(V+\Phi+\Phi^\dagger)&#x3D;W_\alpha-\frac{1}{4}\bar D\{\bar D,D_\alpha\}\Phi&#x3D;W_\alpha$$</p>
+<p>利用变量 $y&#x3D;x+i\theta\sigma\bar\theta,y^\dagger&#x3D;x-i\theta\sigma\bar\theta$，容易计算 $W_\alpha,W_{\dot\alpha}$ 的分量形式</p>
+<p>$$\begin{aligned}V&amp;&#x3D;-\theta\sigma^m\bar\theta v_m(y)+i\theta\theta\bar\theta\bar\lambda(y)-i\bar\theta\bar\theta\theta\lambda(y)+\frac{1}{2}\theta\theta\bar\theta\bar\theta [D(y)-i\partial_m v^m(y)]\\&amp;&#x3D;-\theta\sigma^m\bar\theta v_m(y^\dagger)+i\theta\theta\bar\theta\bar\lambda(y^\dagger)-i\bar\theta\bar\theta\theta\lambda(y^\dagger)+\frac{1}{2}\theta\theta\bar\theta\bar\theta [D(y^\dagger)+i\partial_m v^m(y^\dagger)]\end{aligned}$$</p>
+<p>$$W_\alpha&#x3D;-i\lambda_\alpha(y)+\left[\delta_\alpha^{\;\;\beta}D(y)-\frac{i}{2}(\sigma^m\bar\sigma^n)_\alpha^{\;\;\beta}v_{mn}(y)\right]\theta_\beta+\theta\theta\sigma_{\alpha\dot\alpha}^{\;\;\;m}\partial_m\bar\lambda^{\dot\alpha}(y)$$</p>
+<p>$$\bar W_{\dot\alpha}&#x3D;i\bar\lambda_{\dot\alpha}(y^\dagger)+\left[\varepsilon_{\dot\alpha\dot\beta}D(y^\dagger)+\frac{i}{2}\varepsilon_{\dot\alpha\dot\gamma}(\bar\sigma^m\sigma^n)_{\;\;\dot\beta}^{\dot\gamma}v_{mn}(y^\dagger)\right]\bar\theta^{\dot\beta}-\varepsilon_{\dot\alpha\dot\beta}\bar\theta\bar\theta\bar\sigma^{m\dot\beta\alpha}\partial_m\bar\lambda_{\alpha}(y^\dagger)$$</p>
+<p>超场 $W_\alpha,\bar W_{\dot\alpha}$ 仅含规范不变场 $D,\lambda_\alpha,v_{mn}&#x3D;\partial_m v_n-\partial_n v_m$，其为满足手性与以下约束条件的解的最普遍形式；取 $\theta,\bar\theta&#x3D;0$，由约束可知 $D$ 为实分量场</p>
+<p>$$D^\alpha W_\alpha&#x3D;\bar D_{\dot\alpha}\bar W^{\dot\alpha}$$</p>
+<p>同理可将 $\exp(\theta Q+\bar\theta\bar Q)\times$ 作用于 $\lambda_\alpha,\bar\lambda_{\dot\alpha}$ 以构造 $W_\alpha,W_{\dot\alpha}$，其也满足以上约束</p>
+<p>由于 $W_\alpha$ 为手性超场，$W^\alpha W_\alpha$ 的 $\theta\theta$ 分量在 $\delta_\theta$ 作用下变为时空导数</p>
+<p>$$W^\alpha W_\alpha|_{\theta\theta}&#x3D;-2i\lambda\sigma^m\partial_m\bar\lambda-\frac{1}{2}v^{mn}v_{mn}+D^2+\frac{i}{4}v^{mn}v^{lk}\varepsilon_{mnlk}$$</p>
+<p>可知下式为自由矢量场Lagrangian的超对称规范不变推广</p>
+<p>$$\mathscr{L}&#x3D;\frac{1}{4}(W^\alpha W_\alpha|_{\theta\theta}+\bar W_\dot{\alpha}\bar W^\dot{\alpha}|_{\bar\theta\bar\theta})$$</p>
+<p>分部积分，可得</p>
+<p>$$\int\text{d}^4 x\;\mathscr{L}&#x3D;\int\text{d}^4 x\;\left(\frac{1}{2}D^2-\frac{1}{4}v^{mn}v_{mn}-i\lambda\sigma^m\partial_m\bar\lambda\right)$$</p>
+<p>由 $W^\alpha W_\alpha&#x3D;\displaystyle-\frac{1}{4}\bar D\bar D W^\alpha D_\alpha V$，也可从 $\theta\theta\bar\theta\bar\theta$ 分量得到Lagrangian</p>
+<p>$$\int\text{d}^4 x\;\mathscr{L}&#x3D;\int\text{d}^4 x\;\frac{1}{4}\left.\left(W^\alpha D_\alpha V+\bar W_{\dot\alpha}\bar D^{\dot\alpha} V\right)\right|_{\theta\theta\bar\theta\bar\theta}$$</p>
+<p>另外还可以在上式中加入质量项 $m^2 V^2$，此项不满足规范不变，因此无法在WZ规范下计算，由矢量超场展开式直接计算可得</p>
+<p>$$\begin{aligned}V^2|_{\theta\theta\bar\theta\bar\theta}&#x3D;&amp;-\frac{1}{2}v_mv^m-\chi\lambda-\bar\chi\bar\lambda+\frac{1}{2}(M^2+N^2)\\&amp;-\frac{i}{2}\chi\sigma^m\partial_m\bar\chi-\frac{i}{2}\bar\chi\bar\sigma^m\partial_m\chi\\&amp;+\frac{1}{2}C\Box C+CD\end{aligned}$$</p>
+<p>此项不仅赋予了矢量场 $v_m$ 质量，也引入了有质量多重态所需的额外的自由度 $C,\chi$，加入此项后的Lagrangian描述质量相同的一个矢量场，两个自旋 $1&#x2F;2$ 场与一个标量场 </p>
 
   </article>
   <!-- tag -->
@@ -377,14 +414,14 @@
       
         <a href="../../../../09/11/%E5%9C%BA%E8%AE%BA/%E8%87%AA%E7%94%B1%E6%A0%87%E9%87%8F%E5%9C%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          自由标量场
+          Klein-Gordon场
         </a>
       
     </div>
     <div>
       
-        <a href="../../../07/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E8%B6%85%E5%AF%B9%E7%A7%B0%E4%BB%A3%E6%95%B0/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          超对称代数
+        <a href="../../../07/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E8%B6%85%E5%AF%B9%E7%A7%B0%E4%BB%A3%E6%95%B0%E8%A1%A8%E7%A4%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          超对称代数表示
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
@@ -398,7 +435,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../lib/clipboard.min.js"></script>
+<script src="../../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -439,7 +476,7 @@
 
 
 
-<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -463,7 +500,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   
@@ -489,7 +526,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -314,7 +314,7 @@
         <p class="line-clamp-4">
           6月 19
           ·
-          6 min
+          7 min
         </p>
       </section>
     </a>
@@ -448,7 +448,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -247,6 +247,26 @@
         <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
       </div>
     
+    <a href="../../2023/11/18/Stiefel-Whitney%E5%AD%98%E5%9C%A8%E6%80%A7/">
+      <header>
+        <h2 class="font-bold text-xl">
+          Stiefel-Whitney Classes的存在性
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          11月 18
+          ·
+          1 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
     <a href="../../2023/09/17/Euler%20Class/">
       <header>
         <h2 class="font-bold text-xl">
@@ -320,7 +340,7 @@
         <p class="line-clamp-4">
           6月 19
           ·
-          6 min
+          7 min
         </p>
       </section>
     </a>
@@ -336,7 +356,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

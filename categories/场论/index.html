@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -247,7 +247,47 @@
         <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
       </div>
     
-    <a href="../../2023/09/24/%E5%9C%BA%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8/">
+    <a href="../../2023/12/16/%E5%9C%BA%E8%AE%BA/%E5%8D%95%E5%9C%88%E4%BF%AE%E6%AD%A3%E4%B8%8E%E9%87%8D%E6%95%B4%E5%8C%96/">
+      <header>
+        <h2 class="font-bold text-xl">
+          单圈修正与重整化
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          12月 16
+          ·
+          4 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/11/20/%E5%9C%BA%E8%AE%BA/Dirac%E5%9C%BA/">
+      <header>
+        <h2 class="font-bold text-xl">
+          Dirac场
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          11月 20
+          ·
+          5 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/09/24/%E5%9C%BA%E8%AE%BA/%E5%9C%BA%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8/">
       <header>
         <h2 class="font-bold text-xl">
           场相互作用
@@ -270,7 +310,7 @@
     <a href="../../2023/09/11/%E5%9C%BA%E8%AE%BA/%E8%87%AA%E7%94%B1%E6%A0%87%E9%87%8F%E5%9C%BA/">
       <header>
         <h2 class="font-bold text-xl">
-          自由标量场
+          Klein-Gordon场
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -316,7 +356,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

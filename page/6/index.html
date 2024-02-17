@@ -37,11 +37,11 @@
 
 
 
-<title>超对称代数 | </title>
+<title></title>
 
 
 
-<link rel="icon" href="../../../../../images/favicon.png">
+<link rel="icon" href="../../images/favicon.png">
 
 
 
@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -162,7 +163,6 @@
 
 
 
-
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
   <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
@@ -175,14 +175,14 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        超对称代数
+        
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+          <a class="hidden sm:flex" href="../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+          <a class="hidden sm:flex" href="../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -224,157 +224,166 @@
 </div>
 
   <main class="p-12">
-    <!-- css -->
-
-<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
-
-
-<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
-
-<!-- toc -->
-
-<section class="px-6 max-w-prose mx-auto md:px-0">
-  <!-- header -->
-  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
-    <div class="pt-4 md:pt-6">
-      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        超对称代数
-      </h1>
-      <p class="mb-6">
-        
-      </p>
-      <div>
-        <section class="flex items-center gap-3 text-sm">
-          <time>2023-08-22 23:09:12</time>
-          <span class="text-gray-400">·</span>
-          <span>1 min</span>
-          <span class="text-gray-400">·</span>
-          <span>59 words</span>
-        </section>
+    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
+  <div class="flex flex-col h-48 items-center justify-center">
+    <h1 class="site-title text-4xl leading-relaxed">
+      
+    </h1>
+    <p class="text-gray-500 mt-2">
+      
+    </p>
+  </div>
+  
+  
+    
+    
+      <div class="relative pointer-events-none">
+        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
       </div>
-    </div>
-  </header>
-  <!-- content -->
-  <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <p>$$\{Q_{\alpha}^{\;A},\bar{Q}_{\dot{\beta}B}\}&#x3D;2\sigma_{\alpha\dot{\beta}}^{\;\;\;m}P_m\delta_{\;B}^A$$</p>
-<p>$$\{Q_{\alpha}^{\;A},Q_{\beta}^{\;B}\}&#x3D;\{\bar{Q}_{\dot\alpha A},\bar{Q}_{\dot\beta B}\}&#x3D;0$$</p>
-<p>$$[P_m,Q_{\alpha}^{\;A}]&#x3D;[P_m,\bar{Q}_{\dot\alpha A}]&#x3D;0$$</p>
-<p>$$[P_m,P_n]&#x3D;0$$</p>
-
-  </article>
-  <!-- tag -->
-  <div class="mt-12 pt-6 border-t border-gray-200">
     
-  </div>
-  <!-- prev and next -->
-  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
-    <div>
-      
-        <a href="../../../18/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E8%B6%85%E5%9C%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          超场
-        </a>
-      
-    </div>
-    <div>
-      
-        <a href="../../../../07/30/%E7%BE%A4%E8%AE%BA/Lorentz%E7%BE%A4%E8%A1%A8%E7%A4%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          Lorentz群表示
-          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
-        </a>
-      
-    </div>
-  </div>
-  <!-- comment -->
-  <div class="article-comments mt-12">
+    <a href="../../2023/05/19/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/%E5%90%91%E9%87%8F%E4%B8%9B%E4%B8%8EG-%E4%B8%BB%E4%B8%9B/">
+      <header>
+        <h2 class="font-bold text-xl">
+          向量丛与G-主丛
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          5月 19
+          ·
+          14 min
+        </p>
+      </section>
+    </a>
+  
     
-
-  </div>
+    
+    <a href="../../2023/05/15/%E7%9B%B8%E5%AF%B9%E8%AE%BA/%E9%BB%91%E6%B4%9E/">
+      <header>
+        <h2 class="font-bold text-xl">
+          黑洞
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          5月 15
+          ·
+          18 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/05/15/%E7%9B%B8%E5%AF%B9%E8%AE%BA/%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81/">
+      <header>
+        <h2 class="font-bold text-xl">
+          广义相对论实验验证
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          5月 15
+          ·
+          6 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/05/14/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/%E4%B8%8D%E5%90%AB%E6%97%B6%E5%BE%AE%E6%89%B0/">
+      <header>
+        <h2 class="font-bold text-xl">
+          不含时微扰
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          5月 14
+          ·
+          3 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/05/06/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/%E7%8B%84%E6%8B%89%E5%85%8B%E6%96%B9%E7%A8%8B/">
+      <header>
+        <h2 class="font-bold text-xl">
+          狄拉克方程
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          5月 06
+          ·
+          5 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/04/22/%E7%BE%A4%E8%AE%BA/%E7%82%B9%E7%BE%A4%E5%92%8C%E7%A9%BA%E9%97%B4%E7%BE%A4/">
+      <header>
+        <h2 class="font-bold text-xl">
+          点群和空间群
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          4月 22
+          ·
+          2 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+      <div class="relative pointer-events-none">
+        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2022</span>
+      </div>
+    
+    <a href="../../2022/03/21/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/Levi-Civita%E8%81%94%E7%BB%9C/">
+      <header>
+        <h2 class="font-bold text-xl">
+          Levi-Civita联络
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          3月 21
+          ·
+          7 min
+        </p>
+      </section>
+    </a>
+  
 </section>
-<!-- js inspect -->
-
-<script src="../../../../lib/clipboard.min.js"></script>
-
-<script>
-  window.MathJax = {
-    tex: {
-      tags: 'ams',
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      autoload: {
-        color: [],
-        colorv2: ['color']
-      },
-      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
-    },
-    options: {
-      ignoreHtmlClass: 'tex2jax_ignore',
-      processHtmlClass: 'tex2jax_process'
-    },
-    loader: {
-      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
-    }
-  };
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
-  
-
-<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
-<script>
-  $(document).ready(() => {
-    const maraidConfig = {
-      theme: "default",
-      logLevel: 3,
-      flowchart: { curve: "linear" },
-      gantt: { axisFormat: "%m/%d/%Y" },
-      sequence: { actorMargin: 50 },
-    };
-    mermaid.initialize(maraidConfig);
-  });
-</script>
-
-
-
-<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
-
-<script>
-  $(document).ready(() => {
-    $('.post-content').each(function(i){
-      $(this).find('img').each(function(){
-        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
-        var alt = this.alt;
-        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
-        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
-      });
-      $(this).find('.fancybox').each(function(){
-        $(this).attr('rel', 'article' + i);
-      });
-    });
-
-    Fancybox.bind('[data-fancybox="gallery"]', {
-        // options
-    })
-  })
-</script>
-
-<!-- tocbot begin -->
-
-<script src="../../../../lib/tocbot/tocbot.min.js"></script>
-
-<script>
-  
-      tocbot.init({
-        // Where to render the table of contents.
-        tocSelector: '.post-toc',
-        // Where to grab the headings to build the table of contents.
-        contentSelector: '.post-content',
-        // Which headings to grab inside of the contentSelector element.
-        headingSelector: 'h1, h2, h3',
-        // For headings inside relative or absolute positioned containers within content.
-        hasInnerContainers: true,
-    });
-  
-</script>
-<!-- tocbot end -->
 
 
   </main>
@@ -384,7 +393,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

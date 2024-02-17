@@ -41,7 +41,7 @@
 
 
 
-<link rel="icon" href="../../../../images/favicon.png">
+<link rel="icon" href="../../../../../images/favicon.png">
 
 
 
@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -180,9 +180,9 @@
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
         
-          <a class="hidden sm:flex" href="../../../../archives">Posts</a>
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
         
-          <a class="hidden sm:flex" href="../../../../categories">Categories</a>
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
         
         
           
@@ -211,11 +211,11 @@
     <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
         </li>
       
         <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
         </li>
       
     </ul>
@@ -226,10 +226,10 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
 
@@ -249,7 +249,7 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-10-20 19:31:22</time>
+          <time>2024-01-26 13:09:51</time>
           <span class="text-gray-400">·</span>
           <span>16 min</span>
           <span class="text-gray-400">·</span>
@@ -299,12 +299,12 @@
 <p>$$\phi(x)&#x3D;\phi^+(x)+\phi^-(x)$$</p>
 <p>$$\phi^+(x)&#x3D;\int\frac{\text{d}p^3}{(2\pi)^3}\frac{1}{\sqrt{2E_\boldsymbol{p}}}a_\boldsymbol{p}e^{-ip\cdot x}\qquad \phi^-(x)&#x3D;\int\frac{\text{d}p^3}{(2\pi)^3}\frac{1}{\sqrt{2E_\boldsymbol{p}}}a_\boldsymbol{p}^\dagger e^{ip\cdot x}$$</p>
 <p>$$\phi^+(x)\ket{0}&#x3D;0&#x3D;\bra{0}\phi^-(x)$$</p>
-<p>直接计算知两个场的时序乘积与正序乘积的关系为</p>
+<p>直接计算知两个场的时序乘积与正规序乘积的关系为</p>
 <p>$$T\phi(x)\phi(y)&#x3D;N\phi(x)\phi(y) + \overbracket{\phi(x)\phi}(y) $$</p>
 <p>$$\overbracket{\phi(x)\phi}(y)&#x3D;\left\lbrace\begin{array}{l} [\phi^+(x),\phi^-(y)]&amp;x^0&gt;y^0\\ [\phi^+(y),\phi^-(x)]&amp;y^0&gt;x^0\end{array}\right.&#x3D;D_F(x-y)$$</p>
 <p>由归纳法可得 <strong>Wick定理</strong></p>
 <p>$$T[\phi(x_1)\phi(x_2)\cdots\phi(x_n)]&#x3D;N[\phi(x_1)\phi(x_2)\cdots\phi(x_n)+所有可能的缩并]$$</p>
-<p>正序排列下，含未缩并的$\phi$的项与真空态作内积后为零，对于四点关联函数$\bra{0}T\phi(x_1)\phi(x_2)\phi(x_3)\phi(x_4)\ket{0}$，其值如下</p>
+<p>正规序排列下，含未缩并的$\phi$的项与真空态作内积后为零，对于四点关联函数$\bra{0}T\phi(x_1)\phi(x_2)\phi(x_3)\phi(x_4)\ket{0}$，其值如下</p>
 <p>$$D(x_1-x_2)D(x_3-x_4)+D(x_1-x_3)D(x_2-x_4)+D(x_1-x_4)D(x_2-x_3)$$</p>
 <h2 id="Feymann图"><a href="#Feymann图" class="headerlink" title="Feymann图"></a>Feymann图</h2><p>将两点关联函数分子展开，其零阶项即为$D_F(x-y)$，对于$\phi^4$理论，$H_I&#x3D;\displaystyle\frac{\lambda}{4!}\phi^4$，其一阶项如下</p>
 <p>$$\begin{aligned}&amp;\quad\bra{0}T\left[\phi(x)\phi(y)\left(-i\int\dd t H_I(t)\right)\right]\ket{0}\\&amp;&#x3D;\bra{0}T\left[\phi(x)\phi(y)\left(-\frac{i\lambda}{4!}\right)\int\text{d}^4z\;\phi(z)\phi(z)\phi(z)\phi(z)\right]\ket{0}\\&amp;&#x3D;3\left(-\frac{i\lambda}{4!}\right)D_F(x-y)\int\text{d}^4z\;D_F(z-z)D_F(z-z)\\&amp;+12\left(-\frac{i\lambda}{4!}\right)\int\text{d}^4z\;D_F(x-z)D_F(y-z)D_F(z-z)\end{aligned}$$</p>
@@ -342,7 +342,7 @@
 <p>若散射中四个粒子质量相等，则简化为</p>
 <p>$$\left(\frac{\dd\sigma}{\dd\Omega}\right)_\text{CM}&#x3D;\frac{|\mathcal{M}_{fi}|^2}{64\pi^2E_\text{cm}^2}$$</p>
 <p><strong>1 $\boldsymbol{\to}$ n</strong> $\quad$对于单粒子衰变，由 2 $\to$ n 散射截面表达式可知衰变率为</p>
-<p>$$\dd\Gamma&#x3D;\frac{|\mathcal{M}_{fi}|^2}{2m_i}\dd\Pi$$</p>
+<p>$$\dd\Gamma&#x3D;\frac{|\mathcal{M}(m_i\to f)|^2}{2m_i}\dd\Pi$$</p>
 <p><strong>光学定理</strong>$\quad$由 $S^\dagger S&#x3D;1$</p>
 <p>$$i(T-T^\dagger)&#x3D;T^\dagger T$$</p>
 <p>$$\bra{f}T^\dagger T\ket{i}&#x3D;\sum_n\left(\prod_{m&#x3D;1}^n\int\frac{\text{d}^3 p_m}{(2\pi)^3 2E_{p_m}}\right)\bra{f}T^\dagger\ket{n}\bra{n} T\ket{i}$$</p>
@@ -362,7 +362,7 @@
 <p>$$\begin{aligned}&amp;\quad\int\text{d}^3x\;e^{-i\boldsymbol{p}\cdot\boldsymbol{x}}(i\partial_t+E_p)\phi(x)\\&amp;&#x3D;\int\text{d}^3x\;e^{-i\boldsymbol{p}\cdot\boldsymbol{x}}(i\partial_t+E_p)\int\frac{\text{d}^3 k}{(2\pi)^3}\frac{1}{\sqrt{2E_k}}[a_k(t) e^{-ikx}+a_k^\dagger(t) e^{ikx}]\\&amp;&#x3D;\int\frac{\text{d}^3 k}{(2\pi)^3}\int\text{d}^3x\left[\left(\frac{E_k+E_p}{\sqrt{2E_k}}\right)a_k(t)e^{-ikx}e^{-i\boldsymbol{p}\cdot\boldsymbol{x}}+\left(\frac{-E_k+E_p}{\sqrt{2E_k}}\right)a_k^\dagger(t)e^{ikx}e^{-i\boldsymbol{p}\cdot\boldsymbol{x}}\right]\\&amp;&#x3D;\sqrt{2E_p}a_p(t)e^{-iE_pt}\color{white}{\int}\end{aligned}$$</p>
 <p>代入原积分，利用此结果即得LSZ约化公式</p>
 <p>$$i\int\text{d}^4 x\;e^{ipx}(\Box+m^2)\phi(x)&#x3D;\sqrt{2E_p}[a_p(\infty)-a_p(-\infty)]$$</p>
-<p>$$\begin{aligned} S_{fi}&amp;&#x3D;\left(\prod_{f}\sqrt{2E_{f}}\prod_{i}\sqrt{2E_{i}}\right)\bra{\Omega}T\left\{\prod_f a_{p_f}(\infty)\prod_i a_{p_i}^\dagger(-\infty)\right\}\ket{\Omega}\\&amp;&#x3D;\left(\prod_{f}\sqrt{2E_{f}}\prod_{i}\sqrt{2E_{i}}\right)\bra{\Omega}T\left\{\prod_f [a_{p_f}(\infty)-a_{p_f}(-\infty)]\prod_i [a_{p_i}^\dagger(\infty)-a_{p_i}^\dagger(-\infty)]\right\}\ket{\Omega}\\&amp;&#x3D;\prod_f\left[i\int\text{d}^4 x_f\;e^{ip_fx_f}(\Box+m^2)\right]\prod_i\left[i\int\text{d}^4 x_i\;e^{-ip_ix_i}(\Box+m^2)\right]\bra{\Omega}T\left\{\prod_f\phi(x_f)\prod_i\phi(x_i)\right\}\ket{\omega}\end{aligned}$$</p>
+<p>$$\begin{aligned} S_{fi}&amp;&#x3D;\left(\prod_{f}\sqrt{2E_{f}}\prod_{i}\sqrt{2E_{i}}\right)\bra{\Omega}T\left\{\prod_f a_{p_f}(\infty)\prod_i a_{p_i}^\dagger(-\infty)\right\}\ket{\Omega}\\&amp;&#x3D;\left(\prod_{f}\sqrt{2E_{f}}\prod_{i}\sqrt{2E_{i}}\right)\bra{\Omega}T\left\{\prod_f [a_{p_f}(\infty)-a_{p_f}(-\infty)]\prod_i [a_{p_i}^\dagger(\infty)-a_{p_i}^\dagger(-\infty)]\right\}\ket{\Omega}\\&amp;&#x3D;\prod_f\left[i\int\text{d}^4 x_f\;e^{ip_fx_f}(\Box_f+m^2)\right]\prod_i\left[i\int\text{d}^4 x_i\;e^{-ip_ix_i}(\Box_i+m^2)\right]\bra{\Omega}T\left\{\prod_f\phi(x_f)\prod_i\phi(x_i)\right\}\ket{\omega}\end{aligned}$$</p>
 <h2 id="S矩阵的计算"><a href="#S矩阵的计算" class="headerlink" title="S矩阵的计算"></a>S矩阵的计算</h2>
   </article>
   <!-- tag -->
@@ -373,10 +373,15 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
+        <a href="../../../../10/24/%E8%BF%9E%E7%BB%AD%E4%BB%8B%E8%B4%A8%E4%B8%AD%E7%9A%84%E7%94%B5%E7%A3%81%E5%9C%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          连续介质中的电磁场
+        </a>
+      
     </div>
     <div>
       
-        <a href="../../23/shadertoy/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="../../../23/shadertoy/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           Shadertoy
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
@@ -391,7 +396,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../lib/clipboard.min.js"></script>
+<script src="../../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -432,7 +437,7 @@
 
 
 
-<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -456,7 +461,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   
@@ -482,7 +487,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

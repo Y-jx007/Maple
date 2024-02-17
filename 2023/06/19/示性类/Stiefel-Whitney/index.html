@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -226,10 +226,10 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
 
@@ -249,19 +249,19 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-08-22 23:06:55</time>
+          <time>2023-11-17 13:56:38</time>
           <span class="text-gray-400">·</span>
-          <span>6 min</span>
+          <span>7 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.4k words</span>
+          <span>1.5k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="Stiefel-Whitney-Classes"><a href="#Stiefel-Whitney-Classes" class="headerlink" title="Stiefel-Whitney Classes"></a>Stiefel-Whitney Classes</h2><p><strong>定理1</strong>$\quad$实射影空间$\mathbb{P}^n$上典范线丛$\gamma_n^1$非平凡</p>
-<p><strong>定理2</strong>$\quad$$\mathbb{R}^n$丛$\xi$为平凡丛当且仅当且其拥有$n$个线性独立的截面</p>
+    <h2 id="Stiefel-Whitney-Classes"><a href="#Stiefel-Whitney-Classes" class="headerlink" title="Stiefel-Whitney Classes"></a>Stiefel-Whitney Classes</h2><p><strong>定理1</strong>$\quad$$\mathbb{R}^n$丛$\xi$为平凡丛当且仅当且其拥有$n$个线性独立的截面</p>
+<p><strong>定理2</strong>$\quad$实射影空间$\mathbb{P}^n$上典范线丛$\gamma_n^1$非平凡</p>
 <p>由如下四条公理定义底流形$B$上n维向量丛$\xi$的 <strong>Stiefel-Whitney Classes</strong> $\text{w}_i(\xi)$</p>
 <p><strong>公理1</strong></p>
 <p>$$\text{w}_i(\xi)\in H^i(B(\xi);\mathbb{Z}_2)$$</p>
@@ -296,21 +296,22 @@
 <p>由于切丛与法丛直和为平凡丛</p>
 <p><strong>定理3(Whitney Duality)</strong>$\quad$设$M$为欧式空间中流形，$\tau_M$ 为其切丛，$\nu$ 为其法丛</p>
 <p>$$\text{w}(\tau_M)\text{w}(\nu)&#x3D;1$$</p>
-<p>$S^n$ 切丛和法丛的 total Stiefel-Whitney class 均为$1$</p>
-<p><strong>引理1</strong>$\quad$对 $i\le n$，$H^i(\mathbb{P}^n;\mathbb{Z}_2)$为2阶循环群，若记$a$为$H^1(\mathbb{P}^n;\mathbb{Z}_2)$非零元，</p>
-<p>则在$\smile$下$a^i$为$H^i(\mathbb{P}^n;\mathbb{Z}_2)$非零元</p>
+<p>$S^n$ 切丛和法丛的 total Stiefel-Whitney class 均为$1$，以下将$\text{w}(\tau_M)$简写为$\text{w}(M)$</p>
+<p><strong>引理1</strong>$\quad$对 $i\le n$，$H^i(\mathbb{P}^n;\mathbb{Z}_2)$为2阶循环群，若记$a$为$H^1(\mathbb{P}^n;\mathbb{Z}_2)$非零元，<br>则在乘积$\smile$下$a^i$为$H^i(\mathbb{P}^n;\mathbb{Z}_2)$非零元</p>
+<p>因此$H^\bullet(\mathbb{P}^n;\mathbb{Z}_2)$可视作$\mathbb{Z}_2$上拥有一个生成元$a$，并且满足关系$a^{n+1}&#x3D;0$的代数</p>
 <p>$\mathbb{P}^n$上典范线丛$\gamma_n^1$的总示性类为</p>
 <p>$$\text{w}(\gamma_n^1)&#x3D;1+a$$</p>
 <p>由于$\mathbb{P}^n$上典范线丛$\gamma_n^1$为平凡丛$\varepsilon^{n+1}$的子丛，记$\gamma^\perp$为$\gamma_n^1$正交补子丛，则</p>
 <p>$$\text{w}(\gamma^\perp)&#x3D;1+a+a^2+\cdots+a^n$$</p>
 <p><strong>引理2</strong>$\quad$若$\tau$为$\mathbb{P}^n$切丛，则$\tau\cong \text{Hom}(\gamma_n^1,\gamma^\perp)$</p>
 <p><strong>引理3</strong>$\quad$若$\varepsilon^1$为$\mathbb{P}^n$上平凡线丛，则</p>
-<p>$$\tau\oplus\varepsilon^1\cong \bigoplus_{i&#x3D;0}^n\gamma_n^1$$</p>
+<p>$$\tau\oplus\varepsilon^1\cong \text{Hom}(\gamma_n^1,\gamma^\perp\oplus\gamma_n^1)\cong\bigoplus_{i&#x3D;0}^n\gamma_n^1$$</p>
 <p><strong>定理4</strong>$\quad$</p>
 <p>$$\text{w}(\mathbb{P}^n)&#x3D;(1+a)^{n+1}$$</p>
 <p><strong>推论5(Stiefel)</strong>$\quad$$\text{w}(\mathbb{P}^n)&#x3D;1$ 当且仅当 $n+1&#x3D;2^m$</p>
 <p>已知 $\mathbb{P}^1,\mathbb{P}^3,\mathbb{P}^7$ 可平行化，但更高阶的射影空间不可平行化</p>
-<h2 id="商代数"><a href="#商代数" class="headerlink" title="商代数"></a>商代数</h2><p><strong>定理5(Stiefel)</strong>$\quad$若存在无零因子双线性算子$p$</p>
+<h2 id="商代数"><a href="#商代数" class="headerlink" title="商代数"></a>商代数</h2><p>若$M$切丛平凡，则称$M$可平行化</p>
+<p><strong>定理5(Stiefel)</strong>$\quad$若存在无零因子双线性算子$p$</p>
 <p>$$p:\mathbb{R}^n\times\mathbb{R}^n\to \mathbb{R}^n$$</p>
 <p>则$\mathbb{P}^{n-1}$为可平行化流形，即 $n&#x3D;2^m$</p>
 <p>$n&#x3D;1,2,4,8$ 分别对应实数、复数、四元数、八元数，不存在$n&gt;8$的商代数</p>
@@ -370,7 +371,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../lib/clipboard.min.js"></script>
+<script src="../../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -411,7 +412,7 @@
 
 
 
-<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -435,7 +436,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   
@@ -461,7 +462,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

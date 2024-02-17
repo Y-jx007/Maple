@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -232,23 +232,28 @@
   <ul class="mt-2">
     
       <li class="mt-2">
-        <a href="%E7%A4%BA%E6%80%A7%E7%B1%BB/"> 示性类</a>
+        <a href="%E7%94%B5%E5%8A%A8%E5%8A%9B%E5%AD%A6/"> 电动力学</a>
         <span>(4)</span>
       </li>
     
       <li class="mt-2">
-        <a href="%E7%94%B5%E5%8A%A8%E5%8A%9B%E5%AD%A6/"> 电动力学</a>
-        <span>(1)</span>
+        <a href="%E7%A4%BA%E6%80%A7%E7%B1%BB/"> 示性类</a>
+        <span>(5)</span>
       </li>
     
       <li class="mt-2">
         <a href="%E8%AE%A1%E7%AE%97%E6%9C%BA/"> 计算机</a>
-        <span>(2)</span>
+        <span>(3)</span>
       </li>
     
       <li class="mt-2">
-        <a href="%E5%9C%BA%E8%AE%BA/"> 场论</a>
-        <span>(3)</span>
+        <a href="%E4%BB%A3%E6%95%B0%E6%8B%93%E6%89%91/"> 代数拓扑</a>
+        <span>(1)</span>
+      </li>
+    
+      <li class="mt-2">
+        <a href="%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/"> 共形场论</a>
+        <span>(9)</span>
       </li>
     
       <li class="mt-2">
@@ -262,13 +267,18 @@
       </li>
     
       <li class="mt-2">
-        <a href="%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/"> 微分几何</a>
-        <span>(3)</span>
+        <a href="%E5%9C%BA%E8%AE%BA/"> 场论</a>
+        <span>(5)</span>
       </li>
     
       <li class="mt-2">
         <a href="%E7%9B%B8%E5%AF%B9%E8%AE%BA/"> 相对论</a>
         <span>(4)</span>
+      </li>
+    
+      <li class="mt-2">
+        <a href="%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/"> 微分几何</a>
+        <span>(3)</span>
       </li>
     
       <li class="mt-2">
@@ -278,7 +288,7 @@
     
       <li class="mt-2">
         <a href="%E8%B6%85%E5%AF%B9%E7%A7%B0/"> 超对称</a>
-        <span>(4)</span>
+        <span>(5)</span>
       </li>
     
       <li class="mt-2">
@@ -302,7 +312,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

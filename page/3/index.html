@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -241,10 +241,10 @@
         <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
       </div>
     
-    <a href="../../2023/06/07/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/%E4%BA%8C%E6%AC%A1%E9%87%8F%E5%AD%90%E5%8C%96/">
+    <a href="../../2023/09/21/Maxwell%E6%96%B9%E7%A8%8B%E7%BB%84/">
       <header>
         <h2 class="font-bold text-xl">
-          二次量子化
+          Maxwell方程组
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -252,19 +252,19 @@
           
         </p>
         <p class="line-clamp-4">
-          6月 07
+          9月 21
           ·
-          4 min
+          9 min
         </p>
       </section>
     </a>
   
     
     
-    <a href="../../2023/06/06/%E5%A4%8D%E5%88%86%E6%9E%90/%E6%A4%AD%E5%9C%86%E5%87%BD%E6%95%B0/">
+    <a href="../../2023/09/17/Euler%20Class/">
       <header>
         <h2 class="font-bold text-xl">
-          椭圆函数
+          定向丛和Euler Class
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -272,27 +272,7 @@
           
         </p>
         <p class="line-clamp-4">
-          6月 06
-          ·
-          20 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/05/%E7%BE%A4%E8%AE%BA/%E7%BE%A4%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
-      <header>
-        <h2 class="font-bold text-xl">
-          群的基本概念
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
+          9月 17
           ·
           1 min
         </p>
@@ -301,10 +281,10 @@
   
     
     
-    <a href="../../2023/06/05/%E7%BE%A4%E8%AE%BA/%E7%BD%AE%E6%8D%A2%E7%BE%A4/">
+    <a href="../../2023/09/16/%E7%BB%8F%E5%85%B8%E8%AE%A1%E7%AE%97/">
       <header>
         <h2 class="font-bold text-xl">
-          置换群
+          经典计算
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -312,7 +292,127 @@
           
         </p>
         <p class="line-clamp-4">
-          6月 05
+          9月 16
+          ·
+          1 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/09/11/%E5%9C%BA%E8%AE%BA/%E8%87%AA%E7%94%B1%E6%A0%87%E9%87%8F%E5%9C%BA/">
+      <header>
+        <h2 class="font-bold text-xl">
+          Klein-Gordon场
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          9月 11
+          ·
+          14 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/08/18/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E8%B6%85%E5%9C%BA/">
+      <header>
+        <h2 class="font-bold text-xl">
+          超场
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          8月 18
+          ·
+          22 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/08/07/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E8%B6%85%E5%AF%B9%E7%A7%B0%E4%BB%A3%E6%95%B0%E8%A1%A8%E7%A4%BA/">
+      <header>
+        <h2 class="font-bold text-xl">
+          超对称代数表示
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          8月 07
+          ·
+          12 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/07/30/%E7%BE%A4%E8%AE%BA/Lorentz%E7%BE%A4%E8%A1%A8%E7%A4%BA/">
+      <header>
+        <h2 class="font-bold text-xl">
+          Lorentz群表示
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          7月 30
+          ·
+          1 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/07/30/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E6%97%8B%E9%87%8F%E4%BB%A3%E6%95%B0/">
+      <header>
+        <h2 class="font-bold text-xl">
+          旋量代数
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          7月 30
+          ·
+          7 min
+        </p>
+      </section>
+    </a>
+  
+    
+    
+    <a href="../../2023/07/16/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E6%97%B6%E7%A9%BA%E5%AF%B9%E7%A7%B0%E6%80%A7/">
+      <header>
+        <h2 class="font-bold text-xl">
+          时空对称性拓展
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          7月 16
           ·
           5 min
         </p>
@@ -321,10 +421,10 @@
   
     
     
-    <a href="../../2023/06/05/%E7%BE%A4%E8%AE%BA/%E7%89%B9%E5%BE%81%E6%A0%87%E8%A1%A8%E8%A1%A8/">
+    <a href="../../2023/07/16/%E5%A4%8D%E5%88%86%E6%9E%90/%E5%8F%8C%E6%9B%B2%E5%87%A0%E4%BD%95/">
       <header>
         <h2 class="font-bold text-xl">
-          特征标表表
+          双曲几何
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -332,109 +432,9 @@
           
         </p>
         <p class="line-clamp-4">
-          6月 05
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/05/%E7%BE%A4%E8%AE%BA/%E7%BE%A4%E8%A1%A8%E7%A4%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
-          群表示
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 05
-          ·
-          6 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/04/%E5%A4%8D%E5%88%86%E6%9E%90/%E9%BB%8E%E6%9B%BC-zeta/">
-      <header>
-        <h2 class="font-bold text-xl">
-          黎曼$\zeta$函数
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 04
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/03/%E7%BE%A4%E8%AE%BA/Lie%E7%BE%A4/">
-      <header>
-        <h2 class="font-bold text-xl">
-          Lie群
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 03
+          7月 16
           ·
           2 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/06/02/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/%E8%B7%AF%E5%BE%84%E7%A7%AF%E5%88%86/">
-      <header>
-        <h2 class="font-bold text-xl">
-          路径积分
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          6月 02
-          ·
-          3 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="../../2023/05/27/%E7%9B%B8%E5%AF%B9%E8%AE%BA/%E5%8F%B2%E7%93%A6%E8%A5%BF%E6%97%B6%E7%A9%BA/">
-      <header>
-        <h2 class="font-bold text-xl">
-          史瓦西时空
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          5月 27
-          ·
-          7 min
         </p>
       </section>
     </a>
@@ -449,7 +449,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

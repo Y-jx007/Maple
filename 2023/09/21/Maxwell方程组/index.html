@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -226,10 +226,10 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
 
@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-09-22 17:02:34</time>
+          <time>2023-10-21 14:17:28</time>
           <span class="text-gray-400">·</span>
           <span>9 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.8k words</span>
+          <span>1.9k words</span>
         </section>
       </div>
     </div>
@@ -324,8 +324,10 @@
 <p>柱面波解与平面波解一样具有完备性，$2$维情况下任意波均可用其展开，以下为沿$\hat{x}$方向传播的平面波的柱面波展开</p>
 <p>$$e^{ik\rho\cos\phi}&#x3D;\sum_{m&#x3D;-\infty}^\infty i^m J(k\rho)e^{im\phi}$$</p>
 <p><strong>球面波解</strong></p>
-<p>令 $\boldsymbol{c}&#x3D;\boldsymbol{\rho}$，则 $\nabla\cdot\boldsymbol{c}&#x3D;3，\nabla\times\boldsymbol{c}&#x3D;0$，令$z_n$为四类球Bessel函数之一，$P_n^m$为连带勒让德函数，标量波动方程球坐标系下通解为</p>
-<p>$$\psi_{nm}(r,\theta,\phi)&#x3D;z_n(kr)P_n^m(\cos\theta)e^{im\phi}$$</p>
+<p>令 $\boldsymbol{c}&#x3D;\boldsymbol{r}$，则 $\nabla\cdot\boldsymbol{c}&#x3D;3，\nabla\times\boldsymbol{c}&#x3D;0$，令$z_n$为四类球Bessel函数之一，$P_n^m$为连带勒让德函数，标量波动方程球坐标系下通解为</p>
+<p>$$\psi_{mn}(r,\theta,\phi)&#x3D;z_n(kr)P_n^m(\cos\theta)e^{im\phi}$$</p>
+<p>$3$维情况下任意波均可用球面波展开，以下为沿$\hat{z}$方向传播的平面波的球面波展开，其中角标$(1)$表示径向函数选取第一类球Bessel函数$j_n(r)$</p>
+<p>$$e^{ikr\cos\theta}&#x3D;\sum_{n&#x3D;1}^\infty i^n\frac{2n+1}{n(n+1)}(\boldsymbol{M}_{o1n}^{(1)}-i\boldsymbol{N}_{e1n}^{(1)})$$</p>
 
   </article>
   <!-- tag -->
@@ -359,7 +361,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../lib/clipboard.min.js"></script>
+<script src="../../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -400,7 +402,7 @@
 
 
 
-<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -424,7 +426,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   
@@ -450,7 +452,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

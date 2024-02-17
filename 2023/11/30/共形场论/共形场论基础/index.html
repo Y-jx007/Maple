@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>共形场论基础 | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        共形场论基础
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        共形场论基础
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-01-27 00:26:18</time>
+          <span class="text-gray-400">·</span>
+          <span>24 min</span>
+          <span class="text-gray-400">·</span>
+          <span>4.8k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h3 id="连续对称变换"><a href="#连续对称变换" class="headerlink" title="连续对称变换"></a>连续对称变换</h3><p>考虑连续对称场变换及其无穷小形式</p>
+<p>$$x\to x’\qquad \Phi(x)\to\Phi’(x’)&#x3D;\mathcal{F}(\Phi(x))$$</p>
+<p>$$x’^\mu&#x3D;x^\mu+\omega_a\frac{\delta x^\mu}{\delta\omega_a}\qquad \Phi’(x’)&#x3D;\Phi(x)+\omega_a\frac{\delta \mathcal{F}}{\delta\omega_a}(x)$$</p>
+<p>可定义变换生成元 $G_a$</p>
+<p>$$\delta_\omega\Phi(x)&#x3D;\Phi’(x)-\Phi(x)&#x3D;-i\omega_aG_a\Phi(x)$$</p>
+<p>$$iG_a\Phi&#x3D;\frac{\delta x^\mu}{\delta\omega_a}\partial_\mu\Phi-\frac{\delta \mathcal{F}}{\delta\omega_a}$$</p>
+<p>平移、缩放与旋转变换及其生成元形式如下</p>
+<p>$$\begin{array}{l}&amp;\Phi’(x+a)&#x3D;\Phi(x)\qquad &amp; P_\mu&#x3D;-i\partial_\mu\\<br>\quad\\<br>&amp;\Phi’(\lambda x)&#x3D;\lambda^{-\Delta}\Phi(x)\qquad &amp; D&#x3D;-ix^\mu\partial_\mu-i\Delta\\<br>\quad\\<br>&amp;\Phi’(\Lambda x)&#x3D;U(\Lambda)\Phi(x)\qquad &amp; L^{\mu\nu}&#x3D;i(x^\mu\partial^\nu-x^\nu\partial^\mu)+S^{\mu\nu}\end{array}$$</p>
+<h3 id="Noether定理"><a href="#Noether定理" class="headerlink" title="Noether定理"></a>Noether定理</h3><p>Noether定理表述了作用量的每个连续对称变化都对应一个经典守恒流，考虑以下作用量及其由 $\omega_a G_a$ 生成的对称变化</p>
+<p>$$\mathcal{S}&#x3D;\int\text{d}^d x\;\mathcal{L}(\Phi,\partial_\mu\Phi)$$</p>
+<p>$$S’&#x3D;\int\text{d}^d x\left|\frac{\partial x’}{\partial x}\right|\;\mathcal{L}(\mathcal{F}(\Phi(x)),\frac{\partial x^\nu}{\partial x’^\mu}\partial_\nu\mathcal{F}(\Phi(x)))$$</p>
+<p>其无穷小变化形式如下</p>
+<p>$$S’&#x3D;\int\text{d}^d x\left(1+\partial_\mu\left(\omega_a\frac{\delta x^\mu}{\delta\omega_a}\right)\right)\mathcal{L}\left(\Phi+\omega_a\frac{\delta\mathcal{F}}{\delta\omega_a},\left(\delta_\mu^\nu-\partial_\mu\left(\omega_a\frac{\delta x^\nu}{\delta\omega_a}\right)\right)\left(\partial_\nu\Phi+\partial_\nu\left(\omega_a\frac{\delta\mathcal{F}}{\delta\omega_a}\right)\right)\right)$$</p>
+<p>由于作用量在刚性变换下对称，即 $\omega_a$ 为常数时 $\delta S&#x3D;S’-S&#x3D;0$，因此作用量一阶变分仅含 $\omega_a$ 导数项，可将其写为以下形式</p>
+<p>$$\delta S&#x3D;-\int \text{d}^d x\; j_a^\mu\partial_\mu\omega_a&#x3D;\int \text{d}^d x\; \omega_a\partial_\mu j_a^\mu$$</p>
+<p>与无穷小变化形式比较即得 $j_a^\mu$ 表达式</p>
+<p>$$j_a^\mu&#x3D;\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi)}\partial_\nu\Phi-\delta_\nu^\mu\mathcal{L}\right)\frac{\delta x^\nu}{\delta\omega_a}-\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi)}\frac{\delta \mathcal{F}}{\delta\omega_a}$$</p>
+<p>若场满足经典运动方程，则对任意无穷小参数 $\omega_a(x)$ 均有 $\delta S&#x3D;0$，可知 $j_a^\mu$ 散度为零，即 $j_a^\mu$ 为守恒流，其对应守恒荷 $Q_a$</p>
+<p>$$\partial_\mu j_a^\mu&#x3D;0\qquad Q_a&#x3D;\int\text{d}^{d-1}x\; j^0_a$$</p>
+<p>$$\frac{\dd Q_a}{\dd t}&#x3D;\int\text{d}^{d-1}x\; \partial_0 j^0_a&#x3D;-\int\text{d}^{d-1}x\; \partial_i j^i_a&#x3D;0$$</p>
+<p>其中守恒流添加一项反对称张量的散度仍可满足连续性方程</p>
+<p>$$j_a^\mu\to j_a^\mu+\partial_\nu B^{\nu\mu}_a\qquad B^{\nu\mu}_a&#x3D;-B^{\mu\nu}_a$$</p>
+<p>考虑平移变换，其守恒流称为能动张量，添加一项散度仍可满足连续性方程</p>
+<p>$$T_c^{\mu\nu}&#x3D;\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi)}\partial^\nu\Phi-\eta^{\mu\nu}\mathcal{L}$$</p>
+<p>$$T_B^{\mu\nu}&#x3D;T_c^{\mu\nu}+\partial_\rho B^{\rho\mu\nu}\qquad B^{\rho\mu\nu}&#x3D;-B^{\mu\rho\nu}$$</p>
+<p>考虑Lorentz变换的守恒流</p>
+<p>$$j^{\mu\nu\rho}&#x3D;T_c^{\mu\nu}x^\rho-T_c^{\mu\rho}x^\nu+\frac{i}{2}\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi)}S^{\nu\rho}\Phi$$</p>
+<p>寻找 $B^{\mu\nu\rho}$ 使得 $j^{\mu\nu\rho}$ 具有以下形式，由连续性条件知 $T_B^{\mu\nu}$ 对称，称为Belinfante张量</p>
+<p>$$j^{\mu\nu\rho}&#x3D;T_B^{\mu\nu}x^\rho-T_B^{\mu\rho}x^\nu\qquad T_B^{\mu\nu}&#x3D;T_B^{\nu\mu}$$</p>
+<p>满足上述条件的 $B^{\mu\nu\rho}$ 并不唯一，可验证以下选择符合要求</p>
+<p>$$B^{\mu\rho\nu}&#x3D;\frac{i}{4}\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi)}S^{\nu\rho}\Phi+\frac{\partial\mathcal{L}}{\partial(\partial_\rho\Phi)}S^{\mu\nu}\Phi+\frac{\partial\mathcal{L}}{\partial(\partial_\nu\Phi)}S^{\mu\rho}\Phi\right)$$</p>
+<p>$$T_c^{\rho\nu}-T_c^{\nu\rho}&#x3D;-\partial_\mu\left(\frac{i}{2}\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi)}S^{\nu\rho}\Phi\right)$$</p>
+<p>$$\partial_\mu B^{\mu\rho\nu}-\partial_\mu B^{\mu\nu\rho}&#x3D;\partial_\mu\left(\frac{i}{2}\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi)}S^{\nu\rho}\Phi\right)$$</p>
+<p>考虑缩放变换的守恒流</p>
+<p>$$j_D^\mu&#x3D;T^{\mu}_{c\;\nu}x^\nu+\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi)}\Delta\Phi$$</p>
+<p>同样可修改能动张量使其具有以下形式，并且仍保持 $T^{\mu\nu}$ 对称</p>
+<p>$$j_D^\mu&#x3D;T^{\mu}_{\;\;\nu}x^\nu\qquad T^{\mu}_{\;\;\mu}&#x3D;0$$</p>
+<p>因此下文中默认能动张量无迹且对称</p>
+<h3 id="关联函数"><a href="#关联函数" class="headerlink" title="关联函数"></a>关联函数</h3><p>考虑以下关联函数，其中 $x_1^0\ge \cdots\ge x_n^0$ 已按时序排列，下文关联函数默认省略时序</p>
+<p>$$\ev{\Phi(x_1)\cdots\Phi(x_n)}&#x3D;\frac{1}{\mathcal{Z}}\int[\dd\Phi]\Phi(x_1)\cdots\Phi(x_n)\exp(-S[\Phi])$$</p>
+<p>$$\mathcal{Z}&#x3D;\int[\dd\Phi]\exp(-S[\Phi])$$</p>
+<p>由对称变换下测度和作用量不变可得</p>
+<p>$$\begin{aligned}\ev{\Phi(x’_1)\cdots\Phi(x’_n)}&amp;&#x3D;\frac{1}{\mathcal{Z}}\int[\dd\Phi]\Phi(x’_1)\cdots\Phi(x’_n)\exp(-S[\Phi])\\&amp;&#x3D;\frac{1}{\mathcal{Z}}\int[\dd\Phi’]\Phi’(x’_1)\cdots\Phi’(x’_n)\exp(-S[\Phi’])\\&amp;&#x3D;\frac{1}{\mathcal{Z}}\int[\dd\Phi]\mathcal{F}(\Phi(x_1))\cdots\mathcal{F}(\Phi(x_n))\exp(-S[\Phi])\\&amp;&#x3D;\ev{\mathcal{F}(\Phi(x_1))\cdots\mathcal{F}(\Phi(x_n))}\end{aligned}$$</p>
+<p>由上式可知关联函数在平移、旋转与缩放下的变化形式</p>
+<p>$$\ev{\Phi(x_1+a_1)\cdots\Phi(x_n+a_n)}&#x3D;\ev{\Phi(x_1)\cdots\Phi(x_n)}$$</p>
+<p>$$\ev{\Phi(\Lambda^\mu_{\;\;\nu}x_1^\nu)\cdots\Phi(\Lambda^\mu_{\;\;\nu}x_n^\nu)}&#x3D;\ev{\Phi(x_1^\mu)\cdots\Phi(x_n^\mu)}$$</p>
+<p>$$\ev{\phi_1(\lambda x_1)\cdots\phi_n(\lambda x_n)}&#x3D;\lambda^{-\Delta_1}\cdots\lambda^{-\Delta_n}\ev{\phi_1(x_1)\cdots\phi_n(x_n)}$$</p>
+<p>考虑两点关联函数，以上三种对称性要求其具有以下形式</p>
+<p>$$\ev{\phi_1(x_1)\phi_2(x_2)}&#x3D;\frac{C_{12}}{|x_1-x_2|^{\Delta_1+\Delta_2}}$$</p>
+<p>另外还剩下一种共形变换，即SCT</p>
+<p>$$x’^\mu&#x3D;\frac{x^\mu-x^2 f^\mu}{1-2fx+f^2 x^2}$$</p>
+<p>$$|x_i’-x_j’|&#x3D;\frac{|x_i-x_j|}{(1-2fx_i+f^2x_i^2)^{1&#x2F;2}(1-2fx_j+f^2x_j^2)^{1&#x2F;2}}$$</p>
+<p>由SCT对称性可定出缩放维数 $\Delta_1&#x3D;\Delta_2$，即只有共形维数相等的准初级场是相关的</p>
+<p>$$\frac{C_{12}}{|x_1-x_2|^{\Delta_1+\Delta_2}}&#x3D;\frac{C_{12}}{\gamma_1^{\Delta_1}\gamma_2^{\Delta_2}}\frac{(\gamma_1\gamma_2)^{(\Delta_1+\Delta_2)&#x2F;2}}{|x_1-x_2|^{\Delta_1+\Delta_2}}$$</p>
+<p>$$\gamma_i&#x3D;1-2fx_i+f^2x_i^2$$</p>
+<p>综上两点关联函数具有以下形式</p>
+<p>$$\ev{\phi_1(x_1)\phi_2(x_2)}&#x3D;\left\lbrace\begin{array}.\displaystyle\frac{C_{12}}{|x_1-x_2|^{2\Delta_1}}&amp; \text{if} &amp; \Delta_1&#x3D;\Delta_2\\ 0&amp;\text{if}&amp;\Delta_1\neq\Delta_2\end{array}\right.$$</p>
+<p>同样可以定出三点及四点关联函数的形式，构造四点关联函数利用了交比共形不变的性质，其中 $x_{ij}&#x3D;|x_i-x_j|$，$\Delta&#x3D;\sum_{i&#x3D;1}^4\Delta_i$</p>
+<p>$$\ev{\phi_1(x_1)\phi_2(x_2)\phi_3(x_3)}&#x3D;\frac{C_{123}}{x_{12}^{\Delta_1+\Delta_2-\Delta_3}x_{23}^{\Delta_2+\Delta_3-\Delta_1}x_{13}^{\Delta_3+\Delta_1-\Delta_2}}$$</p>
+<p>$$\ev{\phi_1(x_1)\cdots\phi_4(x_4)}&#x3D;f\left(\frac{x_{12}x_{34}}{x_{13}x_{24}},\frac{x_{12}x_{34}}{x_{23}x_{14}}\right)\prod_{i&lt;j}^4 x_{ij}^{\Delta&#x2F;3-\Delta_i-\Delta_j}$$</p>
+<h3 id="Ward-Takahashi等式"><a href="#Ward-Takahashi等式" class="headerlink" title="Ward-Takahashi等式"></a>Ward-Takahashi等式</h3><p>Noether定理的量子化版本称为Ward-Takahashi等式，考虑无穷小对称场变换</p>
+<p>$$\Phi’(x)&#x3D;\Phi(x)-i\omega_aG_a\Phi(x)$$</p>
+<p>记 $X&#x3D;\Phi(x_1)\cdots\Phi(x_n)$ ，已按时序排列，由关联函数不变可知</p>
+<p>$$\ev{X}&#x3D;\frac{1}{\mathcal{Z}}\int [\dd \Phi’](X+\delta X)\exp\left(-S[\Phi]-\int\text{d}^d x\;\omega_a(x)\partial_\mu j^\mu_a\right)$$</p>
+<p>$$\ev{\delta X}&#x3D;\int\text{d}^d x\;\omega_a(x)\partial_\mu \ev{j^\mu_a X}$$</p>
+<p>由无穷小变换写出 $\delta X$ 具体形式</p>
+<p>$$\begin{aligned}\delta X&amp;&#x3D;-i\sum_{i&#x3D;1}^n\omega_a(x_i)\Phi(x_1)\cdots G_a\Phi(x_i)\cdots\Phi(x_n)\\&amp;&#x3D;-i\int\text{d}^d x\;\omega_a(x)\sum_{i&#x3D;1}^n\delta(x-x_i)\Phi(x_1)\cdots G_a\Phi(x_i)\cdots\Phi(x_n)\end{aligned}$$</p>
+<p>比较即得Ward-Takahashi等式</p>
+<p>$$\frac{\partial}{\partial x^\mu} \ev{j^\mu_a(x) \Phi(x_1)\cdots\Phi(x_n)}&#x3D;-i\sum_{i&#x3D;1}^n\delta(x-x_i)\ev{\Phi(x_1)\cdots G_a\Phi(x_i)\cdots\Phi(x_n)}$$</p>
+<p>令 $t&#x3D;x_1^0$，$Y&#x3D;\Phi(x_2)\cdots\Phi(x_n)$，对Ward-Takahashi等式在狭窄区间 $x^0\in[t_-,t_+],\quad t_-&lt; t&lt; t_+$ 内积分可得</p>
+<p>$$\ev{Q_a(t_+)\Phi(x_1)Y}-\ev{Q_a(t_-)\Phi(x_1)Y}&#x3D;-i\ev{G_a\Phi(x_1)Y}$$</p>
+<p>取极限 $t_-\to t_+$，由 $Y$ 的任意性可知守恒荷即为无穷小对称变换生成元</p>
+<p>$$[Q_a,\Phi]&#x3D;-iG_a\Phi$$</p>
+<h3 id="共形Ward-Takahashi等式"><a href="#共形Ward-Takahashi等式" class="headerlink" title="共形Ward-Takahashi等式"></a>共形Ward-Takahashi等式</h3><p>对无穷小共形变换 $x^\mu\mapsto x^\mu+\epsilon^\mu(x)$，守恒流可写为以下形式，其中 $T^{\mu\nu}$ 对称无迹</p>
+<p>$$j_a^\mu(x)\omega_a&#x3D;T^{\mu\nu}\epsilon_\nu$$</p>
+<p>代入ward-Takahashi等式可得下式，其中区域 $D$ 包含 $X$ 中所有场的坐标</p>
+<p>$$\ev{\delta_\epsilon X}&#x3D;\int_D\text{d}^2 x\;\partial_\mu\ev{T^{\mu\nu}(x)\epsilon_\nu(x)X}$$</p>
+<p>将二维能动张量用复变量表示，$\displaystyle T_{\alpha\beta}&#x3D;\frac{\partial x^\mu}{\partial x^\alpha}\frac{\partial x^\nu}{\partial x^\beta}T_{\mu\nu}$，其中$x^\alpha$对应$(z,\bar z)$，利用能动张量对称性，迹和散度为零可得</p>
+<p>$$T_{zz}&#x3D;\frac{1}{2}(T_{00}-iT_{10})\qquad T_{\bar z\bar z}&#x3D;\frac{1}{2}(T_{00}+iT_{10})\qquad T_{z\bar z}&#x3D;T_{\bar z z}&#x3D;0$$</p>
+<p>$$\partial_{\bar z} T_{zz}&#x3D;0\qquad\partial_z T_{\bar z\bar z}&#x3D;0$$</p>
+<p>因此二维能动张量仅有全纯和共轭全纯两个非零分量，可定义</p>
+<p>$$T(z)&#x3D;-2\pi T_{zz}(z,\bar z)\qquad \overline T(\bar z)&#x3D;-2\pi T_{\bar z\bar z}(z,\bar z)$$</p>
+<p>$$\epsilon(z)&#x3D;\epsilon^z\qquad\bar\epsilon(\bar z)&#x3D;\epsilon^{\bar z}\qquad\epsilon^z&#x3D;\epsilon^0+i\epsilon^1\qquad\epsilon^{\bar z}&#x3D;\epsilon^0-i\epsilon^1$$</p>
+<p>选取Euclidean度规，由Stokes公式可得以下共形Ward-Takahashi等式，其中积分路径 $C&#x3D;\partial D$ 包含 $X$ 中所有场的坐标</p>
+<p>$$\ev{\delta_{\epsilon,\bar\epsilon}X}&#x3D;\frac{1}{2\pi i}\oint_C\left[-\text{d} z\;\epsilon(z)\ev{T(z)X}+\text{d} \bar z\;\bar\epsilon(\bar z)\ev{\overline T(\bar z)X}\right]$$</p>
+<h3 id="径序量子化"><a href="#径序量子化" class="headerlink" title="径序量子化"></a>径序量子化</h3><p>注意上文推导中关联函数均默认省略了时序，其不利于共形Ward-Takahashi等式中环路积分的计算，因此作以下映射，使得时序 $\mathcal{T}$ 成为径序 $\mathcal{R}$</p>
+<p>$$w&#x3D;e^z&#x3D;e^{x^0+ix^1}$$</p>
+<p>将共形Ward-Takahashi等式中 $z$ 替换为 $w$</p>
+<p>$$\dd z&#x3D;\frac{\dd w}{w}\qquad \epsilon(z)&#x3D;\frac{\epsilon(w)}{w}\qquad T(z)&#x3D;w^2T(w)$$</p>
+<p>共形Ward-Takahashi等式形式在此映射下仍保持不变</p>
+<p>$$\ev{\delta_{\epsilon,\bar\epsilon}X}&#x3D;\frac{1}{2\pi i}\oint_C\left[-\text{d} w\;\epsilon(w)\ev{T(w)X}+\text{d} \bar w\;\bar\epsilon(\bar w)\ev{\overline T(\bar w)X}\right]$$</p>
+<p>注意在 $w&#x3D;e^z$ 映射下环路积分圈数可能增多，故应限制初始Euclidean平面上坐标$(x^0&#x3D;it,x^1)$范围，使得 $x^1\in [0,2\pi]$，让平面卷曲成无穷长圆柱，即可保证共形Ward-Takahashi等式中环路积分圈数仍为$1$</p>
+<p>Hamiltonian与动量算符分别为时间平移与空间平移的生成元，在此映射下成为 $w$ 平面上缩放与旋转的生成元，可将其写为</p>
+<p>$$H&#x3D;L_0+\overline L_0\qquad P&#x3D;i(L_0-\overline L_0)$$</p>
+<p>另外在径序下算符对易子可表示为环路积分的形式</p>
+<p>$$[A,B]&#x3D;\oint_{C(0)}\dd w\oint_{C(w)}\dd z\;a(z)b(w)$$</p>
+<p>$$A&#x3D;\oint_C a(z)\dd z\quad B&#x3D;\oint_C b(w)\dd w$$</p>
+<p>由Euclidean平面守恒荷 $Q_a&#x3D;\displaystyle\int \text{d} x^1\;j_a^0\quad x^0&#x3D;\text{const.}$，$\omega_a j_a^\mu&#x3D;T^{\mu\nu}\epsilon_\nu$，可推出径序复平面中守恒荷表达式</p>
+<p>$$Q_{\epsilon,\bar\epsilon}&#x3D;\frac{1}{2\pi i}\oint_C\left(\text{d} w \;T(w)\epsilon(w)-\text{d} \bar w\;\overline T(\bar w)\bar \epsilon(\bar w)\right)$$</p>
+<p>共形Ward-Takahashi等式可用守恒荷表示为以下形式</p>
+<p>$$\delta_{\epsilon,\bar\epsilon}X&#x3D;-[Q_{\epsilon,\bar\epsilon},X]$$</p>
+<p>下文默认使用径序复平面，即 $z&#x3D;e^{x^0+ix^1}$，$z$ 平面上原点对应负无穷时刻；下文关联函数与OPE均默认省略径序</p>
+<h3 id="初级场"><a href="#初级场" class="headerlink" title="初级场"></a>初级场</h3><p>若场 $\phi(z,\bar z)$ 在共形变换 $z\mapsto w(z)$ 下按以下规律变化，则称其为具有共形维数 $(h,\bar h)$ 的初级场；若此规律仅适用于 $w\in SL(2,\mathbb{C})&#x2F;\mathbb{Z}_2$，则称其为准初级场</p>
+<p>$$\phi’(w,\bar w)&#x3D;\left(\frac{\text{d} w}{\text{d} z}\right)^{-h}\left(\frac{\text{d} \bar w}{\text{d} \bar z}\right)^{-\bar h}\phi(z,\bar z)$$</p>
+<p>考虑初级场在无穷小共形变换 $w(z)&#x3D;z+\epsilon(z)$ 下的变化规律，直接计算可得</p>
+<p>$$\delta_{\epsilon,\bar\epsilon}\phi(z,\bar z)&#x3D;-(h\partial_z\epsilon+\epsilon\partial_z+\bar h\partial_{\bar z}\bar\epsilon+\bar\epsilon\partial_{\bar z})\phi(z,\bar z)$$</p>
+<p>将具有共形维数 $(h,\bar h)$ 的初级场在原点附近Laurent展开</p>
+<p>$$\phi(z,\bar z)&#x3D;\sum_{m,n\in\mathbb{Z}}z^{-m-h}\bar{z}^{-n-\bar h}\phi_{m,n}$$</p>
+<p>将 $\phi(z,\bar z)$ 视为算符，要求其在原点处非奇异，入射态可写为</p>
+<p>$$\ket{\phi_\text{in}}&#x3D;\lim_{z,\bar z\to 0}\phi(z,\bar z)\ket{0}&#x3D;\phi_{-h,-\bar h}\ket{0}$$</p>
+<p>$$\phi_{m,n}\ket{0}&#x3D;0\qquad(m&gt;-h\;\;\text{or}\;\;n&gt;-\bar h)$$</p>
+<p>考虑 $\phi(z,\bar z)$ 的Hermitian共轭算符，由 $x^0&#x3D;it$，取共轭，$(x^0,x^1)\mapsto (-x^0,x^1)$即 $z\mapsto 1&#x2F;\bar z$，类比初级场的变化规律定义 $\phi^\dagger(z,\bar z)$</p>
+<p>$$\phi^\dagger(z,\bar z)&#x3D;\bar z^{-2h} z^{-2 \bar h}\phi(1&#x2F;\bar z,1&#x2F;z)$$</p>
+<p>同样对 $\phi^\dagger(z,\bar z)$ Laurent展开</p>
+<p>$$\phi^\dagger(z,\bar z)&#x3D;\sum_{m,n\in\mathbb{Z}}\bar z^{m-h}z^{n-\bar h}\phi_{m,n}$$</p>
+<p>对比 $\phi,\phi^\dagger$ 展开式可知</p>
+<p>$$\phi^\dagger_{m, n}&#x3D;\phi_{-m,- n}\qquad \bra{\phi_\text{out}}&#x3D;\bra{0}\phi_{h,\bar h}&#x3D;\ket{\phi_\text{in}}^\dagger$$</p>
+<p>将入射态与出射态作内积</p>
+<p>$$\begin{aligned}\bra{\phi_\text{out}}\ket{\phi_\text{in}}&amp;&#x3D;\lim_{z,\bar z,w,\bar w\to 0}\bra{0}\phi^\dagger(z,\bar z)\phi(w,\bar w)\ket{0}\\&amp;&#x3D;\lim_{z,\bar z,w,\bar w\to 0}\bar z^{-2h}z^{-2\bar h}\bra{0}\phi(1&#x2F;\bar z,1&#x2F;z)\phi(w,\bar w)\ket{0}\\&amp;&#x3D;\lim_{\xi,\bar \xi\to \infty}\bar \xi^{2h}\xi^{2\bar h}\bra{0}\phi(\bar \xi,\xi)\phi(0,0)\ket{0}\end{aligned}$$</p>
+<h3 id="算符乘积展开-OPE"><a href="#算符乘积展开-OPE" class="headerlink" title="算符乘积展开(OPE)"></a>算符乘积展开(OPE)</h3><p>观察初级场变化规律，其中项可写为Chauchy积分形式</p>
+<p>$$h\partial_w\epsilon(w)\phi(w,\bar w)&#x3D;\frac{1}{2\pi i}\int_{C(w)}\dd z\;h\frac{\epsilon(z)}{(z-w)^2}\phi(w,\bar w)$$</p>
+<p>$$\epsilon(w)\partial_w\phi(w,\bar w)&#x3D;\frac{1}{2\pi i}\int_{C(w)}\dd z\;\frac{\epsilon(z)}{z-w}\partial_w\phi(w,\bar w)$$</p>
+<p>考虑全纯初级场乘积 $X&#x3D;\phi_1(w_1)\cdots\phi_n(w_n)$ ，与共形Ward-Takahashi等式比较可得下式，其中reg.表示全纯部分</p>
+<p>$$\ev{T(z)X}&#x3D;\sum_{i}\left(\frac{1}{z-w_i}\partial_{w_i}\ev{X}+\frac{h_i}{(z-w_i)^2}\ev{X}\right)+\text{reg.}$$</p>
+<p>去掉 $\ev{}$ 与全纯部分，即得 $T(z)X$ 的算符乘积展开(OPE)</p>
+<p>$$T(z)X\sim \sum_{i}\left(\frac{1}{z-w_i}\partial_{w_i}X+\frac{h_i}{(z-w_i)^2}X\right)$$</p>
+<p>若 $X$ 由单个初级场 $\phi(w,\bar w)$ 构成，则下式可作为初级场的另一种定义</p>
+<p>$$T(z)\phi(w,\bar w)\sim\frac{h}{(z-w)^2}\phi(w,\bar w)+\frac{1}{z-w}\partial_w\phi(w,\bar w)$$</p>
+<p>$$\overline T(\bar z)\phi(w,\bar w)\sim\frac{\bar h}{(\bar z-\bar w)^2}\phi(w,\bar w)+\frac{1}{\bar z-\bar w}\partial_{\bar w}\phi(w,\bar w)$$</p>
+<p>以下考虑两个全纯能动张量算符的OPE，先给出结果，再进行验证；共轭全纯算符的展开式类似，而 $T(z)\overline T(\bar w)$ 仅含非奇异项</p>
+<p>$$T(z)T(w)\sim\frac{c&#x2F;2}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial_w T(w)}{z-w}$$</p>
+<p>$$T(z)\overline T(\bar w)\sim 0$$</p>
+<p>先将 $T(z)$ Laurent展开，计算守恒荷可知展开系数 $L_n$ 应为对应的 $\text{Vir}_c$ 中生成元</p>
+<p>$$T(z)&#x3D;\sum_{n\in\mathbb{Z}}z^{-n-2}L_n\qquad L_n&#x3D;\frac{1}{2\pi i}\oint\dd z\;z^{n+1}T(z)$$</p>
+<p>$$Q_\epsilon&#x3D;\frac{1}{2\pi i}\oint\dd z\;T(z)\sum_{n\in\mathbb{Z}}\epsilon_n z^{n+1}&#x3D;\sum_{n\in\mathbb{Z}}\epsilon_n L_n$$</p>
+<p>只需验证 $TT$ OPE $L_n$ 满足Virasoro代数即可，以下计算说明上文OPE正确</p>
+<p>$$\begin{aligned}\lbrack L_m,L_n\rbrack&amp;&#x3D;\oint\frac{\dd z}{2\pi i}\oint\frac{\dd w}{2\pi i}z^{m+1}w^{n+1}[T(z),T(w)]\\&amp;&#x3D;\oint_{C(0)}\frac{\dd w}{2\pi i}w^{n+1}\oint_{C(w)}\frac{\dd z}{2\pi i}z^{m+1}\mathcal{R}(T(z)T(w))\\&amp;&#x3D;\oint_{C(0)}\frac{\dd w}{2\pi i}w^{n+1}\oint_{C(w)}\frac{\dd z}{2\pi i}z^{m+1}\left(\frac{c&#x2F;2}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial_w T(w)}{z-w}\right)\\&amp;&#x3D;\oint_{C(0)}\frac{\dd w}{2\pi i}w^{n+1}\left(\frac{c(m+1)m(m-1)}{12}w^{m-2}+2(m+1)w^mT(w)+w^{m+1}\partial_w T(w)\right)\\&amp;&#x3D;(m-n)L_{m+n}+\frac{c}{12}(m^3-m)\delta_{m+n,0}\end{aligned}$$</p>
+<p>$TT$ OPE说明仅在中心荷为零时 $T(z)$ 为初级场，考虑 $T(z)$ 的无穷小共形变换形式</p>
+<p>$$\delta_\epsilon T(z)&#x3D;\epsilon(z)\partial_z T(z)+2\partial_z\epsilon(z)T(z)+\frac{c}{12}\partial^3_z \epsilon(z)$$</p>
+<p>在无穷小Mobius变换 $\epsilon(z)&#x3D;\alpha+\beta z+\gamma z^2$ 下，$T(z)$ 满足共形维数为 $(2,0)$ 的准初级场变换规律，因而可将 $T(z)$ 在共形变换 $z\mapsto w(z)$ 下的变换规律写为以下形式</p>
+<p>$$T’(w)&#x3D;\left(\frac{\dd w}{\dd z}\right)^{-2} (T(z)-\frac{c}{12}\{w;z\})$$</p>
+<p>其中 $\{w;z\}$ 称为Schwarzian导数，由共形变换结合律及 $T(z)$ 为准初级场及可知Schwarzian导数应满足以下性质</p>
+<p>$$\{u;z\}&#x3D;\left(\frac{\dd w}{\dd z}\right)^2 \{u;w\}+\{w;z\}$$</p>
+<p>$$\{w;z\}&#x3D;0\quad\text{for}\quad w\in SL(2,\mathbb{C})&#x2F;\mathbb{Z}_2$$</p>
+<p>结合无穷小共形变换形式可得Schwarzian导数具体形式</p>
+<p>$$\{w;z\}&#x3D;\frac{\text{d}^3 w&#x2F;\text{d} z^3}{\text{d} w&#x2F;\text{d} z}-\frac{3}{2}\left(\frac{\text{d}^2 w&#x2F;\text{d} z^2}{\text{d} w&#x2F;\text{d} z}\right)^2$$</p>
+<p>实际上Schwarzian导数具有比第二条更强的性质</p>
+<p>$$\{\Gamma w;z\}&#x3D;\{w;z\}\quad\text{for}\quad \Gamma\in SL(2,\mathbb{C})&#x2F;\mathbb{Z}_2$$</p>
+<h3 id="Verma-Module"><a href="#Verma-Module" class="headerlink" title="Verma Module"></a>Verma Module</h3><p>真空态 $\ket{0}$ 应在全局共形变换下保持不变，因此 $L_{-1},L_0,L_1$ 及其共轭全纯为真空湮灭算符；此性质也可从 $T(z)\ket{0},\overline T(\bar z)\ket{0}$ 在原点处良定义得出，其同时隐含能动张量真空期望为零的条件</p>
+<p>$$L_n\ket{0}&#x3D;0\quad \bar L_n\ket{0}&#x3D;0\qquad\text{for}\quad n\ge -1$$</p>
+<p>$$\bra{0}T(z)\ket{0}&#x3D;\bra{0}\overline T(\bar z)\ket{0}&#x3D;0$$</p>
+<p>考虑初级场作用于真空得到的渐近态</p>
+<p>$$\phi(0,0)\ket{0}&#x3D;\ket{h,\bar h}$$</p>
+<p>由 $\displaystyle [A,b(w)]&#x3D;\oint \dd z\; a(z)b(w)$ 与 $T\phi$ OPE计算生成元与初级场的对易子</p>
+<p>$$[L_n,\phi(w,\bar w)]&#x3D;h(n+1)w^n\phi(w,\bar w)+w^{n+1}\partial_w\phi(w,\bar w)$$</p>
+<p>$$[\bar L_n,\phi(w,\bar w)]&#x3D;\bar h(n+1)\bar w^n\phi(w,\bar w)+\bar w^{n+1}\partial_w\phi(w,\bar w)$$</p>
+<p>将对易子作用于真空可得 $L_n,\bar L_n$ 对渐近态的作用，由 $H&#x3D;L_0+\bar L_0$ 可知 $\ket{h,\bar h}$ 为Hamiltonian本征态</p>
+<p>$$L_0\ket{h,\bar h}&#x3D;h\ket{h,\bar h}\qquad \bar L_0\ket{h,\bar h}&#x3D;\bar h\ket{h,\bar h}$$</p>
+<p>$$L_n\ket{h,\bar h}&#x3D;0\quad \bar L_n\ket{h,\bar h}&#x3D;0\qquad\text{for}\quad n&gt; 0$$</p>
+<p>假设对易子中初级场全纯，将其Laurent展开，可得以下对易关系</p>
+<p>$$[L_n,\phi_m]&#x3D;[n(h-1)-m]\phi_{n+m}$$</p>
+<p>其中 $[L_0,\phi_m]&#x3D;-m\phi_m$ 说明 $\phi_{-m}$ 为共形维数升 $m$ 算符；而由Virasoro代数可知，$L_{-m}\quad m&gt;0$ 也为共形维数的升 $m$ 算符，具备更高共形维数的激发态可由一系列升算符作用于 $\ket{h}$ 得到</p>
+<p>$$[L_0,L_{-m}]&#x3D;mL_{-m}\qquad L_0L_{-m}\ket{h}&#x3D;(h+m)L_{-m}\ket{h}$$</p>
+<p>具有以下形式的激发态称为 $\ket{h}$ 的$N$级裔，升算符乱序作用于 $\ket{h}$ 得到的激发态均可由 $\ket{h}$ 裔的线性组合得到</p>
+<p>$$L_{-k_1}L_{-k_2}\cdots L_{-k_n}\ket{h}\qquad 1\le k_1\le\cdots\le k_n$$</p>
+<p>$$k_1+k_2+\cdots+k_n&#x3D;N$$</p>
+<p>$\ket{h}$ 及其裔在Virasoro代数下构成Hilbert空间的子空间，称为Verma Module</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../../12/05/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E8%87%AA%E7%94%B1%E5%9C%BAOPE/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          自由场OPE
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../22/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E5%85%B1%E5%BD%A2%E4%B8%8D%E5%8F%98%E6%80%A7/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          共形不变性
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

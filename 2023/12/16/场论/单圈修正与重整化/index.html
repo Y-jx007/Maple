@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>单圈修正与重整化 | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        单圈修正与重整化
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        单圈修正与重整化
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-12-17 16:50:13</time>
+          <span class="text-gray-400">·</span>
+          <span>4 min</span>
+          <span class="text-gray-400">·</span>
+          <span>820 words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h3 id="QED重整化"><a href="#QED重整化" class="headerlink" title="QED重整化"></a>QED重整化</h3><p>高能QED裸Lagrangian</p>
+<p>$$\mathcal{L}&#x3D;-\frac{1}{4}(F_{\mu\nu})^2+\bar\psi(i\cancel{\partial}-m_0)\psi-e_0\bar\psi\gamma^\mu\psi A_\mu$$</p>
+<p>单电子和单光子传播子费曼图</p>
+<p><img src="/images/%E5%8D%95%E7%94%B5%E5%AD%90%E5%8D%95%E5%85%89%E5%AD%90.png"></p>
+<p>定义重整化场，消去Feymann规则中的 $Z_2,Z_3$</p>
+<p>$$\psi&#x3D;Z_2^{1&#x2F;2}\psi_r\qquad A^\mu&#x3D;Z_3^{1&#x2F;2}A^\mu_r$$</p>
+<p>$$\mathcal{L}&#x3D;-\frac{Z_3}{4}(F_{\mu\nu})_r^2+Z_2\bar\psi_r(i\cancel{\partial}-m_0)\psi_r-Z_2 Z_3^{1&#x2F;2}e_0\bar\psi_r\gamma^\mu\psi_r A_{\mu}^r$$</p>
+<p>利用低能下的观测电荷 $e$ 与质量 $m$，省略重整化角标 $r$，可将Lagrangian写为低能物理项与微扰项之和</p>
+<p>$$Z_2Z_3^{1&#x2F;2}e_0&#x3D;e’&#x3D;Z_1 e\qquad Z_2 m_0&#x3D;m+\delta_m$$</p>
+<p>$$Z_i&#x3D;1+\delta_i$$</p>
+<p>$$\mathcal{L}&#x3D;\left(-\frac{1}{4}F_{\mu\nu}^2+\bar\psi(i\cancel{\partial}-m)\psi-e\bar\psi\gamma^\mu\psi A_\mu\right)+\left(-\frac{\delta_3}{4}F_{\mu\nu}^2+\bar\psi(i\delta_2\cancel{\partial}-\delta_m)\psi-e\delta_1\bar\psi\gamma^\mu\psi A_\mu\right)$$</p>
+<p>下文计算单圈修正下的 $Z_i$，可得出电荷与质量对能标的依赖关系</p>
+<h3 id="反常磁矩"><a href="#反常磁矩" class="headerlink" title="反常磁矩"></a>反常磁矩</h3><p>计算以下Feymann图，图中均为重整化场，虚光子 $q^2&lt;0$ ，令 $\Gamma^\mu&#x3D;\gamma^\mu+\delta_\alpha \Gamma^\mu$，在 $\alpha$ 一阶修正下</p>
+<p><img src="/images/%E5%8F%8D%E5%B8%B8%E7%A3%81%E7%9F%A91%E9%98%B6.png"></p>
+<p>$$\begin{aligned}&amp;&#x3D;\bar u(p’)\delta_\alpha\Gamma^\mu(p’,p) u(p)\\\quad\\&amp;&#x3D;\int\frac{\text{d}^4 k}{(2\pi)^4}\frac{-ig_{\nu\rho}}{(k-p)^2}\bar u(p’)(-ie\gamma^\nu)\frac{i(\cancel{k’}+m)}{k’^2-m^2}\gamma^\mu\frac{i(\cancel{k}+m)}{k^2-m^2}(-ie\gamma^\rho)u(p)\\\quad\\&amp;&#x3D;2i e^2\int\frac{\text{d}^4 k}{(2\pi)^4}\frac{\bar u(p’)[\cancel{k}\gamma^\mu\cancel{k’}+m^2\gamma^\mu-2m(k+k’)^\mu]u(p)}{(k-p)^2(k’^2-m^2)(k^2-m^2)}\end{aligned}$$</p>
+<p>计算中用到了以下等式</p>
+<p>$$\{\cancel{a},\cancel{b}\}&#x3D;2ab\qquad \gamma^\nu\gamma^\mu\gamma_\nu&#x3D;-2\gamma^\mu\qquad \{\gamma^\mu,\cancel{a}\}&#x3D;2a^\mu$$</p>
+<p>在计算积分之前，可将 $\Gamma^\mu$ 进一步简化，将 $\Gamma^\mu$ 写为以下形式</p>
+<p>$$\Gamma^\mu&#x3D;A\gamma^\mu+B(p’+p)^\mu+C(p’-p)^\mu$$</p>
+<p>由Dirac方程，低能下可用 $m$ 替代 $\cancel{p’},\cancel{p}$，因此 $\Gamma^\mu$ 系数仅与 $q^2$ 有关；由Ward等式，$\mathcal{M}^\mu q_\mu&#x3D;0$，因此 $C&#x3D;0$；再由Gordon等式，可将 $\Gamma^\mu$ 写为以下形式</p>
+<p>$$\bar u(p’)\gamma^\mu u(p)&#x3D;\bar u(p’)\left[\frac{p’^\mu+p^\mu}{2m}+\frac{i\sigma^{\mu\nu}q_\nu}{2m}\right]u(p)\qquad\sigma^{\mu\nu}&#x3D;\frac{i}{2}[\gamma^\mu,\gamma^\nu]$$</p>
+<p>$$\Gamma^\mu&#x3D;\gamma^\mu F_1(q^2)+i\frac{\sigma^{\mu\nu}q_\nu}{2m}F_2(q^2)$$</p>
+<p>由 $e’&#x3D;Z_1 e$ 可得重整化条件</p>
+<p>$$-iZ_1e\;\Gamma^\mu(q&#x3D;0)&#x3D;-ie\gamma^\mu\qquad\Gamma^\mu(q&#x3D;0)&#x3D;Z_1^{-1}\gamma^\mu$$</p>
+<p>用 $F_1,F_2$ 表示重整化 Dirac Lagrangian</p>
+<p>$$\begin{aligned}\mathcal{L}_{\text{Dirac}}&amp;&#x3D;\bar\psi(i\gamma^\mu(\partial_\mu+ieA_\mu)-m)\psi\\&amp;&#x3D;\bar\psi(i\cancel{\partial}-m)\psi-e\bar\psi\gamma^\mu F_1(0)A_\mu\psi -e\bar\psi\left(\frac{\sigma^{\mu\nu}}{2m}F_2(0)\partial_\nu A_\mu\right)\psi\end{aligned}$$</p>
+<p>Dirac方程平方成为</p>
+<p>$$\left[(i\partial_\mu-eF_1(0)A_\mu)^2-m^2+\frac{e}{2}\sigma^{\mu\nu}F_{\mu\nu}(1+F_2(0))+\cdots\right]\psi&#x3D;0$$</p>
+<h4 id="Feymann参数"><a href="#Feymann参数" class="headerlink" title="Feymann参数"></a>Feymann参数</h4><p>$$\frac{1}{A_1 A_2\cdots A_n}&#x3D;\int_0^1\dd x_1\dd x_2\cdots\dd x_n\;\delta(\sum_{i&#x3D;1}^n x_i-1)\frac{(n-1)!}{[x_1A_1+x_2A_2+\cdots+x_n A_n]^n}$$</p>
+<p>$$\frac{1}{(k-p)^2(k’^2-m^2)(k^2-m^2)}&#x3D;\int_0^1\dd x\dd y\dd z\;\delta(x+y+z-1)\frac{2}{D^3}$$</p>
+<p>$$D&#x3D;l^2-\Delta$$</p>
+<p>$$l&#x3D;k+yq-zp\qquad \Delta&#x3D;-xy q^2+(1-z)^2m^2$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../../../2024/01/09/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E6%A8%A1%E4%B8%8D%E5%8F%98%E6%80%A7/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          模不变性
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../14/%E6%95%A3%E5%B0%84%E5%92%8C%E8%A1%8D%E5%B0%84/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          散射和衍射
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>共形族与算符代数 | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        共形族与算符代数
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        共形族与算符代数
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-01-31 22:00:35</time>
+          <span class="text-gray-400">·</span>
+          <span>19 min</span>
+          <span class="text-gray-400">·</span>
+          <span>3.8k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h3 id="正规序"><a href="#正规序" class="headerlink" title="正规序"></a>正规序</h3><p>初级场OPE仅含一项奇异项，因此两个初级场算符乘积的正规化只需简单减去其真空期望，亦即Wick定理；而对于非初级场算符，此方法不再适用</p>
+<p>写出算符 $A(z)B(w)$ OPE，并将 $A(z)B(z)$ 正规序记为 $(AB)(z)$</p>
+<p>$$A(z)B(w)&#x3D;\sum_{n&#x3D;\infty}^N\frac{\{AB\}_n(w)}{(z-w)^n}$$</p>
+<p>$$(AB)(w)&#x3D;\{AB\}_0(w)$$</p>
+<p>定义 $A(z)B(w)$ 的缩并为其OPE中所有奇异项；$(A(z)B(w))$ 为所有正规项，因此可用正规序Taylor展开</p>
+<p>$$\overbracket{A(z)B}(w)\equiv\sum_{n&#x3D;1}^N\frac{\{AB\}_n(w)}{(z-w)^n}$$</p>
+<p>$$(A(z)B(w))&#x3D;\sum_{k\ge 0}\frac{(z-w)^k}{k!}(\partial^k AB)(w)$$</p>
+<p>$$A(z)B(w)&#x3D;\overbracket{A(z)B}(w)+(A(z)B(w))$$</p>
+<p>正规序现在可写为</p>
+<p>$$(AB)(w)&#x3D;\lim_{z\to w}\left[A(z)B(w)-\overbracket{A(z)B}(w)\right]$$</p>
+<p>$$(AB)(w)&#x3D;\frac{1}{2\pi i}\oint_w\frac{\dd z}{z-w}A(z)B(w)$$</p>
+<p>将 $\phi(z)$，$T(z)$ 在 $w$ 附近Laurent展开</p>
+<p>$$\phi(z)&#x3D;\sum_{n\in \mathbb{Z}}(z-w)^{-n-h}\phi_n(w)$$</p>
+<p>$$T(z)&#x3D;\sum_{n\in \mathbb{Z}}(z-w)^{-n-2}L_n(w)$$</p>
+<p>由此形式可得 $T(z)$ 与任意场 $A(w)$ 的OPE</p>
+<p>$$T(z)A(w)&#x3D;\sum_{n\in\mathbb{Z}}(z-w)^{-n-2}(L_n A)(w)$$</p>
+<p>写出其中几项具体形式</p>
+<p>$$T(z)A(w)&#x3D;\cdots+\frac{h_A A(w)}{(z-w)^2}+\frac{\partial A(w)}{z-w}+(TA)(w)+(z-w)(\partial T A)(w)+\cdots$$</p>
+<p>比较可知</p>
+<p>$$(L_0A)(w)&#x3D;h_A A(w)$$</p>
+<p>$$(L_{-1} A)(w)&#x3D;\partial A(w)$$</p>
+<p>$$(L_{-n-2}A)(w)&#x3D;\frac{1}{n!}(\partial^n T A)(w)$$</p>
+<p>$$(L_{-n-2}\mathbb{I})(w)&#x3D;\frac{1}{n!}\partial^n T (w)$$</p>
+<p>注意到正规序积分表达式中为径序</p>
+<p>$$\frac{1}{2\pi i}\oint_w\frac{\dd z}{z-w}A(z)B(w)&#x3D;\frac{1}{2\pi i}\oint_{|z|&gt;|w|}\frac{\dd z}{z-w}A(z)B(w)-\frac{1}{2\pi i}\oint_{|z|&lt;|w|}\frac{\dd z}{z-w}B(w)A(z)$$</p>
+<p>先考虑第一项，将 $A(z)$，$B(w)$ 在 $x$ 附近Laurent展开，$|z|&gt;|x|&gt;|w|$</p>
+<p>$$A(z)&#x3D;\sum_n(z-x)^{-n-h_A}A_n(x)$$</p>
+<p>$$B(w)&#x3D;\sum_n(w-x)^{-p-h_B}B_p(x)$$</p>
+<p>由 $z-w&#x3D;(z-x)-(w-x)$ 有</p>
+<p>$$\frac{1}{z-w}&#x3D;\sum_{l\ge 0}\frac{(w-x)^l}{(z-x)^{l+1}}$$</p>
+<p>第一项成为</p>
+<p>$$\begin{aligned}&amp;\frac{1}{2\pi i}\oint_{|z|&gt;|w|}\frac{\dd z}{z-w}A(z)B(w)\\&#x3D;&amp;\frac{1}{2\pi i}\oint\dd z\sum_{n,p;l\ge 0}(w-x)^{l-p-h_B}(z-x)^{-n-h_A-l-1}A_n(x)B_p(x)\\&#x3D;&amp;\sum_{p;n\le -h_A}(w-x)^{-n-p-h_A-h_B}A_n(x)B_p(x)\end{aligned}$$</p>
+<p>同理第二项为</p>
+<p>$$\begin{aligned}&amp;\frac{1}{2\pi i}\oint_{|z|&lt;|w|}\frac{\dd z}{z-w}A(z)B(w)\\&#x3D;&amp;\frac{1}{2\pi i}\oint\dd z\sum_{n,p;l\ge 0}(w-x)^{-l-1-p-h_B}(z-x)^{l-n-h_A}B_p(x)A_n(x)\\&#x3D;&amp;\sum_{p;n&gt; -h_A}(w-x)^{-n-p-h_A-h_B}B_p(x)A_n(x)\end{aligned}$$</p>
+<p>结合两项可得</p>
+<p>$$(AB)_m&#x3D;\sum_{n\le -h_A}A_n B_{m-n}+\sum_{n&gt;-h_A}B_{m-n}A_n$$</p>
+<p>$$(AB)(z)&#x3D;\sum z^{-n-h_A-h_B}(AB)_n$$</p>
+<p>上式中正规序与 $:\;:$ 不同，其不满足交换律与结合律</p>
+<p>$$(AB)(z)\neq (BA)(z)$$</p>
+<p>$$((AB)C)(z)\neq (A(BC))(z)$$</p>
+<h3 id="裔场"><a href="#裔场" class="headerlink" title="裔场"></a>裔场</h3><p>考虑 $\ket{h}$ 的裔 $L_{-n}\ket{h}$ 的积分表示</p>
+<p>$$L_{-n}\ket{h}&#x3D;L_{-n}\phi(0)\ket{0}&#x3D;\frac{1}{2\pi i}\oint\frac{\dd z}{z^{n-1}}T(z)\phi(0)\ket{0}$$</p>
+<p>由 $\displaystyle T(z)A(w)&#x3D;\sum_{n\in\mathbb{Z}}(z-w)^{-n-2}(L_n A)(w)$ 知上式即为 $(L_{-n}\phi)(0)\ket{0}$</p>
+<p>由此可定义对应 $L_{-n}\ket{h}$ 的裔场 $\phi^{(-n)}(w)$</p>
+<p>$$\phi^{(-n)}(w)\equiv(L_{-n}\phi)(w)&#x3D;\frac{1}{2\pi i}\oint_w\frac{\dd z}{(z-w)^{n-1}}T(z)\phi(w)$$</p>
+<p>$$\phi^{(0)}(w)&#x3D;h\phi(w)\qquad \phi^{(-1)}(w)&#x3D;\partial\phi(w)$$</p>
+<p>裔场的关联函数可由其祖初级场得出，考虑 $\ev{(L_{-n}\phi(w)X)}&#x3D;\ev{\phi^{(-n)}(w)X}$ ，其中 $X&#x3D;\phi_1(w_1)\cdots\phi_N(w_N)$</p>
+<p>$$\begin{aligned}\ev{\phi^{(-n)}(w)X}&amp;&#x3D;\frac{1}{2\pi i}\oint_w\frac{\dd z}{(z-w)^{n-1}}\ev{T(z)\phi(w)X}\\&amp;&#x3D;-\frac{1}{2\pi i}\oint_{\{w_i\}}\frac{\dd z}{(z-w)^{n-1}}\sum_i\left[\frac{1}{z-w_i}\partial_{w_i}\ev{\phi(w)X}+\frac{h_i}{(z-w_i)^2}\ev{\phi(w)X}\right]\\&amp;&#x3D;\mathcal{L}_{-n}\ev{\phi(w)X}\end{aligned}$$</p>
+<p>$$\mathcal{L}_{-n}&#x3D;\sum_i\left[\frac{(n-1)h_i}{(w_i-w)^n}-\frac{1}{(w_i-w)^{n-1}}\partial_{w_i}\right]$$</p>
+<p>由平移不变性，$\displaystyle\partial_w+\sum_i\partial_{w_i}$ 对关联函数作用为零，可知 $\mathcal{L}_{-1}&#x3D;\partial_w$</p>
+<p>由单指标裔场可定义多指标裔场</p>
+<p>$$\phi^{(-k,-n)}(w)&#x3D;(L_{-k}L_{-n})(w)&#x3D;\frac{1}{2\pi i}\oint_w\frac{\dd z}{(z-w)^{k-1}}T(z)(L_{-n}\phi)(w)$$</p>
+<p>$$\phi^{(0,-n)}(w)&#x3D;(h+n)\phi^{(-n)}(w)\qquad\phi^{(-1,-n)}(w)&#x3D;\partial_w\phi^{(-n)}(w)$$</p>
+<p>多指标裔场关联函数同样可以通过 $\mathcal{L}_{-n}$ 作用于祖初级场关联函数得到</p>
+<p>$$\ev{\phi^{-k_1,\cdots,-k_n}(w)X}&#x3D;\mathcal{L}_{-k_1}\cdots\mathcal{L}_{-k_n}\ev{\phi(w)X}$$</p>
+<h3 id="共形族"><a href="#共形族" class="headerlink" title="共形族"></a>共形族</h3><p>初级场 $\phi$ 与其所有裔场构成的集合称为共形族，记作 $[\phi]$，共形族在共形变换下保持封闭性，因此 $T(z)$ 与共形族中场的OPE可分解为共形族中其他场</p>
+<p>将OPE写为以下两部分</p>
+<p>$$T(z)\phi^{(-n)}(w)&#x3D;\sum_{k\ge 0}(z-w)^{k-2}(L_{-k}\phi^{(-n)})(w)+\sum_{k&gt;0}\frac{1}{(z-w)^{k+2}}(L_k\phi^{(-n)})(w)$$</p>
+<p>其中第一部分由裔场 $\phi^{(-k,-n)}$ 构成；第二部分由三阶以上极点奇异项构成，可通过以下 $TT$ OPE计算</p>
+<p>$$\begin{aligned}T(z)\phi^{(-n)}(w)&amp;&#x3D;\frac{1}{2\pi i}\oint_w\frac{\dd x}{(x-w)^{n-1}}T(z)T(x)\phi(w)\\&amp;\sim\frac{1}{2\pi i}\oint_w\frac{\dd x}{(x-w)^{n-1}}\left[\frac{c&#x2F;2}{(z-x)^4}+\frac{2 T(x)}{(z-x)^2}+\frac{\partial T(x)}{z-x}\right]\phi(w)\\&amp;&#x3D;\frac{cn(n^2-1)&#x2F;12}{(z-w)^{n+2}}\phi(w)+\oint_w\frac{\dd x}{(x-w)^{n-1}}\sum_{l&#x3D;0}^\infty\phi^{(-l)}(w)\left[\frac{2(x-w)^{l-2}}{(z-x)^2}+\frac{(l-2)(x-w)^{l-3}}{z-x}\right]\\&amp;&#x3D;\frac{cn(n^2-1)&#x2F;12}{(z-w)^{n+2}}\phi(w)+\sum_{l&#x3D;0}^{n+1}\frac{2n-l}{(z-w)^{n+2-l}}\phi^{(-l)}(w)\end{aligned}$$</p>
+<p>组合两部分，得到 $T\phi^{-n}$ OPE</p>
+<p>$$T(z)\phi^{(-n)}(w)&#x3D;\frac{cn(n^2-1)&#x2F;12}{(z-w)^{n+2}}\phi(w)+\sum_{k&#x3D;1}^{n}\frac{n+k}{(z-w)^{k+2}}\phi^{(k-n)}(w)+\sum_{k\ge 0}(z-w)^{k-2}\phi^{(-k,-n)}(w)$$</p>
+<p>对于 $T(z)\phi^{(-1)}(w)&#x3D;T(z)\partial\phi(w)$</p>
+<p>$$T(z)\partial\phi(w)\sim \frac{2h\phi(w)}{(z-w)^3}+\frac{(h+1)\partial\phi(w)}{(z-w)^2}+\frac{\partial^2\phi(w)}{z-w}$$</p>
+<p>初级场的裔称为次级场，其在共形变换 $z\to f(z)$ 下变换规律为</p>
+<p>$$A(z)\to\left(\frac{\dd f}{\dd z}\right)^{h’}A(f(z))+\text{extra terms}\qquad h’&#x3D;h+n\;\;(n&gt;0)$$</p>
+<h3 id="算符代数"><a href="#算符代数" class="headerlink" title="算符代数"></a>算符代数</h3><p>由共性不变性可以定出初级场关联函数形式，其中 $\phi_\alpha,\phi_\beta$ 共形维数相同</p>
+<p>$$\ev{\phi_\alpha(w,\bar w)\phi_\beta(z,\bar z)}&#x3D;\frac{C_{\alpha\beta}}{(w-z)^{2h}(\bar w-\bar z)^{2\bar h}}$$</p>
+<p>$C_{\alpha\beta}$ 为对称阵，因此可选取一组基使得 $C_{\alpha\beta}&#x3D;\delta_{\alpha\beta}$，下文默认使用此归一化</p>
+<p>通过合适的全局共形变换将关联点变为 $w&#x3D;\infty,z&#x3D;0$，场成为渐近态，两点关联函数成为Hilbert空间中的双线性乘积，其中最高权态的正交性隐含了两个场裔即Verma模的正交性</p>
+<p>$$\lim_{w,\bar w\to\infty}w^{2h}\bar w^{2\bar h}\ev{\phi(w,\bar w)\phi’(0,0)}&#x3D;\braket{h}{h’}\braket{\bar h}{\bar h’}$$</p>
+<p>共形维数不变要求算符代数具有以下形式，其中 $K&#x3D;\sum_i k_i，\bar K&#x3D;\sum_i \bar k_i$</p>
+<p>$$\phi_1(z,\bar z)\phi_2(0,0)&#x3D;\sum_p\sum_{\{k,\bar k\}}C_{12}^{p\{k,\bar k\}}z^{h_p-h_1-h_2+K}\bar z^{\bar h_p-\bar h_1-\bar h_2+\bar K}\phi_p^{\{k,\bar k\}}(0,0)$$</p>
+<p>在两点关联函数中插入第三个初级场，由三点关联函数形式可知</p>
+<p>$$\begin{aligned}\bra{\phi_r}\phi_1(z,\bar z)\ket{\phi_2}&amp;&#x3D;\lim_{w,\bar w\to\infty}w^{2h}\bar w^{2\bar h}\ev{\phi_r(w,\bar w)\phi_1(z,\bar z)\phi_2(0,0)}\\&amp;&#x3D;\frac{C_{r12}}{z^{h_1+h_2-h_r}\bar z^{\bar h_1+\bar h_2-\bar h_r}}\end{aligned}$$</p>
+<p>与上文算符OPE比较，由Vermam模的正交性知唯一的贡献项为 $p\{k,\bar k\}&#x3D;r\{0,0\}$，因此可知系数</p>
+<p>$$C^{p\{0,0\}}_{12}\equiv C^p_{12}&#x3D;C_{p12}$$</p>
+<p>更进一步，由于裔场的关联函数建立在初级场的关联函数基础之上，仅当初级场相互关联时裔场相互关联，可以设想系数</p>
+<p>$$C^{p\{k,\bar k\}}_{12}&#x3D; C^p_{12}\beta_{12}^{p\{k\}}\bar \beta_{12}^{p\{\bar k\}}$$</p>
+<p>由归一化，$\beta_{ij}^{p\{0\}}&#x3D;1$，其他系数 $\beta_{ij}^{p\{k\}}$ 由算符OPE决定，为中心荷和共形维数的函数</p>
+<p>考虑 $h_1&#x3D;h_2&#x3D;h$ 的简单情况，将算符OPE作用于真空</p>
+<p>$$\phi_1(z,\bar z)\ket{h,\bar h}&#x3D;\sum_p C_{p12} z^{h_p-2h}\bar z^{\bar h_p-2\bar h}\varphi(z)\bar \varphi(\bar z)\ket{h_p,\bar h_p}$$</p>
+<p>$$\varphi(z)&#x3D;\sum_{\{k\}}z^K\beta_{12}^{p\{k\}}L_{-k_1}\cdots L_{-k_n}$$</p>
+<p>对全纯部分，以下定义态，其中 $\ket{N,h_p}$ 为Verma模 $V(h_p)$ 中的 $N$ 阶裔态</p>
+<p>$$\ket{z,h_p}\equiv\varphi(z)\ket{h_p}&#x3D;\sum_{N&#x3D;0}^{\infty}z^N\ket{N,h_p}$$</p>
+<p>$$L_0\ket{N,h_p}&#x3D;(h_p+N)\ket{N,h_p}$$</p>
+<p>对OPE左端作用 $L_n$</p>
+<p>$$\begin{aligned}L_n\phi_1(z,\bar z)\ket{h,\bar h}&amp;&#x3D;[L_n,\phi_1(z,\bar z)]\ket{h,\bar h}\\&amp;&#x3D;\left[h(n+1) z^n+z^{n+1}\partial_z\right]\phi_1(z,\bar z)\ket{h,\bar h}\end{aligned}$$</p>
+<p>由此关系可知 $L_n$ 对OPE右端 $\ket{z,h_p}$ 作用</p>
+<p>$$\begin{aligned}&amp;\sum_p C_{p12} z^{h_p-2h}\bar z^{\bar h_p-2\bar h}L_n\ket{z,h_p}\ket{\bar z,\bar h_p}\\&#x3D;&amp;\sum_p C_{p12} z^{h_p-2h}\bar z^{\bar h_p-2\bar h}\left[(h(n-1)+h_p) z^n+z^{n+1}\partial_z\right]\ket{z,h_p}\ket{\bar z,\bar h_p}\end{aligned}$$</p>
+<p>$$L_n\ket{z,h_p}&#x3D;\left[(h(n-1)+h_p) z^n+z^{n+1}\partial_z\right]\ket{z,h_p}$$</p>
+<p>将 $\ket{z,h_p}$ 展开成级数，可得以下关系，可用其与Virasoro代数一起递归求解所有 $\ket{N,h_p}$，亦即 $\beta_{12}^{p\{k\}}$</p>
+<p>$$L_n\ket{N+n,h_p}&#x3D;(h_p+(n-1)h+N)\ket{N,h_p}$$</p>
+<p>对于一阶裔态</p>
+<p>$$\ket{1,h_p}&#x3D;\beta_{12}^{p\{1\}}L_{-1}\ket{h_p}$$</p>
+<p>$$L_1\ket{1,h_p}&#x3D;h_p\ket{h_p}$$</p>
+<p>$$L_1L_{-1}&#x3D;L_{-1}L_1+2L_0$$</p>
+<p>$$\beta_{12}^{p\{1\}}&#x3D;\frac{1}{2}$$</p>
+<p>对于二阶裔态</p>
+<p>$$\ket{2,h_p}&#x3D;\beta_{12}^{p\{1,1\}}L_{-1}^2\ket{h_p}+\beta_{12}^{p\{2\}}L_{-2}\ket{h_p}$$</p>
+<p>$$L_1^2\ket{2,h_p}&#x3D;h_p(h_p+1)\ket{h_p}$$</p>
+<p>$$L_2\ket{2,h_p}&#x3D;(h_p+h)\ket{h_p}$$</p>
+<p>$$L_1 L_{-1}^2&#x3D;L_{-1}^2 L_1+4L_{-1}L_0+2L_{-1}$$</p>
+<p>$$L_1 L_{-2}&#x3D;L_{-2}L_1+3L_{-1}$$</p>
+<p>$$L_2 L_{-1}^2&#x3D;L_{-1}^2L_2+6L_{-1}L_1+6L_0$$</p>
+<p>$$L_2L_{-2}&#x3D;L_{-2}L_2+4L_0+\frac{1}{2}c$$</p>
+<p>$$\begin{pmatrix}4h_p(2h_p+1)&amp;6h_p\\6h_p&amp;4h_p+c&#x2F;2\end{pmatrix}\begin{pmatrix}\beta_{12}^{p\{1,1\}}\\\beta_{12}^{p\{2\}}\end{pmatrix}&#x3D;\begin{pmatrix}h_p(h_p+1)\\h_p+h\end{pmatrix}$$</p>
+<p>$$\beta_{12}^{p\{1,1\}}&#x3D;\frac{c-12h-4h_p+ch_p+8h_p^2}{4(c-10h_p+2ch_p+16h_p^2)}$$</p>
+<p>$$\beta_{12}^{p\{2\}}&#x3D;\frac{2h-h_p+4hh_p+h_p^2}{c-10h_p+2ch_p+16h_p^2}$$</p>
+<p>以上利用共性对称性，得到了初级场的算符代数，尚未确定的参数仅有中心荷 $c$，初级场的共形维数和三点关联系数 $C_{pnm}$，其中 $C_{pnm}$ 需通过其他渠道例如下文的共形引导得到</p>
+<h3 id="共形块"><a href="#共形块" class="headerlink" title="共形块"></a>共形块</h3><p>利用算符代数，可递归减少关联点计算多点关联函数，考虑以下四点关联函数</p>
+<p>$$\ev{\phi_1(z_1,\bar z_1)\phi_2(z_2,\bar z_2)\phi_3(z_3,\bar z_3)\phi_4(z_4,\bar z_4)}$$</p>
+<p>引入交比，其在全局共形变换下保持不变</p>
+<p>$$x&#x3D;\frac{(z_1-z_2)(z_3-z_4)}{(z_1-z_3)(z_2-z_4)}\qquad \bar x&#x3D;\frac{(\bar z_1-\bar z_2)(\bar z_3-\bar z_4)}{(\bar z_1-\bar z_3)(\bar z_2-\bar z_4)}$$</p>
+<p>利用共形变换将关联点变为 $z_1&#x3D;\infty,z_2&#x3D;1,z_3&#x3D;x,z_4&#x3D;0$，四点关联函数成为</p>
+<p>$$\lim_{z_1,\bar z_1\to\infty}z_1^{2h_1}\bar z_1^{2\bar h_1}\ev{\phi_1(z_1,\bar z_1)\phi_2(1,1)\phi_3(x,\bar x)\phi_4(0,0)}&#x3D;G_{34}^{21}(x,\bar x)$$</p>
+<p>$$G_{34}^{21}(x,\bar x)&#x3D;\bra{h_1,\bar h_1}\phi_1(1,1)\phi_3(x,\bar x)\ket{h_4,\bar h_4}$$</p>
+<p>将算符代数写为</p>
+<p>$$\phi_3(x,\bar x)\phi_4(0,0)&#x3D;\sum_p C_{34}^p x^{h_p-h_3-h_4}\bar x^{\bar h_p-\bar h_3-\bar h_4}\Psi_p(x,\bar x|0,0)$$</p>
+<p>$$\Psi_p(x,\bar x|0,0)&#x3D;\sum_{\{k,\bar k\}}\beta_{34}^{p\{k\}}\bar\beta_{34}^{p\{\bar k\}}x^K\bar x^{\bar K}\phi_p^{\{k,\bar k\}}(0,0)$$</p>
+<p>函数 $G_{34}^{12}$ 可写为</p>
+<p>$$G_{34}^{21}(x,\bar x)&#x3D;\sum_p C_{34}^p C_{12}^p A_{34}^{21}(p|x,\bar x)$$</p>
+<p>$$A_{34}^{21}(p|x,\bar x)&#x3D;(C_{12}^p)^{-1}x^{h_p-h_3-h_4}\bar x^{\bar h_p-\bar h_3-\bar h_4}\bra{h_1,\bar h_1}\phi_1(1,1)\Psi_p(x,\bar x|0,0)\ket{0}$$</p>
+<p>其中 $A_{kl}^{ji}$ 称为分波，可用以下图形表示，与 $(0,x)$ 到 $(1,\infty)$ 的散射过程类似</p>
+<p><img src="/images/%E5%85%B1%E5%BD%A2%E5%9D%97.png"></p>
+<p>将分波进一步分解为全纯和共轭全纯两部分，其中 ${\mathcal{F}}_{34}^{21}$ 称为共形块，注意共形块表达式中分母即为 $(C_{21}^p)^{1&#x2F;2}$</p>
+<p>$$A_{34}^{21}(p|x,\bar x)&#x3D;{\mathcal{F}}_{34}^{21}(p|x)\bar{\mathcal{F}}_{34}^{21}(p|\bar x)$$</p>
+<p>$${\mathcal{F}}_{34}^{21}(p|x)&#x3D;x^{h_p-h_3-h_4}\sum_{\{k\}}\beta_{34}^{p\{k\}}x^K\frac{\bra{h_1}\phi_2(1)L_{-k_1}\cdots L_{-k_n}\ket{h_p}}{\bra{h_1}\phi_2(1)\ket{h_p}}$$</p>
+<p>四点关联函数现在可写为</p>
+<p>$$G_{34}^{21}(x,\bar x)&#x3D;\sum_p C_{34}^p C_{12}^p{\mathcal{F}}_{34}^{21}(p|x)\bar{\mathcal{F}}_{34}^{21}(p|\bar x)$$</p>
+<p>将共形块展开</p>
+<p>$${\mathcal{F}}_{34}^{21}(p|x)&#x3D;x^{h_p-h_3-h_4}\sum_{K&#x3D;0}^\infty\mathcal{F}_K x^K$$</p>
+<p>利用共形块表达式可计算系数 $\mathcal{F}_K$，由归一化知 $\mathcal{F}_0&#x3D;1$，其后两个系数为</p>
+<p>$$\mathcal{F}_1&#x3D;\frac{(h_p+h_2-h_1)(h_p+h_3-h_4)}{2h_p}$$</p>
+<p>$$\begin{aligned}\mathcal{F}_2&amp;&#x3D;\frac{(h_p+h_2-h_1)(h_p+h_2-h_1+1)(h_p+h_3-h_4)(h_p+h_3-h_4+1)}{4h_p(2h_p+1)}\\&amp;+2\left(\frac{h_1+h_2}{2}+\frac{h_p(h_p-1)}{2(2h_p+1)}-\frac{3(h_1-h_2)^2}{2(2h_p+1)}\right)^2\left(\frac{h_3+h_4}{2}+\frac{h_p(h_p-1)}{2(2h_p+1)}-\frac{3(h_3-h_4)^2}{2(2h_p+1)}\right)^2\\&amp;\quad\times\left(c+\frac{2h_p(8h_p-5)}{2h_p+1}\right)^{-1}\end{aligned}$$</p>
+<h3 id="交叉对称"><a href="#交叉对称" class="headerlink" title="交叉对称"></a>交叉对称</h3><p>由于四点关联函数中场的位置不影响关联函数(Fermion至多符号相异)，故也可将关联点变换为 $z_1&#x3D;\infty,z_2&#x3D;0,z_3&#x3D;1-x,z_4&#x3D;1$，关联函数不变</p>
+<p>$$G_{34}^{21}(x,\bar x)&#x3D;G_{32}^{41}(1-x,1-\bar x)$$</p>
+<p>同理也可将关联点变为 $z_1&#x3D;0,z_2&#x3D;1,z_3&#x3D;1&#x2F;x,z_4&#x3D;\infty$，得到</p>
+<p>$$G_{34}^{21}(x,\bar x)&#x3D;\frac{1}{x^{2h_3}\bar x^{2\bar h_3}}G_{31}^{24}(1&#x2F;x,1&#x2F;x)$$</p>
+<p>以上关系称为交叉对称，将第一个关系用共形块写出</p>
+<p>$$\sum_p C_{34}^p C_{12}^p{\mathcal{F}}_{34}^{21}(p|x)\bar{\mathcal{F}}_{34}^{21}(p|\bar x)&#x3D;\sum_q C_{41}^q C_{32}^q{\mathcal{F}}_{32}^{41}(q|1-x)\bar{\mathcal{F}}_{32}^{41}(q|1-\bar x)$$</p>
+<p>其可用图形表示为</p>
+<p><img src="/images/%E4%BA%A4%E5%8F%89%E5%AF%B9%E7%A7%B0.png"></p>
+<p>若共形块已知，则以上等式构成了对 $C_{mn}^p$ 和 $h_p$ 的约束，若有 $N$ 个共形族，则有 $N^4$ 个约束限制 $N^3+N$ 个参数 $C_{mn}^p$ 和 $h_p$，通过假定交叉对称计算关联函数的过程称为共形引导，虽然对于一般情况尚未证明共形引导等式可以完全确定理论中的参数，但对于某些特定的例子(极小模型)，等式可以完全求解，一旦通过共形不变性确定了共形块，则共形引导假设就是完全求解理论的所需的唯一“动力学输入”</p>
+<p>从算符代数角度看，交叉对称约束十分自然，其相当于Lie代数中的Jacobi等式，并不附加更多的条件以限制理论的发展</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../28/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E5%8D%95Lie%E4%BB%A3%E6%95%B0I/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          单Lie代数I
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../15/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E8%A7%84%E8%8C%83%E4%B8%8D%E5%8F%98%E4%BD%9C%E7%94%A8/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          规范不变作用
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

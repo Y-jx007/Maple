@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>共形不变性 | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        共形不变性
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        共形不变性
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-11-30 22:18:37</time>
+          <span class="text-gray-400">·</span>
+          <span>11 min</span>
+          <span class="text-gray-400">·</span>
+          <span>2.2k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h3 id="共形变换"><a href="#共形变换" class="headerlink" title="共形变换"></a>共形变换</h3><p>满足以下条件的映射 $\varphi:U\to U’;x\mapsto x’$ 称为共形变换，其中 $U,U’$ 分别为 $(M,g),(M’,g’)$ 中开集，$\Lambda(x)$ 称为共形因子</p>
+<p>$$\varphi^* g’&#x3D;\Lambda g\qquad\Leftrightarrow\qquad g’_{\rho\sigma}(x’)\frac{\partial x^{\prime\rho}}{\partial x^{\mu}}\frac{\partial x^{\prime\sigma}}{\partial x^{\nu}}&#x3D;\Lambda(x)g_{\mu\nu}(x)$$</p>
+<p>考虑 $M&#x3D;M’$ ，并取平直度规 $\eta_{\mu\nu}&#x3D;\text{diag}(-1,\cdots,+1,\cdots)$，取以下无穷小变换</p>
+<p>$$x^{\prime\mu}&#x3D;x^\mu+\epsilon^\mu(x)+\mathcal{O}(\epsilon^2)$$</p>
+<p>代入共形变换条件中可得下式，其中 $d$ 为时空维数</p>
+<p>$$\partial_\mu\epsilon_\nu+\partial_\nu\epsilon_\mu&#x3D;\frac{2}{d}(\partial\cdot\epsilon)\eta_{\mu\nu}\qquad\Lambda(x)&#x3D;1+\frac{2}{d}(\partial\cdot\epsilon)$$</p>
+<p>由上式可推出 $\epsilon$ 满足的另外两个常用关系式</p>
+<p>$$(d-1)\Box(\partial\cdot\epsilon)&#x3D;0$$</p>
+<p>$$2\partial_\mu\partial_\nu\epsilon_\rho&#x3D;\frac{2}{d}(-\eta_{\mu\nu}\partial_\rho+\eta_{\rho\mu}\partial_\nu+\eta_{\nu\rho}\partial_\mu)(\partial\cdot\epsilon)$$</p>
+<h3 id="d-ge-3-变换"><a href="#d-ge-3-变换" class="headerlink" title="$d\ge 3$ 变换"></a>$d\ge 3$ 变换</h3><p>$d&#x3D;1$ 时，$\epsilon$ 无限制，任意光滑映射均为共形变换；$d&#x3D;2$ 的情况在下文讨论；$d\ge 3$ 时，将 $\Box(\partial\cdot\epsilon)&#x3D;0$ 代回共形变换条件可知 $\partial_\mu\partial_\nu(\partial\cdot\epsilon)&#x3D;0$，$\partial\cdot\epsilon$ 最多为 $x^\mu$ 的线性函数，因此 $\epsilon$ 具有以下形式</p>
+<p>$$\epsilon_\mu&#x3D;a_\mu+b_{\mu\nu}x^\nu+c_{\mu\nu\rho}x^\nu x^\rho$$</p>
+<p>不同的项对应不同类型的无穷小变换，其中 $a_\mu$ 无限制条件，对应平移；$b_{\mu\nu}$ 满足以下条件，可将 $b_{\mu\nu}$ 拆为对称与反称两部分，分别对应缩放与旋转</p>
+<p>$$b_{\mu\nu}+b_{\nu\mu}&#x3D;\frac{2}{d}(b_{\rho\sigma}\eta^{\rho\sigma})\eta_{\mu\nu}\qquad b_{\mu\nu}&#x3D;\alpha\eta_{\mu\nu}+m_{\mu\nu}$$</p>
+<p>$c_{\mu\nu\rho}$ 满足以下条件，对应特殊共形变换(SCT)</p>
+<p>$$c_{\mu\nu\rho}&#x3D;\eta_{\mu\nu}f_{\rho}+\eta_{\rho\mu}f_\nu-\eta_{\nu\rho}f_\mu\qquad f_\mu&#x3D;\frac{1}{d}c^\nu_{\;\nu\mu}$$</p>
+<p>$$x^{\prime\mu}&#x3D;x^\mu+2(f\cdot x)x^\mu-x^2f^\mu$$</p>
+<p>以上各种无穷小变换对应的有限变换及生成元如下</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>变换</th>
+<th>生成元</th>
+<th>共形因子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>平移</td>
+<td>$x^{\prime\mu}&#x3D;x^\mu+a^\mu$</td>
+<td>$P_\mu&#x3D;-i\partial_\mu$</td>
+<td>$\Lambda(x)&#x3D;1$</td>
+</tr>
+<tr>
+<td>缩放</td>
+<td>$x^{\prime\mu}&#x3D;\alpha x^\mu$</td>
+<td>$D&#x3D;-ix^\mu\partial_\mu$</td>
+<td>$\Lambda(x)&#x3D;\alpha^2$</td>
+</tr>
+<tr>
+<td>旋转</td>
+<td>$x^{\prime\mu}&#x3D;M^{\mu}_{\;\;\nu} x^\nu$</td>
+<td>$L_{\mu\nu}&#x3D;i(x_\mu\partial_\nu-x_\nu\partial_\mu)$</td>
+<td>$\Lambda(x)&#x3D;1$</td>
+</tr>
+<tr>
+<td>SCT</td>
+<td>$\displaystyle x^{\prime\mu}&#x3D;\frac{x^\mu-x^2 f^\mu}{1-2fx+f^2x^2}$</td>
+<td>$K_\mu&#x3D;-i(2x_\mu x^\nu\partial_\nu-x^2\partial_\mu)$</td>
+<td>$\displaystyle\Lambda(x)&#x3D;\frac{1}{(1-2fx+f^2x^2)^2}$</td>
+</tr>
+</tbody></table>
+<p>其中有限SCT难以从其无穷小变换直接推出，注意到 $x^{\prime\mu}&#x3D;x^\mu&#x2F;x^2$ 也为共形映射，可将其与平移复合，构造以下共形映射，可以发现当 $f^\mu\to 0$ 时，$x^{\prime\mu}\to x^\mu$，因而此变换具有无穷小版本，比较可知其即为有限SCT</p>
+<p>$$x^{\prime\mu}&#x3D;\frac{x^\mu&#x2F;x^2-f^\mu}{(x^\mu&#x2F;x^2-f^\mu)\cdot(x^\mu&#x2F;x^2-f^\mu)}$$</p>
+<h3 id="d-ge-3-代数"><a href="#d-ge-3-代数" class="headerlink" title="$d\ge 3$ 代数"></a>$d\ge 3$ 代数</h3><p>所有共形变换构成共形群，其Lie代数称为共形代数，代数的维数即其生成元个数</p>
+<p>$$d+1+\frac{d(d-1)}{2}+d&#x3D;\frac{(d+2)(d+1)}{2}$$</p>
+<p>直接计算其生成元对易关系如下</p>
+<p>$$[D,P_\mu]&#x3D;iP_\mu\qquad [D,K_\mu]&#x3D;-iK_\mu$$</p>
+<p>$$[K_\mu,P_\nu]&#x3D;2i(\eta_{\mu\nu}D-L_{\mu\nu})$$</p>
+<p>$$[K_\rho,L_{\mu\nu}]&#x3D;i(\eta_{\rho\mu}K_\nu-\eta_{\rho\nu}K_\mu)$$</p>
+<p>$$[P_\rho,L_{\mu\nu}]&#x3D;i(\eta_{\rho\mu}P_\nu-\eta_{\rho\nu}P_\mu)$$</p>
+<p>$$[L_{\mu\nu},L_{\rho\sigma}]&#x3D;i(\eta_{\mu\sigma}L_{\nu\rho}+\eta_{\nu\rho}L_{\mu\sigma}-\eta_{\mu\rho}L_{\nu\sigma}-\eta_{\nu\sigma}L_{\mu\rho})$$</p>
+<p>为简化以上对易关系，定义以下生成元</p>
+<p>$$J_{\mu\nu}&#x3D;L_{\mu\nu}\qquad J_{-1,0}&#x3D;D$$</p>
+<p>$$J_{-1,\mu}&#x3D;\frac{1}{2}(P_\mu-K_\mu)\qquad J_{0,\mu}&#x3D;\frac{1}{2}(P_\mu+K_\mu)$$</p>
+<p>对于 $m,n&#x3D;-1,0,1,\cdots,d$，对易关系简化为</p>
+<p>$$[J_{mn},J_{rs}]&#x3D;i(\eta_{ms}J_{nr}+\eta_{nr}J_{ms}-\eta_{mr}J_{ns}-\eta_{ns}J_{mr})$$</p>
+<p>对于 $\mathbb{R}^{p,q}\;,d&#x3D;p+q\ge 3$，此代数即为 $\mathfrak{so}(p+1,q+1)$，对应共形群 $SO(p+1,q+1)$</p>
+<h3 id="d-x3D-2-变换"><a href="#d-x3D-2-变换" class="headerlink" title="$d&#x3D;2$ 变换"></a>$d&#x3D;2$ 变换</h3><p>选取Euclidean度规，二维共形变换条件为</p>
+<p>$$\partial_1\epsilon_1&#x3D;\partial_2\epsilon_2\qquad \partial_1\epsilon_2&#x3D;-\partial_2\epsilon_1$$</p>
+<p>若引进复变量，共形变换条件即为Cauchy-Riemann条件，可知 $\epsilon(z)$ 为全纯函数，因此任意无穷小全纯变换 $z’&#x3D;z+\epsilon(z)$ 均对应一个二维共形变换</p>
+<p>$$z&#x3D;x^1+ix^2\qquad \epsilon&#x3D;\epsilon^1+i\epsilon^2$$</p>
+<p>$$\bar z&#x3D;x^1-ix^2\qquad \bar\epsilon&#x3D;\epsilon^1-i\epsilon^2$$</p>
+<p>令 $z^1&#x3D;z,z^2&#x3D;\bar z$，可得此坐标系下线元及度规</p>
+<p>$$\text{d} s^2&#x3D;(\text{d} x^1)^2+(\text{d} x^2)^2&#x3D;\text{d} z\text{d} \bar z&#x3D;g_{\alpha\beta}\text{d} z^\alpha\text{d} z^\beta$$</p>
+<p>$$g_{\alpha\beta}&#x3D;\begin{pmatrix}0&amp;\frac{1}{2}\\\frac{1}{2}&amp;0\end{pmatrix}\qquad g^{\alpha\beta}&#x3D;\begin{pmatrix}0&amp;2\\2&amp;0\end{pmatrix}$$</p>
+<p>取 $z’&#x3D;f(z)$ 为全纯变换，则其满足共形变换条件</p>
+<p>$$g_{\alpha\beta}\frac{\partial z^{\prime\alpha}}{\partial z^{\gamma}}\frac{\partial z^{\prime\beta}}{\partial z^{\delta}}&#x3D;\Lambda(z,\bar z)g_{\gamma\delta}\qquad \Lambda(z,\bar{z})&#x3D;\left|\frac{\partial f(z)}{\partial z}\right|^2$$</p>
+<h3 id="全局共形变换"><a href="#全局共形变换" class="headerlink" title="全局共形变换"></a>全局共形变换</h3><p>由于$\mathbb{C}$上某些共形变换会将有限点映到无穷，因此需在Riemann球面 $S^2\simeq \mathbb{C}\cup\{\infty\}$ 上考虑二维全局共形变换，然而并非所有生成元均在 $S^2$ 上良定义，在 $z&#x3D;0$ 处，$l_n&#x3D;-z^{n+1}\partial_z$ 仅在 $n\ge -1$ 时非奇异；在 $z&#x3D;\infty$ 处，作代换 $w&#x3D;-1&#x2F;z$，$l_n&#x3D;-(-1&#x2F;w)^{n-1}\partial_w$ 仅在 $n\le 1$ 时非奇异，因此 $S^2$ 上全局共形变换仅有以下三个生成元</p>
+<p>$$l_{-1}&#x3D;-\partial_z\qquad l_0&#x3D;-z\partial_z\qquad l_1&#x3D;-z^2\partial_z$$</p>
+<p>由Witt代数可知，这三个生成元构成一组封闭代数，因此可生成 $S^2$ 上共形群，其中 $l_{-1}$ 生成平移 $z\mapsto z+b$；$l_0$ 生成缩放旋转 $z\mapsto az$，$(l_0+\bar l_0)&#x3D;-r\partial_r$ 生成缩放，$i(l_0-\bar l_0)&#x3D;-\partial_\varphi$ 生成旋转；$l_1$ 生成SCT(反演$\to$平移$\to$反演) $z\mapsto z&#x2F;(cz+1)$</p>
+<p>因此 $\{l_{-1},l_0,l_1\}$ 生成的可逆共形变换具有以下形式，可知 $S^2$ 上共形群即为Möbius群 $SL(2,\mathbb{C})&#x2F;\mathbb{Z}_2$</p>
+<p>$$z\mapsto\frac{az+b}{cz+d}\qquad ad-bc&#x3D;1$$</p>
+<h3 id="Witt代数"><a href="#Witt代数" class="headerlink" title="Witt代数"></a>Witt代数</h3><p>由于 $\epsilon(z)$ 在某开集上全纯，故可将其在 $z&#x3D;0$ 附近Laurent展开</p>
+<p>$$z’&#x3D;z+\epsilon(z)&#x3D;z+\sum_{n\in\mathbb{Z}}\epsilon_n z^{n+1}$$</p>
+<p>$$\bar z’&#x3D;\bar z+\bar\epsilon(\bar z)&#x3D;\bar z+\sum_{n\in\mathbb{Z}}\bar\epsilon_n\bar z^{n+1}$$</p>
+<p>考虑标量场 $\phi(z,\bar z)$ 的无穷小共形变换</p>
+<p>$$\phi’(z’,\bar z’)&#x3D;\phi(z,\bar z)$$</p>
+<p>$$\delta \phi&#x3D;\phi’(z,\bar z)-\phi(z,\bar z)&#x3D;\sum_{n\in\mathbb{Z}}(\epsilon_nl_n+\bar\epsilon_n\bar l_n)\phi(z,\bar z)$$</p>
+<p>可见二维无穷小共形变换有无限个，其生成元及对易关系如下，注意到 $l_m,\bar l_n$ 对易，因此 $l,\bar l$ 构成的代数为两组同构Lie代数的直和，称其中一组为Witt代数</p>
+<p>$$l_n&#x3D;-z^{n+1}\partial\qquad \bar l_n&#x3D;-\bar z^{n+1}\bar\partial$$</p>
+<p>$$[l_m,l_n]&#x3D;(m-n)l_{m+n}$$</p>
+<p>$$[\bar l_m,\bar l_n]&#x3D;(m-n)\bar l_{m+n}$$</p>
+<p>$$[l_m,\bar l_n]&#x3D;0$$</p>
+<h3 id="Virasoro代数"><a href="#Virasoro代数" class="headerlink" title="Virasoro代数"></a>Virasoro代数</h3><p>对于Lie代数$\mathfrak{g}$，可对其进行中心扩张 $\widetilde{\mathfrak{g}}&#x3D;\mathfrak{g}\oplus\mathbb{C}$，其中 $p(x,y)$ 为双线性函数，$c$ 称为中心荷</p>
+<p>$$[\widetilde{x},\widetilde{y}]_{\widetilde{\mathfrak{g}}}&#x3D;[x,y]_{\mathfrak{g}}+c\;p(x,y)$$</p>
+<p>$$[\widetilde{x},c]_{\widetilde{\mathfrak{g}}}&#x3D;0\qquad [c,c]_{\widetilde{\mathfrak{g}}}&#x3D;0$$</p>
+<p>$$\widetilde{x},\widetilde{y}\in\widetilde{\mathfrak{g}}\qquad x,y\in\mathfrak{g}\qquad c\in\mathbb{C}$$</p>
+<p>对Witt代数进行中心扩张</p>
+<p>$$[L_m,L_n]&#x3D;(m-n)L_{m+n}+c\;p(m,n)$$</p>
+<p>首先注意到 $p(m,n)&#x3D;-p(n,m)$；其次可以对生成元进行以下重定义令 $p(1,-1),p(n,0)&#x3D;0$</p>
+<p>$$\widehat{L}_0&#x3D;L_0+\frac{c\;p(1,-1)}{2}\qquad\widehat{L}_n&#x3D;L_n+\frac{c\;p(n,0)}{n}\quad \text{for}\; n\neq 0$$</p>
+<p>$$[\widehat L_n,\widehat L_0]&#x3D;nL_n+c\;p(n,0)&#x3D;n\widehat L_n$$</p>
+<p>$$[\widehat L_1,\widehat L_{-1}]&#x3D;2L_0+c\;p(1,-1)&#x3D;2\widehat L_0$$</p>
+<p>然后计算以下两个Jacobi等式，可知 $p(m,n)&#x3D;0\quad\text{for}\;m\neq n$；$p(n,-n)&#x3D;(n+1)n(n-1)&#x2F;12$，其中进行了归一化 $p(2,-2)&#x3D;1&#x2F;2$，原因在于计算自由玻色子中心荷时可得 $c&#x3D;1$</p>
+<p>$$[[L_m,L_n],L_0]+[[L_n,L_0],L_m]+[[L_0,L_m],L_n]&#x3D;c(n+m)p(n,m)$$</p>
+<p>$$\begin{aligned}&amp;\quad[[L_{-n+1},L_n],L_{-1}]+[[L_n,L_{-1}],L_{-n+1}]+[[L_{-1},L_{-n+1}],L_n]\\&amp;&#x3D;c[(n-2)p(-n,n)-(n+1)p(-n+1,n-1)]\color{white}{\displaystyle\sum}\end{aligned}$$</p>
+<p>将Witt代数的此具有中心荷 $c$ 的中心扩张称为Virasoro代数 $\text{Vir}_c$，其对易关系如下</p>
+<p>$$[L_m,L_n]&#x3D;(m-n)L_{m+n}+\frac{c}{12}(m^3-m)\delta_{m+n,0}$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../30/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          共形场论基础
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../20/%E5%9C%BA%E8%AE%BA/Dirac%E5%9C%BA/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          Dirac场
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

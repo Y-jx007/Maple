@@ -131,8 +131,8 @@
     // toggle dark mode
     function toggleDark() {
       let isDark = document.documentElement.classList.contains("dark");
-      isDark = !isDark;
       const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
       document.documentElement.classList.toggle("dark", isDark);
       $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
       if (prefersDark === isDark) {
@@ -143,6 +143,7 @@
       toggleGiscusTheme();
     }
     $("#toggle-dark").click(toggleDark);
+
     // listen dark mode change
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -159,7 +160,6 @@
       });
   });
 </script>
-
 
 
 
@@ -254,17 +254,17 @@
         <p class="line-clamp-4">
           8月 18
           ·
-          16 min
+          22 min
         </p>
       </section>
     </a>
   
     
     
-    <a href="../../../2023/08/07/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E8%B6%85%E5%AF%B9%E7%A7%B0%E4%BB%A3%E6%95%B0/">
+    <a href="../../../2023/08/07/%E8%B6%85%E5%AF%B9%E7%A7%B0/%E8%B6%85%E5%AF%B9%E7%A7%B0%E4%BB%A3%E6%95%B0%E8%A1%A8%E7%A4%BA/">
       <header>
         <h2 class="font-bold text-xl">
-          超对称代数
+          超对称代数表示
         </h2>
       </header>
       <section class="text-gray-400 my-1 text-sm time">
@@ -274,7 +274,7 @@
         <p class="line-clamp-4">
           8月 07
           ·
-          1 min
+          12 min
         </p>
       </section>
     </a>
@@ -288,7 +288,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2023</span>
+    <span>© 2024</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

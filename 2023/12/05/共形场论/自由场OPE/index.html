@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>自由场OPE | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        自由场OPE
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        自由场OPE
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-01-26 13:09:16</time>
+          <span class="text-gray-400">·</span>
+          <span>19 min</span>
+          <span class="text-gray-400">·</span>
+          <span>3.7k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h3 id="Gaussian-积分"><a href="#Gaussian-积分" class="headerlink" title="Gaussian 积分"></a>Gaussian 积分</h3><p>考虑如下形式积分，其中 $A$ 为特征值实部大于零的对称阵，因此可对角化</p>
+<p>$$Z(b)&#x3D;\int \text{d}^n x\;\exp\left(-\frac{1}{2}x^T A x+b^T x\right)$$</p>
+<p>若 $b\neq 0$，则有</p>
+<p>$$-\frac{1}{2}x^T A x+b^T x&#x3D;\frac{1}{2}b^T A^{-1} b-\frac{1}{2}(x-A^{-1}b)^T A(x-A^{-1}b)$$</p>
+<p>$$Z(b)&#x3D;\sqrt{\frac{(2\pi)^n}{\det{A}}}\exp(\frac{1}{2}b^T A^{-1} b)$$</p>
+<p>由Gaussian积分可计算关联函数的离散模拟</p>
+<p>$$\begin{aligned}\ev{x_{i_1}x_{i_2}\cdots x_{i_m}}&amp;&#x3D;\frac{\displaystyle\int\text{d}^n x\;x_{i_1}x_{i_2}\cdots x_{i_m}\exp(-\frac{1}{2}x^T A x)}{\displaystyle\int\text{d}^n x\;\exp(-\frac{1}{2}x^T A x)}\\&amp;&#x3D;\left.\frac{1}{Z(0)}\frac{\partial}{\partial b_{i_1}}\cdots\frac{\partial}{\partial b_{i_m}}Z(b)\right|_{b&#x3D;0}\end{aligned}$$</p>
+<p>因此两点关联函数即传播子可写作</p>
+<p>$$\ev{x_i x_j}&#x3D;(A^{-1})_{ij}$$</p>
+<p>奇数点关联函数为零，偶数点关联函数为所有可能的两点关联函数乘积求和</p>
+<p>$$\ev{x_1 x_2 x_3 x_4}&#x3D;\ev{x_1 x_2}\ev{x_3 x_4}+\ev{x_1 x_3}\ev{x_2 x_4}+\ev{x_1 x_4}\ev{x_2 x_3}$$</p>
+<h3 id="Boson-OPE"><a href="#Boson-OPE" class="headerlink" title="Boson OPE"></a>Boson OPE</h3><p>Euclidean平面上无质量自由Boson作用量如下</p>
+<p>$$S&#x3D;\frac{g}{2}\int\text{d}^2 x\;\partial_\mu\varphi\partial^\mu\varphi$$</p>
+<p>由Gaussian积分可写出其传播子 $K(x,y)&#x3D;A^{-1}(x,y)$</p>
+<p>$$S&#x3D;\frac{1}{2}\int\text{d}^2 x\;\text{d}^2 y\;\varphi(x)A(x,y)\varphi(y)\qquad A(x,y)&#x3D;-g\;\delta(x-y)\Delta$$</p>
+<p>$$\ev{\varphi(x)\varphi(y)}&#x3D;-\frac{1}{4\pi g}\ln(x-y)^2+\text{const.}$$</p>
+<p>用复坐标表示为</p>
+<p>$$\ev{\varphi(z,\bar z)\varphi(w,\bar w)}&#x3D;-\frac{1}{4\pi g}\left(\ln(z-w)+\ln(\bar z-\bar w)\right)+\text{const.}$$</p>
+<p>考虑全纯场，求偏导可得 $\partial\varphi\partial\varphi$ OPE，此形式说明交换两个boson不改变关联函数</p>
+<p>$$\partial\varphi(z)\partial\varphi(w)\sim -\frac{1}{4\pi g}\frac{1}{(z-w)^2}$$</p>
+<p>写出能动张量</p>
+<p>$$T_{\mu\nu}&#x3D;g\left(\partial_\mu\varphi\partial_\nu\varphi-\frac{1}{2}\eta_{\mu\nu}\partial_\rho\varphi\partial^\rho\varphi\right)$$</p>
+<p>其量子化版本可用复变量表示为以下形式，其中正规序 $::$ 是为保证能动张量真空期望为零</p>
+<p>$$T(z)&#x3D;-2\pi g:\partial\varphi\partial\varphi:&#x3D;-2\pi g\lim_{w\to z}(\partial\varphi(z)\partial\varphi(w)-\ev{\partial\varphi(z)\partial\varphi(w)})$$</p>
+<p>由Wick定理计算 $T\partial\varphi$ OPE</p>
+<p>$$\begin{aligned}T(z)\partial\varphi(w)&amp;&#x3D;-2\pi g:\partial\varphi(z)\partial\varphi(z):\partial\varphi(w)\\&amp;\sim -4\pi g:\partial\varphi(z)\overbracket{\partial\varphi(z):\partial\varphi}(w)\\&amp;\sim \frac{\partial\varphi(z)}{(z-w)^2}\end{aligned}$$</p>
+<p>将 $\partial\varphi(z)$ 在 $w$ 附近展开，得到 $T\partial\varphi$ OPE表达式，其形式说明 $\partial\varphi$ 为共形维数为 $1$ 的初级场，与 $\varphi$ 为无旋标量场相符</p>
+<p>$$T(z)\partial\varphi(w)\sim \frac{\partial\varphi(w)}{(z-w)^2}+\frac{\partial^2_w\varphi(w)}{(z-w)}$$</p>
+<p>继续由Wick定理计算 $TT$ OPE，可知Boson中心荷 $c&#x3D;1$</p>
+<p>$$\begin{aligned}T(z)T(w)&amp;&#x3D;4\pi^2 g^2:\partial\varphi(z)\partial\varphi(z)::\partial\varphi(w)\partial\varphi(w):\\&amp;\sim\frac{1&#x2F;2}{(z-w)^2}-\frac{4\pi g:\partial\varphi(z)\partial\varphi(w):}{(z-w)^2}\\&amp;\sim \frac{1&#x2F;2}{(z-w)^2}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{(z-w)}\end{aligned}$$</p>
+<h3 id="Fermion-OPE"><a href="#Fermion-OPE" class="headerlink" title="Fermion OPE"></a>Fermion OPE</h3><p>Euclidean平面上自由Majorana fermion作用量为</p>
+<p>$$S&#x3D;\frac{g}{2}\int\text{d}^2 x\;\Psi^\dagger\gamma^0\gamma^\mu\partial_\mu\Psi$$</p>
+<p>取Euclidean平面上Clifford代数的如下表示</p>
+<p>$$\{\gamma^\mu,\gamma^\nu\}&#x3D;2\eta^{\mu\nu}$$</p>
+<p>$$\gamma^0&#x3D;\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\qquad \gamma^1&#x3D;i\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}$$</p>
+<p>$$\gamma^0\gamma^\mu\partial_\mu&#x3D;2\begin{pmatrix}\partial_{\bar z}&amp;0\\0&amp;\partial_{z}\end{pmatrix}$$</p>
+<p>令 $\Psi&#x3D;(\psi,\bar\psi)^T$，作用量可写为以下形式，其经典运动方程的解为任意全纯场 $\psi$</p>
+<p>$$S&#x3D;g\int\text{d}^2 x\;(\bar\psi\partial\bar\psi+\psi\bar\partial\psi)$$</p>
+<p>$$\partial\bar\psi&#x3D;0\qquad\bar\partial\psi&#x3D;0$$</p>
+<p>根据Majorana条件 $\Psi^*&#x3D;\Psi$，将作用量写为二次型，可知传播子 $K_{ij}(x,y)&#x3D;\ev{\Psi_i(x)\Psi_j(y)}$ 满足以下方程</p>
+<p>$$S&#x3D;\frac{1}{2}\int\text{d}^2 x\;\text{d}^2 y\;\Psi_i(x)A_{ij}(x,y)\Psi_j(y)\qquad A_{ij}(x,y)&#x3D;g\;\delta(x-y)(\gamma^0\gamma^\mu)_{ij}\partial_\mu$$</p>
+<p>$$g\;\delta(x-y)(\gamma^0\gamma^\mu)_{ik}\partial_\mu K_{kj}(x,y)&#x3D;\delta(x-y)\delta_{ij}$$</p>
+<p>由以下等式，将方程写为矩阵形式</p>
+<p>$$\frac{1}{\pi}\partial_{\bar z}\frac{1}{z}&#x3D;\delta(\boldsymbol{x})\qquad \frac{1}{\pi}\partial_{ z}\frac{1}{\bar z}&#x3D;\delta(\boldsymbol{x})$$</p>
+<p>$$2g\begin{pmatrix}\partial_{\bar z}&amp;0\\0&amp;\partial_{z}\end{pmatrix}\begin{pmatrix}\ev{\psi(z,\bar z)\psi(w,\bar w)}&amp;\ev{\psi(z,\bar z)\bar\psi(w,\bar w)}\\\ev{\bar\psi(z,\bar z)\psi(w,\bar w)}&amp;\ev{\bar\psi(z,\bar z)\bar\psi(w,\bar w)}\end{pmatrix}&#x3D;\frac{1}{\pi}\begin{pmatrix}\displaystyle\partial_{\bar z}\frac{1}{z-w}&amp;0\\0&amp;\displaystyle\partial_{z}\frac{1}{\bar z-\bar w}\end{pmatrix}$$</p>
+<p>比较可得关联函数</p>
+<p>$$\ev{\psi(z,\bar z)\psi(w,\bar w)}&#x3D;\frac{1}{2\pi g}\frac{1}{z-w}\qquad\ev{\bar\psi(z,\bar z)\bar\psi(w,\bar w)}&#x3D;\frac{1}{2\pi g}\frac{1}{\bar z-\bar w}$$</p>
+<p>$$\ev{\psi(z,\bar z)\bar\psi(w,\bar w)}&#x3D;0\qquad \ev{\bar\psi(z,\bar z)\psi(w,\bar w)}&#x3D;0$$</p>
+<p>$$\ev{\partial_z\psi(z,\bar z)\psi(w,\bar w)}&#x3D;-\frac{1}{2\pi g}\frac{1}{(z-w)^2}\qquad \ev{\partial_z\psi(z,\bar z)\partial_w\psi(w,\bar w)}&#x3D;-\frac{1}{\pi g}\frac{1}{(z-w)^3}$$</p>
+<p>考虑全纯场 $\psi\psi$ OPE，此形式说明交换两个fermion改变关联函数符号</p>
+<p>$$\psi(z)\psi(w)\sim\frac{1}{2\pi g}\frac{1}{z-w}$$</p>
+<p>计算复变量下能动张量，其并不对称，在应用经典运动方程之后回归经典对称情况</p>
+<p>$$T^{\alpha\beta}&#x3D;2g\begin{pmatrix}\bar\psi\bar\partial\bar\psi&amp;-\psi\bar\partial\psi\\-\bar\psi\partial\bar\psi&amp;\psi\partial\psi\end{pmatrix}$$</p>
+<p>能动张量量子化全纯版本如下</p>
+<p>$$T(z)&#x3D;-\pi g:\psi\partial\psi:&#x3D;-\pi g\lim_{w\to z}(\psi(z)\partial\psi(w)-\ev{\psi(z)\partial\psi(w)})$$</p>
+<p>由Wick定理计算 $T\psi$ OPE，以下形式说明 $\psi$ 为共形维数为 $1&#x2F;2$ 的初级场</p>
+<p>$$\begin{aligned}T(z)\psi(w)&amp;&#x3D;-\pi g:\psi(z)\partial\psi(z):\psi(w)\\&amp;\sim\frac{1}{2}\frac{\partial\psi(z)}{z-w}+\frac{1}{2}\frac{\psi(z)}{(z-w)^2}\\&amp;\sim\frac{\psi(w)&#x2F;2}{(z-w)^2}+\frac{\partial\psi(w)}{z-w}\end{aligned}$$</p>
+<p>继续计算 $TT$ OPE，可知Fermion中心荷 $c&#x3D;1&#x2F;2$</p>
+<p>$$\begin{aligned}T(z)T(w)&amp;&#x3D;\pi^2g^2:\psi(z)\partial\psi(z)::\psi(w)\partial\psi(w):\\&amp;\sim\frac{1&#x2F;4}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{(z-w)}\end{aligned}$$</p>
+<h3 id="Ghost-OPE"><a href="#Ghost-OPE" class="headerlink" title="Ghost OPE"></a>Ghost OPE</h3><p>考虑弦论中以下作用量及经典运动方程，其中 $b_{\mu\nu}$ 为无迹对称张量，$c^\mu$ 与 $b_{\mu\nu}$ 均为 fermion，但并不是基本动力学场，其仅代表泛函积分中参数变化所产生的Jacobian行列式，因此称其为重参化鬼场</p>
+<p>$$S&#x3D;\frac{g}{2}\int \text{d}^2 x\; b_{\mu\nu}\partial^\mu c^\nu\qquad A_{\alpha}^{\mu\nu}(x,y)&#x3D;\frac{1}{2}g\;\delta_{\alpha}^\nu\delta(x-y)\partial^\mu$$</p>
+<p>$$\partial^\mu b_{\mu\nu}&#x3D;0\qquad \partial^\mu c^\nu+\partial^\nu c^\mu&#x3D;0$$</p>
+<p>用复变量表示，$b_{\alpha\beta}$ 仅有 $b_{zz},b_{\bar z\bar z}$ 两个非零分量</p>
+<p>$$S&#x3D;g\int \text{d}^2 x\; (b\bar\partial c+\bar b\partial\bar c)$$</p>
+<p>$$c&#x3D;c^z\quad \bar c&#x3D;c^\bar{z}\qquad b&#x3D;b_{zz}\quad \bar b&#x3D;b_{\bar z\bar z}$$</p>
+<p>$$\partial\bar c&#x3D;0\qquad\bar\partial c&#x3D;0\qquad\partial c&#x3D;-\bar\partial\bar c$$</p>
+<p>$$\partial\bar b&#x3D;0\qquad\bar\partial b&#x3D;0$$</p>
+<p>令 $\Psi&#x3D;(b,\bar b,c,\bar c)^T$，将作用量写为二次型</p>
+<p>$$S&#x3D;\frac{g}{2} \int \text{d}^2 x\;(b,\bar b,c,\bar c)\begin{pmatrix}0&amp;0&amp;\bar\partial&amp;0\\0&amp;0&amp;0&amp;\partial\\\bar\partial&amp;0&amp;0&amp;0\\0&amp;\partial&amp;0&amp;0\end{pmatrix}\begin{pmatrix}b\\\bar b\\ c\\\bar c\end{pmatrix}&#x3D;\frac{1}{2}\int \text{d}^2 x\;\text{d}^2 y\;\Psi_{i}(x)A_{ij}(x,y)\Psi_{j}(y)$$</p>
+<p>$$A_{ij}(x,y)&#x3D;g\;\delta(x-y)\begin{pmatrix}0&amp;0&amp;\bar\partial&amp;0\\0&amp;0&amp;0&amp;\partial\\\bar\partial&amp;0&amp;0&amp;0\\0&amp;\partial&amp;0&amp;0\end{pmatrix}$$</p>
+<p>由 $A_{ij}(x,y)$ 形式可直接写出传播子与 $bc$ OPE</p>
+<p>$$\ev{b(z)c(w)}&#x3D;\frac{1}{\pi g}\frac{1}{z-w}\qquad \ev{c(z)b(w)}&#x3D;\frac{1}{\pi g}\frac{1}{z-w}$$</p>
+<p>$$\ev{b(z)\partial c(w)}&#x3D;\frac{1}{\pi g}\frac{1}{(z-w)^2}\qquad \ev{\partial b(z)c(w)}&#x3D;-\frac{1}{\pi g}\frac{1}{(z-w)^2}$$</p>
+<p>$$b(z)c(w)\sim \frac{1}{\pi g}\frac{1}{z-w}$$</p>
+<p>计算能动张量，其并不对称，可借助经典运动方程，添加一项散度让其反对称成分对称</p>
+<p>$$T^{\mu\nu}_c&#x3D;\frac{g}{2}(b^{\mu\alpha}\partial^\nu c_\alpha-\eta^{\mu\nu}b^{\alpha\beta}\partial_\alpha c_\beta)$$</p>
+<p>$$\frac{1}{2}(T^{\mu\nu}_c-T^{\nu\mu}_c)&#x3D;\frac{g}{4}(b^{\mu\alpha}\partial^\nu c_\alpha-b^{\nu\alpha}\partial^\mu c_\alpha)$$</p>
+<p>$$B^{\rho\mu\nu}&#x3D;-\frac{g}{2}(b^{\nu\rho}c^\mu-b^{\nu\mu}c^\rho)\qquad \partial_\rho B^{\rho\mu\nu}&#x3D;\frac{g}{2}(b^{\nu\alpha}\partial^\mu c_\alpha+\partial_\alpha b^{\mu\nu} c^\alpha)$$</p>
+<p>$$T^{\mu\nu}_B&#x3D;\frac{g}{2}(b^{\mu\alpha}\partial^\nu c_\alpha+b^{\nu\alpha}\partial^\mu c_\alpha+\partial_\alpha b^{\mu\nu} c^\alpha-\eta^{\mu\nu}b^{\alpha\beta}\partial_\alpha c_\beta)$$</p>
+<p>其量子化全纯版本为</p>
+<p>$$T(z)&#x3D;\pi g:(2\partial c\;b+c\partial b):$$</p>
+<p>计算 $Tc$ 与 $Tb$ OPE，可知 $b,c$ 均为初级场，$c$ 共形维数为 $-1$，$b$ 共形维数为 $2$</p>
+<p>$$\begin{aligned}T(z)c(w)&amp;&#x3D;\pi g:[2\partial c(z)\;b(z)+c(z)\partial b(z)]:c(w)\\&amp;\sim -\frac{c(z)}{(z-w)^2}+\frac{2\partial c(z)}{z-w}\\&amp;\sim-\frac{c(w)}{(z-w)^2}+\frac{\partial c(w)}{z-w}\end{aligned}$$</p>
+<p>$$\begin{aligned}T(z)b(w)&amp;&#x3D;\pi g:[2\partial c(z)\;b(z)+c(z)\partial b(z)]:b(w)\\&amp;\sim \frac{2b(z)}{(z-w)^2}-\frac{\partial b(z)}{z-w}\\&amp;\sim\frac{2b(w)}{(z-w)^2}+\frac{\partial b(w)}{z-w}\end{aligned}$$</p>
+<p>计算 $TT$ OPE，可知重参化鬼场中心荷 $c&#x3D;-26$</p>
+<p>$$\begin{aligned}T(z)T(w)&amp;&#x3D;\pi^2 g^2:[2\partial c(z)\;b(z)+c(z)\partial b(z)]::[2\partial c(w)\;b(w)+c(w)\partial b(w)]:\\&amp;\sim\frac{-13}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{z-w}\end{aligned}$$</p>
+<p>若保持 $bc$ OPE不变，将能动张量减去一项全导数 $:\partial(cb):$，称为简单鬼场系统</p>
+<p>$$T(z)&#x3D;\pi g:\partial c\; b:$$</p>
+<p>计算OPE，可知初级场 $c$ 共形维数为 $0$，$b$ 共形维数为 $1$，简单鬼场中心荷 $c&#x3D;-2$</p>
+<p>$$T(z)c(w)\sim \frac{\partial c(w)}{z-w}$$</p>
+<p>$$T(z)b(w)\sim \frac{b(w)}{(z-w)^2}+\frac{\partial b(w)}{z-w}$$</p>
+<p>$$T(z)T(w)\sim \frac{-1}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{z-w}$$</p>
+<h3 id="能动张量另一定义"><a href="#能动张量另一定义" class="headerlink" title="能动张量另一定义"></a>能动张量另一定义</h3><p>考虑无穷小坐标变换 $x^\mu\mapsto x’^\mu+\epsilon^\mu(x)$ 引起的作用量变分，假定能动张量对称(虽然会出现非对称情况，但在经典运动方程下额外项变为零，结果上对Ward等式无影响，因此可忽略)</p>
+<p>$$\begin{aligned}\delta S&amp;&#x3D;\int\text{d}^d x\;T^{\mu\nu}\partial_\mu\epsilon_\nu\\&amp;&#x3D;\frac{1}{2}\int\text{d}^d x\;T^{\mu\nu}(\partial_\mu\epsilon_\nu+\partial_\nu\epsilon_\mu)\end{aligned}$$</p>
+<p>考虑度规变化</p>
+<p>$$\begin{aligned}g’_{\mu\nu}&amp;&#x3D;\frac{\partial x^\alpha}{\partial x’^{\mu}}\frac{\partial x^\beta}{\partial x’^{\nu}}g_{\alpha\beta}\\&amp;&#x3D;(\delta_\mu^\alpha-\partial_\mu\epsilon^\alpha)(\delta_\nu^\beta-\partial_\nu\epsilon^\beta)g_{\alpha\beta}g_{\alpha\beta}\\&amp;&#x3D;g_{\mu\nu}-(\partial_\mu\epsilon_\nu+\partial_\nu\epsilon_\mu)\end{aligned}$$</p>
+<p>用度规变分表示作用量变分，可得平直时空能动张量的另一定义</p>
+<p>$$\delta S&#x3D;-\frac{1}{2}\int\text{d}^d x\; T^{\mu\nu}\delta g_{\mu\nu}$$</p>
+<p>对于非平直时空，可对能动张量的度规变分定义作如下自然推广</p>
+<p>$$\delta S&#x3D;-\frac{1}{2}\int\text{d}^d x\; \sqrt{g}\;T^{\mu\nu}\delta g_{\mu\nu}$$</p>
+<p>考虑非平直时空自由标量场 $\varphi$ 作用量</p>
+<p>$$\begin{aligned} S&amp;&#x3D;\int\text{d}^d x\;\sqrt{g}\;\mathcal{L}\\&amp;&#x3D;\frac{1}{2}\int\text{d}^d x\;\sqrt{g}(g^{\mu\nu}\partial_\mu\varphi\partial_\nu\varphi+m^2\varphi^2)\end{aligned}$$</p>
+<p>由以下等式计算 $\delta\sqrt{g}$ </p>
+<p>$$\det{A}&#x3D;e^{\Tr\;\ln{A}}\qquad\delta g^{\mu\nu}&#x3D;-g^{\alpha\mu}g^{\beta\nu}\delta g_{\alpha\beta}$$</p>
+<p>$$\delta\sqrt{g}&#x3D;\frac{1}{2}\sqrt{g}g^{\mu\nu}\delta g_{\mu\nu}$$</p>
+<p>根据度规变分定义计算能动张量，发现其与正则定义形式相同，此定义的好处是能动张量自然满足对称条件，但是得到其显式表示的过程需要更为复杂的计算</p>
+<p>$$T^{\mu\nu}&#x3D;-g^{\mu\nu}\mathcal{L}+\partial^\mu\varphi\partial^\nu\varphi$$</p>
+<p>若用标架 $e^a_\mu$ 替代度规，可得能动张量的标架变分定义</p>
+<p>$$e^a&#x3D;e^a_\mu\dd x^\mu\qquad e&#x3D;\det{e_\mu^a}$$</p>
+<p>$$e_\mu^a e_\nu^b g^{\mu\nu}&#x3D;\eta^{ab}\qquad g_{\mu\nu}&#x3D;\eta_{ab} e^a_\mu e^b_\nu$$</p>
+<p>$$\delta S&#x3D;-\int\text{d}^d x\;e\;T^\mu_a\delta e^a_\mu$$</p>
+<p>考虑非平直时空的真空泛函，由其定义联通泛函 $W[g]$</p>
+<p>$$Z[g]&#x3D;\int[\dd\Phi]_g\exp(-S[\Phi,g])&#x3D;\exp(-W[g])$$</p>
+<p>真空泛函对度规变分可得</p>
+<p>$$\begin{aligned}Z[g+\delta g]&amp;&#x3D;\int [\dd\Phi]_{g+\delta g}\exp(-S[\Phi,g+\delta g])\\&amp;&#x3D;\int[\dd\Phi]_g\left(1+\frac{1}{2}\int\text{d}^d x\sqrt{g}\delta g_{\mu\nu}T^{\mu\nu}\right)\exp(-S[\Phi,g])\\&amp;&#x3D;Z[g]+\frac{1}{2}Z[g]\int \text{d}^d x\;\sqrt{g}\;\delta g_{\mu\nu}\ev{T^{\mu\nu}}\end{aligned}$$</p>
+<p>$$\delta W[g]&#x3D;-\frac{\delta Z[g]}{Z[g]}&#x3D;-\frac{1}{2}\int\text{d}^d x\sqrt{g}\;\delta g_{\mu\nu}\ev{T^{\mu\nu}}$$</p>
+<p>若用标架代替度规，则有</p>
+<p>$$\delta W[e]&#x3D;-\int\text{d}^d x\; e\;\delta e_\mu^a\ev{T_a^\mu}$$</p>
+<h3 id="中心荷物理意义"><a href="#中心荷物理意义" class="headerlink" title="中心荷物理意义"></a>中心荷物理意义</h3><p>中心荷也被称为共形异常，其反映了系统在由于宏观尺度的引入(例如周期性边界条件)所导致的共形对称软破缺下的行为</p>
+<p>考虑整个复平面 $z$ 上的共形场论，用以下变换将复平面映到周长为 $L$ 的圆柱面上</p>
+<p>$$z\mapsto w&#x3D;\frac{L}{2\pi}\ln{z}$$</p>
+<p>由能动张量变换规律，复平面与圆柱面上能动张量具有以下关系</p>
+<p>$$T_\text{cyl.}(w)&#x3D;\left(\frac{2\pi}{L}\right)^2\left[T_\text{pl.}(z)-\frac{c}{24}\right]$$</p>
+<p>假设复平面上真空能量密度 $\ev{T_\text{pl.}}$ 为零，则圆柱面上真空能量密度为以下非零值，可见中心荷正比于Casimir能，即由于圆柱面上周期性边界条件导致的真空能量密度变化，当宏观尺度 $L$ 趋于无穷，则Casimir能自然趋于零</p>
+<p>$$\ev{T_\text{cyl.}(w)}&#x3D;-\frac{c\pi^2 }{6L^2}$$</p>
+<p>考虑度规变化时自由能 $F$，即联通泛函 $W$ 的变分</p>
+<p>$$\delta F&#x3D;-\frac{1}{2}\int\text{d}^d x\sqrt{g}\;\delta g_{\mu\nu}\ev{T^{\mu\nu}}$$</p>
+<p>对圆柱面周长作以下无穷小伸缩</p>
+<p>$$L\mapsto (1+\varepsilon)L\qquad w^0\mapsto (1+\varepsilon)w^0$$</p>
+<p>$$\epsilon^\mu&#x3D;\varepsilon w^0\delta_{\mu 0}\qquad\delta g_{\mu\nu}&#x3D;-2\varepsilon\delta_{\mu 0}\delta_{\nu 0}$$</p>
+<p>$$\ev{T^{00}}&#x3D;\frac{\pi c}{6L^2}\qquad\delta F&#x3D;\int\dd w^0\dd w^1\;\frac{\pi c}{6L^2}\frac{\delta L}{L}$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../12/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E6%9F%B1%E9%9D%A2%E9%87%8F%E5%AD%90%E5%8C%96/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          柱面量子化
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../../11/30/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          共形场论基础
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>
