@@ -249,9 +249,9 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2024-02-07 23:51:45</time>
+          <time>2024-02-20 19:15:30</time>
           <span class="text-gray-400">·</span>
-          <span>23 min</span>
+          <span>24 min</span>
           <span class="text-gray-400">·</span>
           <span>5.2k words</span>
         </section>
@@ -285,10 +285,10 @@
 <p>$$[H^i,[E^\alpha,E^\beta]]&#x3D;(\alpha^i+\beta^i)[E^\alpha,E^\beta]$$</p>
 <p>可知若 $\alpha+\beta\in\Delta$，$[E^\alpha,E^\beta]\propto E^{\alpha+\beta}$；若 $\alpha+\beta\notin\Delta$，$[E^\alpha,E^\beta]&#x3D;0$，对 $\alpha&#x3D;-\beta$，$[E^\alpha,E^{-\alpha}]$ 为Cartan子代数中生成元的线性组合，可将梯算符归一化，使得此对易子值为 $2\alpha\cdot H&#x2F;|\alpha|^2$</p>
 <p>综上，Cartan-Weyl基下完整的对易关系为</p>
-<p>$$\begin{aligned}\ [H^i,H^j] &amp; &#x3D;0 &amp;\\ [H^i,E^\alpha] &amp;&#x3D;\alpha^i E^\alpha  &amp;\\ [E^\alpha,E^\beta] &amp;&#x3D;N_{\alpha,\beta}E^{\alpha+\beta}&amp;\text{if}\quad\alpha+\beta\in\Delta\\&amp;&#x3D;\frac{2}{|\alpha|^2}\alpha\cdot H&amp;\text{if}\quad\alpha+\beta\notin\Delta\\&amp;&#x3D;0&amp;\text{otherwise}\end{aligned}$$</p>
+<p>$$\begin{aligned}\ [H^i,H^j] &amp; &#x3D;0 &amp;\\ [H^i,E^\alpha] &amp;&#x3D;\alpha^i E^\alpha  &amp;\\ [E^\alpha,E^\beta] &amp;&#x3D;N_{\alpha,\beta}E^{\alpha+\beta}&amp;\text{if}\quad\alpha+\beta\in\Delta\\&amp;&#x3D;\frac{2}{|\alpha|^2}\alpha\cdot H&amp;\text{if}\quad\alpha+\beta&#x3D;0\\&amp;&#x3D;0&amp;\text{otherwise}\end{aligned}$$</p>
 <h3 id="Killing形式"><a href="#Killing形式" class="headerlink" title="Killing形式"></a>Killing形式</h3><p>用以确定对易子的归一化通常由以下Killing形式引入，其赋予了Lie代数标量乘法运算，若在某组基 $\{T^b\}$ 下计算，可先求出 $[X,[Y,T^b]]$ 中 $T^b$ 的系数，将所有系数相加即可得到所需的迹</p>
 <p>$$\tilde{K}(X,Y)&#x3D;\Tr(\text{ad}X\text{ad}Y)$$</p>
-<p>对于半单Lie代数，Killing形式非简并，$\tilde{K}(X,Y)&#x3D;0\;\;\;\forall\;Y\quad\Leftrightarrow\quad X&#x3D;0$</p>
+<p>对于半单Lie代数，Killing形式非退化，$\tilde{K}(X,Y)&#x3D;0\;\;\;\forall\;Y\quad\Leftrightarrow\quad X&#x3D;0$</p>
 <p>下文中将使用Killing形式的重整化版本，其中 $g$ 为常数，将在之后定义</p>
 <p>$$K(X,Y)&#x3D;\frac{1}{2g}\Tr(\text{ad}X\text{ad}Y)$$</p>
 <p>由于Killing形式关于 $X,Y$ 对称，故其可在某组基 $\{J^a\}$ 下正交归一，称为标准基</p>
@@ -324,8 +324,8 @@
 <p>$$2\frac{(\alpha,\lambda)}{|\alpha|^2}&#x3D;-(p-q)$$</p>
 <h3 id="单根与Cartan矩阵"><a href="#单根与Cartan矩阵" class="headerlink" title="单根与Cartan矩阵"></a>单根与Cartan矩阵</h3><p>取 $\mathfrak{h}^*$ 中一组基 $\{\beta_1,\beta_2,\cdots,\beta_r\}$，任意根可写为其线性组合</p>
 <p>$$\alpha&#x3D;\sum_{i&#x3D;1}^r n_i\beta_i$$</p>
-<p>若序列 $(n_1,n_2,\cdots,n_r)$ 中第一个非零数为正数，则称 $\alpha$ 为正根，反之为负根，正根与负根的集合满足 $\Delta_+&#x3D;-\Delta_-$</p>
-<p>若正&#x2F;负根 $\alpha_i$ 不能写为两个正&#x2F;负根之和，则称其为单根，单根集 $\{\alpha_1,\cdots,\alpha_r\}$ 构成根空间最为方便的一组基，由单根定义可知，两个单根之差不是根，$\alpha_i-\alpha_j\notin \Delta$，并且任意正根可写为一系列正根之和</p>
+<p>在基下可以定义根的全序关系，一种定义方式为：若序列 $(n_1,n_2,\cdots,n_r)$ 中第一个非零数为正数，则称 $\alpha$ 为正根，反之为负根，正根与负根的集合满足 $\Delta_+&#x3D;-\Delta_-$</p>
+<p>若正根 $\alpha_i$ 不能写为两个正根之和，则称其为单根，单根集 $\{\alpha_1,\cdots,\alpha_r\}$ 构成根空间最为方便的一组基，注意单根集的选取并不唯一，其依赖于基 $\{\beta_i\}$ 与所使用的全序关系，由单根定义可知，两个单根之差不是根，$\alpha_i-\alpha_j\notin \Delta$，并且任意正根可写为一系列正根之和</p>
 <p>由单根的标量积可定义Cartan矩阵，其为整数阵，对角元为 $2$，一般为非对称阵</p>
 <p>$$A_{ij}&#x3D;\frac{2(\alpha_i,\alpha_j)}{\alpha_j^2}$$</p>
 <p>由Schwarz不等式知 $A_{ij}A_{ji}&lt;4\;\;\text{for}\;\;i\neq j$，另外由 $\alpha_i-\alpha_j$ 非根可知 $E^{-\alpha_j}\ket{\alpha_i}&#x3D;0$，即 $q&#x3D;0$，$(\alpha_i,\alpha_j)\le 0$，说明 $A_{ij}$ 非对角元为非正整数，结合不等式可知其取值集合只能为 $\{0,-1,-2,-3\}$，可知两不同单根夹角取值集合为 $\{\pi&#x2F;2,2\pi&#x2F;3,3\pi&#x2F;4,5\pi&#x2F;6\}$</p>
@@ -390,9 +390,9 @@
 <p>$$s_i\alpha_j&#x3D;\alpha_j-A_{ij}\alpha_i$$</p>
 <p>$W$ 将 $\Delta$ 映到自身，其提供了从单根获得 $\Delta$ 的简单方式</p>
 <p>$$\Delta&#x3D;\{w\alpha_1,\cdots,w\alpha_r|w\in W\}$$</p>
-<p>由此构造可知选定 $w’$，$\{w’\alpha_i\}$ 可作为单根的一组基</p>
+<p>由此构造可知选定 $w’$，$\{w’\alpha_i\}$ 可作为一组单根基，这建立了不同单根基之间的关系</p>
 <p>现在证明 $\rho$ 两种定义的等价性，由第一种定义，$(\rho,\alpha_i^\vee)&#x3D;1\quad\forall\; i$，下面说明第二种定义同样满足此性质，设 $\sigma&#x3D;\displaystyle\frac{1}{2}\sum_{\alpha&gt;0}\alpha$，考虑 $s_i\sigma$，由于 $A_{ij}\le 0\quad\text{for}\; i\neq j$，故 $s_i$ 将除 $\alpha_i$ 之外的正根重新排列，将 $\alpha_i$ 变为 $-\alpha_i$</p>
-<p>$$s_i\sigma&#x3D;\frac{1}{2}\sum_{\alpha&gt;0,\alpha\neq \alpha_i}\alpha-\frac{1}{2}\alpha_i&#x3D;\frac{1}{2}\sum_{\alpha&gt;0}-\alpha_i$$</p>
+<p>$$s_i\sigma&#x3D;\frac{1}{2}\sum_{\alpha&gt;0,\alpha\neq \alpha_i}\alpha-\frac{1}{2}\alpha_i&#x3D;\frac{1}{2}\sum_{\alpha&gt;0}\alpha-\alpha_i$$</p>
 <p>与伴根作标量积得</p>
 <p>$$(s_i\sigma,\alpha_i^\vee)&#x3D;(\sigma-\alpha_i,\alpha_i^\vee)&#x3D;(\sigma,\alpha_i^\vee)-2$$</p>
 <p>另外由标量积在Weyl变换下不变可得</p>
@@ -406,7 +406,7 @@
 <p>Weyl群自然诱导出 $r$ 维权矢量空间的单锥腔划分，腔的数目等于 $W$ 的阶数，腔壁 $(w\lambda,\alpha_i)&#x3D;0$ 为 $s_i$ 的反射超平面</p>
 <p>$$C_w&#x3D;\{\lambda|(w\lambda,\alpha_i)\ge 0,i&#x3D;1,\cdots,r\}\qquad w\in W$$</p>
 <p>对应于Weyl群单位元的腔称为基本腔，记为 $C_0$，对任意权 $\lambda\notin C_0$，均存在 $w\in W$ 使得 $w\lambda\in C_0$，更准确地，每个权的 $W$ 轨道恰好有一个点在基本腔中</p>
-<p>称在基本腔中并且Dynkin标均为正整数的权为支配权，最高根 $\theta$ 即为支配权</p>
+<p>称在基本腔中即Dynkin标均为正整数的权为支配权，可知最高根 $\theta$ 为支配权</p>
 <p>引入几个将在下文中使用的记号，其中移位Weyl反射用 $\cdot$ 表示</p>
 <p>$$w\cdot\lambda\equiv w(\lambda+\rho)-\rho$$</p>
 <p>容易验证移位Weyl反射满足</p>
@@ -467,7 +467,7 @@
 <p>$$s_2s_1(\lambda_1,\lambda_2)&#x3D;(\lambda_2,-\lambda_1-\lambda_2)$$</p>
 <p>$$s_1s_2s_1(\lambda_1,\lambda_2)&#x3D;s_2s_1s_2(\lambda_1,\lambda_2)&#x3D;(-\lambda_2,-\lambda_1)$$</p>
 <p>通过反射算符对单根作用可得完整根集</p>
-<p>$$\Delta&#x3D;\{\alpha_1,\alpha_2,\alpha_1+\alpha_2,-\alpha_1,-\alpha_2,-\alpha_1,-\alpha_2\}$$</p>
+<p>$$\Delta&#x3D;\{\alpha_1,\alpha_2,\alpha_1+\alpha_2,-\alpha_1,-\alpha_2,-\alpha_1-\alpha_2\}$$</p>
 <p>$$\theta&#x3D;\alpha_1+\alpha_2\qquad\Rightarrow\qquad a_i&#x3D;a_i^\vee&#x3D;1,i&#x3D;1,2$$</p>
 <p>此代数的根与Weyl腔如下图所示，其中虚线为腔壁</p>
 <p><img src="/images/su(3)Weyl%E7%BE%A4.png"></p>
@@ -480,7 +480,7 @@
 <p>$$|\alpha_2|^2&#x3D;2\qquad\Rightarrow\qquad|\alpha_1|^2&#x3D;1$$</p>
 <p>其反射算符关系及Weyl群为</p>
 <p>$$(s_1 s_2)^4&#x3D;1$$</p>
-<p>$$W&#x3D;\{s_1,s_2,s_1s_2,s_2s_1,s_1s_2s_1,s_2s_1s-2,s_1s_2s_1s_2\}$$</p>
+<p>$$W&#x3D;\{1,s_1,s_2,s_1s_2,s_2s_1,s_1s_2s_1,s_2s_1s_2,s_1s_2s_1s_2\}$$</p>
 <p>由Weyl群可构造根集</p>
 <p>$$\Delta&#x3D;\{\alpha_1,\alpha_2,\alpha_1+\alpha_2,2\alpha_1+\alpha_2,-\alpha_1,-\alpha_2,-\alpha_1-\alpha_2,-2\alpha_1-\alpha_2\}$$</p>
 <p>$$\theta&#x3D;2\alpha_1+\alpha_2&#x3D;2\alpha_1^\vee+\alpha_2^\vee\qquad\Rightarrow\qquad a_1&#x3D;2,a_2&#x3D;a_1^\vee&#x3D;a_2^\vee&#x3D;1$$</p>
