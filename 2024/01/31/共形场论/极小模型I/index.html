@@ -249,29 +249,29 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2024-02-09 23:44:45</time>
+          <time>2024-03-05 15:25:32</time>
           <span class="text-gray-400">·</span>
-          <span>9 min</span>
+          <span>21 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.9k words</span>
+          <span>4.7k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h3 id="Virasoro-示性数"><a href="#Virasoro-示性数" class="headerlink" title="Virasoro 示性数"></a>Virasoro 示性数</h3><p>对由Virasoro生成元 $L_n$ 生成的作用于最高权态 $\ket{h}$ 的Verma模 $V(c,h)$，定义生成函数 $\chi_{(c,h)}(\tau)$，称为此模的示性数，其中 $\dim(n+h)$ 为Verma模中线性独立的 $n$ 级裔数目</p>
+    <h2 id="Verma模"><a href="#Verma模" class="headerlink" title="Verma模"></a>Verma模</h2><h3 id="最高权表示-待写"><a href="#最高权表示-待写" class="headerlink" title="最高权表示(待写)"></a>最高权表示(待写)</h3><h3 id="Virasoro-特征标"><a href="#Virasoro-特征标" class="headerlink" title="Virasoro 特征标"></a>Virasoro 特征标</h3><p>对由Virasoro生成元 $L_n$ 生成的作用于最高权态 $\ket{h}$ 的Verma模 $V(c,h)$，定义生成函数 $\chi_{(c,h)}(\tau)$，称为此模的特征标，其中 $\dim(n+h)$ 为Verma模中线性独立的 $n$ 级降数目</p>
 <p>$$\begin{aligned}\chi_{(c,h)}(\tau)&amp;&#x3D;\Tr\; q^{L_0-c&#x2F;24}\qquad(q&#x3D;e^{2\pi i\tau})\\&amp;&#x3D;\sum_{n&#x3D;0}^\infty\dim(h+n)q^{n+h-c&#x2F;24}\end{aligned}$$</p>
-<p>设 $p(n)$ 为可能的最大线性独立 $n$ 级裔数目，$\dim(n+h)\le p(n)$，由下式知示性数中级数在 $|q|&lt;1$ 时一致收敛</p>
+<p>设 $p(n)$ 为可能的最大线性独立 $n$ 级降数目，$\dim(n+h)\le p(n)$，由下式知特征标中级数在 $|q|&lt;1$ 时一致收敛</p>
 <p>$$\frac{1}{\varphi(q)}&#x3D;\prod_{n&#x3D;1}^\infty\frac{1}{1-q^n}&#x3D;\sum_{n&#x3D;0}^\infty p(n)q^n$$</p>
-<p>由此一般Virasoro示性数可写为</p>
+<p>由此一般Virasoro特征标可写为</p>
 <p>$$\chi_{(c,h)}(\tau)&#x3D;\frac{q^{h-c&#x2F;24}}{\varphi(q)}$$</p>
 <p>进一步利用Dedekind函数有</p>
 <p>$$\eta(\tau)&#x3D;q^{1&#x2F;24}\varphi(q)&#x3D;q^{1&#x2F;24}\prod_{n&#x3D;1}^\infty(1-q^n)$$</p>
 <p>$$\chi_{(c,h)}(\tau)&#x3D;\frac{q^{h+(1-c)&#x2F;24}}{\eta(\tau)}$$</p>
-<h3 id="奇异矢量"><a href="#奇异矢量" class="headerlink" title="奇异矢量"></a>奇异矢量</h3><p>称Verma模中能由 $L_n\;(n&gt;0)$ 湮灭的非最高权态 $\ket{\chi}$ 为奇异矢量，其可生成 $V(c,h)$ 的子模 $V_\chi$，奇异矢量与 $V(c,h)$ 中所有态正交，包括自身</p>
+<h2 id="Kac行列式"><a href="#Kac行列式" class="headerlink" title="Kac行列式"></a>Kac行列式</h2><h3 id="奇异矢量"><a href="#奇异矢量" class="headerlink" title="奇异矢量"></a>奇异矢量</h3><p>称Verma模中能由 $L_n\;(n&gt;0)$ 湮灭的非最高权态 $\ket{\chi}$ 为奇异矢量，其可生成 $V(c,h)$ 的子模 $V_\chi$，奇异矢量与 $V(c,h)$ 中所有态正交，包括自身</p>
 <p>$$\bra{\chi}L_{-k_1}\cdots L_{-k_n}\ket{h}&#x3D;\bra{h}L_{k_n}\cdots L_{k_1}\ket{\chi}^*&#x3D;0$$</p>
-<p>又Verma模不同级裔正交，可知 $V_\chi$ 与 $V(c,h)$ 正交，说明 $V_\chi$ 中态的模长均为零</p>
+<p>又Verma模不同级降正交，可知 $V_\chi$ 与 $V(c,h)$ 正交，说明 $V_\chi$ 中态的模长均为零</p>
 <p>由算符-场的对应关系，奇异态 $\ket{\chi}$ 对应奇异场 $\chi(z)$，由于 $(L_n \chi)(z)&#x3D;0\;(n&gt;0)$，$\chi(z)$ 同时为初级场与次级场</p>
 <p>对于包含奇异矢量的Verma模，可以将其商去对应的奇异模，即将相减得到模长为零的态的两个态等同，以构造Virasoro代数的不可约表示，记为 $M(c,h)$，其为构建极小模型的基础</p>
 <h3 id="酉表示和Kac行列式"><a href="#酉表示和Kac行列式" class="headerlink" title="酉表示和Kac行列式"></a>酉表示和Kac行列式</h3><p>若Virasoro代数的表示不包含虚模长态(弦论中称为鬼场)，则称其为酉表示，由于内积只依赖于最高权 $h$ 与中心荷 $c$，要求表示为酉即为对参数 $h,c$ 施加限制条件</p>
@@ -280,7 +280,7 @@
 <p>若 $c&lt;0$，则当 $n\to\infty$ 时模长平方为负，可见中心荷为负的表示均非酉；另外取 $n&#x3D;1$ 可知共形维数 $h$ 为负的表示也均非酉</p>
 <p>酉表示的充要条件可通过考虑以下Gram矩阵得到，将Verma模中态记为 $\ket{i}$</p>
 <p>$$M_{ij}&#x3D;\bra{i}\ket{j}\qquad (M^\dagger&#x3D;M)$$</p>
-<p>Gram矩阵为分块对角阵，$l$ 级裔态构成块 $M^{(l)}$，一般态 $\ket{a}&#x3D;\sum_i a_i\ket{i}$ 的模方为</p>
+<p>Gram矩阵为分块对角阵，$l$ 级降构成块 $M^{(l)}$，一般态 $\ket{a}&#x3D;\sum_i a_i\ket{i}$ 的模方为</p>
 <p>$$\braket{a}&#x3D;a^\dagger M a$$</p>
 <p>由于 $M$ 为Heimitian阵，可将其酉对角化 $M&#x3D;U\Lambda U^\dagger$，记 $b&#x3D;U a$</p>
 <p>$$\braket{a}&#x3D;\sum_i\Lambda_i |b_i|^2$$</p>
@@ -288,7 +288,7 @@
 <p>以下为 $l&#x3D;0,1,2$ 的矩阵块 $M^{(l)}$</p>
 <p>$$\begin{aligned}&amp; M^{(0)}&#x3D;1\\&amp; M^{(1)}&#x3D;2h\\&amp; M^{(2)}&#x3D;\begin{pmatrix} 4h(2h+1)&amp;6h\\ 6h&amp; 4h+c&#x2F;2\end{pmatrix}\end{aligned}$$</p>
 <p>$M^{(l)}&#x3D;h$ 说明酉表示 $h&gt;0$；接着计算 $M^{(2)}$ 的行列式与迹，酉表示要求其均为正</p>
-<p>$$\begin{aligned}\det M^{(2)}&amp;&#x3D;32 h^3-20 h^2+4 h^2 c+ 2h c\\&amp;&#x3D;32(h-h_{1,2})(h-h_{1,2})(h-h_{2,1})\end{aligned}$$</p>
+<p>$$\begin{aligned}\det M^{(2)}&amp;&#x3D;32 h^3-20 h^2+4 h^2 c+ 2h c\\&amp;&#x3D;32(h-h_{1,1})(h-h_{1,2})(h-h_{2,1})\end{aligned}$$</p>
 <p>$$\begin{aligned}&amp; h_{1,1}&#x3D;0\\&amp; h_{1,2}&#x3D;\frac{1}{16}\left(5-c-\sqrt{(1-c)(25-c)}\right)\\&amp;h_{2,1}&#x3D;\frac{1}{16}\left(5-c+\sqrt{(1-c)(25-c)}\right)\end{aligned}$$</p>
 <p>$$\Tr M^{(2)}&#x3D;8h(h+1)+c&#x2F;2$$</p>
 <p>考虑一般的Gram矩阵块 $M^{(l)}$ 的行列式，称为Kac行列式，其具有以下形式，式中 $p(n)$ 表示整数 $n$ 的配分数</p>
@@ -314,7 +314,7 @@
 <p>当 $1&lt;c&lt;25$ 时除 $r&#x3D;s$ 外 $h_{r,s}$ 非实数，对于 $r&#x3D;s$，$h_{r,s}\le 0$；当 $c\ge 25$ 时可知 $-1&lt;m&lt;0$，$m(m+1)&lt;0$ 并且</p>
 <p>$$[(m+1)r-ms]^2&#x3D;[(1-|m|)r+|m|s]\ge 1$$</p>
 <p>说明 $c&gt; 1$ 时零曲线 $C_{r,s}$ 位于 $h&#x3D;0$ 或其下方，即区域 $R&#x3D;\{c&gt;1,h&gt;0\}$ 中Kac行列式符号相同；对给定的 $l$，取 $|h|&gt;&gt;\max{|h_{r,s}|}$，可得 $M^{(l)}\approx\alpha_l h^r$，由于 $\alpha_l$ 为正常数，故Kac行列式在此极限下也为正，说明 $R$ 中Kac行列式恒为正</p>
-<p>由于 $M^{(l)}$ 负特征值数目只在穿过 $C_{r,s}$ 时改变，可知 $R$ 中其恒定且为偶数，为证明 $M^{(l)}$ 正定，只需说明其在区域中某点无负特征值，选择以下 $l$ 级裔态为基，其长度 $n(\alpha)$ 为态中算符 $L_k$ 的个数</p>
+<p>由于 $M^{(l)}$ 负特征值数目只在穿过 $C_{r,s}$ 时改变，可知 $R$ 中其恒定且为偶数，为证明 $M^{(l)}$ 正定，只需说明其在区域中某点无负特征值，选择以下 $l$ 级降为基，其长度 $n(\alpha)$ 为态中算符 $L_k$ 的个数</p>
 <p>$$L_{-k_1}L_{-k_2}\cdots L_{-k_n}\ket{h}\qquad(k_1\ge k_2\ge\cdots\ge k_n)$$</p>
 <p>可知由 $h$ 主导的态内积的渐近行为</p>
 <p>$$\braket{\alpha}{\alpha}&#x3D;c_\alpha h^{n(\alpha)}[1+O(1&#x2F;h)]$$</p>
@@ -324,7 +324,99 @@
 <h3 id="c-lt-1-酉表示"><a href="#c-lt-1-酉表示" class="headerlink" title="$c&lt; 1$ 酉表示"></a>$c&lt; 1$ 酉表示</h3><p>对于区域 $R&#x3D;\{0&lt;c&lt;1,h&gt;0\}$，酉表示仅存在于以下离散集中</p>
 <p>$$c&#x3D;1-\frac{6}{m(m+1)}\qquad h_{r,s}(m)&#x3D;\frac{[(m+1)r-ms]^2-1}{4m(m+1)}$$</p>
 <p>$$1\le r&lt;m,1\le s&lt;r,m\ge 2\qquad m,r,s\in\mathbb{Z}$$</p>
+<p>以上表示为酉的证明将在讨论陪集时给出，此处只简单说明不在此离散集中的点 $(c,h)$ 对应非酉表示</p>
+<p>首先说明不位于零曲线上的点 $P$ 对应的表示非酉，由 $c&gt; 1,h&gt;0$ 中表示为酉可知，若 $P$ 可由仅穿过单条 $l$ 级所含零模曲线的连续路径与区域 $c&gt; 1,h&gt;0$ 连接，且 $p(l-rs)$ 为奇数，则 $P$ 点 $l$ 级Kac行列式为负</p>
+<p>对 $l&#x3D;2$，位于 $C_{1,2},C_{2,1}$ 中间的区域显然非酉，随着 $l$ 增长，$l&#x3D;rs$ 对应的零曲线 $C_{r,s},C_{s,r}$ 越来越靠近 $c&#x3D;1$，而 $p(l-rs)&#x3D;1$，可见零曲线包围的点被逐步排除出酉表示集，可知区域 $R$ 中不为于零曲线上的点均对应非酉表示</p>
+<p>考虑级 $l$ 下的某条零曲线，称其离 $c&#x3D;1$ 最近的与同级零曲线的交点为第一交点，位于零曲线上的点除了其第一交点外均对应非酉表示；零曲线 $C_{r,s}$ 上任意点对应的Verma模在级 $rs$ 均含有奇异矢量，而第一交点的特征为此奇异矢量为一个包含奇异态的表示中的最高权态</p>
+<p>下图画出了一些零曲线和酉表示所在区域</p>
 <p><img src="/images/Virasoro%E9%85%89%E8%A1%A8%E7%A4%BA.png"></p>
+<h2 id="极小模型概述"><a href="#极小模型概述" class="headerlink" title="极小模型概述"></a>极小模型概述</h2><h3 id="简单范例"><a href="#简单范例" class="headerlink" title="简单范例"></a>简单范例</h3><p>现在研究可约Verma模的一个简单例子，考虑 $V(c,h)$ 中以下 $2$ 级降</p>
+<p>$$\ket{\chi}&#x3D;[L_{-2}+\eta L_{-1}^2]\ket{h}$$</p>
+<p>调整 $\eta,h$ 使得 $\ket{\chi}$ 成为奇异矢量，只需 $L_1\ket{\chi}&#x3D;L_2\ket{\chi}&#x3D;0$ 即可</p>
+<p>$$L_1\ket{\chi}&#x3D;(3+2\eta+4h\eta)L_{-1}\ket{h}$$</p>
+<p>$$L_2\ket{\chi}&#x3D;(\frac{1}{2}c+4h+6h\eta)\ket{h}$$</p>
+<p>解出 $\eta,h$，可见 $h$ 与零曲线一致</p>
+<p>$$\eta&#x3D;-\frac{3}{2(2h+1)}$$</p>
+<p>$$h&#x3D;\frac{1}{16}\left[5-c\pm\sqrt{(c-1)(c-25)}\right]$$</p>
+<p>$\ket{\chi}$ 关联的降场为</p>
+<p>$$\chi(z)&#x3D;\phi^{(-2)}(z)-\frac{3}{2(2h+1)}\frac{\partial^2}{\partial z^2}\phi(z)$$</p>
+<p>$\ket{\chi}$ 与Verma模正交用场表述即 $\ev{\chi(z)X}&#x3D;0,\quad X&#x3D;\phi_1(z_1)\cdots\phi_N(z_N)$，故称 $\chi$ 与其他场解耦，由 $\ev{\phi^{(-n)}(w)X}&#x3D;\mathcal{L}_{-n}\ev{\phi(w)X}$ 有</p>
+<p>$$\left[\mathcal{L}_{-2}-\frac{3}{2(2h+1)\mathcal{L}_{-1}}\right]\ev{\phi(z)X}&#x3D;0$$</p>
+<p>显式写出为</p>
+<p>$$\left\{\sum_{i&#x3D;1}^N\left[\frac{1}{z-z_i}\frac{\partial}{\partial z_i}+\frac{h_i}{(z-z_i)^2}\right]-\frac{3}{2(2h+1)}\frac{\partial^2}{\partial z^2}\right\}\ev{\phi(z)X}&#x3D;0$$</p>
+<p>此微分方程并不提供两点关联函数形式更多的信息，令 $X&#x3D;\phi(w)$，方程变为以下形式，解之即得 $\ev{\phi(z)\phi(w)}&#x3D;(z-w)^{-2h                                 }$</p>
+<p>$$\left\{\frac{1}{z-w}\partial_w+\frac{h}{(z-w)^2}-\frac{3}{2(2h+1)}\partial_z^2\right\}\ev{\phi(z)\phi(w)}&#x3D;0$$</p>
+<p>然而此微分方程对三点关联函数却有非平凡贡献，考虑 $X&#x3D;\phi_1(z_1)\phi_2(z_2)$，三点关联函数为</p>
+<p>$$\ev{\phi(z)\phi_1(z_1)\phi_2(z_2)}&#x3D;\frac{g(h,h_1,h_2)}{(z-z_1)^{h_2-h-h_1}(z_1-z_2)^{h-h_1-h_2}(z-z_2)^{h_1-h-h_2}}$$</p>
+<p>由微分方程直接计算可得以下共形维数限制</p>
+<p>$$2(2h+1)(h+2h_2-h_1)&#x3D;3(h-h_1+h_2)(h-h_1+h_2+1)$$</p>
+<p>显式解出 $h_2$ 为</p>
+<p>$$h_2&#x3D;\frac{1}{6}+\frac{1}{3}h+h_1\pm \sqrt{h^2+3hh_1-\frac{1}{2}h+\frac{3}{2}h_1+\frac{1}{16}}$$</p>
+<p>引入与 $h_{r,s}$ 相近的记号，可更加简洁地表示解，将共形维数写为以下形式</p>
+<p>$$h&#x3D;h_0+\frac{1}{4}\alpha^2\qquad h_0&#x3D;\frac{1}{24}(c-1)$$</p>
+<p>若 $\alpha_1,\alpha_2$ 与 $h_1,h_2$ 对应，则解可表示为</p>
+<p>$$\alpha_2&#x3D;\alpha_1\pm\alpha_+\qquad(h&#x3D;h_{2,1})$$</p>
+<p>$$\alpha_2&#x3D;\alpha_1\pm\alpha_-\qquad(h&#x3D;h_{1,2})$$</p>
+<p>以上对三点关联函数施加的限制等价于对算符代数施加限制，记 $\phi_{(\alpha)}$ 为具有共形维数 $h(\alpha)$ 的初级场，则以上限制等价于</p>
+<p>$$\phi_{(2,1)}\times\phi_{(\alpha)}&#x3D;\phi_{(\alpha-\alpha+)}+\phi_{(\alpha+\alpha+)}$$</p>
+<p>$$\phi_{(1,2)}\times\phi_{(\alpha)}&#x3D;\phi_{(\alpha-\alpha-)}+\phi_{(\alpha+\alpha-)}$$</p>
+<p>上式中 $\times$ 表示OPE，$\phi_{(\alpha)}$ 表示对应初级场的共形族；称形如上式的两个局部场的短程积给出一系列共形族的过程为聚变，具体的等式为聚变规则</p>
+<p>对于一级降 $L_{-1}\ket{h}$，仅当 $h&#x3D;h_{1,1}&#x3D;0$ 时其为奇异矢量，对应奇异场为 $\partial_z\phi_{(1,1)}(z)$，其关联函数满足以下微分方程</p>
+<p>$$\frac{\partial}{\partial z}\ev{\phi_{(1,1)}(z)X}&#x3D;0$$</p>
+<p>可见关联函数与 $z$ 无关，故 $\phi_{(1,1)}$ 为常数，称为单位场或单位算符，记为 $\mathbb{I}$，此微分方程对三点关联函数的限制为平凡算符代数</p>
+<p>$$\phi_{(1,1)}\times\phi_{(\alpha)}&#x3D;\phi_{(\alpha)}$$</p>
+<p>可知能动张量为单位场的降 $T(z)&#x3D;\mathbb{I}^{(-2)}$</p>
+<h3 id="算符代数截断"><a href="#算符代数截断" class="headerlink" title="算符代数截断"></a>算符代数截断</h3><p>以上讨论可推广到更一般的情况，若 $h&#x3D;h_{r,s}$，则存在 $rs$ 级奇异矢量对算符代数施加限制，以下不加证明地给出限制的具体形式</p>
+<p>$$\phi_{(r,s)}\times\phi_{(\alpha)}&#x3D;\sum_{\begin{array}. k&#x3D;1-r\\ k+r&#x3D;1\;\text{mod}\;2\end{array}}^{k&#x3D;r-1}\;\;\sum_{\begin{array}. l&#x3D;1-s\\ l+s&#x3D;1\;\text{mod}\;2\end{array}}^{l&#x3D;s-1}\phi_{(\alpha+k\alpha_++l\alpha_-)}$$</p>
+<p>由上式可知可约Verma模形成算符代数中的闭集，例如</p>
+<p>$$\phi_{(1,2)}\times\phi_{(r,s)}&#x3D;\phi_{(r,s-1)}+\phi_{(r,s+1)}$$</p>
+<p>$$\phi_{(2,1)}\times\phi_{(r,s)}&#x3D;\phi_{(r-1,s)}+\phi_{(r+1,s)}$$</p>
+<p>可见 $\phi_{(1,2)}$ 和 $\phi_{(2,1)}$ 为算符代数中的梯算符</p>
+<p>族 $[\phi_{(r,s)}]$ 在算符代数下形成闭集是一个深刻的动力学陈述，其只对特定的 $c$ 值和与之相关的最高权表示成立</p>
+<p>应该强调OPE右侧共形族的系数可能为零，事实上利用算符代数的交换性可以证明许多共形族不会出现在OPE中，例如</p>
+<p>$$\phi_{(1,2)}\times\phi_{(2,1)}&#x3D;\phi_{(2,0)}+\phi_{(2,2)}$$</p>
+<p>$$\phi_{(2,1)}\times\phi_{(1,2)}&#x3D;\phi_{(0,2)}+\phi_{(2,2)}$$</p>
+<p>由两个OPE等价可知算符代数截断为</p>
+<p>$$\phi_{(1,2)}\times\phi_{(2,1)}&#x3D;\phi_{(2,2)}$$</p>
+<p>截断现象可推广为以下结果，只有 $r,s$ 为正的共形族 $\phi_{(r,s)}$ 才能出现在等式右边</p>
+<p>$$\phi_{(r_1,s_1)}\times\phi_{(r_2,s_2)}&#x3D;\sum_{\begin{array}. k&#x3D;1+|r_1-r_2|\\ k+r_1+r_2&#x3D;1\;\text{mod}\;2\end{array}}^{k&#x3D;r_1+r_2-1}\;\;\sum_{\begin{array}. l&#x3D;1+|s_1-s_2|\\ l+s_1+s_2&#x3D;1\;\text{mod}\;2\end{array}}^{l&#x3D;s_1+s_2-1}\phi_{(k,l)}$$</p>
+<h3 id="极小模型"><a href="#极小模型" class="headerlink" title="极小模型"></a>极小模型</h3><p>对一般的中心荷值 $c$，截断算符代数蕴含无穷个共形族，此性质可由下图理解</p>
+<p><img src="/images/rs.png"></p>
+<p>图中虚线斜率为 $\tan\theta&#x3D;-\alpha_+&#x2F;\alpha_-$，可由中心荷确定，记 $\delta$ 为点 $(r,s)$ 到虚线的垂直距离，则</p>
+<p>$$h_{r,s}&#x3D;h_0+\frac{1}{4}\delta^2(\alpha_+^2+\alpha_-^2)\qquad \delta^2&#x3D;\frac{(\alpha_+ r+\alpha_- s)^2}{\alpha_+^2+\alpha_-^2}$$</p>
+<p>若虚线斜率为无理数，则其不会经过任何整点 $r,s$，由聚变规则可知存在无穷个共形维数不同的初级场，并且若 $c&lt;1$，则 $h_0&lt;0$，有无穷个初级场共形维数为负</p>
+<p>若虚线斜率为有理数，则存在互质整数 $p,p’$ 使得</p>
+<p>$$p\alpha_-+p’\alpha_+&#x3D;0$$</p>
+<p>虚线穿过 $(p’,p)$ 且共形权 $h_{r,s}$ 集合不稠密，事实上其满足周期条件</p>
+<p>$$h_{r,s}&#x3D;h_{r+p’,s+p}$$</p>
+<p>中心荷和Kac公式可利用 $p,p’$ 写为</p>
+<p>$$c&#x3D;1-6\frac{(p-p’)^2}{pp’}$$</p>
+<p>$$h_{r,s}&#x3D;\frac{(pr-p’s)^2-(p-p’)^2}{4pp’}$$</p>
+<p>若 $c\le 1$，则上文中定义的参数 $t&#x3D;-\alpha_+&#x2F;\alpha_-&#x3D;p’&#x2F;p$ 为正实数，因此可取 $p,p’$ 为正整数，又此参数化具有 $t\to 1&#x2F;t$ 对称性，故不妨令 $p&gt;p’$</p>
+<p>进一步注意到以下对称性</p>
+<p>$$h_{r,s}&#x3D;h_{p’-r,p-s}$$</p>
+<p>结合中心荷和Kac公式有</p>
+<p>$$h_{r,s}+rs&#x3D;h_{p’+r,p-s}&#x3D;h_{p’-r,p+s}$$</p>
+<p>$$h_{r,s}+(p’-r)(p-s)&#x3D;h_{r,2p-s}&#x3D;h_{2p’-r,s}$$</p>
+<p>这意味着Verma模 $V_{r,s}$ 中的 $rs$ 级奇异矢量本身为一个退化Verma模中的最高权，并且 $V_{r,s}$ 包含一个 $(p’-r)(p-s)$ 级奇异矢量，这两个奇异矢量产生子模并且又包含相同形式的奇异矢量，以此类推，可知 $V_{r,s}$ 中具有无穷个奇异矢量，每个奇异矢量均有其微分方程对关联函数和算符代数施加限制，最终算符代数中只含以下有限个在聚变下封闭的共形族</p>
+<p>$$1\le r&lt;p’\qquad 1\le s&lt;p$$</p>
+<p>此矩形称为Kac表，而对称性 $h_{r,s}&#x3D;h_{p’-r,p-s}$ 使得矩形中一半元素冗余，最终理论中只剩 $(p-1)(p’-1)&#x2F;2$ 个不同初级场</p>
+<p>$$\phi_{(r,s)}&#x3D;\phi_{(p’-r,p-s)}$$</p>
+<p>以上有理情况下的共形场论称为极小模型，其聚变规则为</p>
+<p>$$\phi_{(r,s)}\times\phi_{(m,n)}&#x3D;\sum_{\begin{array}. k&#x3D;1+|r-m|\\ k+r+m&#x3D;1\;\text{mod}\;2\end{array}}^{k_\max}\;\;\sum_{\begin{array}. l&#x3D;1+|s-n|\\ l+s+n&#x3D;1\;\text{mod}\;2\end{array}}^{l_\max}\phi_{(k,l)}$$</p>
+<p>$$k_\max&#x3D;\min(r+m-1,2p’-1-r-m)$$</p>
+<p>$$l_\max&#x3D;\min(s+n-1,2p-1-s-n)$$</p>
+<p>以上讨论局限于全纯部分，而实际的物理理论需从全纯和共轭全纯模的张量积构造，一般Hilbert空间具有以下形式</p>
+<p>$$\mathcal{H}&#x3D;\bigoplus_{h,\bar h}M(c,h)\otimes M(c,\bar h)$$</p>
+<p>如何将极小模型中的成分合并为张量积的问题将在之后研究环面上共形场论时讨论，一个简单的解为将每个全纯Verma模 $M(c,h_{r,s})$ 与其对应共轭全纯模 $\bar M(c,h_{r,s})$ 相关联，此理论的Hilbert空间如下，由于张量积的两个因子相同，故称此理论对角</p>
+<p>$$\mathcal{H}&#x3D;\bigoplus_{\begin{array}1\le r&lt;p’\\1\le s&lt;p\end{array}}M(c,h_{r,s})\otimes M(c,h_{r,s})$$</p>
+<p>下文中记与 $p,p’$ 关联的极小模型为 $\mathcal{M}(p,p’)$，默认 $p&gt;p’$</p>
+<h3 id="酉极小模型"><a href="#酉极小模型" class="headerlink" title="酉极小模型"></a>酉极小模型</h3><p>对于极小模型 $1\le r\le p’-1\quad 1\le s\le p-1$，由Bezout定理，此区域中存在 $(r_0,s_0)$ 使得</p>
+<p>$$pr_0-p’s_0&#x3D;1$$</p>
+<p>对应的共形维数</p>
+<p>$$h_{r_0,s_0}&#x3D;\frac{1-(p-p’)^2}{4pp’}$$</p>
+<p>表示为酉的必要条件为共形维数非负，由于 $p,p’$ 互质，故仅当 $|p-p’|&#x3D;1$ 时 $h_{r_0,s_0}&#x3D;0$，其余情况 $h_{r_0,s_0}$ 均为负数，即仅当 $|p-p’|&#x3D;1$ 时极小模型可能为酉</p>
+<p>此时 $h_{r_0,s_0}&#x3D;h_{1,1}&#x3D;0$，即 $\phi_{(r_0,s_0)}$ 为单位算符，由于具有最小共形维数的初级场主导自由能在有限尺度下异常行为，故酉极小模型中自由能的有限尺度效应的主导项仅由中心荷决定；$|p-p’|&#x3D;1$ 极小模型确实为酉的证明将在之后通过陪集构造的方法给出，其可显式酉表示每个 $|p-p’|&#x3D;1$ 极小模型，不失一般性，将 $c&lt;1$ 酉极小模型中 $p,p’$ 记为 $p&#x3D;m+1,p’&#x3D;m\quad m&#x3D;2,3,4,\cdots$，中心荷和共形维数的表达式与前文中 $c&lt;1$ 酉表示吻合</p>
 
   </article>
   <!-- tag -->

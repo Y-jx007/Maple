@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-11-30 22:18:37</time>
+          <time>2024-02-28 16:05:13</time>
           <span class="text-gray-400">·</span>
           <span>11 min</span>
           <span class="text-gray-400">·</span>
-          <span>2.2k words</span>
+          <span>2.3k words</span>
         </section>
       </div>
     </div>
@@ -266,9 +266,10 @@
 <p>$$x^{\prime\mu}&#x3D;x^\mu+\epsilon^\mu(x)+\mathcal{O}(\epsilon^2)$$</p>
 <p>代入共形变换条件中可得下式，其中 $d$ 为时空维数</p>
 <p>$$\partial_\mu\epsilon_\nu+\partial_\nu\epsilon_\mu&#x3D;\frac{2}{d}(\partial\cdot\epsilon)\eta_{\mu\nu}\qquad\Lambda(x)&#x3D;1+\frac{2}{d}(\partial\cdot\epsilon)$$</p>
-<p>由上式可推出 $\epsilon$ 满足的另外两个常用关系式</p>
-<p>$$(d-1)\Box(\partial\cdot\epsilon)&#x3D;0$$</p>
+<p>由上式可推出 $\epsilon$ 满足的另外三个常用关系式</p>
 <p>$$2\partial_\mu\partial_\nu\epsilon_\rho&#x3D;\frac{2}{d}(-\eta_{\mu\nu}\partial_\rho+\eta_{\rho\mu}\partial_\nu+\eta_{\nu\rho}\partial_\mu)(\partial\cdot\epsilon)$$</p>
+<p>$$(2-d)\partial_\mu\partial_\nu(\partial\cdot\epsilon)&#x3D;\eta_{\mu\nu}\Box(\partial\cdot\epsilon)$$</p>
+<p>$$(d-1)\Box(\partial\cdot\epsilon)&#x3D;0$$</p>
 <h3 id="d-ge-3-变换"><a href="#d-ge-3-变换" class="headerlink" title="$d\ge 3$ 变换"></a>$d\ge 3$ 变换</h3><p>$d&#x3D;1$ 时，$\epsilon$ 无限制，任意光滑映射均为共形变换；$d&#x3D;2$ 的情况在下文讨论；$d\ge 3$ 时，将 $\Box(\partial\cdot\epsilon)&#x3D;0$ 代回共形变换条件可知 $\partial_\mu\partial_\nu(\partial\cdot\epsilon)&#x3D;0$，$\partial\cdot\epsilon$ 最多为 $x^\mu$ 的线性函数，因此 $\epsilon$ 具有以下形式</p>
 <p>$$\epsilon_\mu&#x3D;a_\mu+b_{\mu\nu}x^\nu+c_{\mu\nu\rho}x^\nu x^\rho$$</p>
 <p>不同的项对应不同类型的无穷小变换，其中 $a_\mu$ 无限制条件，对应平移；$b_{\mu\nu}$ 满足以下条件，可将 $b_{\mu\nu}$ 拆为对称与反称两部分，分别对应缩放与旋转</p>
@@ -313,6 +314,12 @@
 </tbody></table>
 <p>其中有限SCT难以从其无穷小变换直接推出，注意到 $x^{\prime\mu}&#x3D;x^\mu&#x2F;x^2$ 也为共形映射，可将其与平移复合，构造以下共形映射，可以发现当 $f^\mu\to 0$ 时，$x^{\prime\mu}\to x^\mu$，因而此变换具有无穷小版本，比较可知其即为有限SCT</p>
 <p>$$x^{\prime\mu}&#x3D;\frac{x^\mu&#x2F;x^2-f^\mu}{(x^\mu&#x2F;x^2-f^\mu)\cdot(x^\mu&#x2F;x^2-f^\mu)}$$</p>
+<p>以上四种变换可将给定三点 $x_1,x_2,x_3$ 变为任意三点 $x_1’,x_2’,x_3’$，具体步骤如下</p>
+<p>$1.\quad$ 平移 $(x_1,x_2,x_3)\to (0,x_2’’,x_3’’)$</p>
+<p>$2.\quad$ SCT $(0,x_2’’,x_3’’)\to (0,x_2’’’,\infty)$</p>
+<p>$3.\quad$ 旋转 $+$ 缩放 $(0,x_2’’’,\infty) \to (0,x_2’’’’,\infty)$</p>
+<p>$4.\quad$ SCT $(0,x_2’’’’,\infty) \to (0,x_2’-x_1’,x_3’-x_1’)$</p>
+<p>$5.\quad$ 平移 $(0,x_2’-x_1’,x_3’-x_1’)\to (x_1’,x_2’,x_3’)$</p>
 <h3 id="d-ge-3-代数"><a href="#d-ge-3-代数" class="headerlink" title="$d\ge 3$ 代数"></a>$d\ge 3$ 代数</h3><p>所有共形变换构成共形群，其Lie代数称为共形代数，代数的维数即其生成元个数</p>
 <p>$$d+1+\frac{d(d-1)}{2}+d&#x3D;\frac{(d+2)(d+1)}{2}$$</p>
 <p>直接计算其生成元对易关系如下</p>

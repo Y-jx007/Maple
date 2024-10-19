@@ -249,7 +249,7 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2024-01-27 00:26:18</time>
+          <time>2024-04-03 20:18:07</time>
           <span class="text-gray-400">·</span>
           <span>24 min</span>
           <span class="text-gray-400">·</span>
@@ -307,7 +307,7 @@
 <p>$$\ev{\Phi(x_1+a_1)\cdots\Phi(x_n+a_n)}&#x3D;\ev{\Phi(x_1)\cdots\Phi(x_n)}$$</p>
 <p>$$\ev{\Phi(\Lambda^\mu_{\;\;\nu}x_1^\nu)\cdots\Phi(\Lambda^\mu_{\;\;\nu}x_n^\nu)}&#x3D;\ev{\Phi(x_1^\mu)\cdots\Phi(x_n^\mu)}$$</p>
 <p>$$\ev{\phi_1(\lambda x_1)\cdots\phi_n(\lambda x_n)}&#x3D;\lambda^{-\Delta_1}\cdots\lambda^{-\Delta_n}\ev{\phi_1(x_1)\cdots\phi_n(x_n)}$$</p>
-<p>考虑两点关联函数，以上三种对称性要求其具有以下形式</p>
+<p>考虑无旋场的两点关联函数，以上三种对称性要求其具有以下形式</p>
 <p>$$\ev{\phi_1(x_1)\phi_2(x_2)}&#x3D;\frac{C_{12}}{|x_1-x_2|^{\Delta_1+\Delta_2}}$$</p>
 <p>另外还剩下一种共形变换，即SCT</p>
 <p>$$x’^\mu&#x3D;\frac{x^\mu-x^2 f^\mu}{1-2fx+f^2 x^2}$$</p>
@@ -322,7 +322,7 @@
 <p>$$\ev{\phi_1(x_1)\cdots\phi_4(x_4)}&#x3D;f\left(\frac{x_{12}x_{34}}{x_{13}x_{24}},\frac{x_{12}x_{34}}{x_{23}x_{14}}\right)\prod_{i&lt;j}^4 x_{ij}^{\Delta&#x2F;3-\Delta_i-\Delta_j}$$</p>
 <h3 id="Ward-Takahashi等式"><a href="#Ward-Takahashi等式" class="headerlink" title="Ward-Takahashi等式"></a>Ward-Takahashi等式</h3><p>Noether定理的量子化版本称为Ward-Takahashi等式，考虑无穷小对称场变换</p>
 <p>$$\Phi’(x)&#x3D;\Phi(x)-i\omega_aG_a\Phi(x)$$</p>
-<p>记 $X&#x3D;\Phi(x_1)\cdots\Phi(x_n)$ ，已按时序排列，由关联函数不变可知</p>
+<p>记 $X&#x3D;\Phi(x_1)\cdots\Phi(x_n)$ ，已按时序排列，假定积分测度不变 $[\dd\Phi’]&#x3D;[\dd\Phi]$</p>
 <p>$$\ev{X}&#x3D;\frac{1}{\mathcal{Z}}\int [\dd \Phi’](X+\delta X)\exp\left(-S[\Phi]-\int\text{d}^d x\;\omega_a(x)\partial_\mu j^\mu_a\right)$$</p>
 <p>$$\ev{\delta X}&#x3D;\int\text{d}^d x\;\omega_a(x)\partial_\mu \ev{j^\mu_a X}$$</p>
 <p>由无穷小变换写出 $\delta X$ 具体形式</p>
@@ -362,8 +362,9 @@
 <p>共形Ward-Takahashi等式可用守恒荷表示为以下形式</p>
 <p>$$\delta_{\epsilon,\bar\epsilon}X&#x3D;-[Q_{\epsilon,\bar\epsilon},X]$$</p>
 <p>下文默认使用径序复平面，即 $z&#x3D;e^{x^0+ix^1}$，$z$ 平面上原点对应负无穷时刻；下文关联函数与OPE均默认省略径序</p>
-<h3 id="初级场"><a href="#初级场" class="headerlink" title="初级场"></a>初级场</h3><p>若场 $\phi(z,\bar z)$ 在共形变换 $z\mapsto w(z)$ 下按以下规律变化，则称其为具有共形维数 $(h,\bar h)$ 的初级场；若此规律仅适用于 $w\in SL(2,\mathbb{C})&#x2F;\mathbb{Z}_2$，则称其为准初级场</p>
+<h3 id="初级场"><a href="#初级场" class="headerlink" title="初级场"></a>初级场</h3><p>给定缩放维数 $\Delta$ 和平面自旋 $s$，若场 $\phi(z,\bar z)$ 在共形变换 $z\mapsto w(z)$ 下按以下规律变化，则称其为具有共形维数 $(h,\bar h)$ 的初级场；若此规律仅适用于 $w\in SL(2,\mathbb{C})&#x2F;\mathbb{Z}_2$，则称其为准初级场</p>
 <p>$$\phi’(w,\bar w)&#x3D;\left(\frac{\text{d} w}{\text{d} z}\right)^{-h}\left(\frac{\text{d} \bar w}{\text{d} \bar z}\right)^{-\bar h}\phi(z,\bar z)$$</p>
+<p>$$h&#x3D;\frac{1}{2}(\Delta+s)\qquad\bar h&#x3D;\frac{1}{2}(\Delta-s)$$</p>
 <p>考虑初级场在无穷小共形变换 $w(z)&#x3D;z+\epsilon(z)$ 下的变化规律，直接计算可得</p>
 <p>$$\delta_{\epsilon,\bar\epsilon}\phi(z,\bar z)&#x3D;-(h\partial_z\epsilon+\epsilon\partial_z+\bar h\partial_{\bar z}\bar\epsilon+\bar\epsilon\partial_{\bar z})\phi(z,\bar z)$$</p>
 <p>将具有共形维数 $(h,\bar h)$ 的初级场在原点附近Laurent展开</p>
@@ -423,10 +424,10 @@
 <p>$$[L_n,\phi_m]&#x3D;[n(h-1)-m]\phi_{n+m}$$</p>
 <p>其中 $[L_0,\phi_m]&#x3D;-m\phi_m$ 说明 $\phi_{-m}$ 为共形维数升 $m$ 算符；而由Virasoro代数可知，$L_{-m}\quad m&gt;0$ 也为共形维数的升 $m$ 算符，具备更高共形维数的激发态可由一系列升算符作用于 $\ket{h}$ 得到</p>
 <p>$$[L_0,L_{-m}]&#x3D;mL_{-m}\qquad L_0L_{-m}\ket{h}&#x3D;(h+m)L_{-m}\ket{h}$$</p>
-<p>具有以下形式的激发态称为 $\ket{h}$ 的$N$级裔，升算符乱序作用于 $\ket{h}$ 得到的激发态均可由 $\ket{h}$ 裔的线性组合得到</p>
+<p>具有以下形式的激发态称为 $\ket{h}$ 的$N$级降，升算符乱序作用于 $\ket{h}$ 得到的激发态均可由 $\ket{h}$ 降的线性组合得到</p>
 <p>$$L_{-k_1}L_{-k_2}\cdots L_{-k_n}\ket{h}\qquad 1\le k_1\le\cdots\le k_n$$</p>
 <p>$$k_1+k_2+\cdots+k_n&#x3D;N$$</p>
-<p>$\ket{h}$ 及其裔在Virasoro代数下构成Hilbert空间的子空间，称为Verma Module</p>
+<p>$\ket{h}$ 及其降在Virasoro代数下构成Hilbert空间的子空间，称为Verma Module</p>
 
   </article>
   <!-- tag -->

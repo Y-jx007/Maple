@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>单Lie代数III | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        单Lie代数III
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        单Lie代数III
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-03-24 21:56:08</time>
+          <span class="text-gray-400">·</span>
+          <span>26 min</span>
+          <span class="text-gray-400">·</span>
+          <span>5.8k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="张量积计算"><a href="#张量积计算" class="headerlink" title="张量积计算"></a>张量积计算</h2><p>张量积的计算在原则上是直接的，为计算 $L_\lambda\otimes L_\mu$，通常写作 $\lambda\otimes\mu$，只需简单地将所有权对 $\lambda’,\mu’$ 相加，并将得到的 $\dim|\lambda|\times\dim|\mu|$ 个权重新划分到不同不可约表示中</p>
+<p>$$\lambda\otimes\mu&#x3D;\bigoplus_{\nu\in P_+}\mathcal{N}_{\lambda\mu}^{\;\;\nu}\nu$$</p>
+<p>上式为对所有支配权求和，其中 $\mathcal{N}_{\lambda\mu}^{\;\;\nu}$ 称为张量积系数，其给出表示 $\nu$ 在 $\lambda\otimes\mu$ 分解中的重数</p>
+<p>然而直接计算过于繁琐，需要寻找更为有效的方法，下文将介绍几种有用的计算工具，讨论仍局限在 $\mathfrak{su}(N)$</p>
+<p>在介绍计算方法之前，先列举张量积系数具有的一般性质，用 $0$ 代表标量表示，其最高权Dynkin标均为零，仅含单态；$\lambda^*$ 代表 $\lambda$ 的共轭表示，每个权在共轭表示中都有对应的负权，将二者配对可得标量表示</p>
+<p>$$\mathcal{N}_{\lambda 0}^{\;\;\nu}&#x3D;\delta_\lambda^\nu$$</p>
+<p>$$\mathcal{N}_{\lambda \lambda^*}^{\;\;\;0}&#x3D;1$$</p>
+<p>以上两个关系说明共轭操作可以交换 $\mathcal{N}$ 上下指标位置</p>
+<p>$$\mathcal{N}_{\lambda\mu}^{\;\;\nu}&#x3D;N_{\lambda\nu^*}^{\;\;\;\mu^*}$$</p>
+<p>令 $\mathcal{N}_{\lambda\mu\sigma}$ 表示 $\lambda\otimes\mu\otimes\sigma$ 分解中标量表示的重数，可知</p>
+<p>$$\mathcal{N}_{\lambda\mu}^{\;\;\nu}&#x3D;\mathcal{N}_{\lambda\mu\nu^*}$$</p>
+<h3 id="特征标方法"><a href="#特征标方法" class="headerlink" title="特征标方法"></a>特征标方法</h3><p>由张量积的迹为迹的积可知</p>
+<p>$$\chi_\lambda\chi_\mu&#x3D;\sum_{\nu\in P_+}\mathcal{N}_{\lambda\mu}^{\;\;\nu}\chi_\nu$$</p>
+<p>将上式重新写为</p>
+<p>$$\sum_{w\in W}\epsilon(w)e^{w(\lambda+\rho)}\sum_{\mu’\in\Omega_\mu}\text{mult}_\mu(\mu’)e^{\mu’}&#x3D;\sum_{\nu\in P_+}\mathcal{N}_{\lambda\mu}^{\;\;\nu}\sum_{w\in W}\epsilon(w)e^{w(\nu+\rho)}$$</p>
+<p>考虑在基本腔中权的贡献，由于 $\nu\in P_+$，右式只有Weyl群单位元有贡献；若 $\lambda+\mu’\in P_+$，则左式也只有 $w&#x3D;1$ 有贡献，否则可利用 $W$ 轨道中权重数相等将左式第二个求和重新写为以下形式，贡献群元为将 $\lambda+\mu’$ 移位反射到基本腔中的 $w_{\mu’}$</p>
+<p>$$\sum_{\mu’\in\Omega_\mu}\text{mult}_\mu(\mu’)e^{\mu’}&#x3D;\sum_{\mu’\in\Omega_\mu}\text{mult}_\mu(\mu’)e^{w_{\mu’}\mu’}$$</p>
+<p>比较两边贡献可得</p>
+<p>$$\mathcal{N}_{\lambda\mu}^{\;\;\nu}&#x3D;\sum_{\begin{array}. \mu’\in\Omega_\mu\\ w\in W\; w\cdot(\lambda+\mu’)&#x3D;\nu\in P_+\end{array}}\epsilon(w)\text{mult}_\mu(\mu’)$$</p>
+<p>可将其写为更简洁的形式</p>
+<p>$$\mathcal{N}_{\lambda\mu}^{\;\;\nu}&#x3D;\sum_{w\in W}\epsilon(w)\text{mult}_\mu(w\cdot\nu-\lambda)$$</p>
+<p>特征标方法的理论价值在于其一般性，并且对仿射融合规则有直接的推广</p>
+<p>上式给出计算张量积系数的一般步骤，为计算 $\lambda\otimes\mu$，首先写出表示 $\mu$ 中的所有权 $\mu’$ 并将其与 $\lambda+\rho$ 相加，得到的权 $\lambda+\rho+\mu’$ 分为两种类型：</p>
+<p>$1.\quad$ 可由 $w\in W$ 反射为支配权</p>
+<p>$2.\quad$ 处于具有一些零Dynkin标的权的 $W$ 轨道之中</p>
+<p>第一种类型的权对 $\mathcal{N}_{\lambda\mu}^{\;\;\nu}$ 的贡献为 $\epsilon(w)\text{mult}_\mu(\mu’)$；对第二种类型的权 $\xi$，存在 $w\in W$ 使得 $w\xi$ 至少具有一个零Dynkin标，若 $(w\xi)_i&#x3D;0$，则 $s_i(w\xi)&#x3D;w\xi$，由于 $\epsilon(s_i w)&#x3D;-\epsilon(w)$，此种类型的权对 $\mathcal{N}_{\lambda\mu}^{\;\;\nu}$ 无贡献，其只能反射到基本腔的边界</p>
+<p>值得注意的是将权反射到基本腔中最多只需要 $|\Delta_+|$ 次反射</p>
+<p>简而言之，若 $\lambda+\mu’$ 可移位Weyl反射为Dynkin标均非负的权 $\nu$ ，则其对 $\mathcal{N}_{\lambda\mu}^{\;\;\nu}$ 的贡献为 $\epsilon(w)\text{mult}_\mu(\mu’)$；若其可移位Weyl反射为Dynkin标含 $-1$ 的权，则将其忽略</p>
+<p>下文以 $\mathfrak{su}(2)$ 和 $\mathfrak{su}(3)$ 为例说明计算过程</p>
+<p>$\mathfrak{su}(2)$</p>
+<p>考虑 $(2)\otimes(7)$，表示 $(7)$ 下所有权为 $(-7\omega_1,-5\omega_1,\cdots,7\omega_1)$，$\rho&#x3D;\omega_1$，移位Weyl反射为 $s_1(\lambda+\mu’+\rho)-\rho&#x3D;-\lambda-\mu’-2\omega_1$，其为关于 $-\omega_1$ 的反射</p>
+<p><img src="/images/Weyl%E5%8F%8D%E5%B0%84.png"></p>
+<p>$\lambda+\mu’$ 的集合为 $(-5\omega_1,-3\omega_1,\cdots,9\omega_1)$，$-5\omega_1,-3\omega_1$ 经移位Weyl反射后变为 $3\omega_1,\omega_1$，贡献与原本的 $3\omega_1,\omega_1$ 抵消，剩余有贡献的权为 $(5\omega_1,7\omega_1,9\omega_1)$，故有</p>
+<p>$$(2)\otimes(7)&#x3D;(5)\oplus(7)\oplus(9)$$</p>
+<p>$\mathfrak{su}(3)$</p>
+<p>考虑 $(1,0)\otimes(2,0)$，表示 $(2,0)$ 下权集为</p>
+<p>$$\{(2,0),(0,1),(1,-1),(-2,2),(-1,0),(0,-2)\}$$</p>
+<p>与 $(1,0)$ 相加得</p>
+<p>$$(3,0),(1,1),(2,-1),(-1,2),(0,0),(1,-2)$$</p>
+<p>由规则忽略权 $(2,-1)$，$(-1,2)$，而 $(1,-2)$ 可由 $s_2$ 移位反射为 $(0,0)$，二者贡献抵消</p>
+<p>$$s_2\cdot(1,-2)&#x3D;s_2(2,-1)-(1,1)&#x3D;(2,-1)+(-1,2)-(1,1)&#x3D;(0,0)$$</p>
+<p><img src="/images/su(3)%E7%A7%BB%E4%BD%8D%E5%8F%8D%E5%B0%84.png"></p>
+<p>可知结果为</p>
+<p>$$(1,0)\otimes(2,0)&#x3D;(3,0)\oplus(1,0)$$</p>
+<p>在以上计算中交换张量积中两个表示的位置会更为方便，例如 $(1,0)$ 表示下的权仅有三个，与 $(2,0)$ 相加给出 $(3,0),(1,1),(2,-1)$，忽略 $(2,-1)$ 即得结果</p>
+<h3 id="Littlewood-Richardson规则"><a href="#Littlewood-Richardson规则" class="headerlink" title="Littlewood-Richardson规则"></a>Littlewood-Richardson规则</h3><p>Littlewood-Richardson规则是利用Young表计算张量积的简单高效的算法，具体规则如下，记 $\lambda\otimes\mu$ 中 $\lambda,\mu$ 对应的Young表分别为 $Y_\lambda,Y_\mu$</p>
+<p>$1.\quad$ 将 $Y_\mu$ 的第 $i$ 行用 $i$ 填充，并从上到下依次将其方格拼到 $Y_\lambda$ 上，拼凑的最终结果 $Y$ 应仍为Young表，即从上到下行方格数非增，称为Littlewood-Richardson表</p>
+<p>$2.\quad$ $Y$ 中相同数字不能处于同一列</p>
+<p>$3.\quad$ $Y$ 从上往下和从右往左累计相同数字数量的过程中，小数字数量始终不小于大数字数量</p>
+<p>以 $\mathfrak{su}(3)$ 张量积 $(2,0)\otimes(1,1)$ 为例，其图形计算步骤如下</p>
+<p><img src="/images/%E5%B0%8F%E6%9C%A8.png"></p>
+<p>可知结果为</p>
+<p>$$(2,0)\otimes(1,1)&#x3D;(3,1)\oplus(1,2)\oplus(2,0)\oplus(0,1)$$</p>
+<p>在某些应用中，需要知道哪些态对张量积有贡献，事实上 $\lambda\otimes\mu\supset\nu$ 关联的Littlewood-Richardson表与权 $\mu’&#x3D;\nu-\lambda$ 在表示 $\mu$ 下的Gelfand-Tsetlin型之间存在一一对应关系，型中 $\beta_j^{(i)}$ 为表前 $i$ 行中 $j$ 的数量</p>
+<p>以 $\mathfrak{su}(4)$ 张量积 $(1,2,1)\otimes(1,2,1)\supset (1,2,1)$ 为例，表与型的对应关系如图所示</p>
+<p><img src="/images/%E5%B0%8F%E6%9C%A8GT1.jpeg"></p>
+<p>而权 $\mu’&#x3D;\nu-\lambda&#x3D;(0,0,0)$ 在表示 $(1,2,1)$ 下的重数为 $7$，可知以下两个态无贡献</p>
+<p><img src="/images/%E5%B0%8F%E6%9C%A8GT2.png"></p>
+<p>由态与Littlewood-Richardson表之间的关系可得张量积系数的代数描述：</p>
+<p>$\mathcal{N}_{\lambda\mu}^{\;\;\nu}$ 为表示 $\mu$ 下满足条件 $d_j^{(i)}\le \lambda_i\quad \forall \;j,\;1\le j\le i\le N-1\;$ 的权 $\mu’&#x3D;\nu-\lambda$ 对应的Gelfand-Tsetlin型 $\{\beta_j^{(i)}\}$ 的数量，其中 $d_j^{(i)}$ 为</p>
+<p>$$d_j^{(i)}&#x3D;\sum_{1\le n&lt;j}(\beta_n^{(i+1)}-2\beta_n^{(i)}+\beta_n^{(i-1)})+(\beta_j^{(i+1)}-\beta_j^{(i)})$$</p>
+<p>对上文中两个无贡献的型分别有 $d_2^{(3)}&#x3D;2&gt;\lambda_3&#x3D;1$ 和 $d_1^{(1)}&#x3D;2&gt;\lambda_1&#x3D;1$</p>
+<h3 id="Berenstein-Zelevinsky三角"><a href="#Berenstein-Zelevinsky三角" class="headerlink" title="Berenstein-Zelevinsky三角"></a>Berenstein-Zelevinsky三角</h3><p>Berenstein-Zelevinsky三角(BZ)提供了计算三重张量积 $\lambda\otimes\mu\otimes\nu$ 分解中标量表示重数的有效方式，其同时也包含对张量积有贡献的态的信息</p>
+<p>考虑三个 $\mathfrak{su}(3)$ 最高权态 $(\lambda_1,\lambda_2)$，$(\mu_1,\mu_2)$，$(\nu_1,\nu_2)$，构造以下三角</p>
+<p>$$\begin{array}.m_{13}\\n_{12}\quad l_{23}\\m_{23}\quad\quad\quad m_{12}\\n_{13}\quad l_{12}\quad n_{23}\quad l_{13}\end{array}$$</p>
+<p>三角中非负整数与Dynkin标的关系为</p>
+<p>$$m_{13}+n_{12}&#x3D;\lambda_1\quad n_{13}+l_{12}&#x3D;\mu_1\quad l_{13}+m_{12}&#x3D;\nu_1$$</p>
+<p>$$m_{23}+n_{13}&#x3D;\lambda_2\quad n_{23}+l_{13}&#x3D;\mu_2\quad l_{23}+m_{13}&#x3D;\nu_2$$</p>
+<p>其还需满足以下六边形条件，即三角中间的六边形对边数字和相等</p>
+<p>$$n_{12}+m_{23}&#x3D;n_{23}+m_{12}$$</p>
+<p>$$l_{12}+m_{23}&#x3D;l_{23}+m_{12}$$</p>
+<p>$$l_{12}+n_{23}&#x3D;l_{23}+n_{12}$$</p>
+<p>符合以上条件的三角形的数量即为 $N_{\lambda\mu\nu}$，若数量为零，说明 $\lambda\otimes\mu$ 分解中不存在 $\nu^*$</p>
+<p>BZ三角中整数的起源如下，其中每对指标 $ij,i&lt;j$ 对应 $\mathfrak{su}(3)$ 中的一个正根 $\epsilon_i-\epsilon_j$</p>
+<p>$$\mu+\nu-\lambda^*&#x3D;\sum_{i&lt;j}l_{ij}(\epsilon_i-\epsilon_j)$$</p>
+<p>$$\nu+\lambda-\mu^*&#x3D;\sum_{i&lt;j}m_{ij}(\epsilon_i-\epsilon_j)$$</p>
+<p>$$\lambda+\mu-\nu^*&#x3D;\sum_{i&lt;j}n_{ij}(\epsilon_i-\epsilon_j)$$</p>
+<p>六边形关系可视为以上三个展开式的一致性条件</p>
+<p>$(2,0)\otimes(1,1)&#x3D;(3,1)\oplus(1,2)\oplus(2,0)\oplus(0,1)$ 对应的四个三角为</p>
+<p><img src="/images/BZ1.png"></p>
+<p>而 $(2,2)\otimes(2,2)\otimes(2,2)$ 对应的三角如下，说明其分解中标量表示的重数为 $3$</p>
+<p><img src="/images/BZ2.png"></p>
+<p>对标量表示有贡献的态可从三角中直接读出，考虑与 $\lambda\otimes\mu\supset\nu^*$ 关联的三角，权 $\mu’&#x3D;\nu^*-\lambda$ 对应的态由以下Gelfand-Tsetlin型描述</p>
+<p>$$\mu_1+\mu_2\qquad\qquad\mu_2\qquad\qquad 0$$</p>
+<p>$$\mu_1+\mu_2-n_{13}\qquad \mu_2-n_{23}$$</p>
+<p>$$\mu_1+\mu_2-n_{13}-n_{12}$$</p>
+<p>以 $(2,2)\otimes(2,2)\otimes(2,2)$ 为例，表示 $\mu&#x3D;(2,2)$ 关联的三角对应的Gelfand-Tsetlin型为</p>
+<p><img src="/images/GT%E5%8D%8A%E6%A0%87%E5%87%86.png"></p>
+<p>对于 $\mathfrak{su}(4)$，可类似地定义BZ三角，其由 $18$ 个非负整数组成</p>
+<p>$$\begin{array}.m_{14}\\n_{12}\quad l_{34}\\m_{24}\quad\quad\quad m_{13}\\n_{13}\quad l_{23}\quad n_{23}\quad l_{24}\\m_{34}\quad\quad\quad m_{23}\quad\quad\quad m_{12}\\n_{14}\quad l_{12}\quad n_{24}\quad l_{13}\quad n_{34}\quad l_{14}\end{array}$$</p>
+<p>其与Dynkin标的关系为</p>
+<p>$$m_{14}+n_{12}&#x3D;\lambda_1\quad n_{14}+l_{12}&#x3D;\mu_1\quad l_{14}+m_{12}&#x3D;\nu_1$$</p>
+<p>$$m_{24}+n_{13}&#x3D;\lambda_2\quad n_{24}+l_{13}&#x3D;\mu_2\quad l_{24}+m_{13}&#x3D;\nu_2$$</p>
+<p>$$m_{34}+n_{14}&#x3D;\lambda_3\quad n_{34}+l_{14}&#x3D;\mu_3\quad l_{34}+m_{14}&#x3D;\nu_3$$</p>
+<p>在 $\mathfrak{su}(4)$ BZ三角中有三个六边形，其应满足关系</p>
+<p>$$n_{12}+m_{24}&#x3D;m_{13}+n_{23}\qquad n_{13}+l_{23}&#x3D;l_{12}+n_{24}\qquad l_{24}+n_{23}&#x3D;l_{13}+n_{34}$$</p>
+<p>$$n_{12}+l_{34}&#x3D;l_{23}+n_{23}\qquad n_{13}+m_{34}&#x3D;n_{24}+m_{23}\qquad n_{23}+m_{23}&#x3D;m_{12}+n_{34}$$</p>
+<p>$$m_{24}+l_{23}&#x3D;l_{34}+m_{13}\qquad m_{34}+l_{12}&#x3D;l_{23}+m_{23}\qquad l_{13}+m_{23}&#x3D;l_{24}+m_{12}$$</p>
+<p>此构造可直接推广到 $\mathfrak{su}(N)$，其BZ三角含 $(N-1)(N-2)&#x2F;2$ 个六边形</p>
+<p>而 $\mathfrak{su}(2)$ 的BZ三角无六边形，张量积仅由以下三个非负整数描述</p>
+<p>$$\begin{array}. m_{12}\\ n_{12}\quad l_{12}\end{array}$$</p>
+<p>其与Dynkin标关系为</p>
+<p>$$m_{12}+n_{12}&#x3D;\lambda_1$$</p>
+<p>$$n_{12}+l_{12}&#x3D;\mu_1$$</p>
+<p>$$l_{12}+m_{12}&#x3D;\nu_1$$</p>
+<p>固定 $\lambda_1$，$\mu_1$，可得</p>
+<p>$$\nu_1&#x3D;\lambda_1+\mu_1-2 n_{12}$$</p>
+<p>其简单地重新导出了 $\mathfrak{su}(2)$ 的张量积规则</p>
+<p>以上三种张量积系数的计算方法中的后两种可以在不需要计算完整的 $\lambda\otimes\mu$ 的情况下单独研究特定的三重张量积，使其在表示很庞大时具有优势，而BZ三角则具有保留了张量积系数大部分对称性的进一步优势，其唯一不明显的对称性为 $\mathcal{N}_{\lambda\mu\nu}&#x3D;\mathcal{N}_{\mu\lambda\nu}$</p>
+<p>最后应提及与Littlewood-Richardson规则形成对比的是，至今仍未知晓BZ三角在 $\mathfrak{so}(N)$ 和 $\mathfrak{sp}(N)$ 中的推广</p>
+<h2 id="融合规则"><a href="#融合规则" class="headerlink" title="融合规则"></a>融合规则</h2><p>此节在与用于计算融合规则的方法相近的视角下讨论张量积，首先由张量积结合律可得</p>
+<p>$$(\lambda\otimes\mu)\otimes\nu\otimes\xi&#x3D;\lambda\otimes(\mu\otimes\nu)\otimes\xi$$</p>
+<p>$$\sum_\sigma\mathcal{N}_{\lambda\mu}^{\;\;\sigma}\mathcal{N}_{\sigma\nu\xi}&#x3D;\sum_{\zeta}\mathcal{N}_{\mu\nu}^{\;\;\zeta}\mathcal{N}_{\zeta\lambda\xi}$$</p>
+<p>若 $\lambda,\mu$ 为基本表示，即对应Young表为单列，则只需知道所有包含至少一个基本表示的张量积系数，任意系数 $\mathcal{N}_{\sigma\nu\xi}$ 均可由上述关系推出</p>
+<p>将张量积系数拆分为矩阵</p>
+<p>$$(N_\lambda)_\mu^{\;\;\sigma}&#x3D;\mathcal{N}_{\lambda\mu}^{\;\;\sigma}$$</p>
+<p>则张量积结合律变为矩阵的交换律</p>
+<p>$$(N_\lambda N_\nu)_{\mu\xi}&#x3D;(N_\nu N_\lambda )_{\mu\xi}$$</p>
+<p>这些矩阵构成张量积代数的表示</p>
+<p>$$N_\lambda N_\nu&#x3D;\sum_{\sigma\in P_+}{N}_{\lambda\nu}^{\;\;\sigma} N_\sigma$$</p>
+<p>考虑 $\mathfrak{su}(2)$，由Littlewood-Richardson规则可知</p>
+<p>$$(1)\otimes(n)&#x3D;(n+1)\oplus (n-1)$$</p>
+<p>$$N_1 N_n&#x3D;N_{n+1}+N_{n-1}$$</p>
+<p>其中若 $n-1&lt;0$，则忽略 $(n-1)$，将此关系与代数的矩阵表示比较可知</p>
+<p>$$(N_1)_j^k&#x3D;\delta_{j,k+1}+\delta_{j,k-1}$$</p>
+<p>所有矩阵 $N_n$ 均可由 $N_1$ 表示，若记 $N_n$ 为 $U_n(x)$，$U_0&#x3D;1,U_1&#x3D;x$，可将 $N_1 N_n&#x3D;N_{n+1}+N_{n-1}$ 重写为以下循环关系，此即第二类Chebyshev多项式定义式</p>
+<p>$$xU_n&#x3D;U_{n+1}+U_{n-1}$$</p>
+<p>取 $n&#x3D;1$，可得描述与伴随表示张量积的矩阵 $N_2$</p>
+<p>$$N_2&#x3D;N_1^2-1$$</p>
+<p>$$N_1&#x3D;\begin{pmatrix}0&amp;1&amp;0&amp;0&amp;0&amp;\cdots\\1&amp;0&amp;1&amp;0&amp;0&amp;\cdots\\0&amp;1&amp;0&amp;1&amp;0&amp;\cdots\\0&amp;0&amp;1&amp;0&amp;1&amp;\cdots\\\cdots&amp;\cdots&amp;\cdots&amp; &amp; &amp;\cdots\\\end{pmatrix}\Longrightarrow N_2&#x3D;\begin{pmatrix}0&amp;0&amp;1&amp;0&amp;0&amp;\cdots\\0&amp;1&amp;0&amp;1&amp;0&amp;\cdots\\1&amp;0&amp;1&amp;0&amp;1&amp;\cdots\\0&amp;1&amp;0&amp;1&amp;0&amp;\cdots\\\cdots&amp;\cdots&amp;\cdots&amp; &amp; &amp;\cdots\\\end{pmatrix}$$</p>
+<p>从 $N_2$ 矩阵形式可直接读出</p>
+<p>$$\begin{aligned}<br>    &amp; (2)\otimes(0)&#x3D;(2)\\<br>    &amp; (2)\otimes(1)&#x3D;(1)\oplus(3)\\<br>    &amp; (2)\otimes(2)&#x3D;(0)\oplus(2)\oplus(4)<br>\end{aligned}$$</p>
+<p>由于 $N_n$ 均可由 $N_1$ 多项式构造，故其相互对易</p>
+<p>考虑Chebyshev多项式的生成函数</p>
+<p>$$F(x;t)&#x3D;\sum_{n&#x3D;0}^\infty U_n t^n$$</p>
+<p>$$xF&#x3D;(F-1)t+t F\qquad\Longrightarrow\qquad F(x;t)&#x3D;\frac{1}{1-xt+t^2}$$</p>
+<p>对任意Lie代数均可作类似分析，以 $\mathfrak{su}(3)$ 为例，由Littlewood-Richardson规则可知</p>
+<p>$$(1,0)\otimes(\lambda_1,\lambda_2)&#x3D;(\lambda_1+1,\lambda_2)\oplus(\lambda_1,\lambda_2-1)\oplus(\lambda_1-1,\lambda_2+1)$$</p>
+<p>$$(0,1)\otimes(\lambda_1,\lambda_2)&#x3D;(\lambda_1,\lambda_2+1)\oplus(\lambda_1-1,\lambda_2)\oplus(\lambda_1+1,\lambda_2-1)$$</p>
+<p>将上式中表示用矩阵 $N_{(\lambda_1,\lambda_2)}$ 代替，其可用广义Chebyshev多项式 $U_{(\lambda_1,\lambda_2)}$ 表示</p>
+<p>$$N_{(\lambda_1,\lambda_2)}&#x3D;U_{(\lambda_1,\lambda_2)}(N_{(1,0)},N_{(0,1)})\equiv U_{(\lambda_1,\lambda_2)}(x_1,x_2)$$</p>
+<p>对应的生成函数为</p>
+<p>$$\begin{aligned}F(x_1,x_2;t,s)&amp;&#x3D;\sum_{\lambda_1,\lambda_2&#x3D;0}^\infty U_{(\lambda_1,\lambda_2)}(x_1,x_2) t^{\lambda_1} s^{\lambda_2}\\&amp;&#x3D;\frac{1-ts}{(1-tx_1+t^2x_2-t^3)(1-sx_2+s^2 x_2-s^3)}\end{aligned}$$</p>
+<p>现在推导Verlinde公式 $\displaystyle \mathcal{N}_{ij}^{\;\; k}&#x3D;\sum_m\frac{\mathcal{S}_{im}\mathcal{S}_{jm}\bar{\mathcal{S}}_{mk}}{\mathcal{S}_{0m}}$ 的Lie代数版本，考虑特征标乘积 $\displaystyle\chi_\lambda\chi_\mu&#x3D;\sum_{\nu\in P_+}\mathcal{N}_{\lambda\mu}^{\;\;\nu}\chi_\nu$ 在 $\displaystyle X&#x3D;-2\pi i\sum_{i&#x3D;1}^r t_i\alpha_i^\vee$ 处的值</p>
+<p>$$\frac{D_{\lambda+\rho}(X)D_{\mu+\rho}(X)}{D_\rho(X)}&#x3D;\sum_\nu\mathcal{N}_{\lambda\mu}^{\;\;\nu}D_{\nu+\rho}(X)$$</p>
+<p>由 $\displaystyle D_\lambda&#x3D;\sum_{w\in W}\epsilon(w)e^{w\lambda}$ 有以下正交关系</p>
+<p>$$\int_0^1\left(\prod_i\dd t_i\right)D_{\lambda+\rho}(X)D_{\mu+\rho}(X)&#x3D;|W|\delta_{\mu,\lambda^*}$$</p>
+<p>对特征标乘积应用此关系即得Verlinde公式</p>
+<p>$$\mathcal{N}_{\lambda\mu}^{\;\;\sigma}&#x3D;\int_0^1\left(\prod_i\dd t_i\right)\frac{\mathcal{S}_\lambda(X)\mathcal{S}_\mu(X)\bar{\mathcal{S}}_\sigma(X)}{\mathcal{S}_0(X)}$$</p>
+<p>$$\mathcal{S}_\lambda(X)&#x3D;\frac{1}{\sqrt{|W|}}D_{\lambda+\rho}(X)$$</p>
+<p>此 $\mathcal{S}$ 矩阵由 $r$ 个离散Dynkin标 $\lambda_i$ 和 $r$ 个连续参数 $t_i$ 决定，这说明其不能像模变换矩阵一样作为特征标协变矩阵，对于 $\mathfrak{su}(2)$</p>
+<p>$$\mathcal{S}_{\lambda_1}(t_1)&#x3D;-i\sqrt{2} \sin \lbrack 2\pi t_1(\lambda_1+1)\rbrack$$</p>
+<h2 id="代数嵌入与分支规则"><a href="#代数嵌入与分支规则" class="headerlink" title="代数嵌入与分支规则"></a>代数嵌入与分支规则</h2><h3 id="嵌入指标"><a href="#嵌入指标" class="headerlink" title="嵌入指标"></a>嵌入指标</h3><p>以下几种方式均可表征嵌入 $\mathfrak{p}\subset\mathfrak{g}$</p>
+<p>$1.\quad$ 分支规则</p>
+<p>$$L_\lambda\mapsto\bigoplus_{\mu\in P_+}b_{\lambda\mu}L_\mu$$</p>
+<p>简写为</p>
+<p>$$\lambda\mapsto \bigoplus_{\mu\in P_+}b_{\lambda\mu}\mu$$</p>
+<p>分支系数 $b_{\lambda\mu}$ 给出 $\mathfrak{p}$ 的不可约表示 $\mu$ 在 $\mathfrak{g}$ 的不可约表示 $\lambda$ 中的重数，最低维非平凡表示的分解足以表征一个嵌入，每个不等价分支规则对应不同嵌入</p>
+<p>$2.\quad$ 投影矩阵</p>
+<p>投影矩阵 $\mathcal{P}$ 给出 $\mathfrak{g}$ 中权到 $\mathfrak{p}$ 中权的显式投影，通过将投影到 $\mathfrak{p}$ 中的权重新组织为不可约表示可计算分支规则；投影矩阵并不唯一，Weyl反射可改变投影矩阵而不影响嵌入</p>
+<p>$3.\quad$ 嵌入指标</p>
+<p>记 $\mathfrak{g}$ 最高根为 $\theta$，$\mathfrak{p}$ 最高根为 $\vartheta$，定义嵌入指标 $x_e$ 为</p>
+<p>$$x_e&#x3D;\frac{|\mathcal{P}\theta|^2}{|\vartheta|^2}$$</p>
+<p>给定分支规则，嵌入指标也可通过下式计算，其中 $x_\lambda$ 为表示 $\lambda$ 的Dynkin指标</p>
+<p>$$x_e&#x3D;\sum_{\mu\in P_+}b_{\lambda\mu}\frac{x_\mu}{x_\lambda}$$</p>
+<p>以 $\mathfrak{su}(2)$ 嵌入 $\mathfrak{su}(3)$ 为例，下图给出 $\mathfrak{su}(3)$ 根系统在最高根矢量上的投影</p>
+<p><img src="/images/%E5%B5%8C%E5%85%A5%E6%8A%95%E5%BD%B1.png"></p>
+<p>由图可知此嵌入可由以下分支规则表征</p>
+<p>$$(1,1)\mapsto (4)\oplus (2)$$</p>
+<p>由 $\mathfrak{su}(3)$ 最高根 $\alpha_1+\alpha_2$ 投影到 $2\alpha_1$ 可知嵌入指标 $x_e&#x3D;4$</p>
+<p>由以下Dynkin指标可验证 $\displaystyle x_e&#x3D;\sum_{\mu\in P_+}b_{\lambda\mu}\frac{x_\mu}{x_\lambda}$ 正确性</p>
+<p>$$\mathfrak{su}(3):x_{(1,1)}&#x3D;3$$</p>
+<p>$$\mathfrak{su}(2): x_{(4)}&#x3D;10\quad x_{(2)}&#x3D;2$$</p>
+<p>投影矩阵显式表示为 $\mathcal{P}_{(4)}&#x3D;(2,2)$，易得分支规则 $(1,0)\mapsto (2)$，$(0,1)\mapsto (2)$，这说明此嵌入的起源为三维 $\mathfrak{su}(2)$ 表示可用 $3\times 3$ $\mathfrak{su}(3)$ 矩阵实现</p>
+<p>将投影到 $\mathfrak{su}(2)$ 上权的Dynkin标除以 $2$ 可得以下另一分支规则，其嵌入指标为 $1$，投影矩阵 $\mathcal{P}_{(1)}&#x3D;(1,1)$</p>
+<p>$$(1,1)\mapsto (2)\oplus 2(1)\oplus (0)$$</p>
+<p>$$(1,0)\mapsto (1)\oplus (0)$$</p>
+<p>以上两种嵌入可由以下生成函数描述，其中 $F$ 角标为嵌入指标</p>
+<p>$$F_{(1)}&#x3D;\frac{1}{(1-L_1M)(1-L_2M)(1-L_1)(1-L_2)}$$</p>
+<p>$$F_{(4)}&#x3D;\frac{1}{(1-L_1M^2)(1-L_2M^2)(1-L_1^2)(1-L_2^2)}$$</p>
+<p>为获得 $\mathfrak{su}(3)$ 权 $(\lambda_1,\lambda_2)$ 的分解，需求出 $F$ 中 $L_1^{\lambda_1}L_2^{\lambda_2}$ 的系数，若其具有形式 $a M^m+b M^n+\cdots$，则其给出以下分支规则</p>
+<p>$$(\lambda_1,\lambda_2)\mapsto a(m)\oplus b(n)\oplus\cdots$$</p>
+<p>以 $x_e&#x3D;4$ 嵌入为例，$F_{(4)}$ 展开式中 $L_1^2L_2^0$ 系数为 $M^6+M^2$，因此</p>
+<p>$$(3,0)\mapsto (6)\oplus (2)$$</p>
+<p>分支系数 $b_{\lambda\mu}$ 非零的一个显然必要条件如下，其中 $Q$ 为 $\mathfrak{g}$ 根阵</p>
+<p>$$\mathcal{P}\lambda-\mu\in\mathcal{P}Q$$</p>
+<p>对于 $x_e&#x3D;4$ 嵌入，$\mathcal{P} Q_{\mathfrak{su}(3)}&#x3D;Q_{\mathfrak{su}(2)}$，分支系数 $b_{\lambda\mu}$ 非零的必要条件成为</p>
+<p>$$(\mathcal{P}\lambda)_1&#x3D;\mu_1\mod 2$$</p>
+<p>对于 $x_e&#x3D;1$ 嵌入，$\mathcal{P} Q_{\mathfrak{su}(3)}&#x3D;P_{\mathfrak{su}(2)}$，此式对可积权 $\lambda$ 和 $\mu$ 无限制</p>
+<p>若已知两个表示的分支规则</p>
+<p>$$\lambda\mapsto\bigoplus_\mu b_{\lambda\mu}\mu\qquad\xi\mapsto\bigoplus_\nu b_{\xi\nu}\nu$$</p>
+<p>则可由两个表示的张量积计算其他分支规则</p>
+<p>$$\lambda\otimes\xi\mapsto\bigoplus_{\mu,\nu}b_{\lambda\mu}b_{\xi\nu}\mu\otimes\nu$$</p>
+<p>例如对 $x_e&#x3D;1$，$\mathfrak{su}(2)\subset\mathfrak{su}(3)$ 嵌入，已知分支规则 $(1,0)\mapsto(1)\oplus(0)$，$(0,1)\mapsto(1)\oplus(0)$，则有</p>
+<p>$$(1,0)\otimes(1,0)&#x3D;(2,0)\oplus(0,1)\mapsto[(1)\oplus(0)]\otimes[(1)\oplus (0)]&#x3D;(2)\oplus 2(1)\oplus 2(0)$$</p>
+<p>可知 $(2,0)\mapsto(2)\oplus(1)\oplus(0)$</p>
+<h3 id="嵌入分类"><a href="#嵌入分类" class="headerlink" title="嵌入分类"></a>嵌入分类</h3><p>以下讨论嵌入的分类，由于所有非极大嵌入均可由极大嵌入链得到，故下文仅讨论极大嵌入，假定 $\mathfrak{g}$ 半单，则 $\mathfrak{p}$ 与半单子代数最多相差一个 $\mathfrak{u}(1)$ 因子</p>
+<p>最简单的嵌入为 $\mathfrak{g}$ 在某组基下的生成元子集构成 $\mathfrak{g}$ 的生成元，此时称 $\mathfrak{p}$ 为 $\mathfrak{g}$ 的正则子代数，极大正则子代数与 $\mathfrak{g}$ 秩相同，可由 $\mathfrak{g}$ 根系统简单描述</p>
+<p>首先构造 $\mathfrak{g}$ 的扩展Dynkin图，即在常规Dynkin图上增加一个与 $-\theta$ 关联的节点，然后移除任意一个标为质数的节点即可得到半单极大正则子代数</p>
+<p>若从扩展图移除两个标为 $1$ 的节点再增加一个 $\mathfrak{u}(1)$ 因子可得极大非半单正则子代数，例如 $x_e&#x3D;1$，$\mathfrak{su}(2)\subset\mathfrak{su}(3)$ 为正则嵌入，但由 $\mathfrak{su}(2)\subset\mathfrak{su}(2)\oplus\mathfrak{u}(1)\subset \mathfrak{su}(3)$ 可知其非极大嵌入；考虑 $E_8$，移除 $\{\alpha_1,\alpha_2,\alpha_4,\alpha_7,\alpha_8\}$ 中的一个根可分别得到 $\mathfrak{su}(2)\oplus E_7,\mathfrak{su}(3)\oplus E_6,2\mathfrak{su}(5),\mathfrak{so}(16),\mathfrak{su}(9)$，由于 $E_8$ 没有标为 $1$ 的单根，故其极大正则子代数均半单</p>
+<p>正则嵌入的分支规则可由以下步骤计算，首先为 $L_\lambda$ 中所有权增加对应于 $-\theta$ 的一个额外 Dynkin标 $\lambda_{-\theta}&#x3D;(\lambda,-\theta)&#x3D;-\sum_i a_i^\vee\lambda_i$，若移除单根 $\alpha_j$ 后得到正则子代数 $\mathfrak{p}$，则移除扩展权中 $\lambda_j$ 即可得到投影到 $\mathfrak{p}$ 中的权，将其重新组织为 $\mathfrak{p}$ 的不可约表示即得分支规则，此方法对移除两个节点后得到的半单代数也适用</p>
+<p>非正则子代数称为特殊子代数，对于经典Lie代数存在获得特殊嵌入的一般方法，但对于其他单Lie代数需要逐个分析，下表列出这些代数的半单极大特殊嵌入，其中子代数上角标表示嵌入指标</p>
+<table>
+<thead>
+<tr>
+<th>$\mathfrak{g}$</th>
+<th>特殊极大嵌入 $\mathfrak{p}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$G_2$</td>
+<td>$A_1^{(28)}$</td>
+</tr>
+<tr>
+<td>$F_4$</td>
+<td>$A_1^{(156)},G_2^{(1)}\oplus A_1^{(8)}$</td>
+</tr>
+<tr>
+<td>$E_6$</td>
+<td>$A_1^{(9)},G_2^{(3)},C_4^{(1)},G_2^{(1)}\oplus A_2^{(2)},F_4^{(1)}$</td>
+</tr>
+<tr>
+<td>$E_7$</td>
+<td>$A_1^{(399)},A_1^{(231)},A_2^{(21)},G_2^{(1)}\oplus C_3^{(1)},F_4^{1}\oplus A_2^{(3)},G_2^{(2)}\oplus A_1^{(7)},A_1^{(24)}\oplus A_1^{(15)}$</td>
+</tr>
+<tr>
+<td>$E_8$</td>
+<td>$A_1^{(1240)},A_1^{(760)},A_1^{(520)},G_2^{(1)}\oplus F_4^{(1)},A_2^{(6)}\oplus A_1^{(16)},B_2^{(12)}$</td>
+</tr>
+</tbody></table>
+<p>对经典Lie代数，由其对应紧致群的矩阵表示易得以下特殊嵌入</p>
+<p>$$\begin{array}{l}<br>    \mathfrak{su}(p)\oplus\mathfrak{su}(q)\subset \mathfrak{su}(pq)&amp;\\<br>    \mathfrak{so}(p)\oplus\mathfrak{so}(q)\subset \mathfrak{so}(pq)&amp;\\<br>    \mathfrak{sp}(2p)\oplus\mathfrak{sp}(2q)\subset \mathfrak{so}(4pq)&amp;\\<br>    \mathfrak{sp}(2p)\oplus\mathfrak{so}(q)\subset \mathfrak{sp}(2pq)&amp;\\<br>    \mathfrak{so}(p)\oplus\mathfrak{so}(q)\subset \mathfrak{so}(p+q)&amp;\text{for}\;\;p\;\;\text{and}\;\; q\;\;\text{odd}\\<br>\end{array}$$</p>
+<p>若 $\mathfrak{p}$ 具有含[对称&#x2F;反称]不变双线性形式的 $N$ 维表示，则其可嵌入 [$\mathfrak{so}(N)$ &#x2F; $\mathfrak{sp}(N)$]，若无不变双线性形式则可嵌入 $\mathfrak{su}(N)$；$L_\lambda$ 含不变双线性形式的必要条件为 $-\lambda\in\Omega_\lambda$，即 $L_\lambda$ 必须自共轭，而不变形式[对称&#x2F;对称]的条件为 $\lambda\cdot u&#x3D;\sum_i\lambda_i u_i&#x3D;$ [$0$ &#x2F; $1$]$\mod 2$，其中 $u$ 称为高度矢量，将在附录给出</p>
+<p>以 $\mathfrak{su}(2)$ 为例，其表示均自共轭，$u_1&#x3D;1$，因此当 $\lambda_1$ 为偶数时有特殊嵌入 $\mathfrak{su}(2)\subset\mathfrak{so}(\lambda_1+1)$；另一个例子为 $\mathfrak{p}\subset\mathfrak{so}(\dim\mathfrak{p})$，这可从伴随表示自共轭且具有Killing形式得出</p>
+<p>在之后将会经常用到对角嵌入 $\mathfrak{g}\subset\mathfrak{g}\oplus\mathfrak{g}$，即将 $\mathfrak{g}\oplus\mathfrak{g}$ 中的两个权 $(\lambda,\mu)$ 投影成权 $\lambda+\mu$，由于代数与其子代数的最高根长度相同，对角嵌入的嵌入指标总是 $1$</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>以下给出单Lie代数的性质，包括Dynkin图、代数维数、对偶Coxeter数 $g$、Weyl群阶 $|W|$、最高根 $\theta$、权阵与根阵的商群 $P&#x2F;Q$、同余矢量 $\nu$、高度矢量 $u$ 和代数的幂，其中Dynkin图括号中数字分别表示根的序号、标和伴标，对于单缀代数，标与伴标相同</p>
+<p><img src="/images/%E5%8D%95Lie%E4%BB%A3%E6%95%B0%E6%80%A7%E8%B4%A8.jpeg"></p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../../03/01/%E5%BC%A6%E8%AE%BA/Bosonic%E5%BC%A6/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          Bosonic弦
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../15/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E5%8D%95Lie%E4%BB%A3%E6%95%B0II/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          单Lie代数II
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

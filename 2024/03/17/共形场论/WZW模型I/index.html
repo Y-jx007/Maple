@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>WZW模型I | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        WZW模型I
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        WZW模型I
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-04-11 15:42:12</time>
+          <span class="text-gray-400">·</span>
+          <span>11 min</span>
+          <span class="text-gray-400">·</span>
+          <span>2.5k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="WZW模型简介"><a href="#WZW模型简介" class="headerlink" title="WZW模型简介"></a>WZW模型简介</h2><h3 id="非线性Sigma模型"><a href="#非线性Sigma模型" class="headerlink" title="非线性Sigma模型"></a>非线性Sigma模型</h3><p>为寻找具有生成仿射Lie代数的额外守恒流的显式共形场论，可考虑以下非线性sigma模型，此作用量描述与Lie代数 $\mathfrak{g}$ 对应的半单群流形 $G$ 上的矩阵bosonic场 $g(x)$ </p>
+<p>$$S_0&#x3D;\frac{1}{4a^2}\int\text{d}^2 x\Tr’(\partial^\mu g^{-1}\partial_\mu g)$$</p>
+<p>为使作用量为实数，$g(x)$ 应在酉表示中取值，式中 $\Tr$ 角标 $’$ 表示与表示无关的归一化，下式中 $t^a$ 为Lie代数生成元的任意矩阵表示，$x_\text{rep}$ 为表示的Dynkin指标</p>
+<p>$$\Tr’(t^a t^b)&#x3D;2\delta_{a,b}\qquad \Tr’&#x3D;\frac{1}{x_\text{rep}}\Tr$$</p>
+<p>由 $g$ 为酉可知 $g^{-1}\partial_\mu g$ 反Hermitian，且作用量正定</p>
+<p>$$(g^{-1}\partial_\mu g)^\dagger&#x3D;\partial_\mu g^{-1} g&#x3D;-g^{-1}\partial_\mu g$$</p>
+<p>$$\Tr’(\partial^\mu g^{-1}\partial_\mu g)&#x3D;\Tr’((\partial^\mu g)^\dagger\partial_\mu g)\ge 0$$</p>
+<p>虽然作用量在经典上共形不变，但其无维数耦合常数在量子尺度获得缩放依赖，$\beta$ 函数不为零，此量子理论不再缩放不变，因而具有质量；从以下经典守恒流分析也可知此非所需寻找的理论</p>
+<p>在 $g\to g+\delta g$ 下作用量变分为</p>
+<p>$$\delta S_0&#x3D;\frac{1}{2a^2}\int\text{d}^2 x\Tr’(g^{-1}\delta g\partial^\mu(g^{-1}\partial_\mu g))$$</p>
+<p>经典运动方程及对应守恒流为</p>
+<p>$$\partial^\mu(g^{-1}\partial_\mu g)&#x3D;0\qquad J_\mu&#x3D;g^{-1}\partial_\mu g$$</p>
+<p>令 $\tilde{J}_z&#x3D;g^{-1}\partial_z g$，$\tilde{J}_\bar{z}&#x3D;g^{-1}\partial_\bar{z} g$，则有</p>
+<p>$$\partial_z\tilde{J}_\bar{z}+\partial_\bar{z}\tilde{J}_z&#x3D;0$$</p>
+<p>由共形场论的全纯分解性质，守恒流可分解为全纯和共轭全纯两部分，上式两项应分别为零，因此对偶流 $\epsilon^{\mu\nu}J_\nu$ 也需守恒，然而由 $J_\mu$ 形式可知</p>
+<p>$$[J_\mu,J_\nu]+\partial_\mu J_\nu-\partial_\nu J_\mu&#x3D;0$$</p>
+<p>$$\partial_\mu(\epsilon^{\mu\nu}J_\nu)&#x3D;-\epsilon^{\mu\nu}J_\mu J_\nu\neq 0$$</p>
+<p>若对 $\tilde{J}_z$，$\tilde{J}_{\bar z}$ 直接强加分别守恒条件，对于非Abelian代数也可导出以下矛盾</p>
+<p>$$\partial_\bar{z} g g^{-1}\partial_z g&#x3D;\partial_z g g^{-1}\partial_\bar{z} g$$</p>
+<p>可见以上作用量不具有可全纯分离守恒流，事实上正确的守恒流应为</p>
+<p>$$J_z&#x3D;\partial_z g g^{-1}\qquad J_\bar{z}&#x3D;g^{-1}\partial_\bar{z} g$$</p>
+<p>两个流的守恒条件可互相导出</p>
+<p>$$\partial_z(g^{-1}\partial_\bar{z} g)&#x3D;g^{-1}\partial_\bar{z}(\partial_z g g^{-1})g^{-1}$$</p>
+<h3 id="Wess-Zumino-Witten模型"><a href="#Wess-Zumino-Witten模型" class="headerlink" title="Wess-Zumino-Witten模型"></a>Wess-Zumino-Witten模型</h3><p>为增强非线性sigma模型的对称性和得到正确的守恒流，需在原作用量的基础之上添加以下Wess-Zumino项，其定义在三维流形 $B$ 上，$\partial B$ 为原二维空间的紧化，$\tilde{g}$ 为 $g$ 在三维流形上的延拓</p>
+<p>$$\Gamma&#x3D;\frac{-i}{24\pi}\int_B\text{d}^3 y\epsilon_{\alpha\beta\gamma}\Tr’(\tilde{g}^{-1}\partial^\alpha\tilde{g}\tilde{g}^{-1}\partial^\beta\tilde{g}\tilde{g}^{-1}\partial^\gamma\tilde{g})$$</p>
+<p>由于在紧三维空间中，紧二维空间可以界定两个不同的三维流形，故 $\Gamma$ 有两种选择，考虑定向，两种 $\Gamma$ 之差 $\Delta\Gamma$ 如下，其中积分区域为整个紧三维空间，其同胚于 $S^3$</p>
+<p>$$\Delta\Gamma&#x3D;\frac{-i}{24\pi}\int_{S^3}\text{d}^3 y\epsilon_{\alpha\beta\gamma}\Tr’(\tilde{g}^{-1}\partial^\alpha\tilde{g}\tilde{g}^{-1}\partial^\beta\tilde{g}\tilde{g}^{-1}\partial^\gamma\tilde{g})$$</p>
+<p>事实上 $\Delta\Gamma$ 为 $2\pi i$ ($\text{SO}(3)$ 为 $\pi i$) 整数倍，这将在附录说明，因此权为 $\exp(-\Gamma)$ 的Euclidian泛函积分是良定义的，与 $\Gamma$ 耦合的常数须量子化为整数($\text{SO}(3)$ 为偶数)</p>
+<p>现在可考虑以下作用量，其中 $k$ 为整数</p>
+<p>$$S&#x3D;S_0+k\Gamma$$</p>
+<p>虽然Wess-Zumino项由三维积分表示，但其在 $g\to g+\delta g$ 下的变分可写为全导数，因此可用二维泛函表示，计算可知</p>
+<p>$$\delta\Gamma&#x3D;\frac{i}{8\pi}\int\text{d}^2 x\;\epsilon_{\mu\nu} \Tr’(g^{-1}\delta g\partial^\mu(g^{-1}\partial^\nu g))$$</p>
+<p>由此可得作用量 $S$ 的运动方程</p>
+<p>$$\partial^\mu(g^{-1}\partial^\mu g)+\frac{a^2i k}{4\pi}\epsilon_{\mu\nu}\partial^\mu(g^{-1}\partial^\nu g)&#x3D;0$$</p>
+<p>用复变量表示为</p>
+<p>$$\left(1+\frac{a^2k}{4\pi}\right)\partial_z(g^{-1}\partial_\bar{z} g)+\left(1-\frac{a^2k}{4\pi}\right)\partial_\bar{z}(g^{-1}\partial_z g)&#x3D;0$$</p>
+<p>对于 $a^2&#x3D;4\pi&#x2F;k$，可得所需守恒律</p>
+<p>$$\partial_z(g^{-1}\partial_\bar{z} g)&#x3D;0$$</p>
+<p>另一个解 $a^2&#x3D;-4\pi&#x2F;k,k&lt;0$ 蕴含了对偶流守恒</p>
+<p>此时运动方程的一般解可分解为全纯函数与共轭全纯函数之积，与自由场理论相似，尤其是双线性feimion自由场理论</p>
+<p>$$g(z,\bar z)&#x3D;f(z)\bar f(\bar z)$$</p>
+<p>由流 $J_z,J_\bar{z}$ 分别守恒可导出作用量在以下变换下不变</p>
+<p>$$g(z,\bar z)\to \Omega(z)g(z,\bar z)\bar\Omega^{-1}(\bar z)$$</p>
+<p>考虑无穷小变换</p>
+<p>$$\Omega(z)&#x3D;1+\omega(z)\qquad\bar\Omega(\bar z)&#x3D;1+\bar \omega(\bar z)$$</p>
+<p>$$\delta_\omega g&#x3D;\omega g\qquad\delta_\bar{\omega}g&#x3D;-g\bar\omega$$</p>
+<p>取 $a^2&#x3D;4\pi&#x2F;k$，计算可知在 $g\to g+\delta_\omega g+\delta_\bar{\omega} g$ 下作用量变分为零</p>
+<p>$$\begin{aligned}\delta S&amp;&#x3D;\frac{k}{2\pi}\int\text{d}^2 x\;\Tr’(g^{-1}\delta g[\partial_z(g^{-1}\partial_\bar{z}g)])\\&amp;&#x3D;\frac{k}{2\pi}\int\text{d}^2 x\;\Tr’[\omega(z)\partial_\bar{z}(\partial_z gg^{-1})-\bar\omega(\bar z)\partial_z(g^{-1}\partial_\bar{z}g)]\\&amp;&#x3D;0\end{aligned}$$</p>
+<p>因此sigma模型的全局 $G\times G$ 对称性被扩展为局部 $G(z)\times G(\bar z)$ 对称性</p>
+<p>守恒流的全纯分解是暗示 $S&#x3D;S_0+k\Gamma$，$a^2&#x3D;4\pi&#x2F;k$ 为所需模型的第一个信号，从现在起称此模型为Wess-Zumino-Witten(WZW)模型或更准确地，$\hat{\mathfrak{g}}_k$ WZW模型，下文将从量子尺度分析此模型</p>
+<p>$$S^\text{WZW}&#x3D;\frac{k}{16\pi}\int\text{d}^2 x\;\Tr’(\partial^\mu g^{-1}\partial_\mu g)+k\Gamma$$</p>
+<h3 id="Ward等式与仿射Lie代数"><a href="#Ward等式与仿射Lie代数" class="headerlink" title="Ward等式与仿射Lie代数"></a>Ward等式与仿射Lie代数</h3><p>对守恒流作缩放</p>
+<p>$$J(z)\equiv -k J_z(z)&#x3D;-k\partial_zgg^{-1}$$</p>
+<p>$$\bar J(\bar z)\equiv k J_\bar{z}(\bar z)&#x3D;k g^{-1}\partial_\bar{z} g$$</p>
+<p>作用量无穷小变分成为</p>
+<p>$$\delta S&#x3D;-\frac{1}{2\pi}\int\text{d}^2 x\{\partial_\bar{z}(\Tr’[\omega(z)J(z)])+\partial_z(\Tr’[\bar\omega(\bar z)\bar J(\bar z)])\}$$</p>
+<p>对上式积分，由 $\text{d}^2 x&#x3D;-i&#x2F;2\text{d} z\text{d} \bar z$ 可得</p>
+<p>$$\delta_{\omega,\bar\omega}S&#x3D;\frac{i}{4\pi}\oint\dd z\;\Tr’[\omega(z)J(z)]-\frac{i}{4\pi}\oint\text{d} \bar{z}\;\Tr’[\bar\omega(\bar z)\bar J(\bar z)]$$</p>
+<p>将 $J,\omega$ 用生成元展开，$\displaystyle J&#x3D;\sum_a J^a t^a,\omega&#x3D;\sum_a\omega^a t^a$，由 $\Tr’(t^a t^b)&#x3D;2\delta_{a,b}$ 可得</p>
+<p>$$\delta_{\omega,\bar\omega}S&#x3D;-\frac{1}{2\pi i}\oint\dd z\;\sum_a\omega^a J^a+\frac{1}{2\pi i}\oint\text{d} \bar z\;\sum_a\bar\omega^a \bar J^a$$</p>
+<p>由对称变换下 $\delta\ev{X}&#x3D;\ev{(\delta s)X}$ 可得Ward等式</p>
+<p>$$\delta_{\omega,\bar\omega}\ev{X}&#x3D;-\frac{1}{2\pi i}\oint\dd z\;\sum_a\omega^a \ev{J^a X}+\frac{1}{2\pi i}\oint\text{d} \bar z\;\sum_a\bar\omega^a \ev{\bar J^a X}$$</p>
+<p>流 $J$ 的变分为</p>
+<p>$$\begin{aligned}\delta_\omega J&amp;&#x3D;-k[\partial_z(\delta_\omega g)g^{-1}-\partial_z g g^{-1}\delta_\omega g g^{-1}]\\&amp;&#x3D;-k(\partial_z\omega g+\omega\partial_z g)g^{-1}+k\partial_z g g^{-1}\omega\\&amp;&#x3D;[\omega,J]-k\partial_z\omega\end{aligned}$$</p>
+<p>将其重写为</p>
+<p>$$\delta_\omega J^a&#x3D;\sum_{b,c}i f_{abc}\omega^b J^c-k\partial_z\omega^a$$</p>
+<p>代入Ward等式比较可得以下 $JJ$ OPE，称为流代数</p>
+<p>$$J^a(z) J^b(w)\sim\frac{k\delta_{ab}}{(z-w)^2}+\sum_c if_{abc}\frac{J^c(w)}{z-w}$$</p>
+<p>将流展为Laurent级数</p>
+<p>$$J^a&#x3D;\sum_{n\in\mathbb{Z}}z^{-n-1}J_n^a$$</p>
+<p>可知流代数等价于 $k$ 级仿射Lie代数对易关系</p>
+<p>$$[J_n^a,J_m^b]&#x3D;\sum_c if_{abc}J_{n+m}^c+kn\delta_{ab}\delta_{n+m,0}$$</p>
+<p>$\bar J$ 的变分提供了另一组对应于 $\bar J_m^b$ 的相同仿射Lie代数</p>
+<p>$$\delta_\bar{\omega}\bar J&#x3D;[\bar\omega,\bar J]-k\partial_z\bar\omega$$</p>
+<p>由于 $\bar\omega(\bar z)$ 独立于 $z$，故 $\delta_\bar{\omega}J&#x3D;0$，说明 $J\bar J$ OPE仅含解析项，二者展开系数对易</p>
+<p>$$[J_n^a,\bar J_m^b]$$</p>
+<p>两组独立流代数生成独立仿射Lie代数为WZW模型的基本性质，下文将说明其直接导致共性不变；需要注意虽然 $g(z,\bar z)$ 在 $G$ 的某酉表示下变化，但由于WZW作用量与表示无关，故无需确定表示的具体形式，由群 $G$ 即可唯一确定量子理论完整的谱，原则上可通过正则量子化来确定谱和通过全局考虑确定哪些左右表示的组合可以出现在物理谱中，但下文将建立与极小模型相似的WZW模型的代数形式理论，一旦确定了初级场，物理谱即可由模不变性获得</p>
+<p>一种描述WZW模型的有效方式(并不对所有情况适用)为将 $g(z,\bar z)$ 视为基础场，理论中的其他场可由可由合适的 $g(z,\bar z)$ 与自身的多重乘积获得，在此视角下，$g(z,\bar z)$ 自然在代数 $\mathfrak{g}$ 的最低维基本表示下变化，称为极小表示，下文默认采用极小表示</p>
+<h2 id="Sugawara构造"><a href="#Sugawara构造" class="headerlink" title="Sugawara构造"></a>Sugawara构造</h2><p>WZW作用量能动张量经典形式为 $\displaystyle\frac{1}{2k}\sum_a J^a J^a$，其正序版本为</p>
+<p>$$T(z)&#x3D;\gamma\sum_a(J^a J^a)(z)$$</p>
+<p>由于流非自由场，常数 $\gamma$ 被量子效应重整化，故其不能由经典理论确定，需借助以下 $TT$ OPE形式确定 $\gamma$，即要求 $J^a$ 为共形维数为 $1$ 的初级场</p>
+<p>$$T(z)T(w)&#x3D;\frac{c&#x2F;2}{(z-w)^4}+\frac{2T(w)}{(z-w)^2}+\frac{\partial T(w)}{z-w}$$</p>
+<p>首先计算以下缩并，注意结构常数反称且有 $\displaystyle -\sum_{b,c}f_{abc}f_{cbd}&#x3D;2g\delta_{ad}$</p>
+<p>$$\begin{aligned}\overbracket{J^a(z)(J^b}J^b)(w)&amp;&#x3D;\frac{1}{2\pi i}\oint_w\left[\right]\end{aligned}$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../21/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E4%BB%BF%E5%B0%84Lie%E4%BB%A3%E6%95%B0III/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          仿射Lie代数III
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../%E4%BB%BF%E5%B0%84Lie%E4%BB%A3%E6%95%B0II/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          仿射Lie代数II
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

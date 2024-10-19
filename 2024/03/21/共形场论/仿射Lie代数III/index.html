@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>仿射Lie代数III | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        仿射Lie代数III
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        仿射Lie代数III
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-03-25 21:17:03</time>
+          <span class="text-gray-400">·</span>
+          <span>18 min</span>
+          <span class="text-gray-400">·</span>
+          <span>3.5k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="模变换"><a href="#模变换" class="headerlink" title="模变换"></a>模变换</h2><p>定义模群对权 $(\zeta;\tau;t)$ 的作用为</p>
+<p>$$(\zeta;\tau;t)\to\left(\frac{\zeta}{c\tau+t};\frac{a\tau+b}{c\tau+d};t+\frac{c|\xi|^2}{2(c\tau+d)}\right)$$</p>
+<p>特征标的模变换性质如下，将在附录证明</p>
+<p>$$\chi_\hat{\lambda}(\zeta;\tau+1;t)&#x3D;\sum_{\hat{\mu}\in P_+^k}\mathcal{T}_{\hat{\lambda}\hat{\mu}}\chi_\hat{\mu}(\zeta;\tau;t)$$</p>
+<p>$$\chi_\hat{\lambda}(\zeta&#x2F;\tau;-1&#x2F;\tau+1;t+|\zeta|^2&#x2F;2\tau)&#x3D;\sum_{\hat{\mu}\in P_+^k}\mathcal{S}_{\hat{\lambda}\hat{\mu}}\chi_\hat{\mu}(\zeta;\tau;t)$$</p>
+<p>$$\mathcal{T}_{\hat{\lambda}\hat{\mu}}&#x3D;\delta_{\hat{\lambda}\hat{\mu}} e^{2\pi im_\hat{\lambda}}$$</p>
+<p>$$\mathcal{S}_{\hat{\lambda}\hat{\mu}}&#x3D;i^{|\Delta_+|}|P&#x2F;Q^\vee|^{-\frac{1}{2}}(k+g)^{-r&#x2F;2}\sum_{w\in W}\epsilon(w)e^{-2\pi i(w(\lambda+\rho),\mu+\rho)&#x2F;(k+g)}$$</p>
+<p>由 $\displaystyle \alpha_i^\vee&#x3D;\sum_j (\alpha_i^\vee,\alpha_j^\vee)\omega_j$ 可得 $|P&#x2F;Q^\vee|$</p>
+<p>$$|P&#x2F;Q^\vee|&#x3D;\det(\alpha_i^\vee,\alpha_j^\vee)&#x3D;\det[(\alpha_i^\vee)_j]$$</p>
+<p>对于单缀代数</p>
+<p>$$|P&#x2F;Q^\vee|&#x3D;|P&#x2F;Q|&#x3D;\det A_{ij}$$</p>
+<p>以上两个模变换矩阵均为酉矩阵</p>
+<p>$$\mathcal{T}^{-1}&#x3D;\mathcal{T}^\dagger\qquad \mathcal{S}^{-1}&#x3D;\mathcal{S}^\dagger$$</p>
+<p>对于 $\hat{\mathfrak{su}}(2)_k$，$|\Delta_+|&#x3D;1,|P&#x2F;Q^\vee|&#x3D;2,g&#x3D;2,|\omega_1|^2&#x3D;1&#x2F;2$，$\mathcal{S}$ 矩阵为</p>
+<p>$$\mathcal{S}_{\hat{\lambda}\hat{\mu}}&#x3D;\left[\frac{2}{k+2}\right]^\frac{1}{2}\sin\left[\frac{\pi(\lambda_1+1)(\mu_1+1)}{k+2}\right]$$</p>
+<p>对 $\hat{\mathfrak{su}}(3)_1$，$\mathcal{S}$ 矩阵为</p>
+<p>$$\mathcal{S}&#x3D;\frac{1}{\sqrt{3}}\begin{pmatrix}1&amp;1&amp;1\\1&amp;\kappa&amp;\kappa^2\\ 1&amp;\kappa^2&amp;\kappa\end{pmatrix}\qquad\kappa&#x3D;e^{2\pi i&#x2F;3}$$</p>
+<p>可见归一化特征标在模变换下协变，通过以下归一化也能令串函数模协变，其中 $m_\hat{\lambda}(\hat{\mu})$ 称为相对模异常</p>
+<p>$$c_\hat{\mu}^{(\hat{\lambda})}(q)\equiv q^{m_\hat{\lambda}(\hat{\mu})}\sigma_\hat{\mu}^{(\hat{\lambda})}(q)$$</p>
+<p>$$m_\hat{\lambda}(\hat{\mu})&#x3D;m_\hat{\mu}-\frac{|\mu|^2}{2k}$$</p>
+<h2 id="模-mathcal-S-矩阵性质"><a href="#模-mathcal-S-矩阵性质" class="headerlink" title="模 $\mathcal{S}$ 矩阵性质"></a>模 $\mathcal{S}$ 矩阵性质</h2><h3 id="荷共轭矩阵"><a href="#荷共轭矩阵" class="headerlink" title="荷共轭矩阵"></a>荷共轭矩阵</h3><p>由 $\mathcal{S}$ 表达式知 $\mathcal{S}^2\neq 1$，对权连续作两次反演 $\tau\to-1&#x2F;\tau$ 有</p>
+<p>$$(\xi;\tau;t)\to (-\xi;\tau;t)$$</p>
+<p>由特征标表达式可知 $\chi_\hat{\lambda}$ 在 $-2\pi i(-\xi;\tau;t)$ 的值与 $\chi_{\hat{\lambda}^*}$ 在 $-2\pi i(\xi;\tau;t)$ 的值相同</p>
+<p>$$\chi_\hat{\lambda}(-\xi;\tau;t)&#x3D;\chi_{\hat{\lambda}^*}(\xi;\tau;t)$$</p>
+<p>这说明 $\mathcal{S}^2$ 为荷共轭矩阵</p>
+<p>$$\mathcal{S}^2&#x3D;\mathcal{C}\qquad \mathcal{C}\chi_\hat{\lambda}&#x3D;\chi_{\hat{\lambda}^*}$$</p>
+<p>对 $\hat{\mathfrak{su}}(3)_1$</p>
+<p>$$\mathcal{S}&#x3D;\begin{pmatrix}1&amp;0&amp;0\\0&amp;0&amp;1\\ 0&amp;1&amp;0\end{pmatrix}$$</p>
+<p>$\mathcal{C}$ 对 $\mathcal{S}$ 的作用为复共轭</p>
+<p>$$\bar {\mathcal{S}}&#x3D;\mathcal{C}\mathcal{S}&#x3D;\mathcal{S}\mathcal{C}$$</p>
+<p>$$\bar{\mathcal{S}}_{\hat{\lambda}\hat{\mu}}&#x3D;\mathcal{S}_{\hat{\lambda}^*\hat{\mu}}&#x3D;\mathcal{S}_{\hat{\lambda}\hat{\mu}^*}$$</p>
+<p>由 $\lambda^*&#x3D;-w_0\lambda$，$\epsilon(w_0)&#x3D;(-1)^{|\Delta_+|}$，比较以下两式可验证以上关系</p>
+<p>$$\bar{\mathcal{S}}_{\hat{\lambda}\hat{\mu}}&#x3D;(-i)^{|\Delta_+|}C\sum_{w\in W}\epsilon(w) e^{2\pi i(w(\lambda+\rho),\mu+\rho)&#x2F;(k+g)}$$</p>
+<p>$${\mathcal{S}}_{\hat{\lambda}^*\hat{\mu}}&#x3D;i^{|\Delta_+|}C\sum_{w\in W}\epsilon(w) e^{-2\pi i(w(\lambda^*+\rho),\mu+\rho)&#x2F;(k+g)}$$</p>
+<h3 id="特征标渐近形式"><a href="#特征标渐近形式" class="headerlink" title="特征标渐近形式"></a>特征标渐近形式</h3><p>对特殊化特征标</p>
+<p>$$\chi_\hat{\lambda}(\tau)&#x3D;\sum_{\hat{\mu}\in P_+^k}S_{\hat{\lambda}\hat{\mu}}\chi_\hat{\mu}(-1&#x2F;\tau)$$</p>
+<p>考虑 $\tau\to i 0^+$ 极限</p>
+<p>$$\lim_{\tau\to i0^+}\chi_\hat{\mu}(-1&#x2F;\tau)&#x3D; e^{-2\pi i m_\hat{\mu}&#x2F;\tau}[\dim |\mu|+O(e^{-2\pi i&#x2F;\tau})]$$</p>
+<p>此极限下求和部分的主导项为模异常最小的表示 $\hat{\mu}&#x3D;k\hat{\omega}_0$，其仅含一个零阶权，由Freudenthal-de Vries奇异公式 $|\rho|^2&#x3D;g\dim|\mathfrak{g}|&#x2F;12$ 可知</p>
+<p>$$\lim_{\tau\to i0^+}\chi_\hat{\lambda}(\tau)&#x3D;S_{\hat{\lambda} 0} e^{\pi i c&#x2F;12\tau}$$</p>
+<p>$$c&#x3D;-24 m_{k\hat{\omega}_0}&#x3D;\frac{k\dim\mathfrak{g}}{k+g}$$</p>
+<p>特征标渐近形式说明 $\mathcal{S}_{\hat{\lambda}0}$ 为正实数，其为实数也可从 $\mathcal{S}$ 的荷共轭性质和真空表示自共轭推出，此性质还可通过以下分析得到</p>
+<p>由 $\mathcal{S}_{\hat{\lambda}\hat{\mu}}$ 表达式可知 $S_{\hat{\lambda}0}$ 正比于 $\displaystyle \sum_{w\in W} \epsilon(w) e^{w\rho}$ 在 $\xi_\sigma&#x3D;-2\pi i(\sigma+\rho)&#x2F;(k+g)$ 处的值，由Weyl分母公式 $D_\rho&#x3D;\displaystyle\sum_{w\in W}\epsilon(w)e^{w\rho}&#x3D;\prod_{\alpha&gt;0}(e^{\alpha&#x2F;2}-e^{-\alpha&#x2F;2})$ 有</p>
+<p>$$S_{\hat{\lambda}0}&#x3D;|P&#x2F;Q^\vee|^{-\frac{1}{2}}(k+g)^{-r&#x2F;2}\prod_{\alpha\in\Delta_+}2\sin \left(\frac{\pi(\alpha,\lambda+\rho)}{k+g}\right)$$</p>
+<p>对于正根 $\alpha$ 和可积权 $\hat{\lambda}$，$0\le (\alpha,\lambda+\rho)\le k+g$，可知 $S_{\hat{\lambda}0}&gt;0$，实际上由上式可得以下更强结果，$\mathcal{S}$ 的第零列为其唯一正元素</p>
+<p>$$S_{\hat{\lambda}0}\ge \mathcal{S}_{00}&gt;0$$</p>
+<h3 id="有限特征标"><a href="#有限特征标" class="headerlink" title="有限特征标"></a>有限特征标</h3><p>比较以下两式</p>
+<p>$$\gamma_\hat{\lambda}^{(\hat{\sigma})}\equiv\frac{\mathcal{S}_{\hat{\sigma}\hat{\lambda}}}{\mathcal{S}_{\hat{\sigma}0}}&#x3D;\frac{\displaystyle\sum_{w\in W}\epsilon(w) e^{-2\pi i(\sigma+\rho,w(\lambda+\rho))&#x2F;(k+g)}}{\displaystyle\sum_{w\in W}\epsilon(w) e^{-2\pi i(\sigma+\rho,w\rho)&#x2F;(k+g)}}$$</p>
+<p>$$\chi_\lambda(\zeta)&#x3D;\frac{\displaystyle\sum_{w\in W}\epsilon(w)e^{(w(\lambda+\rho),\zeta)}}{\displaystyle\sum_{w\in W}\epsilon(w)e^{(w\rho,\zeta)}}$$</p>
+<p>可得以下重要关系</p>
+<p>$$\gamma_\hat{\lambda}^{(\hat{\sigma})}&#x3D;\chi_\lambda(\xi_\sigma)$$</p>
+<p>$$\xi_\sigma&#x3D;\frac{-2\pi i}{k+g}(\sigma+\rho)$$</p>
+<h3 id="外自同构"><a href="#外自同构" class="headerlink" title="外自同构"></a>外自同构</h3><p>考虑 $A\in\mathcal{O}(\hat{\mathfrak{g}})$ 对 $\mathcal{S}$ 的作用，下式用到了 $A\hat{\rho}&#x3D;\hat{\rho}$ 和 $A\hat{\lambda}&#x3D;k(A-1)\hat{\omega}_0+w_A\hat{\lambda}$ </p>
+<p>$$\begin{aligned}A\mathcal{S}_{\hat{\lambda}\hat{\mu}}&#x3D;\mathcal{S}_{A(\hat{\lambda})\hat{\mu}}&amp;\propto\sum_{w\in W}\epsilon(w)e^{-2\pi i(wA(\hat{\lambda}+\hat{\rho}),\mu+\rho)&#x2F;(k+g)}\\&amp;\propto\sum_{w\in W}\epsilon(w)e^{-2\pi i((k+g)wA\hat{\omega}_0+ww_A(\lambda+\rho),\mu+\rho)&#x2F;(k+g)}\end{aligned}$$</p>
+<p>由 $(A\hat{\omega}_0,\xi-w\xi)\in\mathbb{Z}$ 有</p>
+<p>$$(wA\hat{\omega}_0,\mu+\rho)&#x3D;(A\hat{\omega}_0,\mu+\rho)\mod\mathbb{Z}$$</p>
+<p>再令 $\tilde{w}&#x3D;w w_A$，$\epsilon(\tilde{w})&#x3D;\epsilon(w)\epsilon(w_A)$，可知</p>
+<p>$$A\mathcal{S}_{\hat{\lambda}\hat{\mu}}&#x3D;\epsilon(w_A)\mathcal{S}_{\hat{\lambda}\hat{\mu}} e^{-2\pi i(A\hat{\omega}_0,\mu+\rho)}$$</p>
+<p>而 $\epsilon(w_A)&#x3D;e^{2\pi i(A\hat{\omega}_0,\rho)}$，故</p>
+<p>$$A\mathcal{S}_{\hat{\lambda}\hat{\mu}}&#x3D;\mathcal{S}_{\hat{\lambda}\hat{\mu}} e^{-2\pi i(A\hat{\omega}_0,\mu)}$$</p>
+<p>上式中相位因子即为与 $A$ 关联的中心元特征值 $b$，因此可将上式重写为</p>
+<p>$$A\mathcal{S}&#x3D;\mathcal{S}b\qquad\Longleftrightarrow\qquad \mathcal{S}^\dagger A\mathcal{S}&#x3D;b$$</p>
+<p>这表示外自同构群 $\mathcal{O}(\hat{\mathfrak{g}})$ 与中心 $B(G)$ 不仅同构，二者还 $\mathcal{S}$ 对偶，此关系将作为构造Lie群对称共形场论中模不变配分函数的一般方法的基石</p>
+<h2 id="仿射嵌入"><a href="#仿射嵌入" class="headerlink" title="仿射嵌入"></a>仿射嵌入</h2><h3 id="嵌入代数的级"><a href="#嵌入代数的级" class="headerlink" title="嵌入代数的级"></a>嵌入代数的级</h3><p>考虑半单Lie代数嵌入 $\mathfrak{p}\subset\mathfrak{g}$，由于 $\mathfrak{p}$ 生成元为 $\mathfrak{g}$ 生成元线性组合，此有限嵌入具有具仿射拓展 $\hat{p}_\tilde{k}\subset\hat{g}_k$，所需确定的为级 $\tilde{k}$ 与 $k$ 之间的关系，其表示两代数归一化之间的差异</p>
+<p>首先取消 $\mathfrak{g}$ 归一化 $|\theta|^2&#x3D;2$，级 $k’$ 可由 $\hat{\lambda}$ 与 $\delta$ 标量积得到</p>
+<p>$$k&#x3D;k’\frac{|\theta|^2}{2}\qquad k’&#x3D;\sum_{i&#x3D;0}^r a_i^\vee\lambda_i\in\mathbb{Z}_+$$</p>
+<p>$\hat{\mathfrak{g}}$ 代数对易关系成为</p>
+<p>$$[J_n^a,J_m^b]&#x3D;if_{abc}J_{n+m}^c+k’n\frac{|\theta|^2}{2}\delta_{a,b}\delta_{n+m,0}$$</p>
+<p>记 $\mathfrak{p}$ 生成元为 $\tilde{J}^{a’}，a’&#x3D;1,\cdots,\dim\mathfrak{p}$，其与 $\mathfrak{g}$ 生成元关系为</p>
+<p>$$\tilde{J}^{a’}&#x3D;\sum_a m_{a’ a}J^a$$</p>
+<p>由生成元在Killing形式下正交归一可得</p>
+<p>$$\sum_a m_{a’ a}m_{b’ a}&#x3D;\delta_{a’b’}$$</p>
+<p>此式与 $\hat{\mathfrak{g}}$ 对易关系给出 $\hat{\mathfrak{p}}$ 对易关系，其中心项系数保持不变，可用 $\mathfrak{p}$ 最高根 $\vartheta$ 表示</p>
+<p>$$k’\frac{|\theta|^2}{2}&#x3D;k’\frac{|\vartheta|^2}{2}\frac{|\theta|^2}{|\vartheta|^2}\equiv\tilde{k}’\frac{|\vartheta|^2}{2}$$</p>
+<p>换言之，嵌入仿射代数 $\mathfrak{p}$ 与 $\mathfrak{g}$ 的级关系为</p>
+<p>$$\tilde{k}&#x3D;k\frac{|\theta|^2}{|\vartheta|^2}$$</p>
+<p>为比较两根长度，需将 $\mathfrak{g}$ 根投影到 $\mathfrak{p}$，有 $|\mathcal{P}\theta|^2&#x2F;|\vartheta|^2&#x3D;x_e$，上式成为</p>
+<p>$$\tilde{k}&#x3D;kx_e$$</p>
+<p>嵌入指标 $x_e\ge 1$，说明 $\tilde{k}\ge k$</p>
+<h3 id="仿射分支规则"><a href="#仿射分支规则" class="headerlink" title="仿射分支规则"></a>仿射分支规则</h3><p>接下来讨论仿射分支规则的计算</p>
+<p>$$L_\hat{\lambda}\mapsto\bigoplus_\hat{\mu}b_{\hat{\lambda}\hat{\mu}}L_\hat{\mu}$$</p>
+<p>原则上计算是直接的，但计算过程十分冗长，首先将模 $L_\hat{\lambda}$ 按级划分为 $\mathfrak{p}$ 的不可约表示，然后将其重新组织为仿射 $\hat{p}$ 模 $L_\hat{\mu}$ 的直和</p>
+<p>以正则嵌入 $x_e&#x3D;1$，$\mathfrak{su}(2)\subset\mathfrak{su}(3)$ 的仿射扩展为例，将 $\hat{\mathfrak{su}}(3)_1$ 模 $L_{[1,0,0]}$ 划分为两个 $\hat{\mathfrak{su}}(2)_1$ 模 $L_{[1,0]}$ 和 $L_{[0,1]}$，以下给出各模前五阶对应的有限表示</p>
+<table>
+<thead>
+<tr>
+<th>阶</th>
+<th>$L_{[1,0,0]}$ 模 $\mathfrak{su}(3)$ 表示</th>
+<th>$x_e&#x3D;1$，$\mathfrak{su}(2)$ 分解</th>
+<th>$x_e&#x3D;4$，$\mathfrak{su}(2)$ 分解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0$</td>
+<td>$(0,0)$</td>
+<td>$(0)$</td>
+<td>$(0)$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$(1,1)$</td>
+<td>$(2)\oplus 2(1)\oplus(0)$</td>
+<td>$(4)\oplus(2)$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$2(1,1)\oplus(0,0)$</td>
+<td>$2(2)\oplus 4(1)\oplus 3(0)$</td>
+<td>$2(4)\oplus 2(2)\oplus(0)$</td>
+</tr>
+<tr>
+<td>$3$</td>
+<td>$(3,0)\oplus(0,3)\oplus 3(1,1)\oplus 2(0,0)$</td>
+<td>$2(3)\oplus 5(2)\oplus 8(1)\oplus 7(0)$</td>
+<td>$2(6)\oplus 3(4)\oplus 5(2)\oplus 2(0)$</td>
+</tr>
+<tr>
+<td>$4$</td>
+<td>$(2,2)\oplus(3,0)\oplus(0,3)\oplus 6(1,1)\oplus 3(0,0)$</td>
+<td>$(4)\oplus 4(3)\oplus 11(2)\oplus 16(1)\oplus 12(0)$</td>
+<td>$(8)\oplus 3(6)\oplus 8(4)\oplus 8(2)\oplus 4(0)$</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>阶</th>
+<th>$L_{[1,0]}$ 模 $\mathfrak{su}(2)$ 表示</th>
+<th>$L_{[0,1]}$ 模 $\mathfrak{su}(2)$ 表示</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0$</td>
+<td>$(0)$</td>
+<td>$(1)$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$(2)$</td>
+<td>$(1)$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$(2)\oplus(0)$</td>
+<td>$(3)\oplus(1)$</td>
+</tr>
+<tr>
+<td>$3$</td>
+<td>$2(2)\oplus(0)$</td>
+<td>$(3)\oplus 2(1)$</td>
+</tr>
+<tr>
+<td>$4$</td>
+<td>$(4)\oplus 2(2)\oplus 2(0)$</td>
+<td>$2(3)\oplus 3(1)$</td>
+</tr>
+</tbody></table>
+<p>将仿射模写为以下有限表示直和形式，其中 $n$ 为表示的阶</p>
+<p>$$L_\hat{\lambda}&#x3D;\sum_n q^n\bigoplus_i L_\lambda^{(i,n)}$$</p>
+<p>由 $L_{[1,0,0]}$ 表可知</p>
+<p>$$[1,0,0]&#x3D;(0,0)+q(1,1)+q^2[2(1,1)\oplus(0,0)]+\cdots$$</p>
+<p>$$[1,0,0]\mapsto (0)+q[(2)\oplus 2(1)\oplus(0)]+q^2[2(2)\oplus 4(1)\oplus 3(0)]+\cdots$$</p>
+<p>由 $L_{[1,0]},L_{[0,1]}$ 表可知</p>
+<p>$$[1,0]&#x3D;(0)+q(1)+q^2[(2)\oplus(0)]+\cdots$$</p>
+<p>$$[0,1]&#x3D;(1)+q(1)+q^2[(3)\oplus(1)]+\cdots$$</p>
+<p>比较即得以下仿射分支规则</p>
+<p>$$\begin{aligned}\lbrack 1,0,0\rbrack \mapsto &amp;(1+q+2q^2+5q^3+6q^4+\cdots)[1,0]\\&amp;\oplus (2q+2q^2+4q^3+6q^4+\cdots)[0,1]\end{aligned}$$</p>
+<p>可见分支方程 $b_{[1,0,0],[1,0]},b_{[1,0,0],[0,1]}$ 为 $q$ 的无穷级数，即 $L_{[1,0,0]}$ 分解中有无限项，这是仿射嵌入的一般特征</p>
+<p>然而也存在分支方程项数有限的仿射嵌入，例如 $x_e&#x3D;4$，$\mathfrak{su}(2)\subset\mathfrak{su}(3)$ 的仿射扩展 $\hat{\mathfrak{su}}(2)_4\subset \hat{\mathfrak{su}}(3)_1$，下表给出 $\hat{\mathfrak{su}}(2)_4$ 三个模前五阶的 $\mathfrak{su}(2)$ 表示</p>
+<table>
+<thead>
+<tr>
+<th>阶</th>
+<th>$L_{[4,0]}$</th>
+<th>$L_{[0,4]}$</th>
+<th>$L_{[2,2]}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0$</td>
+<td>$(0)$</td>
+<td>$(4)$</td>
+<td>$(2)$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$(2)$</td>
+<td>$(4)\oplus(2)$</td>
+<td>$(4)\oplus(2)\oplus(0)$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$(4)\oplus(2)\oplus(0)$</td>
+<td>$(6)\oplus 2(4)\oplus 2(2)\oplus(0)$</td>
+<td>$(6)\oplus 2(4)\oplus 3(2)\oplus(0)$</td>
+</tr>
+<tr>
+<td>$3$</td>
+<td>$(6)\oplus (4)\oplus 3(2)\oplus(0)$</td>
+<td>$2(6)\oplus 4(4)\oplus 4(2)\oplus(0)$</td>
+<td>$2(6)\oplus 5(4)\oplus 5(2)\oplus 3(0)$</td>
+</tr>
+<tr>
+<td>$4$</td>
+<td>$(8)\oplus (6)\oplus 4(4)\oplus 4(2)\oplus 3(0)$</td>
+<td>$(8)\oplus 4(6)\oplus 8(4)\oplus 7(2)\oplus 3(0)$</td>
+<td>$(8)\oplus 5(6)\oplus 9(4)\oplus 11(2)\oplus 4(0)$</td>
+</tr>
+</tbody></table>
+<p>比较可得以下分支规则，其两个分支函数均仅含一项</p>
+<p>$$[1,0,0]\mapsto[4,0]\oplus q[0,4]$$</p>
+<p>对 $\hat{\mathfrak{su}}(3)_1$ 可积模 $L_{[0,1,0]}$ 和 $L_{[0,0,1]}$ 作类似分析可得</p>
+<p>$$[0,1,0]\mapsto[2,2]\qquad [0,0,1]\mapsto [2,2]$$</p>
+<p>此有限可约性只对 $\hat{\mathfrak{su}}(3)$ 的 $1$ 级分解成立，对所有 $k&gt;1$，$\hat{\mathfrak{su}}(2)_{4k}\subset \hat{\mathfrak{su}}(3)_k$ 的分支规则均含无限项；存在有限可约性的条件将在之后讨论共形嵌入时给出</p>
+<h3 id="外自同构群分支"><a href="#外自同构群分支" class="headerlink" title="外自同构群分支"></a>外自同构群分支</h3><p>由仿射李代数嵌入构造共形场论在涉及到谱的精确计算时会引发棘手的问题，为处理此技术性细节，需要了解群中心如何分支</p>
+<p>对于元素 $b\in B(G)$，假设存在 $\mathfrak{p}$ 对应群的中心元素 $\tilde{b}$，对任意 $\hat{\lambda}\in\hat{\mathfrak{g}}$，$b$ 在 $\hat{\lambda}$ 的特征值等于 $\tilde{b}$ 在 $\hat{\lambda}$ 投影到 $\hat{\mathfrak{p}}$ 中权的特征值</p>
+<p>$$b\hat{\lambda}\mapsto\tilde{b}\mathcal{P}\hat{\lambda}\qquad\forall\;\hat{\lambda}\in\hat{\mathfrak{g}}$$</p>
+<p>写为更紧凑的形式为</p>
+<p>$$\mathcal{P}b&#x3D;\tilde{b}\mathcal{P}$$</p>
+<p>令 [$A$ &#x2F; $\tilde{A}$] 为 [$\mathcal{O}(\hat{\mathfrak{g}})$ &#x2F; $\mathcal{O}(\hat{\mathfrak{p}})$] 中与 [$b$ &#x2F; $\tilde{b}$] 关联的元素</p>
+<p>$$b\hat{\lambda}&#x3D;\hat{\lambda}e^{2\pi i(A\hat{\omega}_0,\lambda)}$$</p>
+<p>$$\tilde{b}\mathcal{P}\hat{\lambda}&#x3D;\mathcal{P}\hat{\lambda}e^{2\pi i(\tilde{A}\hat{\omega}_0,\mathcal{P}\lambda)}$$</p>
+<p>二者特征值相等的条件为</p>
+<p>$$(A\hat{\omega}_0,\lambda)&#x3D;(\tilde{A}\hat{\omega}_0,\mathcal{P}\lambda)\mod 1\qquad\forall\;\hat{\lambda}\in\hat{\mathfrak{g}}$$</p>
+<p>将此 $\mathcal{O}(\hat{\mathfrak{g}})$ 和 $\mathcal{O}(\hat{\mathfrak{p}})$ 元素对应写为</p>
+<p>$$A\mapsto\tilde{A}\qquad \text{or}\qquad\mathcal{P}A&#x3D;\tilde{A}\mathcal{P}$$</p>
+<p>此关系与级无关，从群中心视角看，其同时表征有限嵌入和对应的仿射嵌入扩展</p>
+<p>考虑 $\mathfrak{su}(2)\subset\mathfrak{su}(3)$ 嵌入，对 $\mathfrak{su}(3)$，$A$ 可取 $1,a,a^2$</p>
+<p>$$(\hat{\omega}_0,\lambda)&#x3D;0\qquad (a\hat{\omega}_0,\lambda)&#x3D;\frac{1}{3}(\lambda_1+2\lambda_2)\qquad (a^2\hat{\omega}_0,\lambda)&#x3D;\frac{1}{3}(2\lambda_1+\lambda_2)$$</p>
+<p>对 $x_e&#x3D;1$ 正则嵌入，$\mathcal{P}_{(1)}\lambda&#x3D;(\lambda_1+\lambda_2)\omega_1$，对 $\mathfrak{su}(2)$，$\tilde{A}$ 可取 $1,\tilde{a}$</p>
+<p>$$(\hat{\omega}_0,\mathcal{P}_{(1)}\lambda)&#x3D;0\qquad (\tilde{a}\hat{\omega}_0,\mathcal{P}_{(1)}\lambda)&#x3D;\frac{1}{2}(\lambda_1+\lambda_2)$$</p>
+<p>比较可知 $\mathcal{O}(\hat{\mathfrak{su}}(2))$ 和 $\mathcal{O}(\hat{\mathfrak{su}}(3))$ 之间除了 $1\mapsto 1$ 外不存在非平凡元素对应关系</p>
+<p>然而对于特殊嵌入 $\mathcal{P}_{(4)}\lambda&#x3D;2(\lambda_1+\lambda_2)\omega_1$，由下式可知有非平凡分支 $1\mapsto\tilde{a}$</p>
+<p>$$(\tilde{a}\hat\omega_0,\mathcal{P}_{(4)}\lambda)&#x3D;\lambda_1+\lambda_2&#x3D;0\mod 1$$</p>
+<p>考虑以下对角嵌入，其中 $\hat{\mathfrak{g}}_{k}\oplus \hat{\mathfrak{g}}_{k’}$ 中权 $\hat{\lambda},\hat{\mu}$ 被投影为 $\hat{\mathfrak{g}}_{k+k’}$ 中权 $\hat{\lambda}+\hat{\mu}$</p>
+<p>$$\hat{\mathfrak{g}}_{k+k’}\subset \hat{\mathfrak{g}}_{k}\oplus \hat{\mathfrak{g}}_{k’}$$</p>
+<p>有以下关系知 $\mathcal{O}(\hat{g})$ 中任意元素 $A$ 均与 $\mathcal{O}(\hat{g}\oplus\hat{g})$ 中元素 $A\otimes A$ 对应</p>
+<p>$$(A\hat{\omega}_0,\lambda)+(A\hat{\omega}_0,\mu)&#x3D;(A\hat{\omega}_0,\lambda+\mu)$$</p>
+<p>若 $\mathcal{O}(\hat{g})$ 阶为 $N$，则有 $N-1$ 个非平凡关系，说明可以同时存在多个非平凡关系</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="外自同构Weyl群元符号"><a href="#外自同构Weyl群元符号" class="headerlink" title="外自同构Weyl群元符号"></a>外自同构Weyl群元符号</h3><h3 id="特征标模变换性质"><a href="#特征标模变换性质" class="headerlink" title="特征标模变换性质"></a>特征标模变换性质</h3>
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../22/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/Riemann%E5%87%A0%E4%BD%95/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          Riemann几何
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../17/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/WZW%E6%A8%A1%E5%9E%8BI/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          WZW模型I
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

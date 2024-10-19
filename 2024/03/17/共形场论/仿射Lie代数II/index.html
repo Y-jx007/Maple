@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>仿射Lie代数II | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        仿射Lie代数II
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        仿射Lie代数II
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-03-21 23:40:01</time>
+          <span class="text-gray-400">·</span>
+          <span>27 min</span>
+          <span class="text-gray-400">·</span>
+          <span>5.6k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="最高权表示"><a href="#最高权表示" class="headerlink" title="最高权表示"></a>最高权表示</h2><p>最高权表示具有唯一由所有正根梯算符湮灭的最高权态 $\ket{\hat{\lambda}}$</p>
+<p>$$E_0^\alpha\ket{\hat{\lambda}}&#x3D;E_n^{\pm\alpha}\ket{\hat{\lambda}}&#x3D;H_n^i\ket{\hat{\lambda}}&#x3D;0\quad\text{for}\quad n&gt;0,\alpha&gt;0$$</p>
+<p>态的特征值 $\hat{\lambda}$ 为表示的最高权，习惯约定 $L_0$ 特征值为零</p>
+<p>$$H_0^i\ket{\hat{\lambda}}&#x3D;\lambda^i\ket{\hat{\lambda}}\quad i\neq 0\qquad\hat{k}\ket{\hat{\lambda}}&#x3D;k\ket{\hat{\lambda}}\qquad L_0\ket{\hat{\lambda}}&#x3D;0$$</p>
+<p>在Chevalley基下，特征值为Dynkin标</p>
+<p>$$h^i\ket{\hat{\lambda}}&#x3D;\lambda_i\ket{\hat{\lambda}}\qquad i&#x3D;0,1,\cdots,r$$</p>
+<p>模中所有态可由降算符作用于 $\ket{\hat{\lambda}}$ 得到；下文将 $\hat{k}$ 与其特征值 $k$ 等同，在多数应用中一开始即将 $k$ 固定</p>
+<h3 id="可积最高权表示"><a href="#可积最高权表示" class="headerlink" title="可积最高权表示"></a>可积最高权表示</h3><p>与 $\mathfrak{g}$ 有限维不可约表示相仿，将仿射代数表示投影到实根对应的 $\mathfrak{su}(2)$ 子代数，可知对仿射权 $\hat{\lambda}’\in\Omega_{\hat{\lambda}}$ 有</p>
+<p>$$\lambda_i’&#x3D;(\hat{\lambda}’,\alpha_i^\vee)&#x3D;-(p_i-q_i)\qquad i&#x3D;0,1,\cdots,r$$</p>
+<p>对最高权 $\hat{\lambda}$，所有 $p_i&#x3D;0$</p>
+<p>$$\lambda_i\in\mathbb{Z}_+\qquad i&#x3D;0,1,\cdots,r$$</p>
+<p>由 $\lambda_0&#x3D;k-(\lambda,\theta)\in\mathbb{Z}_+$ 可知 $k$ 为正整数</p>
+<p>$$k\in\mathbb{Z}_+\qquad k\ge (\lambda,\theta)$$</p>
+<p>说明对于固定 $k$ 值，仅存在有限个支配最高权表示，对 $k&#x3D;1$，最高权只能取对应单根 $\alpha_i$ 伴标为 $1$ 的 $\hat{\omega}_i$；由于 $a_0^\vee&#x3D;1$，$\hat{\omega}$ 总为支配权，其对应的 $1$ 级最高权表示称为基础表示；对于 $\hat{\mathfrak{su}}(N)$，所有伴标均为 $1$，存在 $N$ 个可能的 $1$ 级最高权表示</p>
+<p>以 $\hat{\mathfrak{su}}(3)$ 为例，所有 $2$ 级支配最高权表示为</p>
+<p>$$[2,0,0]\quad [0,2,0]\quad[0,0,2]\quad[1,1,0]\quad[1,0,1]\quad[0,1,1]$$</p>
+<p>对于 $\hat{G}_2$，$a_1^\vee&#x3D;2a_0^\vee&#x3D;2a_2^\vee&#x3D;2$，可知其 $2$ 级支配最高权表示为</p>
+<p>$$[2,0,0]\quad[0,1,0]\quad[0,0,2]\quad[1,0,1]$$</p>
+<p>下文将 $k$ 级代数 $\hat{\mathfrak{g}}$ 记为 $\hat{\mathfrak{g}}_k$</p>
+<p>可分解为 $\mathfrak{su}(2)$ 有限不可约表示并且可写为有限维权空间直和的表示称为可积表示，伴随表示虽然不是最高权表示，但其为可积表示；以下说明支配最高权表示同样可积</p>
+<p>若以下关系成立</p>
+<p>$$(J_n^a)^\dagger&#x3D;J_{-n}^a\qquad\text{or} \qquad(H_n^i)^\dagger&#x3D;H_{-n}^i\quad (E_n^\alpha)^\dagger&#x3D;E_{-n}^{-\alpha}$$</p>
+<p>则支配最高权表示为酉表示</p>
+<p>$$\begin{aligned}|E_{-n}^\alpha\ket{\hat{\lambda}}|^2&amp;&#x3D;\bra{\hat{\lambda}}E_n^{-\alpha}E_{-n}^\alpha\ket{\hat{\lambda}}\\&amp;&#x3D;\frac{2}{|\alpha|^2}[nk-(\alpha,\lambda)]\braket{\hat{\lambda}}{\hat{\lambda}}\ge 0\end{aligned}$$</p>
+<p>对支配最高权，$(\hat\lambda,\alpha_i^\vee)&#x3D;-(p_i-q_i)$ 相当于Verma模 $V_\hat{\lambda}$ 中存在以下奇异矢量</p>
+<p>$$E_0^{\alpha_i}\ket{\hat{\lambda}}&#x3D;E_1^{-\theta}\ket{\hat{\lambda}}&#x3D;0$$</p>
+<p>$$(E_0^{-\alpha_i})^{\lambda_i+1}\ket{\hat{\lambda}}&#x3D;(E_{-1}^\theta)^{k-(\lambda,\theta)+1}\ket{\hat{\lambda}}&#x3D;0$$</p>
+<p>用Chevalley基表示为</p>
+<p>$$e^i\ket{\hat{\lambda}}&#x3D;(f^i)^{\lambda_i+1}\ket{\hat{\lambda}}&#x3D;0\qquad i&#x3D;0,1,\cdots,r$$</p>
+<p>与单Lie代数不同的是，从 $V_\hat{\lambda}$ 中商去这些奇异矢量后得到的不可约模 $L_\hat{\lambda}$ 并不是有限维的，表示中的权减去虚根仍在此表示中，即对 $\hat{\lambda}’\in\Omega_\hat{\lambda}$，$\hat{\lambda}’-n\delta\in\Omega_\hat{\lambda}\;\forall\;n&gt;0$，很明显无限的来源为存在与虚根 $\delta$ 有关的奇异矢量，其表达式含有 $H_n^i,\; n&lt;0$</p>
+<p>以下说明如何得到 $\Omega_\hat{\lambda}$ 中所有权，若采用与 $\mathfrak{g}$ 相同的算法，从最高权开始依次减去正Dynkin标对应的单根，此方法仍然奏效，但对于 $\hat{\mathfrak{g}}$ 算法永远不会终止</p>
+<p>称 $L_0$ 特征值为阶，并取 $L_0\ket{\hat{\lambda}}&#x3D;0$，所有零阶态可由有限Lie代数生成元作用于 $\ket{\hat{\lambda}}$ 得到，即零阶权的有限投影为 $\mathfrak{g}$ 有限维不可约最高权表示 $\lambda$ 中的所有权，将具有正零Dynkin标的零阶权减去 $\alpha_0$ 得到一阶权，然后由得到的一阶权依次减去有限单根构造所有一阶权，以此类推得到更高阶的权</p>
+<p>由以上方法可知，不同固定阶仿射权的有限投影一起构成 $\mathfrak{g}$ 有限维不可约表示的直和</p>
+<p>为完整描述此表示，还需给出每个权的重数，当考虑 $L_0$ 特征值时，权的重数显然是有限的，其可由以下Freudenthal递归公式的仿射版本计算，其中重数 $\text{mult}(\hat{\alpha})$ 对实根为 $1$，对虚根为 $r$</p>
+<p>$$[|\hat{\lambda}+\hat{\rho}|^2-|\hat{\lambda}’+\hat{\rho}|^2]\text{mult}_\hat{\lambda}(\hat{\lambda}’)&#x3D;2\sum_{\hat{\alpha}&gt;0}\text{mult}(\hat{\alpha})\sum_{p&#x3D;1}^\infty(\hat{\lambda}’+p\hat{\alpha},\hat{\alpha})\text{mult}_\hat{\lambda}(\hat{\lambda}’+p\hat{\alpha})$$</p>
+<p>由于 $L_0$ 特征值为零，两个仿射最高权的标量积与有限形式相同</p>
+<p>$$(\hat{\lambda},\hat{\mu})&#x3D;(\lambda,\mu)\qquad\text{for}\quad \hat{\lambda}(L_0)&#x3D;\hat{\mu}(L_0)&#x3D;0$$</p>
+<p>因此对于 $\hat{\lambda}&#x3D;(\lambda;k;0)$，$\hat{\rho}&#x3D;(\rho;g;0)$</p>
+<p>$$|\hat{\lambda}+\hat{\rho}|^2&#x3D;|\lambda+\rho|^2$$</p>
+<p>然而对于 $m$ 阶权 $\hat{\lambda}’&#x3D;(\lambda’;k;-m)$</p>
+<p>$$|\hat{\lambda}’+\hat{\rho}|^2&#x3D;|\lambda’+\rho|^2-2m(k+g)$$</p>
+<h3 id="hat-mathfrak-su-2-1-基础表示"><a href="#hat-mathfrak-su-2-1-基础表示" class="headerlink" title="$\hat{\mathfrak{su}}(2)_1$ 基础表示"></a>$\hat{\mathfrak{su}}(2)_1$ 基础表示</h3><p>考虑具有最高权 $[1,0]$ 的 $\hat{\mathfrak{su}}(2)_1$ 基础表示，由上述算法可得下图结果，其中角标表示权的重数，从图形上看权的重数即为从最高权到此权的路径数</p>
+<p><img src="/images/su(2)_1.png"></p>
+<p>以下由Freudenthal公式计算权 $\hat{\lambda}’&#x3D;(0;1;-2)$ 在表示 $\hat{\lambda}&#x3D;(0;1;0)$ 下重数</p>
+<p>$$|\hat{\lambda}+\hat{\rho}|&#x3D;|\rho|^2&#x3D;\frac{1}{2}$$</p>
+<p>$$|\hat{\lambda}’+\hat{\rho}|&#x3D;|\rho|^2-4(1+2)&#x3D;\frac{1}{2}-12$$</p>
+<p>公式左边为</p>
+<p>$$[|\hat{\lambda}+\hat{\rho}|^2-|\hat{\lambda}’+\hat{\rho}|^2]\text{mult}_\hat{\lambda}(\hat{\lambda}’)&#x3D;12\;\text{mult}_\hat{\lambda}(0;1;-2)$$</p>
+<p>$\hat{\mathfrak{su}}(2)$ 的所有正根为 $\alpha_1,\pm\alpha_1+n\delta,n\delta\quad n&gt;0$，其重数均为 $1$，利用下表可计算等式右边</p>
+<table>
+<thead>
+<tr>
+<th>$p$</th>
+<th>$\hat{\alpha}$</th>
+<th>$\hat{\lambda}’+p\hat{\alpha}$</th>
+<th align="center">$(\hat{\lambda}’+p\hat{\alpha},\hat{\alpha})$</th>
+<th align="center">$\text{mult}_\hat{\lambda}(\hat{\lambda}’+p\hat{\alpha})$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$1$</td>
+<td>$(\alpha_1;0;0)$</td>
+<td>$(\alpha_1;1;-2)$</td>
+<td align="center">$2$</td>
+<td align="center">$1$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$(\alpha_1;0;1)$</td>
+<td>$(\alpha_1;1;-1)$</td>
+<td align="center">$3$</td>
+<td align="center">$1$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$(\alpha_1;0;2)$</td>
+<td>$(\alpha_1;1;0)$</td>
+<td align="center">$4$</td>
+<td align="center">$0$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$(-\alpha_1;0;1)$</td>
+<td>$(-\alpha_1;1;-1)$</td>
+<td align="center">$3$</td>
+<td align="center">$1$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$(-\alpha_1;0;2)$</td>
+<td>$(-\alpha_1;1;0)$</td>
+<td align="center">$4$</td>
+<td align="center">$0$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$(0;0;1)$</td>
+<td>$(0;1;-1)$</td>
+<td align="center">$1$</td>
+<td align="center">$1$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$(0;0;2)$</td>
+<td>$(0;1;0)$</td>
+<td align="center">$2$</td>
+<td align="center">$1$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$(\alpha_1;0;0)$</td>
+<td>$(2\alpha_1;1;-2)$</td>
+<td align="center">$4$</td>
+<td align="center">$0$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$(\alpha_1;0;1)$</td>
+<td>$(2\alpha_1;1;0)$</td>
+<td align="center">$5$</td>
+<td align="center">$0$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$(-\alpha_1;0;1)$</td>
+<td>$(-2\alpha_1;1;0)$</td>
+<td align="center">$5$</td>
+<td align="center">$0$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$(0;0;1)$</td>
+<td>$(0;1;0)$</td>
+<td align="center">$2$</td>
+<td align="center">$1$</td>
+</tr>
+</tbody></table>
+<p>$$2\sum_{\hat{\alpha}&gt;0}\sum_{p&#x3D;1}^\infty(\hat{\lambda}’+p\hat{\alpha},\hat{\alpha})\text{mult}_\hat{\lambda}(\hat{\lambda}’+p\hat{\alpha})&#x3D;24$$</p>
+<p>比较左右两边可知 $\text{mult}_\hat{\lambda}(0;1;-2)&#x3D;2$</p>
+<h3 id="串函数"><a href="#串函数" class="headerlink" title="串函数"></a>串函数</h3><p>上述重数的计算十分复杂，然而利用 $\hat{W}$ 轨道中权重数相同可极大地简化计算，在上文的例子中表示的所有权均可由一系列权 $(0;1;-m)$ 经Weyl反射得到，因此表示的所有权重数的信息均包含在 $\text{mult}(0;1;-m),m\ge 0$ 中，这些重数的生成函数称为串函数</p>
+<p>记满足 $\hat{\mu}+\delta\notin\Omega_\hat{\lambda}$ 的权 $\hat{\mu}\in\Omega_\hat{\lambda}$ 的集合为 $\Omega_\hat{\lambda}^\max$，权 $\hat{\mu},\hat{\mu}-\delta,\hat{\mu}-2\delta,\cdots$ 的重数由以下串函数给出</p>
+<p>$$\sigma_\hat{\mu}^{(\hat{\lambda})}(q)&#x3D;\sum_{n&#x3D;0}^\infty\text{mult}_\hat{\lambda}(\hat{\mu}-n\delta)q^n$$</p>
+<p>对于上文的例子，权 $[1,0]$ 的串函数为Euler函数的倒数，这将在之后说明，下式中 $p(n)$ 为将 $n$ 分为正整数之和的方式，其前几个值为 $1,1,2,3,5,7,11,15,\cdots$</p>
+<p>$$\sigma_{[1,0]}^{([1,0])}&#x3D;\varphi(q)^{-1}&#x3D;\prod_{n&#x3D;1}^\infty(1-q^n)^{-1}&#x3D;\sum_{n&#x3D;0}^\infty p(n)q^n$$</p>
+<p>对于更复杂的表示，需要不止一个串函数，权重数的完整信息包含在串函数集 $\sigma_\hat{\mu}^{(\hat{\lambda})}(q)\quad\text{for all} \quad\hat{\mu}\in\Omega_\hat{\lambda}^\max$ 中，但由于Weyl轨道中权重数相同，实际只需要知道 $\Omega_\hat{\lambda}^\max$ 中支配权的串函数</p>
+<p>$$\sigma_{w\hat{\mu}}^{(\hat{\lambda})}&#x3D;\sigma_{\hat{\mu}}^{(\hat{\lambda})}(q)$$</p>
+<p>由于 $\omega_\hat{\lambda}$ 中所有权均属于 $\hat{\lambda}$ 同余类，确定最高权表示 $\hat{\lambda}$ 所需的独立串函数的数量等于 $\hat{\lambda}$ 相同同余类中 $k$ 级可积权的数量，对于 $\hat{\mathfrak{su}}(2)_2$，有三个可积权 $[2,0],[0,2],[1,1]$，其中前两个可积权属于同一个同余类，因此模 $L_{[2,0]}$ 需要两个串函数</p>
+<p>利用串函数可自然表示可积表示的特征标</p>
+<h2 id="特征标"><a href="#特征标" class="headerlink" title="特征标"></a>特征标</h2><h3 id="Weyl-Kac特征标公式"><a href="#Weyl-Kac特征标公式" class="headerlink" title="Weyl-Kac特征标公式"></a>Weyl-Kac特征标公式</h3><p>定义可积最高权表示的特征标</p>
+<p>$$\text{ch}_\hat{\lambda}&#x3D;\sum_{\hat{\lambda}’\in\Omega_\hat{\lambda}}\text{mult}_\hat{\lambda}(\hat{\lambda}’)e^{\hat{\lambda}’}$$</p>
+<p>用串函数表示为</p>
+<p>$$\text{ch}_\hat{\lambda}&#x3D;\sum_{\hat{\mu}\in\Omega_{\hat{\lambda}}^\max}\sigma_\hat{\mu}^{\hat{\lambda}}(e^{-\delta})e^\hat{\mu}$$</p>
+<p>上式可重新写为以下Weyl-Kac特征标公式</p>
+<p>$$\text{ch}_\hat{\lambda}&#x3D;\frac{\displaystyle\sum_{w\in\hat{W}}\epsilon(w)e^{w(\hat{\lambda}+\hat{\rho})}}{\displaystyle\sum_{w\in\hat{W}}\epsilon(w)e^{w\hat{\rho}}}$$</p>
+<p>对上式有以下Macdonald-Weyl分母等式</p>
+<p>$$\sum_{w\in\hat{W}}\epsilon(w)e^{w\hat{\rho}}&#x3D;e^{\hat{\rho}}\prod_{\hat{\alpha}&gt;0}(1-e^\hat{\alpha})^{\text{mult}(\hat{\alpha})}$$</p>
+<p>此式为众多组合学公式的根源，以 $\hat{\mathfrak{su}}(2)$ 为例，取 $x&#x3D;e^{-\alpha_0},y&#x3D;e^{-\alpha_1}$，上式成为</p>
+<p>$$\prod_{n&#x3D;1}^\infty(1-x^n y^n)(1-x^n y^{n-1})(1-x^{n-1}y^{n})&#x3D;\sum_{n\in\mathbb{Z}}(-1)^n x^{n(n+1)&#x2F;2}y^{n(n-1)&#x2F;2}$$</p>
+<p>通过特殊化其可变为包括Jacobi三重积等式在内的不同的配分等式</p>
+<p>由于以上特征标表达式需对所有仿射Weyl群元求和，其实际用途不大，通过考虑仿射Weyl群的半直积结构可得更为方便的表达式，由 $w(t_{\hat{\alpha}^\vee})&#x3D;(t_{w\hat{\alpha}^\vee})w$ 和伴根阵在有限Weyl群下不变有</p>
+<p>$$\sum_{w\in\hat{W}}\epsilon(w)e^{w\hat{\lambda}}&#x3D;\sum_{w\in W}\epsilon(w)\sum_{\alpha^\vee\in Q^\vee} e^{w(t_{\alpha^\vee})\hat{\lambda}}&#x3D;\sum_{w\in W}\epsilon(w)\sum_{\alpha^\vee\in Q^\vee} e^{(t_{\alpha^\vee})w\hat{\lambda}}$$</p>
+<p>引入以下广义theta函数</p>
+<p>$$\Theta_\hat{\lambda}&#x3D;e^{-\frac{1}{2k}|\hat{\lambda}|^2\delta}\sum_{\alpha^\vee\in Q^\vee}e^{(t_{\alpha^\vee})\hat{\lambda}}$$</p>
+<p>$$\sum_{w\in\hat{W}}\epsilon(w)w^{w\hat{\lambda}}&#x3D;\sum_{w\in W}\epsilon(w)e^{\frac{1}{2k}|\lambda|^2\delta}\Theta_{w\hat{\lambda}}$$</p>
+<p>由 $\hat{\lambda}&#x3D;(\lambda;k;0)$ 和 $t_{\alpha^\vee}\hat{\lambda}&#x3D;(\lambda+k\alpha^\vee;k;n+[|\lambda|^2-|\lambda+k\alpha^\vee|^2]&#x2F;2k)$ 计算有</p>
+<p>$$\Theta_\hat{\lambda}&#x3D;e^{k\hat{\omega}_0}\sum_{\alpha^\vee\in Q^\vee+\lambda&#x2F;k} e^{k[\alpha^\vee-\frac{1}{2}|\alpha^\vee|^2\delta]}$$</p>
+<p>利用theta函数，可将特征标写为以下形式，其中 $m_\hat{\lambda}$ 称为模异常</p>
+<p>$$\text{ch}_\hat{\lambda}&#x3D;e^{m_\hat{\lambda}\delta}\frac{\displaystyle\sum_{w\in W}\epsilon(w)\Theta_{w(\hat{\lambda}+\hat{\rho})}}{\displaystyle\sum_{w\in W}\epsilon(w)\Theta_{w\hat{\rho}}}$$</p>
+<p>$$m_\hat{\lambda}&#x3D;\frac{|\hat{\lambda}+\hat{\rho}|^2}{2(k+g)}-\frac{|\hat{\rho}|}{2g}&#x3D;\frac{|\lambda+\rho|^2}{2(k+g)}-\frac{|\rho|^2}{2g}$$</p>
+<p>将特征标在 $\hat{\xi}$ 的值记为 $\text{ch}_\hat{\lambda}(\hat{\xi})$</p>
+<p>$$\hat{\xi}&#x3D;-2\pi i(\zeta;\tau;t)\qquad \text{ch}_\hat{\lambda}(\hat{\xi})&#x3D;\text{ch}_\hat{\lambda}(\zeta;\tau;t)$$</p>
+<p>$$\Theta_\hat{\lambda}(\hat{\xi})&#x3D;e^{-2\pi ikt}\sum_{\alpha^\vee\in Q^\vee} e^{-\pi i[2k(\alpha^\vee,\zeta)+2(\lambda,\zeta)-\tau k|\alpha^\vee+\lambda&#x2F;k|^2]}$$</p>
+<p>将 $\zeta$ 用单伴根展开</p>
+<p>$$\zeta&#x3D;\sum_{i&#x3D;1}^r z_i\alpha_i^\vee\qquad(\lambda,\zeta)&#x3D;\lambda\cdot z&#x3D;\sum_{i&#x3D;1}^r z_i\lambda_i$$</p>
+<p>由于特征标中信息与 $t$ 关联很少，其通常写为参数 $\tau$ 与 $z&#x3D;(z_1,z_2,\cdots,z_r)$ 的函数</p>
+<p>$$\text{ch}_\hat{\lambda}(z;\tau)&#x3D;\text{ch}_\hat{\lambda}\left(\sum_{i&#x3D;1}^r z_i\lambda_i;\tau;0\right)$$</p>
+<p>上式由特征标定义式可写为以下形式，其中 $\hat{\lambda}’&#x3D;(\lambda’;k;-n)$，$\text{mult}_\hat{\lambda}(\lambda’)|_n$ 表示 $\lambda’$ 在 $n$ 阶的重数</p>
+<p>$$\begin{aligned}\text{ch}_\hat{\lambda}(z;\tau)&amp;&#x3D;\sum_{\hat{\lambda}’}\text{mult}_\hat{\lambda}(\hat{\lambda}’)e^{-2\pi i\tau(\hat{\lambda}’,\hat{\omega}_0)}e^{-2\pi iz_i\lambda_i’}\\&amp;&#x3D;\sum_n\sum_{\lambda’}\text{mult}_\hat{\lambda}(\lambda’)|_n e^{2\pi i\tau n}e^{-2\pi iz_i\lambda_i’}\end{aligned}$$</p>
+<p>可将其写为以下更紧凑的形式</p>
+<p>$$\text{ch}_\hat{\lambda}(z;\tau)&#x3D;\Tr_\hat{\lambda}e^{2\pi i\tau L_0}e^{-2\pi i\sum_j z_j h^j}$$</p>
+<p>对于 $\hat{\mathfrak{su}}(2)$，由于自旋基 $J^0&#x3D;h&#x2F;2$，故记 $2z_1&#x3D;z$，其特征标为</p>
+<p>$$\hat{\mathfrak{su}}(2):\qquad \text{ch}_\hat{\lambda}(z;\tau)&#x3D;\Tr_\hat{\lambda}e^{2\pi i\tau L_0}e^{-2\pi iz J^0}$$</p>
+<p>计算特征标在 $\zeta&#x3D;t&#x3D;0$ 处的值，即 $\hat{\xi}&#x3D;-2\pi i\tau\hat{\omega}_0$，称为特殊化，其中 $d(n)$ 给出 $n$ 阶态的总数</p>
+<p>$$\text{ch}_\hat{\lambda}(\tau)\equiv\text{ch}_\hat{\lambda}(0;\tau;0)&#x3D;\sum_{n\ge 0}d(n)q^n\qquad q&#x3D;e^{2\pi i\tau}$$</p>
+<p>另一个有用的特殊化如下，称为主特殊化，其中 $x$ 为常数，利用分母等式，主特殊化特征标可写为乘积形式</p>
+<p>$$\hat{\xi}&#x3D;-2\pi i\hat{\rho}x$$</p>
+<p>引入归一化特征标，下文称特征标时默认其已归一化</p>
+<p>$$\chi_\hat{\lambda}&#x3D;e^{-m_\hat{\lambda}\delta}\text{ch}_\hat{\lambda}&#x3D;\frac{\displaystyle\sum_{w\in W}\epsilon(w)\Theta_{w(\hat{\lambda}+\hat{\rho})}}{\displaystyle\sum_{w\in W}\epsilon(w)\Theta_{w\hat{\rho}}}$$</p>
+<p>其特殊化形式为</p>
+<p>$$\chi_\hat{\lambda}(q)&#x3D;q^{m_\hat{\lambda}}\Tr_\hat{\lambda} q^{L_0}$$</p>
+<p>将 $\hat{\xi}$ 表达式扩展到任意权，由 $w\cdot\hat{\lambda}+\hat{\rho}&#x3D;w(\hat{\lambda}+\hat{\rho})$ 可知</p>
+<p>$$\chi_{w\cdot\hat{\lambda}}&#x3D;\epsilon(w)\chi_\hat{\lambda}$$</p>
+<p>此公式表明，若权 $\hat{\lambda}$ 在Weyl群某奇元素作用下保持不变，则 $\chi_\hat{\lambda}&#x3D;0$</p>
+<h3 id="hat-mathfrak-su-2-特征标"><a href="#hat-mathfrak-su-2-特征标" class="headerlink" title="$\hat{\mathfrak{su}}(2)$ 特征标"></a>$\hat{\mathfrak{su}}(2)$ 特征标</h3><p>$\hat{\mathfrak{su}}(2)$ 可积模 $L_\hat{\lambda}$ 特征标为</p>
+<p>$$\chi_{\lambda_1}^{(k)}&#x3D;\frac{\Theta_{\lambda_1+1}^{(k+2)}-\Theta_{-\lambda_1-1}^{(k+2)}}{\Theta_1^{(2)}-\Theta_{-1}^{(2)}}$$</p>
+<p>$$\chi_{\lambda_1}^{(k)}\equiv\chi_\hat{\lambda}\qquad \Theta_{\lambda_1}^{(k)}\equiv\Theta_\hat{\lambda}\qquad(\hat{\lambda}&#x3D;[k-\lambda_1,\lambda_1])$$</p>
+<p>若直接特殊化特征标，由下式求和在 $z,t&#x3D;0$ 时与 $\lambda_1$ 符号无关可知将得到零比零不定式</p>
+<p>$$\begin{aligned}\Theta_{\lambda_1}^{(k)}(\zeta;\tau;t)&amp;&#x3D;e^{-2\pi ikt}\sum_{n\in\mathbb{Z}+\lambda_1&#x2F;2k}e^{2\pi ik\tau n^2}e^{-2\pi ik nz}\\&amp;&#x3D;e^{-2\pi ikt}\sum_{n\in\mathbb{Z}}e^{-2\pi i[knz+\frac{1}{2}\lambda_1 z-k n^2\tau-n\lambda_1\tau-\lambda_1^2\tau&#x2F;4k]}\end{aligned}$$</p>
+<p>因此需取极限 $z\to 0$ 以获得特殊化</p>
+<p>$$\chi_{\lambda_1}^{(k)}(\tau)&#x3D;\frac{\displaystyle\sum_{n\in\mathbb{Z}}[\lambda_1+1+2n(k+2)]e^{2\pi i\tau[\lambda_1+1+2n(k+2)]^2&#x2F;4(k+2)}}{\displaystyle\sum_{n\in\mathbb{Z}}[1+4n]e^{2\pi i\tau[1+4n]^2&#x2F;8}}$$</p>
+<p>用 $q$ 表示如下，其中分式之前的因子即为 $q^{m_\hat{\lambda}}$</p>
+<p>$$\chi_{\lambda_1}^{(k)}(q)&#x3D;q^{(\lambda_1+1)^2&#x2F;4(k+2)-\frac{1}{8}}\frac{\displaystyle\sum_{n\in\mathbb{Z}}[\lambda_1+1+2n(k+2)]q^{n[\lambda_1+1+(k+2)n]}}{\displaystyle\sum_{n\in\mathbb{Z}}[1+4n]q^{n[1+2n]}}$$</p>
+<p>对 $k&#x3D;\lambda_1&#x3D;1$，特征标前几项为</p>
+<p>$$\begin{aligned}\chi_1^{(1)}(q)&amp;&#x3D;q^{5&#x2F;24}\frac{2-4q+8q^5-10q^8+\cdots}{1-3q+5q^3+9q^{10}+\cdots}\\&amp;&#x3D;q^{5&#x2F;24}(2-4q+8q^5-10q^8+\cdots)(1+3q+9q^2+22q^3+\cdots)\\&amp;&#x3D;q^{5&#x2F;24}(2+2q+6q^2+8q^3+\cdots)\end{aligned}$$</p>
+<p>模 $L_{[0,1]}$ 前四阶不可约表示为 $(1),(1),(3)\oplus(1),(3)\oplus 2(1)$，其中态的数目确实为 $2,2,6,8$</p>
+<p>由以下Jacobi等式可将 $\hat{\mathfrak{su}}(2)$ 特征标写为更紧凑的形式</p>
+<p>$$\begin{aligned}\lbrack\varphi(q)\rbrack^3&amp;&#x3D;\sum_{n\in\mathbb{Z}_+}(-1)^n(2n+1)q^{n(n+1)&#x2F;2}\\&amp;&#x3D;\sum_{n\in\mathbb{Z}}[1+4n] q^{n[1+2n]}\end{aligned}$$</p>
+<p>再利用Dedekind和Euler函数之间的关系</p>
+<p>$$\eta(q)&#x3D;q^{\frac{1}{24}}\varphi(q)$$</p>
+<p>$\hat{\mathfrak{su}}(2)$ 特征标可写为</p>
+<p>$$\chi_{\lambda_1}^{(k)}(q)&#x3D;\frac{q^{(\lambda_1+1)^2&#x2F;4(k+2)}}{[\eta(q)]^3}\sum_{n\in\mathbb{Z}}[\lambda_1+1+2n(k+2)]q^{n[\lambda_1+1+(k+2)n]}$$</p>
+<h3 id="hat-mathfrak-u-1-特征标"><a href="#hat-mathfrak-u-1-特征标" class="headerlink" title="$\hat{\mathfrak{u}}(1)$ 特征标"></a>$\hat{\mathfrak{u}}(1)$ 特征标</h3><p>$\hat{\mathfrak{u}}(1)$ 代数，也称为Heisenberg代数，其模为自由boson的Fock空间，最高权态 $\ket{l;\{0\}}$ 的 $a_0$ 特征值为 $l$，由所有升算符 $a_{n&gt;0}$ 湮灭，此类模总是不可约的，其中态具有以下形式</p>
+<p>$$a_{-1}^{n_1}a_{-2}^{n_2}\cdots\ket{l;\{0\}}\propto\ket{l;n_1,n_2,\cdots}$$</p>
+<p>其中态的 $L_0$ 特征值为为所有占有数 $n_i$ 之和，$m$ 阶态的总数等于 $m$ 的配分数 $p(m)$，可知Heisenberg模的特殊化特征标等于Euler函数的倒数</p>
+<p>$$\text{ch}_{\hat{\mathfrak{u}}(1)}(q)&#x3D;\sum_{n&#x3D;0}^\infty p(n)q^n&#x3D;\varphi(q)^{-1}$$</p>
+<p>此特征标与串函数 $\sigma_{[1,0]}^{([1,0])}(q)$ 相同，此性质将在之后解释</p>
+<p>构造 $r$-叠Heisenberg代数，其对易关系如下</p>
+<p>$$[a_n^i,a_m^j]&#x3D;n\delta_{n+m,0}\delta_{i,j}\qquad i,j&#x3D;1,\cdots,r$$</p>
+<p>其模的特征标如下，其中 $p_r(m)$ 为将 $m$ 划分为 $r$ 色正整数的方法数，此特征标与所有秩为 $r$ 的单缀代数基础模的 $\hat{\omega}_0$ 串函数相同</p>
+<p>$$\text{ch}_{\hat{\mathfrak{u}}(1)^r}(q)&#x3D;[\text{ch}_{\hat{\mathfrak{u}}(1)}(q)]^r&#x3D;\varphi(q)^{-r}&#x3D;\sum_{n&#x3D;0}^\infty p_r(n)q^n$$</p>
+<p>对 $\hat{\mathfrak{u}}(1)$ 特征标的完整讨论需要简单的场论分析，自由boson模的对易关系即为 $\hat{\mathfrak{u}}(1)$ 流代数，然而若将boson紧化在半径为 $R$ 的圆上，则需要考虑可能的缠绕数，对应的配分函数为</p>
+<p>$$Z&#x3D;\sum_{n,m}\chi_{n,m}(q)\bar\chi_{n,m}(\bar q)$$</p>
+<p>$$\chi_{n,m}(q)&#x3D;\frac{1}{\eta(q)}q^{\frac{1}{2}(n&#x2F;R+mR&#x2F;2)^2}$$</p>
+<p>其与上文 $\hat{\mathfrak{u}}(1)$ 特征标的关系如下，为使 $\chi_{n,m}$ 为归一化特征标，$q$ 额外的指数需等于模异常，这将在下文说明</p>
+<p>$$\chi_{n,m}&#x3D;q^{h_{n,m}-1&#x2F;24}\text{ch}(q)$$</p>
+<p>$$h_{n,m}&#x3D;\frac{1}{2}(n&#x2F;R+mR&#x2F;2)^2$$</p>
+<p>若 $R^2$ 为有理数，可将其写为</p>
+<p>$$R&#x3D;\sqrt{\frac{2p’}{q’}}$$</p>
+<p>此时无限个 $\hat{\mathfrak{u}}(1)$ 特征标可被重组织为有限个广义特征标</p>
+<p>$$\chi_{n,m}(q)&#x3D;\frac{1}{\eta(q)}q^{pp’(n&#x2F;2p’+m&#x2F;2p)^2}$$</p>
+<p>引入以下整数，可知 $0\le l\le 4pp’-p-p’$</p>
+<p>$$n&#x3D;2p’n’+r\quad 0\le r&lt; 2p’$$</p>
+<p>$$m&#x3D;2pm’+s\quad 0\le s&lt; 2p$$</p>
+<p>$$u&#x3D;n’+m’\qquad l&#x3D;pr+p’ s$$</p>
+<p>特征标可写为以下形式</p>
+<p>$$\chi_{l,u}&#x3D;\frac{1}{\eta(q)}q^{pp’(u+l&#x2F;2pp’)^2}$$</p>
+<p>将其对 $u$ 求和，可见 $\chi_{l+2pp’}(q)&#x3D;\chi_l(q)$，因此可进一步限制 $l$ 的范围为 $0\le l&lt;2pp’$ </p>
+<p>$$\chi_l^{(pp’)}&#x3D;\frac{1}{\eta(q)}\sum_{u\in\mathbb{Z}}q^{pp’(u+l&#x2F;2pp’)^2}$$</p>
+<p>此广义特征标不再是简单的 $\hat{\mathfrak{u}}(1)$ 特征标，而是将其重组织为扩展代数的形式，此代数由模提供Heisenberg代数的 $\hat{\mathfrak{u}}(1)$ 流 $i\partial\varphi$ 和一些额外的流生成，这些额外流须为自由boson理论中的顶点算符 $e^{i\alpha\varphi}$</p>
+<p>由以下约束条件可确定 $\alpha$ 的值</p>
+<p>$1.\quad$ 周期边界条件，$\alpha R\in\mathbb{Z}$</p>
+<p>$2.\quad$ 共形维数为整数，$|\alpha|^2&#x2F;2\in\mathbb{Z}$</p>
+<p>$3.\quad$ 配分函数 $R\leftrightarrow 2&#x2F;R$ 对偶，即 $p\leftrightarrow p’$ 对偶</p>
+<p>其最低非零共形维数解为</p>
+<p>$$\alpha&#x3D;\pm\sqrt{2pp’}$$</p>
+<p>因此扩展代数的生成元如下，对于 $p&#x3D;p’&#x3D;1$，此扩展代数即为 $\hat{\mathfrak{su}}(2)_1$</p>
+<p>$$i\partial\varphi\qquad \Gamma^\pm&#x3D;e^{\pm i\sqrt{2pp’}\varphi}$$</p>
+<p>此扩展理论的初级场为与生成元OPE为局部的顶点算符 $e^{i\gamma\varphi}$，换言之，其与流的OPE具有平凡单值性，由此可确定 $\gamma$ 与初级场共形维数</p>
+<p>$$\gamma&#x3D;\frac{l}{\sqrt{2pp’}}\quad h_l&#x3D;\frac{l^2}{4pp’}\qquad l\in\mathbb{Z}$$</p>
+<p>对于初级场，应限制 $0\le l&lt;2pp’$，因为 $l$ 增加 $2pp’$ 相当于对 $e^{il\varphi&#x2F;\sqrt{2pp’}}$ 作用梯算符 $\Gamma^+$ 得到降场</p>
+<p>从扩展共形场论的视角容易得出特征标，自由boson生成元贡献因子 $q^{h_l}&#x2F;\eta(q)$，而梯算符 $\Gamma^\pm$ 的作用相当于将动量 $l$ 平移 $2pp’$ 整数倍，用 $l+m2pp’$ 取代 $l$ 并对 $m$ 求和即可得到特征标，与上文结果相同</p>
+<p>$$\begin{aligned}\chi_l^{(pp’)}(q)&amp;&#x3D;\frac{1}{\eta(q)}\sum_{m\in\mathbb{Z}}q^{\frac{1}{4pp’}(l+m2pp’)^2}\\&amp;&#x3D;\frac{1}{\eta(q)}\sum_{m\in\mathbb{Z}}q^{pp’(m+l&#x2F;2pp’)^2}\end{aligned}$$</p>
+<p>下文将定义在有有理半径平方 $R&#x3D;\sqrt{2p’&#x2F;p}$ 圆上的扩展 $\hat{\mathfrak{u}}(1)$ 理论记为 $\hat{u}(1)_{pp’}$</p>
+<p>以下用Lie代数语言表述此扩展手性结构，$\Gamma^+$ 对 $e^{i\gamma\varphi}$ 的作用为在权 $\gamma$ 上加单根 $\alpha&#x3D;\sqrt{2pp’}$，可知根阵与其对偶权阵为</p>
+<p>$$Q&#x3D;\sqrt{2pp’}\mathbb{Z}\qquad P&#x3D;\mathbb{Z}&#x2F;\sqrt{2pp’}$$</p>
+<p>$P&#x2F;Q&#x3D;\mathbb{Z}&#x2F;2pp’$ 说明共有 $2pp’$ 个同余类，可用 $l$ 标记，并将其与对应于Heisenberg代数的最高权态 $\ket{l;\{0\}}$ 关联，完整的表示可由权平移所有根和考虑所有可能的 $a_{n&lt;0}$ 作用得到</p>
+<p>还有另一种从 $\hat{\mathfrak{su}}(2)_{k}$ 构造 $\hat{u}(1)_{pp’}$ 特征标的方法，将 $l$ 视为 $\hat{\mathfrak{su}}(2)_{pp’}$ 可积权的有限Dynkin标，可以通过忽略有限根与其对应的Weyl反射从 $\hat{\mathfrak{su}}(2)_{pp’}$ 特征标 $\text{ch}_\hat{\lambda}$ 计算 $\text{ch}_l^{(pp’)}$，则 $\hat{\rho}&#x3D;0$，$\hat{\alpha}&#x3D;n\delta$，$w$ 只能取单位元</p>
+<p>$$\sum_{w\in\hat{W}}\epsilon(w)e^{w(\hat{\lambda}+\hat{\rho})}&#x3D;e^{\frac{1}{2pp’}|\lambda|^2\delta}\Theta_\hat{\lambda}$$</p>
+<p>$$e^\hat{\rho}\prod_{\hat{\alpha}&gt;0}(1-e^{-\hat{\alpha}})^{\text{mult}(\hat{\alpha})}&#x3D;\prod_{n&gt;0}(1-e^{-n\delta})$$</p>
+<p>在 $\xi&#x3D;-2\pi i(z\omega_1;\tau;0)$ 处计算得</p>
+<p>$$\text{ch}_l^{(pp’)}(z;q)&#x3D;\frac{q^{-l^2&#x2F;4pp’}}{\varphi(q)}\Theta_l^{(pp’)}(z;\tau)$$</p>
+<p>对于模异常 $m_\hat{\lambda}\equiv m_l$，需用到将在之后证明的一个等式</p>
+<p>$$m_l&#x3D;\frac{l^2}{4pp’}-\frac{1}{24}$$</p>
+<p>由此归一化特征标为</p>
+<p>$$\chi_l^{(pp’)}(z;q)&#x3D;\frac{1}{\eta(q)}\Theta_l^{(pp’)}(z;\tau)$$</p>
+<p>取 $z&#x3D;0$，可得与上文相同结果</p>
+<p>$$\chi_l^{(pp’)}(q)&#x3D;\frac{1}{\eta(q)}\sum_{m\in\mathbb{Z}+l&#x2F;2pp’}q^{pp’m^2}$$</p>
+<p>此等价性依赖于模异常等于 $h-c&#x2F;24$ 的事实，然而要理解此关系，须为仿射Lie代数的可积表示最高权关联一个共形维数，这将在之后讨论</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../WZW%E6%A8%A1%E5%9E%8BI/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          WZW模型I
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../12/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E4%BB%BF%E5%B0%84Lie%E4%BB%A3%E6%95%B0I/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          仿射Lie代数I
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

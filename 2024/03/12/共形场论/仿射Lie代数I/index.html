@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>仿射Lie代数I | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        仿射Lie代数I
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        仿射Lie代数I
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-03-23 17:00:00</time>
+          <span class="text-gray-400">·</span>
+          <span>22 min</span>
+          <span class="text-gray-400">·</span>
+          <span>4.5k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="代数结构"><a href="#代数结构" class="headerlink" title="代数结构"></a>代数结构</h2><p>考虑单Lie代数 $\mathfrak{g}$ 的如下拓展，其元素同时为变量 $t$ 的Laurent多项式；若取 $t&#x3D;e^{i\gamma},\;\gamma\in\mathbb{R}$，则其提供了从 $S^1$ 到 $\mathfrak{g}$ 的映射，因此称为圈代数</p>
+<p>$$\tilde{\mathfrak{g}}&#x3D;\mathfrak{g}\otimes\mathbb{C}(t,t^{-1})$$</p>
+<p>对代数 $\tilde{\mathfrak{g}}$ 作以下中心扩张，其中 $\hat{k}$ 与 $\mathfrak{g}$ 中所有生成元 $J^a$ 对易</p>
+<p>$$[J^a\otimes t^n,J^b\otimes t^m]&#x3D;\sum_c i f_{\;\;\; c}^{ab} J^c\otimes t^{n+m}+\hat{k}nK(J^a,J^b)\delta_{n+m,0}$$</p>
+<p>取 $J^a$ 在Killing形式下正交归一，并记 $J^a_n\equiv J^a\otimes t^n$，上式成为</p>
+<p>$$[J^a_n,J^b_m]&#x3D;\sum_c i f_{\;\;\; c}^{ab} J_{n+m}^c+\hat{k}n\delta_{ab}\delta_{n+m,0}$$</p>
+<p>事实上伴随表示中与所有生成元对易的张量只有Killing形式，上式为唯一符合反对易与Jacobi等式的中心扩张形式</p>
+<h3 id="Cartan-Weyl基"><a href="#Cartan-Weyl基" class="headerlink" title="Cartan-Weyl基"></a>Cartan-Weyl基</h3><p>取归一化 $K(H^i,H^j)&#x3D;\delta^{i,j}$，$K(E^\alpha,E^{-\alpha})&#x3D;2&#x2F;|\alpha|^2$，在仿射Cartan-Weyl基下生成元对易关系为</p>
+<p>$$\begin{aligned}\ [H^i_n,H^j_m] &amp; &#x3D;\hat{k}n\delta^{ij}\delta_{n+m,0} &amp;\\ [H^i_n,E^\alpha_m] &amp;&#x3D;\alpha^i E^\alpha_{n+m}  &amp;\\ [E^\alpha_n,E^\beta_m] &amp;&#x3D;N_{\alpha,\beta}E^{\alpha+\beta}_{n+m}&amp;\text{if}\quad\alpha+\beta\in\Delta\\&amp;&#x3D;\frac{2}{|\alpha|^2}\left(\alpha\cdot H_{n+m}+\hat{k}n\delta_{n+m,0}\right)&amp;\text{if}\quad\alpha+\beta&#x3D;0\\&amp;&#x3D;0&amp;\text{otherwise}\end{aligned}$$</p>
+<p>由于 $(\alpha^1,\cdots,\alpha^r,0)$ 与 $n$ 无关，$E_n^\alpha$ 无穷重简并，故 $\{H_0^1,\cdots,H_0^r,\hat{k}\}$ 不是极大Abelian子代数，需定义以下算符 $L_0$ 再次扩张代数，$\{H_0^1,\cdots,H_0^r,\hat{k},L_0\}$ 生成极大Cartan子代数，$E_n^\alpha,\forall\; n$ 和 $H_n^\alpha,n\neq 0$ 为梯算符</p>
+<p>$$L_0&#x3D;-t\frac{\dd}{\dd t}\qquad [L_0,J_n^a]&#x3D;-nJ_n^a$$</p>
+<p>称扩张后的代数 $\hat{\mathfrak{g}}$ 为(非扭转)仿射Lie代数，物理上通常称为Kac-Moody代数，下文将 $\mathfrak{g}$ 称为有限代数</p>
+<p>$$\hat{\mathfrak{g}}&#x3D;\mathfrak{g}\oplus\mathbb{C}\hat{k}\oplus\mathbb{C}L_0$$</p>
+<h3 id="Killing形式"><a href="#Killing形式" class="headerlink" title="Killing形式"></a>Killing形式</h3><p>将关系 $K([Z,X],Y)+K(X,[Z,Y])$ 推广到仿射Killing形式，通过选取合适的 $X,Y,Z$ 可得</p>
+<p>$$\begin{array}{l}K(J_n^a,J_m^b)&#x3D;\delta^{ab}\delta_{n+m,0}&amp; \\K(J_n^a,\hat{k})&#x3D;0\qquad &amp;K(\hat{k},\hat{k})&#x3D;0\\K(J_n^a,L_0)&#x3D;0\qquad &amp;K(L_0,\hat{k})&#x3D;-1\end{array}$$</p>
+<p>唯一未确定的Killing形式为 $K(L_0,L_0)$，可通过重定义 $L_0$ 使其为零</p>
+<p>$$L_0\to L_0’&#x3D;L_0+a\hat{k}\qquad K(L_0,L_0)&#x3D;0$$</p>
+<p>引入仿射权 $\hat{\lambda}$</p>
+<p>$$\hat\lambda&#x3D;(\hat{\lambda}(H_0^1),\cdots,\hat{\lambda}(H_0^r);\hat{\lambda}(\hat{k});\hat{\lambda}(-L_0))$$</p>
+<p>$$\hat{\lambda}&#x3D;(\lambda;k_\lambda;n_\lambda)$$</p>
+<p>由仿射Killing形式知仿射权标量积规则为</p>
+<p>$$(\hat{\lambda},\hat{\mu})&#x3D;(\lambda,\mu)+k_\lambda n_\mu+k_\mu n_\lambda$$</p>
+<p>对于伴随表示，仿射根具有形式</p>
+<p>$$\hat\beta&#x3D;(\beta;0;n)\qquad (\hat\beta,\hat\alpha)&#x3D;(\beta,\alpha)$$</p>
+<p>令 $\alpha&#x3D;(\alpha;0;0)$，$\delta&#x3D;(0;0;1)$，完整仿射根集为</p>
+<p>$$\hat{\Delta}&#x3D;\{\alpha+n\delta|n\in\mathbb{Z},\alpha\in\Delta\}\cup\{n\delta|n\in\mathbb{Z},n\neq 0\}$$</p>
+<p>由于 $(\delta,\delta)&#x3D;0$，$\delta$ 被称为虚根，所有虚根重数均为 $r$；其他实根重数均为 $1$</p>
+<h3 id="单根与Cartan矩阵"><a href="#单根与Cartan矩阵" class="headerlink" title="单根与Cartan矩阵"></a>单根与Cartan矩阵</h3><p>在 $\mathfrak{g}$ 的 $r$ 个单根 $\alpha_i$ 的基础上增添如下元素构成仿射Lie代数单根基</p>
+<p>$$\alpha_0&#x3D;(-\theta;0;1)&#x3D;-\theta+\delta$$</p>
+<p>正根集可表示为</p>
+<p>$$\hat\Delta_+&#x3D;\{\alpha+n\delta|n&gt;0,\alpha\in\Delta\}\cup\{\alpha|\alpha\in\Delta_+\}$$</p>
+<p>对 $n&gt;0$，$\alpha\in\Delta$，下式说明正根集可分解为一系列仿射单根之和</p>
+<p>$$\alpha+n\delta&#x3D;\alpha+n\alpha_0+n\theta&#x3D;n\alpha_0+(n-1)\theta+(\theta+\alpha)$$</p>
+<p>应当注意在仿射Lie代数中没有最高根，伴随表示并不是最高权表示</p>
+<p>由仿射单根可得以下扩展Cartan矩阵</p>
+<p>$$\hat A_{ij}&#x3D;(\alpha_i,\alpha_j^\vee)\qquad 0\le i,j\le r$$</p>
+<p>$$\hat{\alpha}^\vee&#x3D;\frac{2}{|\hat{\alpha}|^2}(\alpha;0;n)&#x3D;\frac{2}{|\alpha|^2}(\alpha;0;n)&#x3D;(\alpha^\vee;0;\frac{2}{|\alpha|^2}n)$$</p>
+<p>对于仿射单根，其伴根与有限代数伴根并无区别</p>
+<p>$$\alpha_0^\vee&#x3D;\alpha_0\qquad\alpha_i^\vee&#x3D;(\alpha_i^\vee;0;0)\quad i\neq 0$$</p>
+<p>直接计算可得仿射Cartan矩阵的新增元素</p>
+<p>$$(\alpha_0,\alpha_j^\vee)&#x3D;-(\theta,\alpha_j^\vee)&#x3D;-\sum_{i&#x3D;1}^r a_i(\alpha_i,\alpha_j^\vee)$$</p>
+<h3 id="Dynkin图"><a href="#Dynkin图" class="headerlink" title="Dynkin图"></a>Dynkin图</h3><p>在单Lie代数Dynkin图上增添额外节点 $\alpha_0$，并将其与节点 $\alpha_i$ 用 $\hat A_{0i}\hat A_{i0}$ 根线段相连，得到扩展Dynkin图，注意 $\alpha_0$ 的有限部分与有限代数单根线性相关，因此 $\hat A_{0i}\hat A_{i0}$ 可取 $4$，其只在 $\hat{\frak{su}}(2)$ 出现</p>
+<p>下图为扩展Dynkin图，其中括号内的数依次表示单根的序号、标和伴标，对于单缀代数，标与伴标相同；定义零标 $a_0&#x3D;1$，其伴标 $a_0^\vee&#x3D;a_0|\alpha_0|^2&#x2F;2&#x3D;1$</p>
+<p><img src="/images/%E4%BB%BF%E5%B0%84Dynkin%E5%9B%BE.jpeg"></p>
+<p>由以上构造可知扩展Cartan矩阵满足以下条件</p>
+<p>$$\sum_{i&#x3D;0}^ra_i\hat A_{ij}&#x3D;\sum_{i&#x3D;0}^r\hat A_{ij} a_j^\vee$$</p>
+<p>扩展Cartan矩阵行之间线性相关说明其具有一个零特征值，这反映了仿射标量积的半正定性质</p>
+<p>虚根现在可写为</p>
+<p>$$\delta&#x3D;\sum_{i&#x3D;0}^r a_i\alpha_i&#x3D;\sum_{i&#x3D;0}^r a_i^\vee\alpha_i^\vee$$</p>
+<p>对偶Coxeter数为</p>
+<p>$$g&#x3D;\sum_{i&#x3D;0}^r a_i^\vee$$</p>
+<h3 id="Chevalley基"><a href="#Chevalley基" class="headerlink" title="Chevalley基"></a>Chevalley基</h3><p>引入以下生成元以构造仿射Chevalley基</p>
+<p>$$e^0&#x3D;E_{1}^{-\theta}\qquad f^0&#x3D;E_{-1}^\theta\qquad h^0&#x3D;\hat{k}-\theta\cdot H_0$$</p>
+<p>扩展后的对易关系为</p>
+<p>$$\begin{array}{l} &amp;[h_n^i,h_m^j]&#x3D;(\alpha_i^\vee,\alpha_j^\vee)\hat{k}n\delta_{ij}\delta_{n+m,0}&#x3D;\displaystyle\frac{4}{\alpha_i^2}\hat{k}n\delta_{ij}\delta_{n+m,0}\\&amp;[h_n^i,e_m^j]&#x3D;\hat{A_{ji}}e_{n+m}^j\\&amp;[h_n^i,f_m^j]&#x3D;-\hat A_{ji}f_{n+m}^j\\&amp;[e_n^i,f_m^j]&#x3D;\displaystyle\delta_{ij}h_{n+m}^i+\displaystyle\frac{2}{\alpha_i^2}\hat{k}n\delta_{ij}\delta_{n+m,0}\end{array}$$</p>
+<p>另有仿射Serre关系，未写下角标的生成元默认 $n$ 为零</p>
+<p>$$[\text{ad}(e^i)]^{1-\hat{A}_{ji}}e^j&#x3D;0$$</p>
+<p>$$[\text{ad}(f^i)]^{1-\hat{A}_{ji}}f^j&#x3D;0$$</p>
+<p>以上形式说明 $\hat{A}$ 包含了 $\hat{g}$ 的全部结构信息</p>
+<h3 id="基本权"><a href="#基本权" class="headerlink" title="基本权"></a>基本权</h3><p>寻找与仿射单伴根对偶的基本权，对于 $i\neq 0$，由 $(\hat{\omega_i},\alpha_0^\vee)&#x3D;0$ 定出</p>
+<p>$$\hat{\omega}_i&#x3D;(\omega_i;a_i^\vee;0)\qquad (i\neq 0)$$</p>
+<p>而由与有限单根正交和 $(\hat{\omega}_0,\alpha_0^\vee)&#x3D;1$ 可定出</p>
+<p>$$\hat\omega_0&#x3D;(0;1;0)$$</p>
+<p>记 $\omega_i&#x3D;(\omega_i;0;0)$，仿射基本权可写为</p>
+<p>$$\hat{\omega}_i&#x3D;a_i^\vee\hat{\omega}_0+\omega_i$$</p>
+<p>仿射基本权内积关系为</p>
+<p>$$(\hat{\omega}_i,\hat{\omega}_j)&#x3D;(\omega_i,\omega_j)&#x3D;F_{ij}\qquad i,j\neq 0$$</p>
+<p>$$(\hat{\omega}_0,\hat{\omega}_i)&#x3D;(\hat{\omega}_0,\hat{\omega}_0)&#x3D;0\qquad i\neq 0$$</p>
+<p>仿射权可用仿射基本权和 $\delta$ 展开</p>
+<p>$$\hat{\lambda}&#x3D;\sum_{i&#x3D;0}^r\lambda_i\hat{\omega}_i+l\delta\qquad l\in\mathbb{R}$$</p>
+<p>称 $k$ 为级，其可表示为</p>
+<p>$$k&#x3D;\hat{\lambda}(\hat{k})&#x3D;\sum_{i&#x3D;0}^r a_i^\vee \lambda_i$$</p>
+<p>零Dynkin标为</p>
+<p>$$\lambda_0&#x3D;k-(\lambda,\theta)$$</p>
+<p>模去 $\delta$ 后，仿射权和有限权的关系可写为</p>
+<p>$$\hat{\lambda}&#x3D;k\hat{\omega}_0+\lambda$$</p>
+<p>仿射权可用Dynkin标表示为以下形式，注意此记号并不给出 $L_0$ 的特征值</p>
+<p>$$\hat{\lambda}&#x3D;[\lambda_0,\lambda_1,\cdots,\lambda_r]$$</p>
+<p>$$\hat{\omega}_0&#x3D;[1,0,\cdots,0]\quad \hat{\omega}_1&#x3D;[0,1,\cdots,0]\quad\hat\omega_r&#x3D;[0,0,\cdots,1]$$</p>
+<p>单根的Dynkin标即为仿射Cartan矩阵的行矢量</p>
+<p>$$\alpha_i&#x3D;[\hat A_{i0},\hat A_{i1},\cdots,\hat A_{i r}]$$</p>
+<p>定义仿射Weyl矢量，注意其不能写为所有仿射正根之和的一半</p>
+<p>$$\hat{\rho}&#x3D;\sum_{i&#x3D;0}^r\hat \omega_i&#x3D;[1,1,\cdots,1]\qquad\hat{\rho}(\hat{k})&#x3D;g$$</p>
+<p>称所有Dynkin标均非负的仿射权为支配权，记所有 $k$ 级支配权的集合为 $P_+^k$</p>
+<h3 id="Weyl群"><a href="#Weyl群" class="headerlink" title="Weyl群"></a>Weyl群</h3><p>定义对应于实仿射根 $\hat{\alpha}$ 的Weyl反射</p>
+<p>$$s_\hat{\alpha}\hat{\lambda}&#x3D;\hat{\lambda}-(\hat{\lambda},\hat{\alpha}^\vee)\hat{\alpha}$$</p>
+<p>所有Weyl反射生成仿射Weyl群，记 $\hat{\lambda}&#x3D;(\lambda;k;n)$，$\hat{\alpha}&#x3D;(\alpha;0;m)$，直接计算得</p>
+<p>$$\begin{aligned}s_\hat{\alpha}\hat{\lambda}&amp;&#x3D;(\lambda-[(\lambda,\alpha)+km]\alpha^\vee;k;n-[(\lambda,\alpha)+km]\frac{2m}{|\alpha|^2})\\&amp;&#x3D;(s_\alpha(\lambda+km\alpha^\vee);k;n-[(\lambda,\alpha)+km]\frac{2m}{|\alpha|^2})\end{aligned}$$</p>
+<p>取 $\hat{\lambda}$ 为 $\hat{\alpha}$ 或 $\delta$，可得</p>
+<p>$$s_\hat{\alpha}\hat{\alpha}&#x3D;-\hat{\alpha}\qquad s_\hat{\alpha}\delta&#x3D;\delta$$</p>
+<p>为分析 $\hat{W}$ 的结构，将单反射写为以下形式</p>
+<p>$$s_\hat{\alpha}\hat{\lambda}&#x3D;s_\alpha(t_{\alpha^\vee})^m\hat{\lambda}$$</p>
+<p>$$t_{\alpha^\vee}&#x3D;s_{-\alpha+\delta}s_\alpha&#x3D;s_\alpha s_{\alpha+\delta}$$</p>
+<p>$t_{\alpha^\vee}$ 对权的作用为</p>
+<p>$$t_{\alpha^\vee}\hat{\lambda}&#x3D;(\lambda+k\alpha^\vee;k;n+[|\lambda|^2-|\lambda+k\alpha^\vee|^2]&#x2F;2k)$$</p>
+<p>$t_{\alpha^\vee}$ 具有以下性质，可知其对有限权的作用为平移伴根 $\alpha^\vee$，所有 $t_{\alpha^\vee}$ 生成伴根阵 $Q^\vee$</p>
+<p>$$(t_{\alpha^\vee})(t_{\beta^\vee})&#x3D;t_{\alpha^\vee+\beta^\vee}$$</p>
+<p>因此仿射Weyl反射为有限Weyl反射与对应伴根平移的乘积，由于平移群无限，故仿射Weyl群也为无限维；实际上由于 $Q^\vee$ 与 $W$ 相同的元素只有单位元，仿射Weyl群 $\hat{W}$ 具有半直积结构，$Q^\vee$ 为 $\hat{W}$ 的不变子群</p>
+<p>$$w(t_{\alpha^\vee})w^{-1}&#x3D;t_{w\alpha^\vee}\qquad\forall\; w\in \hat{W}$$</p>
+<p>$$w’(t_{\alpha^\vee})w(t_{\beta^\vee})&#x3D;w’w(t_{w^{-1}\alpha^\vee})(t_{\beta^\vee})$$</p>
+<p>$\hat{W}$ 的生成元 $s_i$ 为对应于单根的反射，对 $i\neq 0$，$s_i$ 与有限反射相同，而 $s_0$ 作用为</p>
+<p>$$s_0\hat{\lambda}&#x3D;(\lambda+k\theta-(\lambda,\theta)\theta;k;n-k+(\lambda,\theta))&#x3D;s_\theta t_{-\theta}(\hat{\lambda})$$</p>
+<p>仿射Weyl群将仿射权矢量空间划分为无限个仿射Weyl腔</p>
+<p>$$\hat{C}_w&#x3D;\{\hat{\lambda}|(w\hat{\lambda},\alpha_i)\ge 0,i&#x3D;0,1,\cdots,r\}\qquad w\in\hat{W}$$</p>
+<p>基本腔对应于 $w&#x3D;1$，其中权具有形式</p>
+<p>$$\hat{\lambda}&#x3D;\sum_{i&#x3D;0}^r\lambda_i\hat{\omega}_i+l\delta\qquad\lambda_i\ge0,l\in\mathbb{R}$$</p>
+<p>与有限情况不同的是，当投影掉 $\delta$ 部分后，仿射Weyl腔的面积是有限的</p>
+<p>由定义知仿射Weyl群保持权标量积不变</p>
+<p>$$(s_\hat{\alpha}\hat{\mu},s_\hat{\alpha}\hat{\lambda})&#x3D;(\hat{\mu},\hat{\lambda})$$</p>
+<p>相应地定义移位Weyl反射</p>
+<p>$$w\cdot\hat{\lambda}&#x3D;w(\hat{\lambda}+\hat{\rho})-\hat{\rho}$$</p>
+<h3 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h3><p>$\hat{\mathfrak{su}}(2)$</p>
+<p>$\mathfrak{su}(2)$ 唯一正根为 $\theta&#x3D;\alpha_1$，$(\alpha_0,\alpha_1^\vee)&#x3D;(\alpha_1,\alpha_0^\vee)&#x3D;-2$，可知仿射Cartan矩阵为</p>
+<p>$$\hat{A}&#x3D;\begin{pmatrix}<br>    2&amp;-2\\-2&amp;2<br>\end{pmatrix}$$</p>
+<p>单根Dynkin标为</p>
+<p>$$\alpha_0&#x3D;[2,-2]\qquad\alpha_1&#x3D;[-2,2]$$</p>
+<p>对于 $\hat{\mathfrak{su}}(N)$，所有标和伴标均为 $1$，因此级为Dynkin标中所有数字相加，对于 $\hat{\mathfrak{su}}(2)$ 单根，其为零</p>
+<p>完整根集为</p>
+<p>$$\hat{\Delta}&#x3D;\{\pm\alpha_1,\pm\alpha_1+n\delta,n\delta|n\in\mathbb{Z},n\neq 0\}$$</p>
+<p>由于 $\delta&#x3D;\alpha_0+\alpha_1$，根集又可写为</p>
+<p>$$\hat{\Delta}&#x3D;\{n\alpha_0+m\alpha_1||n-m|\le 1,n,m\in\mathbb{Z}\}$$</p>
+<p>此结构信息包含在Serre关系中，由于 $1-\hat{A}_{10}&#x3D;3$，下式说明 $\alpha_1+3\alpha_0$ 不是根</p>
+<p>$$[e^0,[e^0,[e^0,e^1]]]&#x3D;[\text{ad}(e^0)]^3 e^1&#x3D;0$$</p>
+<p>仿射Weyl群由 $s_0,s_1$ 生成，其对权 $\hat{\lambda}&#x3D;[\lambda_0,\lambda_1]$ 的作用为</p>
+<p>$$s_0\hat{\lambda}&#x3D;\hat{\lambda}-\lambda_0\alpha_0&#x3D;[\lambda_0,\lambda_1]-\lambda_0[2,-2]&#x3D;[-\lambda_0,\lambda_1+2\lambda_0]$$</p>
+<p>$$s_1\hat{\lambda}&#x3D;\hat{\lambda}-\lambda_1\alpha_1&#x3D;[\lambda_0,\lambda_1]-\lambda_1[-2,2]&#x3D;[\lambda_0+2\lambda_1,-\lambda_1]$$</p>
+<p>$s_0$ 的作用为从 $\hat{\lambda}$ 减去 $\lambda_0$ 个 $\alpha_0$，由于 $\alpha_0$ 的 $L_0$ 特征值为 $-1$，$s_0\hat{\lambda}$ 将 $\hat{\lambda}$ 的 $L_0$ 特征值提升 $\lambda_0$；记 $\hat{\lambda}$ 的级为 $k$，则零Dynkin标为</p>
+<p>$$\lambda_0&#x3D;k-\lambda_1$$</p>
+<p>由此单Weyl反射可写为</p>
+<p>$$s_0\hat{\lambda}&#x3D;[-k+\lambda_1,2k-\lambda_1]\qquad s_1\hat{\lambda}&#x3D;[k+\lambda_1,-\lambda_1]$$</p>
+<p>可知 $s_0s_1$ 将 $\hat{\lambda}$ 的有限部分平移 $2k\omega_1&#x3D;k\alpha_1^\vee$，说明其为平移算符 $t_{\alpha_1^\vee}$</p>
+<p>$$s_0s_1\hat{\lambda}&#x3D;[-k-\lambda_1,2k+\lambda_1]\qquad t_{\alpha_1^\vee}&#x3D;s_0s_1$$</p>
+<p>可知仿射Weyl群结构为</p>
+<p>$$\hat{W}&#x3D;\{(s_0s_1)^n,s_1(s_0s_1)^n|n\in\mathbb{Z}\}$$</p>
+<p>两单根夹角为 $\pi$，由 $(s_is_j)^{m_{ij}}&#x3D;1,\;m_{ij}&#x3D;\pi&#x2F;(\pi-\theta_{ij})$ 可知 $(s_0s_1)$ 阶无限，因此仿射Weyl群无限</p>
+<p>下图为 $\hat{\mathfrak{su}}(2)$ 仿射Weyl腔</p>
+<p><img src="/images/su(2)%E4%BB%BF%E5%B0%84weyl%E8%85%94.png"></p>
+<p>$\hat{\mathfrak{su}}(3)$</p>
+<p>$\theta&#x3D;\alpha_1+\alpha_2$，仿射Cartan矩阵为</p>
+<p>$$\hat{A}&#x3D;\begin{pmatrix}<br>    2&amp;-1&amp;-1\\-1&amp;2&amp;-1\\-1&amp;-1&amp;2<br>\end{pmatrix}$$</p>
+<p>可知单根为</p>
+<p>$$\alpha_0&#x3D;[2,-1,-1]\qquad\alpha_1&#x3D;[-1,2,-1]\qquad\alpha_2&#x3D;[-1,-1,2]$$</p>
+<p>完整根集可由一叠无限个六边形描述，每层表示 $\mathfrak{su}(3)$ 的根，相邻六边形由 $\delta$ 分隔</p>
+<p>对应于单根的反射为</p>
+<p>$$s_0\hat{\lambda}&#x3D;[-\lambda_0,\lambda_0+\lambda_1,\lambda_0+\lambda_2]$$</p>
+<p>$$s_1\hat{\lambda}&#x3D;[\lambda_0+\lambda_1,-\lambda_1,\lambda_1+\lambda_2]$$</p>
+<p>$$s_2\hat{\lambda}&#x3D;[\lambda_0+\lambda_2,\lambda_1+\lambda_2,-\lambda_2]$$</p>
+<p>由 $\lambda_0&#x3D;k-\lambda_1-\lambda_2$ 可知平移算符为</p>
+<p>$$t_{\alpha_1^\vee}&#x3D;s_2s_0s_2s_1\qquad t_{\alpha_2^\vee}&#x3D;s_1s_0s_1s_2$$</p>
+<p>单反射间有以下关系，其并不反映Weyl群的无限阶性质</p>
+<p>$$(s_0s_1s_0)^3&#x3D;(s_0s_2s_0)^3&#x3D;(s_1s_2s_1)^3&#x3D;1$$</p>
+<h2 id="外自同构"><a href="#外自同构" class="headerlink" title="外自同构"></a>外自同构</h2><h3 id="图对称与外自同构群"><a href="#图对称与外自同构群" class="headerlink" title="图对称与外自同构群"></a>图对称与外自同构群</h3><p>记 $D(\frak{g}),D(\hat{\frak{g}})$ 分别表示 $\frak{g}$ 和 $\hat{\frak{g}}$ Dynkin图的对称群，即保持单根标量积或Cartan矩阵不变的单根对称变换；由于根标量积只依赖于有限部分，因此只需考虑仿射单根的有限投影，意味着单根被映射为另一个具有相同标和伴标的单根</p>
+<p>对于 $A_{r&gt;1},D_{r&gt;4},E_6$，其对称群分别为 $\mathbb{Z}_2,D_4,S_3$，其余单Lie代数对称群 $D(\mathfrak{g})&#x3D;1$</p>
+<p>由于 $D(\mathfrak{g})$ 为 $D(\hat{\frak{g}})$ 子群，可定义 $\hat{g}$ 的外自同构群 $\mathcal{O}(\hat{\mathfrak{g}})$</p>
+<p>$$\mathcal{O}(\hat{\mathfrak{g}})&#x3D;D(\hat{\mathfrak{g}})&#x2F;D(\mathfrak{g})$$</p>
+<p>下图表示仿射Dynkin图的非平凡外自同构群</p>
+<p><img src="/images/%E5%A4%96%E8%87%AA%E5%90%8C%E6%9E%84.png"></p>
+<p>可知仿射Lie代数的外自同构群与其生成元对权的作用为</p>
+<table>
+<thead>
+<tr>
+<th>$\mathfrak{g}$</th>
+<th>$\mathcal{O}(\hat{\mathfrak{g}})$</th>
+<th>$a[\lambda_0,\lambda_1,\cdots,\lambda_{r-1},\lambda_r]$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$A_r$</td>
+<td>$\mathbb{Z}_{r+1}$</td>
+<td>$[\lambda_r,\lambda_0,\cdots,\lambda_{r-2},\lambda_{r-1}]$</td>
+</tr>
+<tr>
+<td>$B_r$</td>
+<td>$\mathbb{Z}_2$</td>
+<td>$[\lambda_1,\lambda_0,\cdots,\lambda_{r-1},\lambda_r]$</td>
+</tr>
+<tr>
+<td>$C_r$</td>
+<td>$\mathbb{Z}_2$</td>
+<td>$[\lambda_r,\lambda_{r-1},\cdots,\lambda_1,\lambda_0]$</td>
+</tr>
+<tr>
+<td>$D_{r&#x3D;2l}$</td>
+<td>$\mathbb{Z}_2\times\mathbb{Z}_2$</td>
+<td>$\begin{array}{l}&amp;[\lambda_1,\lambda_0,\lambda_2,\cdots,\lambda_r,\lambda_{r-1}]\\&amp;[\lambda_r,\lambda_{r-1},\lambda_{r-2},\cdots,\lambda_1,\lambda_0]\end{array}$</td>
+</tr>
+<tr>
+<td>$D_{r&#x3D;2l+1}$</td>
+<td>$\mathbb{Z}_4$</td>
+<td>$[\lambda_{r-1},\lambda_r,\lambda_{r-2},\cdots,\lambda_1,\lambda_0]$</td>
+</tr>
+<tr>
+<td>$E_6$</td>
+<td>$\mathbb{Z}_3$</td>
+<td>$[\lambda_1,\lambda_5,\lambda_4,\lambda_3,\lambda_6,\lambda_0,\lambda_2]$</td>
+</tr>
+<tr>
+<td>$E_7$</td>
+<td>$\mathbb{Z}_2$</td>
+<td>$[\lambda_6,\lambda_5,\lambda_4,\lambda_3,\lambda_2,\lambda_1,\lambda_0,\lambda_7]$</td>
+</tr>
+</tbody></table>
+<p>由于外自同构作用 $A$ 将基本权映为具有相同伴标的基本权，故其并不改变级，可知 $\mathcal{O}(\hat{\mathfrak{g}})$ 将支配权集 $P_+^k$ 映为自身，保持仿射基本腔不变；特别地，外自同构保持Weyl矢量 $\hat{\rho}$ 不变</p>
+<h3 id="外自同构对权作用"><a href="#外自同构对权作用" class="headerlink" title="外自同构对权作用"></a>外自同构对权作用</h3><p>由 $\lambda_0&#x3D;k-\displaystyle\sum_{i&#x3D;1}^r a_i^\vee\lambda_i$ 知外自同构对仿射权的作用为</p>
+<p>$$A\hat{\lambda}&#x3D;kA\hat{\omega}_0+\sum_{i&#x3D;1}^r\lambda_i A(\hat\omega_i-a_i^\vee\hat{\omega}_0)$$</p>
+<p>上式第二项为外自同构对有限权的作用，其为保持有限权阵原点不变，不含平移，因此对应有限Weyl群中元素，记为 $w_A$，则有</p>
+<p>$$A\hat{\lambda}&#x3D;k(A-1)\hat{\omega}_0+w_A\hat{\lambda}$$</p>
+<p>记 $W_{(i)}$ 为由所有 $s_j\;(j\neq i)$ 生成的有限Weyl群的子群，$w_i,w_0$ 分别为 $W_{(i)},W$ 的最长元素，若 $A\hat\omega_0&#x3D;\hat\omega_i$，则有</p>
+<p>$$w_A&#x3D;w_i w_0$$</p>
+<p>$w_A$ 的符号如下，将在之后证明</p>
+<p>$$\epsilon(w_A)&#x3D;e^{2\pi i(A\hat{\omega}_0,\rho)}&#x3D;e^{-\pi i g|A\hat\omega_0|^2}$$</p>
+<p>考虑 $\hat{\mathfrak{su}}(2)$，其唯一非平凡外自同构为 $a:\hat{\omega}_0\leftrightarrow\hat{\omega}_1$，由 $W&#x3D;\{1,s_1\}$ 可知 $w_A&#x3D;s_1$，下式验证其正确</p>
+<p>$$\begin{aligned}a[\lambda_0,\lambda_1]&amp;&#x3D;k(a-1)\hat{\omega}_0+s_1[\lambda_0,\lambda_1]\\&amp;&#x3D;k(\hat{\omega}_1-\hat{\omega}_0)+[\lambda_0+2\lambda_1,-\lambda_1]\\&amp;&#x3D;[\lambda_1,\lambda_0]\end{aligned}$$</p>
+<p>考虑 $\hat{\mathfrak{su}}(3)$，$a$ 作用为 $\hat{\omega}_0\to\hat{\omega}_1\to\hat{\omega}_2\to\hat{\omega}_0$，$W_{(1)}$ 最长元素为 $s_2$，$W$ 最长元素为 $w_0&#x3D;s_1s_2s_1&#x3D;s_2s_1s_2$，可知 $w_A&#x3D;s_1 s_2$，下式验证其正确</p>
+<p>$$\begin{aligned}a[\lambda_0,\lambda_1,\lambda_2]&amp;&#x3D;k(a-1)\hat{\omega}_0+s_1s_2[\lambda_0,\lambda_1,\lambda_2]\\&amp;&#x3D;k(\hat{\omega}_1-\hat{\omega}_0)+[\lambda_0+2\lambda_2+\lambda_1,-\lambda_1-\lambda_2,\lambda_1]\\&amp;&#x3D;[\lambda_2,k-\lambda_1-\lambda_2,\lambda_1]\\&amp;&#x3D;[\lambda_2,\lambda_0,\lambda_1]\end{aligned}$$</p>
+<p>还可以验证 $a^2$ 对应 $s_2s_1$</p>
+<p>$$w_{a^2}&#x3D;(w_a)^2&#x3D;s_2s_1&#x3D;(w_a)^{-1}&#x3D;w_{a^{-1}}$$</p>
+<p>对于 $\hat{\mathfrak{su}}(N)$ 有</p>
+<p>$$w_a&#x3D;s_1s_2\cdots s_{N-1}$$</p>
+<p>应当强调外自同构保持代数的对易关系，考虑 $\hat{\mathfrak{su}}(2)$，自旋基下生成元对易关系为</p>
+<p>$$[J_m^0,J_n^0]&#x3D;2km\delta_{m+n,0}$$</p>
+<p>$$[J_m^0,J_n^\pm]&#x3D;\pm J_{n+m}^\pm$$</p>
+<p>$$[J_m^+,J_n^-]&#x3D;2J_{n+m}^0+km\delta_{m+n,0}$$</p>
+<p>其中 $2J^0\ket{\lambda}&#x3D;\lambda_1\ket{\lambda}$，$J_0^+$ 将权加 $\alpha_1$，$J_1^-$ 将权加 $\alpha_0$；因此 $\alpha_0\leftrightarrow\alpha_1$ 相当于 $J_m^+\leftrightarrow J_{m+1}^{-}$</p>
+<p>$$[J_m^+,J_n^-]\to [J_{m+1}^-,J_{n-1}^+]&#x3D;-2J_{n+m}^0+k(m+1)\delta_{m+n,0}$$</p>
+<p>为保持对易子不变，$J_m^0$ 应变为</p>
+<p>$$2J_m^0\to k\delta_{m,0}-2J_m^0$$</p>
+<p>这与 $a$ 作用下 $\lambda_1\to k-\lambda_1$ 一致</p>
+<h3 id="群中心"><a href="#群中心" class="headerlink" title="群中心"></a>群中心</h3><p>容易验证 $\mathcal{O}(\hat{\mathfrak{g}})$ 与 $\mathfrak{g}$ 对应的群的中心 $B(G)$ 同构</p>
+<p>$$\mathcal{O}(\hat{\mathfrak{g}})\simeq B(G)$$</p>
+<p>对每个 $A\in \mathcal{O}(\hat{\mathfrak{g}})$，存在以下 $b\in B(G)$ 与之对应</p>
+<p>$$b&#x3D;e^{-2\pi i A\hat{\omega}_0\cdot H}$$</p>
+<p>此形式明显与Cartan子代数生成元对易，进一步有</p>
+<p>$$b E^\beta&#x3D;e^{-2\pi i (A\hat{\omega}_0,\beta)}E^\beta b$$</p>
+<p>$b$ 与 $E^\beta$ 对易要求下式成立，由 $A\hat{\omega}_0$ 标与伴标均为为 $1$ 可知与其对偶的单伴根和单根相同，因此该式正确</p>
+<p>$$(A\hat{\omega}_0,\beta)\in\mathbb{Z}\qquad\text{for any}\quad\beta\in Q$$</p>
+<p>之后会频繁用到以下关系，其中 $\xi$ 为可积权，$w\in W$</p>
+<p>$$(A\hat{\omega}_0,\xi-w\xi)\in \mathbb{Z}$$</p>
+<p>$b$ 对 $\mathfrak{g}$ 的最高权模 $L_\lambda$ 中态 $\ket{\lambda’}$ 的作用为</p>
+<p>$$b\ket{\lambda’}&#x3D;e^{-2\pi i(A\hat{\omega}_0,\lambda’)}\ket{\lambda’}$$</p>
+<p>事实上由于代数生成元不受中心作用影响，其特征值对所有权均相同</p>
+<p>$$b\lambda’&#x3D;\lambda’e^{-2\pi i(A\hat{\omega}_0,\lambda’)}&#x3D;\lambda e^{-2\pi i(A\hat{\omega}_0,\lambda)}$$</p>
+<p>又 $b$ 与所有仿射生成元对易，上式可推广到仿射情形</p>
+<p>$$b\hat{\lambda}’&#x3D;\hat{\lambda}’e^{-2\pi i(A\hat{\omega}_0,\lambda)}$$</p>
+<p>若 $b$ 对应于 $A$，则 $b^q$ 对应于 $A^q$，可知</p>
+<p>$$(A^q\hat{\omega}_0,\lambda)&#x3D;q(A\hat{\omega}_0,\lambda)\mod 1$$</p>
+<p>若 $\mathcal{O}(\hat{\mathfrak{g}})$ 为 $N$ 阶循环群，$A^N&#x3D;1$，则 $(A^N\hat{\omega}_0,\lambda)&#x3D;0$，可知下式成立，即 $b$ 特征值为 $N$ 次单位根</p>
+<p>$$N(A\hat{\omega}_0,\lambda)\in\mathbb{Z}$$</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="../../../17/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E4%BB%BF%E5%B0%84Lie%E4%BB%A3%E6%95%B0II/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          仿射Lie代数II
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="../../../04/%E5%85%B1%E5%BD%A2%E5%9C%BA%E8%AE%BA/%E6%9E%81%E5%B0%8F%E6%A8%A1%E5%9E%8BII/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          极小模型II
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>

@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2024-02-20 19:15:30</time>
+          <time>2024-04-03 23:25:57</time>
           <span class="text-gray-400">·</span>
           <span>24 min</span>
           <span class="text-gray-400">·</span>
-          <span>5.2k words</span>
+          <span>5.3k words</span>
         </section>
       </div>
     </div>
@@ -266,7 +266,7 @@
 <p>Lie代数的表示指对 $\mathfrak{g}$ 中每个元素均有与之对应的可反映 $\mathfrak{g}$ 对易关系的矢量空间 $V$ 中的线性算符，张成 $V$ 的极大线性无关态的数目称为表示的维数</p>
 <p>对给定的基，$\mathfrak{g}$ 中每个元素均可由方阵和列矢量基表示，若方阵无法通过改变基化为对角阵，则称此表示为不可约表示</p>
 <p>Lie代数具体表示可由其生成元 $\{J^a\}$ 和对易关系确定，生成元的数量即为表示的维数，其中 $f^{ab}_{\;\;\;c}$ 称为结构常数，对Hermitian生成元结构常数为实数</p>
-<p>$$[J^a,J^b]&#x3D;\sum_c f^{ab}_{\;\;\;c} J^c$$</p>
+<p>$$[J^a,J^b]&#x3D;\sum_c if^{ab}_{\;\;\;c} J^c$$</p>
 <p>若代数无真理想，即生成元不存在真子集 $\{L^a\}$ 使得 $[L^a,J^b]\in \{L^a\}$，则称此代数为单Lie代数，单Lie代数的直和称为半单Lie代数</p>
 <h3 id="Cartan-Weyl基"><a href="#Cartan-Weyl基" class="headerlink" title="Cartan-Weyl基"></a>Cartan-Weyl基</h3><p>半单Lie代数的标准Cartan-Weyl基可通过以下方式构造，先寻找极大对易Hermitian生成元组 $\{H^i\},\;\; i&#x3D;1,\cdots,r$ ，$r$ 为代数的秩，这些生成元可同时对角化，其构成Cartan子代数 $\mathfrak{h}$，</p>
 <p>$$[H^i,H^j]&#x3D;0$$</p>
@@ -292,7 +292,7 @@
 <p>下文中将使用Killing形式的重整化版本，其中 $g$ 为常数，将在之后定义</p>
 <p>$$K(X,Y)&#x3D;\frac{1}{2g}\Tr(\text{ad}X\text{ad}Y)$$</p>
 <p>由于Killing形式关于 $X,Y$ 对称，故其可在某组基 $\{J^a\}$ 下正交归一，称为标准基</p>
-<p>$$K(X,Y)&#x3D;[X_a T^a,[Y_b T^b,T^c]]T_c&#x3D;g^{ab} X_aY_b\qquad g^{ab}&#x3D;f^{ad}_{\;\;\;c}f^{bc}_{\;\;\;d}$$</p>
+<p>$$K(X,Y)&#x3D;\frac{1}{2g}[X_a T^a,[Y_b T^b,T^c]]T_c&#x3D;g^{ab} X_aY_b\qquad g^{ab}&#x3D;-\frac{1}{2g}f^{ad}_{\;\;\;c}f^{bc}_{\;\;\;d}$$</p>
 <p>$$K(J^a,J^b)&#x3D;\delta^{a,b}$$</p>
 <p>要求Cartan子代数生成元也满足此条件</p>
 <p>$$K(H^i,H^j)&#x3D;\delta^{i,j}$$</p>
@@ -352,7 +352,7 @@
 <p>Chevalley基下Cartan子代数的Killing形式为</p>
 <p>$$K(h^i,h^j)&#x3D;(\alpha_i^\vee,\alpha_j^\vee)$$</p>
 <h3 id="Dynkin图"><a href="#Dynkin图" class="headerlink" title="Dynkin图"></a>Dynkin图</h3><p>Cartan矩阵中所有信息均可封装在简单平面图中，称为Dykin图，其作图过程为：先对每个单根 $\alpha_i$ 画一个节点，长根为白，短根为黑；接着将节点 $i,j$ 用 $A_{ij}A_{ji}$ 根线段相连，可知正交根不相连，夹角为 $120,135,150$ 度的根分别用 $1,2,3$ 根线段相连</p>
-<p>现在单Lie代数的分类可归结为Dynkin图的分类，完整的分类包括四种无限族 $A_r,B_r,C_r,D_r$，分别对应经典代数 $\mathfrak{su}(r+1),\mathfrak{so}(2r+1),\mathfrak{sp}(2r),\mathfrak{so}(2r)$，和五种特殊情况 $E_6,E_7,E_8,F_4,G_2$，其角标表示代数的秩，其中 $A,D,E$ 为单缀代数</p>
+<p>现在单Lie代数的分类可归结为Dynkin图的分类，完整的分类包括四种无限族 $A_r,B_r,C_r,D_r$，其紧致实形式分别为 $\mathfrak{su}(r+1),\mathfrak{so}(2r+1),\mathfrak{sp}(2r),\mathfrak{so}(2r)$，和五种特殊情况 $E_6,E_7,E_8,F_4,G_2$，其角标表示代数的秩，其中 $A,D,E$ 为单缀代数</p>
 <h3 id="基本权"><a href="#基本权" class="headerlink" title="基本权"></a>基本权</h3><p>由于权与根位于 $r$ 维矢量空间，因此权可用单根基展开，但此种展开方式的系数不为整数，使用不便；对于权展开最方便的基实际上是与单伴根对偶的基 $\{\omega_i\}$，称为基本权</p>
 <p>$$(\omega_i,\alpha_j^\vee)&#x3D;\delta_{ij}$$</p>
 <p>权 $\lambda$ 在基本权基下的展开系数 $\lambda_i$ 称为Dynkin标，有限维不可约表示下权的Dynkin标为整数，这些权称为积分，现在权可默认写为Dynkin标分量形式</p>

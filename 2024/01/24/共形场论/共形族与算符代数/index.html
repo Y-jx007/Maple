@@ -249,7 +249,7 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2024-01-31 22:00:35</time>
+          <time>2024-03-03 10:37:23</time>
           <span class="text-gray-400">·</span>
           <span>19 min</span>
           <span class="text-gray-400">·</span>
@@ -300,36 +300,36 @@
 <p>上式中正规序与 $:\;:$ 不同，其不满足交换律与结合律</p>
 <p>$$(AB)(z)\neq (BA)(z)$$</p>
 <p>$$((AB)C)(z)\neq (A(BC))(z)$$</p>
-<h3 id="裔场"><a href="#裔场" class="headerlink" title="裔场"></a>裔场</h3><p>考虑 $\ket{h}$ 的裔 $L_{-n}\ket{h}$ 的积分表示</p>
+<h3 id="降场"><a href="#降场" class="headerlink" title="降场"></a>降场</h3><p>考虑 $\ket{h}$ 的降 $L_{-n}\ket{h}$ 的积分表示</p>
 <p>$$L_{-n}\ket{h}&#x3D;L_{-n}\phi(0)\ket{0}&#x3D;\frac{1}{2\pi i}\oint\frac{\dd z}{z^{n-1}}T(z)\phi(0)\ket{0}$$</p>
 <p>由 $\displaystyle T(z)A(w)&#x3D;\sum_{n\in\mathbb{Z}}(z-w)^{-n-2}(L_n A)(w)$ 知上式即为 $(L_{-n}\phi)(0)\ket{0}$</p>
-<p>由此可定义对应 $L_{-n}\ket{h}$ 的裔场 $\phi^{(-n)}(w)$</p>
+<p>由此可定义对应 $L_{-n}\ket{h}$ 的降场 $\phi^{(-n)}(w)$</p>
 <p>$$\phi^{(-n)}(w)\equiv(L_{-n}\phi)(w)&#x3D;\frac{1}{2\pi i}\oint_w\frac{\dd z}{(z-w)^{n-1}}T(z)\phi(w)$$</p>
 <p>$$\phi^{(0)}(w)&#x3D;h\phi(w)\qquad \phi^{(-1)}(w)&#x3D;\partial\phi(w)$$</p>
-<p>裔场的关联函数可由其祖初级场得出，考虑 $\ev{(L_{-n}\phi(w)X)}&#x3D;\ev{\phi^{(-n)}(w)X}$ ，其中 $X&#x3D;\phi_1(w_1)\cdots\phi_N(w_N)$</p>
+<p>降场的关联函数可由其祖初级场得出，考虑 $\ev{(L_{-n}\phi(w)X)}&#x3D;\ev{\phi^{(-n)}(w)X}$ ，其中 $X&#x3D;\phi_1(w_1)\cdots\phi_N(w_N)$</p>
 <p>$$\begin{aligned}\ev{\phi^{(-n)}(w)X}&amp;&#x3D;\frac{1}{2\pi i}\oint_w\frac{\dd z}{(z-w)^{n-1}}\ev{T(z)\phi(w)X}\\&amp;&#x3D;-\frac{1}{2\pi i}\oint_{\{w_i\}}\frac{\dd z}{(z-w)^{n-1}}\sum_i\left[\frac{1}{z-w_i}\partial_{w_i}\ev{\phi(w)X}+\frac{h_i}{(z-w_i)^2}\ev{\phi(w)X}\right]\\&amp;&#x3D;\mathcal{L}_{-n}\ev{\phi(w)X}\end{aligned}$$</p>
 <p>$$\mathcal{L}_{-n}&#x3D;\sum_i\left[\frac{(n-1)h_i}{(w_i-w)^n}-\frac{1}{(w_i-w)^{n-1}}\partial_{w_i}\right]$$</p>
 <p>由平移不变性，$\displaystyle\partial_w+\sum_i\partial_{w_i}$ 对关联函数作用为零，可知 $\mathcal{L}_{-1}&#x3D;\partial_w$</p>
-<p>由单指标裔场可定义多指标裔场</p>
+<p>由单指标降场可定义多指标降场</p>
 <p>$$\phi^{(-k,-n)}(w)&#x3D;(L_{-k}L_{-n})(w)&#x3D;\frac{1}{2\pi i}\oint_w\frac{\dd z}{(z-w)^{k-1}}T(z)(L_{-n}\phi)(w)$$</p>
 <p>$$\phi^{(0,-n)}(w)&#x3D;(h+n)\phi^{(-n)}(w)\qquad\phi^{(-1,-n)}(w)&#x3D;\partial_w\phi^{(-n)}(w)$$</p>
-<p>多指标裔场关联函数同样可以通过 $\mathcal{L}_{-n}$ 作用于祖初级场关联函数得到</p>
+<p>多指标降场关联函数同样可以通过 $\mathcal{L}_{-n}$ 作用于祖初级场关联函数得到</p>
 <p>$$\ev{\phi^{-k_1,\cdots,-k_n}(w)X}&#x3D;\mathcal{L}_{-k_1}\cdots\mathcal{L}_{-k_n}\ev{\phi(w)X}$$</p>
-<h3 id="共形族"><a href="#共形族" class="headerlink" title="共形族"></a>共形族</h3><p>初级场 $\phi$ 与其所有裔场构成的集合称为共形族，记作 $[\phi]$，共形族在共形变换下保持封闭性，因此 $T(z)$ 与共形族中场的OPE可分解为共形族中其他场</p>
+<h3 id="共形族"><a href="#共形族" class="headerlink" title="共形族"></a>共形族</h3><p>初级场 $\phi$ 与其所有降场构成的集合称为共形族，记作 $[\phi]$，共形族在共形变换下保持封闭性，因此 $T(z)$ 与共形族中场的OPE可分解为共形族中其他场</p>
 <p>将OPE写为以下两部分</p>
 <p>$$T(z)\phi^{(-n)}(w)&#x3D;\sum_{k\ge 0}(z-w)^{k-2}(L_{-k}\phi^{(-n)})(w)+\sum_{k&gt;0}\frac{1}{(z-w)^{k+2}}(L_k\phi^{(-n)})(w)$$</p>
-<p>其中第一部分由裔场 $\phi^{(-k,-n)}$ 构成；第二部分由三阶以上极点奇异项构成，可通过以下 $TT$ OPE计算</p>
+<p>其中第一部分由降场 $\phi^{(-k,-n)}$ 构成；第二部分由三阶以上极点奇异项构成，可通过以下 $TT$ OPE计算</p>
 <p>$$\begin{aligned}T(z)\phi^{(-n)}(w)&amp;&#x3D;\frac{1}{2\pi i}\oint_w\frac{\dd x}{(x-w)^{n-1}}T(z)T(x)\phi(w)\\&amp;\sim\frac{1}{2\pi i}\oint_w\frac{\dd x}{(x-w)^{n-1}}\left[\frac{c&#x2F;2}{(z-x)^4}+\frac{2 T(x)}{(z-x)^2}+\frac{\partial T(x)}{z-x}\right]\phi(w)\\&amp;&#x3D;\frac{cn(n^2-1)&#x2F;12}{(z-w)^{n+2}}\phi(w)+\oint_w\frac{\dd x}{(x-w)^{n-1}}\sum_{l&#x3D;0}^\infty\phi^{(-l)}(w)\left[\frac{2(x-w)^{l-2}}{(z-x)^2}+\frac{(l-2)(x-w)^{l-3}}{z-x}\right]\\&amp;&#x3D;\frac{cn(n^2-1)&#x2F;12}{(z-w)^{n+2}}\phi(w)+\sum_{l&#x3D;0}^{n+1}\frac{2n-l}{(z-w)^{n+2-l}}\phi^{(-l)}(w)\end{aligned}$$</p>
 <p>组合两部分，得到 $T\phi^{-n}$ OPE</p>
 <p>$$T(z)\phi^{(-n)}(w)&#x3D;\frac{cn(n^2-1)&#x2F;12}{(z-w)^{n+2}}\phi(w)+\sum_{k&#x3D;1}^{n}\frac{n+k}{(z-w)^{k+2}}\phi^{(k-n)}(w)+\sum_{k\ge 0}(z-w)^{k-2}\phi^{(-k,-n)}(w)$$</p>
 <p>对于 $T(z)\phi^{(-1)}(w)&#x3D;T(z)\partial\phi(w)$</p>
 <p>$$T(z)\partial\phi(w)\sim \frac{2h\phi(w)}{(z-w)^3}+\frac{(h+1)\partial\phi(w)}{(z-w)^2}+\frac{\partial^2\phi(w)}{z-w}$$</p>
-<p>初级场的裔称为次级场，其在共形变换 $z\to f(z)$ 下变换规律为</p>
+<p>初级场的降称为次级场，其在共形变换 $z\to f(z)$ 下变换规律为</p>
 <p>$$A(z)\to\left(\frac{\dd f}{\dd z}\right)^{h’}A(f(z))+\text{extra terms}\qquad h’&#x3D;h+n\;\;(n&gt;0)$$</p>
 <h3 id="算符代数"><a href="#算符代数" class="headerlink" title="算符代数"></a>算符代数</h3><p>由共性不变性可以定出初级场关联函数形式，其中 $\phi_\alpha,\phi_\beta$ 共形维数相同</p>
 <p>$$\ev{\phi_\alpha(w,\bar w)\phi_\beta(z,\bar z)}&#x3D;\frac{C_{\alpha\beta}}{(w-z)^{2h}(\bar w-\bar z)^{2\bar h}}$$</p>
 <p>$C_{\alpha\beta}$ 为对称阵，因此可选取一组基使得 $C_{\alpha\beta}&#x3D;\delta_{\alpha\beta}$，下文默认使用此归一化</p>
-<p>通过合适的全局共形变换将关联点变为 $w&#x3D;\infty,z&#x3D;0$，场成为渐近态，两点关联函数成为Hilbert空间中的双线性乘积，其中最高权态的正交性隐含了两个场裔即Verma模的正交性</p>
+<p>通过合适的全局共形变换将关联点变为 $w&#x3D;\infty,z&#x3D;0$，场成为渐近态，两点关联函数成为Hilbert空间中的双线性乘积，其中最高权态的正交性隐含了两个场降即Verma模的正交性</p>
 <p>$$\lim_{w,\bar w\to\infty}w^{2h}\bar w^{2\bar h}\ev{\phi(w,\bar w)\phi’(0,0)}&#x3D;\braket{h}{h’}\braket{\bar h}{\bar h’}$$</p>
 <p>共形维数不变要求算符代数具有以下形式，其中 $K&#x3D;\sum_i k_i，\bar K&#x3D;\sum_i \bar k_i$</p>
 <p>$$\phi_1(z,\bar z)\phi_2(0,0)&#x3D;\sum_p\sum_{\{k,\bar k\}}C_{12}^{p\{k,\bar k\}}z^{h_p-h_1-h_2+K}\bar z^{\bar h_p-\bar h_1-\bar h_2+\bar K}\phi_p^{\{k,\bar k\}}(0,0)$$</p>
@@ -337,13 +337,13 @@
 <p>$$\begin{aligned}\bra{\phi_r}\phi_1(z,\bar z)\ket{\phi_2}&amp;&#x3D;\lim_{w,\bar w\to\infty}w^{2h}\bar w^{2\bar h}\ev{\phi_r(w,\bar w)\phi_1(z,\bar z)\phi_2(0,0)}\\&amp;&#x3D;\frac{C_{r12}}{z^{h_1+h_2-h_r}\bar z^{\bar h_1+\bar h_2-\bar h_r}}\end{aligned}$$</p>
 <p>与上文算符OPE比较，由Vermam模的正交性知唯一的贡献项为 $p\{k,\bar k\}&#x3D;r\{0,0\}$，因此可知系数</p>
 <p>$$C^{p\{0,0\}}_{12}\equiv C^p_{12}&#x3D;C_{p12}$$</p>
-<p>更进一步，由于裔场的关联函数建立在初级场的关联函数基础之上，仅当初级场相互关联时裔场相互关联，可以设想系数</p>
+<p>更进一步，由于降场的关联函数建立在初级场的关联函数基础之上，仅当初级场相互关联时降场相互关联，可以设想系数</p>
 <p>$$C^{p\{k,\bar k\}}_{12}&#x3D; C^p_{12}\beta_{12}^{p\{k\}}\bar \beta_{12}^{p\{\bar k\}}$$</p>
 <p>由归一化，$\beta_{ij}^{p\{0\}}&#x3D;1$，其他系数 $\beta_{ij}^{p\{k\}}$ 由算符OPE决定，为中心荷和共形维数的函数</p>
 <p>考虑 $h_1&#x3D;h_2&#x3D;h$ 的简单情况，将算符OPE作用于真空</p>
 <p>$$\phi_1(z,\bar z)\ket{h,\bar h}&#x3D;\sum_p C_{p12} z^{h_p-2h}\bar z^{\bar h_p-2\bar h}\varphi(z)\bar \varphi(\bar z)\ket{h_p,\bar h_p}$$</p>
 <p>$$\varphi(z)&#x3D;\sum_{\{k\}}z^K\beta_{12}^{p\{k\}}L_{-k_1}\cdots L_{-k_n}$$</p>
-<p>对全纯部分，以下定义态，其中 $\ket{N,h_p}$ 为Verma模 $V(h_p)$ 中的 $N$ 阶裔态</p>
+<p>对全纯部分，以下定义态，其中 $\ket{N,h_p}$ 为Verma模 $V(h_p)$ 中的 $N$ 阶降态</p>
 <p>$$\ket{z,h_p}\equiv\varphi(z)\ket{h_p}&#x3D;\sum_{N&#x3D;0}^{\infty}z^N\ket{N,h_p}$$</p>
 <p>$$L_0\ket{N,h_p}&#x3D;(h_p+N)\ket{N,h_p}$$</p>
 <p>对OPE左端作用 $L_n$</p>
@@ -353,12 +353,12 @@
 <p>$$L_n\ket{z,h_p}&#x3D;\left[(h(n-1)+h_p) z^n+z^{n+1}\partial_z\right]\ket{z,h_p}$$</p>
 <p>将 $\ket{z,h_p}$ 展开成级数，可得以下关系，可用其与Virasoro代数一起递归求解所有 $\ket{N,h_p}$，亦即 $\beta_{12}^{p\{k\}}$</p>
 <p>$$L_n\ket{N+n,h_p}&#x3D;(h_p+(n-1)h+N)\ket{N,h_p}$$</p>
-<p>对于一阶裔态</p>
+<p>对于一阶降态</p>
 <p>$$\ket{1,h_p}&#x3D;\beta_{12}^{p\{1\}}L_{-1}\ket{h_p}$$</p>
 <p>$$L_1\ket{1,h_p}&#x3D;h_p\ket{h_p}$$</p>
 <p>$$L_1L_{-1}&#x3D;L_{-1}L_1+2L_0$$</p>
 <p>$$\beta_{12}^{p\{1\}}&#x3D;\frac{1}{2}$$</p>
-<p>对于二阶裔态</p>
+<p>对于二阶降态</p>
 <p>$$\ket{2,h_p}&#x3D;\beta_{12}^{p\{1,1\}}L_{-1}^2\ket{h_p}+\beta_{12}^{p\{2\}}L_{-2}\ket{h_p}$$</p>
 <p>$$L_1^2\ket{2,h_p}&#x3D;h_p(h_p+1)\ket{h_p}$$</p>
 <p>$$L_2\ket{2,h_p}&#x3D;(h_p+h)\ket{h_p}$$</p>

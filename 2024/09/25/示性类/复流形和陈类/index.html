@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=true"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'true');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<!-- End Baidu Analytics -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="蜘蛛">
+
+
+
+
+
+<title>复流形和陈类 | </title>
+
+
+
+<link rel="icon" href="../../../../../images/favicon.png">
+
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+<link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+
+
+
+<script src="../lib/jquery.min.js"></script>
+
+
+<script src="../lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="../lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      isDark = !isDark;
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="" />
+          
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        复流形和陈类
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="../../../../../archives">Posts</a>
+        
+          <a class="hidden sm:flex" href="../../../../../categories">Categories</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/Y-jx007">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="../../../../../categories" class="flex h-12 sm:h-auto items-center">Categories</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        复流形和陈类
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2024-10-10 12:34:20</time>
+          <span class="text-gray-400">·</span>
+          <span>7 min</span>
+          <span class="text-gray-400">·</span>
+          <span>1.8k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h2 id="复向量空间与复流形"><a href="#复向量空间与复流形" class="headerlink" title="复向量空间与复流形"></a>复向量空间与复流形</h2><p>$B$上$n$维<strong>复向量丛</strong>$\omega$由拓扑空间$E$和映射$\pi:E\to B$构成，其纤维$\pi^{-1}(b)$为$n$维复平面，且满足<strong>局部平凡</strong>条件：$B$上每点具有邻域$U$，其原像$\pi^{-1}(U)$同胚于$U\times\mathbb{C}^n$，此同胚将每点纤维$\pi^{-1}(b)$复线性地映为$b\times\mathbb{C}^n$</p>
+<p>$n$维复向量丛可由对$2n$维实向量丛$\xi$施加<strong>复结构</strong>[得到，所谓复结构即为连续映射</p>
+<p>$$J:E(\xi)\to E(\xi),\qquad J(J(v))&#x3D;-v\quad \forall v\in E(\xi)$$</p>
+<p>其将总空间实线性地映为自身，此复结构可将每点纤维$F_b(\xi)$变为复向量空间</p>
+<p>$$(x+i y)v&#x3D;xv+J(yv)$$</p>
+<p>易验证其满足局部平凡条件，故$\xi$成为复丛。反之也可由复丛去掉复结构得到潜在实丛</p>
+<p><strong>切丛</strong>$\quad$令$U$为$\mathbb{C}^n$开子集，则切丛$\tau_U$与总空间$TU&#x3D;U\times\mathbb{C}^n$具有以下正则复结构$J_0$</p>
+<p>$$J_0(u,v)&#x3D;(u,iv)\quad\forall u\in U,v\in \mathbb{C}^n$$</p>
+<p>考虑开集之间的光滑映射$f:U\to U’$，$U\in\mathbb{C}^n$，实线性映射$\dd f_u:TU\to TU’$对所有$u$复线性的条件为</p>
+<p>$$\dd f\circ J_0&#x3D;J_0\circ \dd f$$</p>
+<p>此即Cauchy-Riemann方程，说明复切丛的局部平凡条件要求底流形同胚为全纯函数</p>
+<p>令$M$为$2n$维光滑流形，$M$切丛上的复结构$J$有时称为$M$上的<strong>近复结构</strong>，此近复结构成为$M$上复结构的条件为：$M$上每点均具有同胚于$\mathbb{C}^n$中开集的开邻域，且此同胚$h$的导数处处满足复线性条件，即$\dd h\circ J&#x3D;J_0\circ\dd h$</p>
+<p>此时称$(M,J)$为具有复维数$n$的复流形，简写为$M$。令$f:M\to N$为两个复流形之间的光滑映射，若$\dd f$满足$\dd f\circ J&#x3D;J\circ \dd f$，则称$f$全纯</p>
+<p>一个基本定理断言$M$上的近复结构$J$成为复结构的充要条件为</p>
+<p>$$[Jv,Jw]&#x3D;J[v,Jw]+J[Jv,w]+[v,w]\quad\forall v,w\in TM$$</p>
+<p>对光滑流形$M$施加复结构的最经典的过程如下：首先选定一组同胚$h_\alpha:U_\alpha\to V_\alpha$，其中$U_\alpha$为$\mathbb{C}^n$中开集，$V_\alpha$为$M$开覆盖，只需验证下列每个复合映射全纯即可</p>
+<p>$$h_\beta^{-1}\circ h_\alpha: h_{\alpha}^{-1}(V_\alpha\cap V_\beta)\to h_{\beta}^{-1}(V_\alpha\cap V_\beta)$$</p>
+<h2 id="陈类"><a href="#陈类" class="headerlink" title="陈类"></a>陈类</h2><p><strong>引理1</strong>$\quad$若$\omega$为复向量丛，则其潜在实向量丛$\omega_\mathbb{R}$具有典范定向</p>
+<p>此引理的证明只需注意到$\text{GL}_n(C)$为联通群，因此$n$维复空间$V$中任意一组基均可通过连续形变成为任意另一组基，此过程保持潜在实空间$V_\mathbb{R}$定向不变，即其定向不依赖于基的选取。将此引理应用于切丛可知任意复流形均具有一个典范定向</p>
+<p>对于底空间$B$上的$n$维复平面丛$\omega$，其Euler class $e(\omega_\mathbb{R})\in H^{2n}(B;\mathbb{Z})$具有良好定义，若$\omega’$为相同底空间上的$m$维复平面丛，则有</p>
+<p>$$e((\omega\oplus\omega’)_\mathbb{R})&#x3D;e(\omega_\mathbb{R})e(\omega’_\mathbb{R})$$</p>
+<p>这可由两个复向量丛纤维$F_\mathbb{R},F’_\mathbb{R}$的典范定向诱导出$(F+\oplus F’)_\mathbb{R}$的典范定向得出，即$\omega_\mathbb{R}\oplus\omega’_\mathbb{R}$作为可定向丛同胚于$(\omega\oplus\omega’)_\mathbb{R}$</p>
+<h3 id="Hermitian度规"><a href="#Hermitian度规" class="headerlink" title="Hermitian度规"></a>Hermitian度规</h3><p>复向量丛$\omega$上的<strong>Hermitian度规</strong>是满足如下条件的潜在实丛上的Euclidean度规</p>
+<p>$$v\to |v|^2\ge 0\qquad |iv|&#x3D;|v|$$</p>
+<p>给定$\omega$上Hermitian度规，对$\omega$相同纤维上向量$v,w$，容易证明有且仅有一个复值内积$\ev{v,w}$满足条件：$1.\;$双复线性$\ev{\lambda v,\mu w}&#x3D;\lambda\bar \mu\ev{v,w}$，$2.\;\ev{v,v}&#x3D;|v|^2$，其形式为</p>
+<p>$$\ev{v,w}&#x3D;\frac{1}{2}(|v+w|^2-|v|^2-|w|^2)+\frac{i}{2}(|v+iw|^2-|v|^2-|iw|^2)$$</p>
+<p>复值内积满足$\ev{v,w}&#x3D;\overline{\ev{w,v}}$，若$\ev{v,w}&#x3D;0$，则称$v,w$正交。若底空间$B$仿紧，则其上每一个复向量丛均容许Hermitian度规</p>
+<h3 id="陈类构造"><a href="#陈类构造" class="headerlink" title="陈类构造"></a>陈类构造</h3><p>构造$n$维复向量丛$\omega$的示性类，首先需构造删除总空间$E_0$上的典范$n-1$维平面丛$\omega_0$<br>$E_0$中的点由$\omega$的一个纤维$F$与此纤维中的一个非零向量$v$决定，若$\omega$上已经确定了Hermitian度规，则$\omega_0$在$v$处的纤维即为$F$中与$v$正交的成分；若不使用Hermitian度规，也可定义$\omega_0$在$v$处的纤维为商空间$F&#x2F;\mathbb{C}v$，其中$\mathbb{C}v$为非零向量$v$张成的一维子空间，这两种构造的纤维典范同构</p>
+<p>由于任意实定向$2n$维平面丛均具有下列整系数正合Gysin序列</p>
+<p>$$\cdots\to H^{i-2n}(B)\overset{\smile e}{\to}H^i(B)\overset{\pi_0^*}{\to}H^i(E_0)\to H^{i-2n+1}(B)\to\cdots$$</p>
+<p>可知对于$i&lt;2n-1$，$\pi_0^*:H^i(B)\to H^i(E_0)$为同构</p>
+<p><strong>陈类</strong> $c_i(\omega)\in H^{2i}(B;\mathbb{Z})$可由对$\omega$的维数$n$归纳定义，首先定义<strong>顶陈类</strong>为Euler class</p>
+<p>$$c_n(\omega)&#x3D;e(\omega_\mathbb{R})$$</p>
+<p>对于$i&lt;n$，由于$\pi_0^*:H^{2i}(B)\to H^{2i}(E_0)$为同构，故定义</p>
+<p>$$c_i(\omega)&#x3D;\pi_0^{*-1}c_i(\omega_0)$$</p>
+<p>对于$i&gt;n$，定义陈类为零。<strong>总陈类</strong>$c(\omega)$为环$H^{\Pi}(B;\mathbb{Z})$中形式和，其逆$c(\omega)^{-1}$具有良好定义</p>
+<p>$$c(\omega)&#x3D;1+c_1(\omega)+c_2(\omega)+\cdots+c_n(\omega)$$</p>
+<p>$$c(\omega)^{-1}&#x3D;1-c_1(\omega)+(c_1(\omega)^2-c_2(\omega))+\cdots$$</p>
+<p><strong>引理2(Naturality)</strong>$\quad$若$f:B\to B’$被由$B$上的$n$维复平面丛$\omega$到$B’$上的$n$维复平面丛$\omega’$的丛映射覆盖，则$c(\omega)&#x3D;f^*c(\omega’)$</p>
+<p>此引理可由对$n$归纳证明，由于Euler class自然，故顶陈类满足$c_n(\omega)&#x3D;f^*c_n(\omega’)$<br>对于低阶陈类，注意到丛映射$\omega\to\omega’$诱导出</p>
+<p>$$f_0:E_0(\omega)\to E_0(\omega’)$$</p>
+<p>此映射被$n-1$维丛映射$\omega_0\to \omega_0’$覆盖，归纳可知$c_i(\omega_0)&#x3D;f_0^*c_i(\omega_0’)$</p>
+<p>由以下交换图和同胚$c_i(\omega_0)&#x3D;\pi_0^{*}c_i(\omega),c_i(\omega_0’)&#x3D;\pi_0^{\prime *}c_i(\omega’)$即得引理证明</p>
+<p><img src="/images/%E9%99%88%E7%B1%BB%E8%87%AA%E7%84%B6.png"></p>
+<p><strong>引理3</strong>$\quad$若$\varepsilon^k$为$B&#x3D;B(\omega)$上的平凡复$k$平面丛，则$c(\omega\oplus\varepsilon^k)&#x3D;c(\omega)$</p>
+<p>只需证明$k&#x3D;1$的情况，令$\phi&#x3D;\omega\oplus \varepsilon^1$为$n$维复平面丛，由于$\phi$含有一个非零截面，故顶陈类$c_{n+1}(\phi)&#x3D;c_{n+1}(\phi_\mathbb{R})&#x3D;0&#x3D;c_{n+1}(\omega)$；令$s:B\to E_0(\phi)$为此截面，其被丛映射$\omega\to\phi_0$覆盖，故$s^{*}c_i(\phi_0)&#x3D;c_i(\omega)$，而$\pi_0^{*}c_i(\phi_0)&#x3D;c_i(\phi)$，$s^{*}\circ\pi_0^{*}&#x3D;\text{id}$，引理得证</p>
+<h3 id="复Grassmann流形"><a href="#复Grassmann流形" class="headerlink" title="复Grassmann流形"></a>复Grassmann流形</h3><p><strong>复Grassmann流形</strong>$\text{Gr}_n(\mathbb{C}^{n+k})$为$\mathbb{C}^{n+k}$中所有经过原点的$n$维复平面的集合，其具有$nk$维复解析流形的自然结构</p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+    </div>
+    <div>
+      
+        <a href="../../Chern-Simons%201971/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          Chern-Simons 1971
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="../../../../../lib/clipboard.min.js"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      autoload: {
+        color: [],
+        colorv2: ['color']
+      },
+      packages: {'[+]': ['noerrors','physics','textmacros','ams','gensymb','mathtools','unicode','html','cancel']}
+    },
+    options: {
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    },
+    loader: {
+      load: ['input/asciimath', '[tex]/noerrors','[tex]/physics','[tex]/textmacros','[tex]/ams','[tex]/gensymb','[tex]/mathtools','[tex]/unicode','[tex]/html','[tex]/cancel']
+    }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+  
+
+<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2024</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="../js/main.js"></script>
+
+<script>
+  // load ./logo.svg to canvas
+  // 每次页面加载都执行
+  $(document).ready(function () {
+    const img = $("#logo")[0];
+    // 定义树叶数量
+    const mapleCount = "";
+    // 定义树叶飘落的速度
+    const speed = "";
+    // client width
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bufferCanvas = document.createElement("canvas");
+    const bufferCtx = bufferCanvas.getContext("2d");
+
+    const dpr = window.devicePixelRatio || 1;
+    const bsr =
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    const dpi = dpr / bsr;
+    bufferCanvas.width = canvas.width = dpi * width;
+    bufferCanvas.height = canvas.height = dpi * height;
+    bufferCtx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = true;
+    // 绘制树叶飘落
+    const drawMaple = (ctx, x, y, scale) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ctx.drawImage(bufferCanvas, -img.width / 2, -img.height / 2);
+      ctx.restore();
+    };
+    // 在内存中绘制树叶
+    bufferCtx.drawImage(img, 0, 0, img.width, img.height);
+    // 定义树叶的位置
+    const maples = Array.from({ length: mapleCount }).map(() => {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const scale = Math.random() * 0.5 + 0.5;
+      const offset = Math.random() * 2 - 1;
+      return {
+        x,
+        y,
+        scale,
+        speed: speed * scale,
+        offset: offset,
+      };
+    });
+    // 定义树叶的动画
+    const play = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      maples.forEach((maple) => {
+        drawMaple(ctx, maple.x, maple.y, maple.scale);
+        maple.y += maple.speed;
+        maple.x += maple.offset;
+        if (maple.y > canvas.height) {
+          maple.y = 0;
+        }
+        if (maple.x > canvas.width) {
+          maple.x = 0;
+        }
+      });
+      requestAnimationFrame(play);
+    };
+    requestAnimationFrame(play);
+    // 添加到页面中
+    $("#maple").append(canvas);
+  });
+</script>
+
+
+  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none -z-1" id="maple"></div>
+</body>
+
+</html>
