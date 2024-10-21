@@ -226,12 +226,16 @@
   <main class="p-12">
     <!-- css -->
 
-<link rel="stylesheet" href="../../../../../lib/fancybox/fancybox.min.css">
+<link rel="stylesheet" href="../../../../lib/fancybox/fancybox.min.css">
 
 
-<link rel="stylesheet" href="../../../../../lib/tocbot/tocbot.min.css">
+<link rel="stylesheet" href="../../../../lib/tocbot/tocbot.min.css">
 
 <!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
 
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
@@ -245,18 +249,23 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2024-10-19 19:30:35</time>
+          <time>2024-10-19 21:08:19</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>0 words</span>
+          <span>217 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    
+    <h2 id="三维Riemann流形"><a href="#三维Riemann流形" class="headerlink" title="三维Riemann流形"></a>三维Riemann流形</h2><p>令$M$为紧定向三维Riemann流形，$F(M)$为$M$上定向正交切标架构成的$\text{SO}(3)$丛，记$A$和$\Omega&#x3D;\dd A+A\wedge A$分别为$F(M)$上的斜对称联络和曲率形式，定义微分3形式</p>
+<p>$$\begin{aligned}<br>    Q&amp;&#x3D;\frac{1}{8\pi^2}(A_{12}\wedge A_{12}\wedge A_{23}-A_{12}\wedge \Omega_{12}-A_{13}\wedge \Omega_{13}-A_{23}\wedge \Omega_{23})\\<br>    &amp;&#x3D;\frac{1}{8\pi^2}\Tr\left(\dd A\wedge A+\frac{2}{3}A\wedge A\wedge A\right)<br>\end{aligned}$$</p>
+<p><strong>引理1</strong>$\quad$$Q$为闭形式</p>
+<p>由$F(M)_m$等价于$\text{SO}(3)$和$\Omega$为水平形式可知$Q|F(M)_m$正比于$\text{SO}(3)$上体积形式，又$\text{Vol}(\text{SO}(3))&#x3D;\text{Vol}(\text{S}^3)&#x2F;2&#x3D;\pi^2$，故有</p>
+<p><strong>引理2</strong>$\quad$令$F(M)_m$为任意一点$m\in M$处的纤维，则$\displaystyle\int_{F(M)_m}Q&#x3D;1$</p>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
@@ -266,16 +275,11 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="../%E7%A4%BA%E6%80%A7%E7%B1%BB/%E5%A4%8D%E6%B5%81%E5%BD%A2%E5%92%8C%E9%99%88%E7%B1%BB/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          复流形和陈类
-        </a>
-      
     </div>
     <div>
       
-        <a href="../../../03/22/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/Riemann%E5%87%A0%E4%BD%95/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          Riemann几何
+        <a href="../%E7%A4%BA%E6%80%A7%E7%B1%BB/%E5%A4%8D%E6%B5%81%E5%BD%A2%E5%92%8C%E9%99%88%E7%B1%BB/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          复流形和陈类
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
@@ -289,7 +293,7 @@
 </section>
 <!-- js inspect -->
 
-<script src="../../../../../lib/clipboard.min.js"></script>
+<script src="../../../../lib/clipboard.min.js"></script>
 
 <script>
   window.MathJax = {
@@ -330,7 +334,7 @@
 
 
 
-<script src="../../../../../lib/fancybox/fancybox.umd.min.js"></script>
+<script src="../../../../lib/fancybox/fancybox.umd.min.js"></script>
 
 <script>
   $(document).ready(() => {
@@ -354,7 +358,7 @@
 
 <!-- tocbot begin -->
 
-<script src="../../../../../lib/tocbot/tocbot.min.js"></script>
+<script src="../../../../lib/tocbot/tocbot.min.js"></script>
 
 <script>
   
