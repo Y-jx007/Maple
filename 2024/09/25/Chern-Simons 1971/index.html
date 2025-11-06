@@ -37,7 +37,7 @@
 
 
 
-<title>Chern-Simons 1971 | </title>
+<title>Chern-Simons 1971.2 | </title>
 
 
 
@@ -175,7 +175,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        Chern-Simons 1971
+        Chern-Simons 1971.2
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -242,29 +242,34 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        Chern-Simons 1971
+        Chern-Simons 1971.2
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2024-10-19 21:08:19</time>
+          <time>2024-10-22 03:21:38</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>217 words</span>
+          <span>366 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="三维Riemann流形"><a href="#三维Riemann流形" class="headerlink" title="三维Riemann流形"></a>三维Riemann流形</h2><p>令$M$为紧定向三维Riemann流形，$F(M)$为$M$上定向正交切标架构成的$\text{SO}(3)$丛，记$A$和$\Omega&#x3D;\dd A+A\wedge A$分别为$F(M)$上的斜对称联络和曲率形式，定义微分3形式</p>
-<p>$$\begin{aligned}<br>    Q&amp;&#x3D;\frac{1}{8\pi^2}(A_{12}\wedge A_{12}\wedge A_{23}-A_{12}\wedge \Omega_{12}-A_{13}\wedge \Omega_{13}-A_{23}\wedge \Omega_{23})\\<br>    &amp;&#x3D;\frac{1}{8\pi^2}\Tr\left(\dd A\wedge A+\frac{2}{3}A\wedge A\wedge A\right)<br>\end{aligned}$$</p>
+    <h2 id="三维Riemann流形"><a href="#三维Riemann流形" class="headerlink" title="三维Riemann流形"></a>三维Riemann流形</h2><p>令$M$为定向紧三维Riemann流形，$F(M)$为$M$上定向正交归一切标架构成的$\text{SO}(3)$丛，记$\theta$和$\Omega&#x3D;\dd \theta-\theta\wedge \theta$分别为$F(M)$上的斜对称联络和曲率形式，定义微分3形式</p>
+<p>$$\begin{aligned}<br>    Q&amp;&#x3D;\frac{1}{8\pi^2}(\theta_{12}\wedge \theta_{13}\wedge \theta_{23}-\theta_{12}\wedge \Omega_{12}-\theta_{13}\wedge \Omega_{13}-\theta_{23}\wedge \Omega_{23})\\<br>\end{aligned}$$</p>
+<p>直接取外微分可知</p>
 <p><strong>引理1</strong>$\quad$$Q$为闭形式</p>
-<p>由$F(M)_m$等价于$\text{SO}(3)$和$\Omega$为水平形式可知$Q|F(M)_m$正比于$\text{SO}(3)$上体积形式，又$\text{Vol}(\text{SO}(3))&#x3D;\text{Vol}(\text{S}^3)&#x2F;2&#x3D;\pi^2$，故有</p>
+<p>由$F(M)_m$等价于$\text{SO}(3)$和$\Omega$为水平形式可知$Q|F(M)_m$正比于$\text{SO}(3)$上体积形式，又$\text{Vol}(\text{SO}(3))&#x3D;\text{Vol}(\text{S}^3)&#x2F;2&#x3D;\pi^2$，故可取如下归一化</p>
 <p><strong>引理2</strong>$\quad$令$F(M)_m$为任意一点$m\in M$处的纤维，则$\displaystyle\int_{F(M)_m}Q&#x3D;1$</p>
+<p>由于定向紧三维Riemann流形可平行化，故$F(M)$为平凡丛，其任意两个全局截面满足$\chi’&#x3D;\chi+nF(M)_m$，结合引理2可得</p>
+<p><strong>引理3</strong>$\quad$令$\chi$，$\chi’$为$F(M)$的两个全局截面，则$\displaystyle\int_\chi Q-\displaystyle\int_{\chi’} Q\in \mathbb{Z}$</p>
+<p>令$\lambda:\mathbb{R}\to\mathbb{R}&#x2F;\mathbb{Z}$为自然同态，则可定义$\Phi(M)&#x3D;\lambda\left(\displaystyle\int_\chi Q\right)\in\mathbb{R}&#x2F;\mathbb{Z}$，其中$\chi$为任意全局截面，即每个可定向三维Riemann流形$M$均关联了一个点$\Phi(M)\in S^1$</p>
+<p><strong>定理1</strong>$\quad$$\Phi(M)$为共形不变量</p>
 
   </article>
   <!-- tag -->
@@ -274,6 +279,11 @@
   <!-- prev and next -->
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
+      
+        <a href="../../../10/21/Yang-Mills-Chern-Simons/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          Yang-Mills & Chern-Simons
+        </a>
       
     </div>
     <div>
@@ -384,7 +394,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2024</span>
+    <span>© 2025</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>

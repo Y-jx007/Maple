@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-07-21 23:34:41</time>
+          <time>2025-11-06 19:45:11</time>
           <span class="text-gray-400">·</span>
-          <span>15 min</span>
+          <span>20 min</span>
           <span class="text-gray-400">·</span>
-          <span>3.1k words</span>
+          <span>3.9k words</span>
         </section>
       </div>
     </div>
@@ -387,7 +387,7 @@
 <p><strong>引理4</strong>$\quad$ 若 $(a,b)\in\mathbb{Z}^2$，$(\bar{a},\bar{b})\in\mathbb{Z}_n^2$ 为其模$n$等价对，则以下三个条件等价</p>
 <p>$1.\quad$$(a,b)$ 存在互素模$n$等价对</p>
 <p>$2.\quad$$\gcd(a,b,n)&#x3D;1$</p>
-<p>$3.\quad$$$</p>
+<p>$3.\quad$$(\bar a,\bar b)$在$\mathbb{Z}_n^2$中阶为$n$</p>
 <p>由引理可得 $\Gamma(n)$-尖点的数目 $h_n$</p>
 <p>$$h_n&#x3D;\left\{\begin{array} &amp; \displaystyle\frac{n^2}{2}\prod_{p|n}(1-p^{-2}) &amp; n&gt;2\\3 &amp; n&#x3D;2\end{array}\right.$$</p>
 <h2 id="Poincare-级数"><a href="#Poincare-级数" class="headerlink" title="Poincaré 级数"></a>Poincaré 级数</h2><p>由 $G_k$ 定义标准 <strong>Eisenstein 级数</strong> $E_k$，利用 $\zeta(k)&#x3D;\displaystyle\prod_p\left(1-p^{-1}\right)^{-1}$</p>
@@ -403,7 +403,7 @@
 <p>$$E_k(z)&#x3D;\sum_{\gamma\in \Gamma_\infty\backslash\Gamma}j_\gamma(z)^{-k}$$</p>
 <p><strong>定义4</strong>$\quad$若 $p:\mathbb{H}\to\mathbb{C}$ 全纯且周期为 $1$，则称如下级数为 <strong>Poincaré 级数</strong></p>
 <p>$$P(z)&#x3D;\sum_{\gamma\in\Gamma_\infty\backslash\Gamma}j_\gamma(z)^{-k}p(\gamma z)$$</p>
-<p>当 $p&#x3D;q^m\quad m\ge 0$ 时，称其为第$m$个$k$权Poincaré 级数，记为 $P_{m,k}$</p>
+<p>当 $p(z)&#x3D;q^m\quad m\ge 0$ 时，称其为第$m$个$k$权Poincaré 级数，记为 $P_{m,k}$</p>
 <p>对同一个陪集中的 $\gamma_1,\gamma_2$，可以找出 $\gamma_0\in \Gamma_\infty$ ，使得 $\gamma_2&#x3D;\gamma_0\gamma_1$</p>
 <p>由 $j_{\gamma_0\gamma_1}(z)&#x3D;j_{\gamma_0}(\gamma_1 z)j_{\gamma_1}(z)&#x3D;\pm j_{\gamma_1}(z)$，$p(\gamma_0\gamma_1 z)&#x3D; p(\gamma_1 z+m)&#x3D;p(\gamma_1 z)$</p>
 <p>可知Poincaré 级数独立于陪集中代表元的选取，因此是良定义的</p>
@@ -412,7 +412,7 @@
 <p>若 $\Gamma$ 为 $\text{SL}_2(\mathbb{Z})$ 同余子群，记其不等价尖点集合为 $\mathcal{C}_\Gamma$，取 $\mathfrak{a}\in \mathcal{C}_\Gamma$，$\sigma_\mathfrak{a}$ 为将 $\infty$  映到$\mathfrak{a}$ 的变换矩阵</p>
 <p><strong>定义5</strong>$\quad$若 $p:\mathbb{H}\to\mathbb{C}$ 全纯且周期为 $1$，则称如下级数为$\Gamma$在$\mathfrak{a}$处的 <strong>Poincaré 级数</strong></p>
 <p>$$P_\mathfrak{a}(z)&#x3D;\sum_{\gamma\in\Gamma_\mathfrak{a}\backslash\Gamma}j_{\sigma_\mathfrak{a}^{-1}\gamma}(z)^{-k}p(\sigma_\mathfrak{a}^{-1}\gamma z)$$</p>
-<p>当 $p&#x3D;q^m\quad m\ge 0$ 时，称其为$\Gamma$在$\mathfrak{a}$处的第$m$个Poincaré 级数，记为 $P_{\mathfrak{a},m}$，称 $E_{\mathfrak{a}}&#x3D;P_{\mathfrak{a},0}$ 为 $\Gamma$在$\mathfrak{a}$处的Eisenstein 级数</p>
+<p>当 $p(z)&#x3D;q^{m}\quad m\ge 0$ 时，称其为$\Gamma$在$\mathfrak{a}$处的第$m$个Poincaré 级数，记为 $P_{\mathfrak{a},m}$，称 $E_{\mathfrak{a}}&#x3D;P_{\mathfrak{a},0}$ 为 $\Gamma$在$\mathfrak{a}$处的Eisenstein 级数</p>
 <p>易知以上定义的级数同样独立于陪集中代表元的选取</p>
 <p>容易验证 $k\ge 3,m\ge 0$ 时，$P_{\mathfrak{a},m}$ 满足 $\Gamma$ 下的弱模条件，若其在 $\mathcal{C}_\Gamma$ 上全纯即可证明 $P_{\mathfrak{a},m}$ 为 $\Gamma$ 下的模形式</p>
 <p>令$k\ge 4,m\ge 1$，将尖点形式 $P_{m,k}$ 用 $q&#x3D;e^{i2\pi z}$ 展开</p>
@@ -422,7 +422,17 @@
 <p>$S(m,n;c)$ 满足如下性质</p>
 <p>$1.\quad$$S(m,n;c)&#x3D;S(n,m;c)$</p>
 <p>$2.\quad$若 $\gcd(a,c)&#x3D;1$，则 $S(am,n;c)&#x3D;S(m,an;c)$</p>
-<p>$3.\quad$$f[\gamma_1\gamma_2]_k&#x3D; (f[\gamma_1]_k) [\gamma_2]_k$</p>
+<p>$3.\quad$若 $c&#x3D;qr,\gcd(q,r)&#x3D;1,\bar q q\equiv 1(\text{mod}\; c),\bar r r\equiv 1(\text{mod}\; c)$，则<br>$$S(m,n,c)&#x3D;S(\bar q m,\bar q n;r)S(\bar r m,\bar r n;q)$$</p>
+<p>对$\nu\in\mathbb{Z}$定义$\nu$型 <strong>J-Bessel函数</strong><br>$$\exp{\left[\frac{x}{2}(z-\frac{1}{z})\right]}&#x3D;\sum_{-\infty}^{\infty}J_\nu(x)z^\nu$$</p>
+<p>将指数展开可得<br>$$J_\nu(x)&#x3D;\sum_{\max\{0,-\nu\}}\frac{(-1)^m}{m!(m+\nu)!}\left(\frac{x}{2}\right)^{\nu+2m}$$</p>
+<p><strong>定理4</strong>$\quad$对任意$m,n\ge 1$，有<br>$$\hat{p}_{k}(m,n)&#x3D;\left(\frac{n}{m}\right)^{\frac{k-1}{2}}\left(\delta_{mn}+2\pi i^{-k}\sum_{c&#x3D;1}^\infty c^{-1}S(m,n;c)J_{k-1}\left(\frac{4\pi\sqrt{mn}}{c}\right)\right)$$</p>
+<p>由Kloosterman和对称性可知<br>$$\left(\frac{m}{n}\right)^{\frac{k-1}{2}}\hat{p}_{k}(m,n)&#x3D;\left(\frac{n}{m}\right)^{\frac{k-1}{2}}\hat{p}_{k}(n,m)$$</p>
+<p>对任意$\gamma\in\Gamma$，记$\gamma_{(c,d)}$暗示$(c,d)$为$\gamma$的底行，要证明此定理，先计算<br>$$\begin{aligned}<br>\hat{p}_{k}(m,n)&amp;&#x3D;\int_{0}^{1}\sum_{\gamma\in\Gamma_\infty\backslash\Gamma}j_\gamma(z)^{-k}q^{m\gamma}q^{-n}\dd x\\<br>&amp;&#x3D;\int_{0}^{1} q^{m-n}\dd x+\sum_{c&#x3D;1}^\infty\sum_{\overset{\large d\in\mathbb{Z}}{\gcd(c,d)&#x3D;1}}\int_{0}^{1}\frac{q^{m\gamma_{(c,d)}-n}}{(cz+d)^k}\dd x\\<br>&amp;&#x3D;\delta_{mn}+\sum_{c&#x3D;1}^\infty\sum_{d\in \mathbb{Z}_{c}^{\times}}\sum_{d’\equiv d(\text{mod}\;c)}\int_{0}^{1}\frac{q^{m\gamma_{(c,d’)}-n}}{(cz+d’)^k}\dd x<br>\end{aligned}$$</p>
+<p>继续计算<br>$$\begin{aligned}<br>\sum_{d’\equiv d(\text{mod}\;c)}\int_{0}^{1}\frac{q^{m\gamma_{(c,d’)}-n}}{(cz+d’)^k}\dd x&amp;&#x3D; \sum_{l\in\mathbb{Z}}\int_{0}^{1}\frac{\exp{2\pi i \left[m(\frac{a}{c} -\frac{1}{c^2(z+l)+cd})-nz\right]}}{(c(z+l)+d)^k}\dd x\\<br>\overset{z\mapsto z-l-\frac{d}{c}}{&#x3D;}&amp; c^{-k}\exp\left(2\pi i\times\frac{ma+nd}{c} \right)\int_{-\infty +i y}^{\infty+i y}\frac{\exp{2\pi i \left(-\frac{m}{c^2 z}-nz\right)}}{z^k} \dd z<br>\end{aligned}$$</p>
+<p>设$m\ge 0$，若$n\le 0$，取$y&gt;0$，$\left|\exp{2\pi i \left(-\frac{m}{c^2 z}-nz\right)}\right|\le e^{2\pi n y}\le 1$，则<br>$$\left|\int_{-\infty +i y}^{\infty+i y}\frac{\exp{2\pi i \left(-\frac{m}{c^2 z}-nz\right)}}{z^k} \dd z\right|\le \left|\int_{-\infty +i y}^{\infty+i y}\frac{\dd x}{(x^2+y^2)^{k&#x2F;2}}\right|\overset{y\to\infty}{&#x3D;}0$$</p>
+<p>若$m&#x3D;0,n&gt;0$，则<br>$$\int_{-\infty +i y}^{\infty+i y}\frac{e^{-2\pi i nz}}{z^k} \dd z&#x3D;\left(\frac{2\pi}{i}\right)^k\frac{n^{k-1}}{(k-1)!}$$</p>
+<p>若$m,n&gt;0$，则将积分结果代入可证得定理4<br>$$\begin{aligned}<br>\int_{-\infty +i y}^{\infty+i y}\frac{\exp{2\pi i \left(-\frac{m}{c^2 z}-nz\right)}}{z^k} \dd z &amp; \overset{z\mapsto\sqrt{\frac{m}{n}}\frac{z}{c}}{&#x3D;} c^{k-1}\left(\frac{n}{m}\right)^{\frac{k-1}{2}}\int_{-\infty +i y’}^{\infty+i y’}\frac{\exp{(-2\pi i \frac{\sqrt{mn}}{c}(z+z^{-1}))}}{z^k}\dd z\\<br>&amp;\overset{z\mapsto i z}{&#x3D;}\frac{2\pi c^{k-1}}{i^k}\left(\frac{n}{m}\right)^{\frac{k-1}{2}}J_{k-1}\left(\frac{4\pi\sqrt{mn}}{c}\right)<br>\end{aligned}$$</p>
+<p>令$\Gamma&lt;\text{SL}<em>2(\mathbb{Z})$为一同余子群，为简单起见假定$-I_2\in \Gamma$，则<br>$$\sigma</em>{\mathfrak{a}}^{-1}\Gamma_{\mathfrak{a}}\sigma_{\mathfrak{a}}&#x3D;\left\langle\pm\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\right\rangle:&#x3D;B,\forall\;\mathfrak{a}\in \mathcal{C}_{\Gamma}$$</p>
 
   </article>
   <!-- tag -->
@@ -547,7 +557,7 @@
 
   <!-- copyright -->
   <div class="flex items-center gap-2">
-    <span>© 2024</span>
+    <span>© 2025</span>
     <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
     <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
   </div>
